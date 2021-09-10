@@ -28,7 +28,7 @@
         } else {
             $email = __("User not found", "really-simple-ssl-pro");
         }
-        $string = sprintf(__("The license key is only visible to %s. Add &rsssl_unlock_license={your license key} behind the URL to unlock the license block.","really-simple-ssl-pro"), $email);
+        $string = sprintf(__("The license key is only visible to %s. Add &rsssl_license_unlock={your license key} behind the URL to unlock the license block.","really-simple-ssl-pro"), $email);
         ?>
         <div class="rsssl-networksettings-overlay"><div class="rsssl-disabled-settings-overlay"><span class="rsssl-progress-status rsssl-open"><?php echo $string ?></span>
     <?php }

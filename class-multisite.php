@@ -293,10 +293,8 @@ if (!class_exists('rsssl_pro_multisite')) {
 			if (!current_user_can('manage_options')) return;
 
 			if (isset($_POST["option_page"]) && $_POST["option_page"] === "rlrsssl_security_headers" ) {
-				$options = array_map( array( $this, "sanitize_boolean" ), $_POST);
-
-				$this->content_security_policy    = isset( $options["rsssl_content_security_policy"] ) ? $options["rsssl_content_security_policy"] : false;
-				$this->enable_csp_reporting    = isset( $options["rsssl_enable_csp_reporting"] ) ? $options["rsssl_enable_csp_reporting"] : false;
+				$options = array_map(  "sanitize_title", $_POST);
+				$this->content_security_policy    = sanitize_title($options["rsssl_content_security_policy"] );
 				$this->upgrade_insecure_requests  = isset( $options["rsssl_upgrade_insecure_requests"] ) ? $options["rsssl_upgrade_insecure_requests"] : false;
 				$this->add_csp_rules_to_htaccess  = isset( $options["rsssl_add_csp_rules_to_htaccess"] ) ? $options["rsssl_add_csp_rules_to_htaccess"] : false;
 				$this->x_xss_protection           = isset( $options["rsssl_x_xss_protection"] ) ? $options["rsssl_x_xss_protection"] : false;

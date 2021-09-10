@@ -5,6 +5,7 @@ jQuery(document).ready(function ($) {
     var progressBar = $('#rsssl-scan-list').find('.progress-bar');
 
     rsslInitScanDatatable();
+    initCspTable();
     var scan_paginate;
     function rsslInitScanDatatable(){
         $('#rsssl-scan-results').DataTable( {
@@ -47,12 +48,55 @@ jQuery(document).ready(function ($) {
         },
     } );
 
-    $('#rsssl-csp-table').DataTable( {
-        "pageLength": 4,
-        "language" : {
-            "emptyTable": rsssl_ajax.emptyCspTable,
-        },
+    function initCspTable() {
+        $('#rsssl-csp-table').DataTable({
+            "pageLength": 4,
+            "bSort": false,
+            "bFilter" : false,
+            "language": {
+                "emptyTable": rsssl_ajax.emptyCspTable,
+            },
+        });
+        var datatable_csp_paginate = $("#rsssl-csp-table_paginate").detach();
+        $(".rsssl-content-security-policy  .rsssl-grid-item-footer").html('');
+        $(".rsssl-content-security-policy  .rsssl-grid-item-footer").append(datatable_csp_paginate);
+        var datatable_csp_info = $("#rsssl-csp-table_info").detach();
+        $(".rsssl-content-security-policy  .rsssl-grid-item-footer").append('<div id="rsssl-csp-entries"></div>');
+        $('#rsssl-csp-entries').append(datatable_csp_info);
+    }
+
+
+    $('#rsssl_content_security_policy_toggle').on('change', function () {
+        var value = $(this).val();
+        var token = $(this).data("token");
+        $.post(
+            rsssl_ajax.ajaxurl,
+            {
+                action: 'rsssl_update_csp_toggle_option',
+                rsssl_csp_toggle_value: value,
+                token: token,
+            },
+            function (response) {
+                $('.rsssl-csp-table-container').html('');
+                loadCspTable(token);
+            }
+        );
     });
+
+    function loadCspTable(token) {
+        $.post(
+            rsssl_ajax.ajaxurl,
+            {
+                action: 'rsssl_load_csp_table',
+                token: token,
+            },
+            function (response) {
+                $('.rsssl-csp-table-container').html(response);
+                initCspTable();
+            }
+        );
+    }
+
 
     var permissions_policy_table = $('#rsssl-permission-policy-table').DataTable( {
         "info": false,
@@ -98,18 +142,12 @@ jQuery(document).ready(function ($) {
     });
 
 
-
     $('.paginate_button').click(function() {
         $('.rsssl-button-save').prop('disabled', false);
     });
 
-    var datatables_search = $("#rsssl-csp-table_filter").detach();
-    $(".rsssl-content-security-policy .rsssl-instructions").append(datatables_search);
-    var datatable_csp_paginate = $("#rsssl-csp-table_paginate").detach();
-    $(".rsssl-content-security-policy  .rsssl-grid-item-footer").append(datatable_csp_paginate);
-    var datatable_csp_info = $("#rsssl-csp-table_info").detach();
-    $(".rsssl-content-security-policy  .rsssl-grid-item-footer").append('<div id="rsssl-csp-entries"></div>');
-    $('#rsssl-csp-entries').append(datatable_csp_info);
+    // var datatables_search = $("#rsssl-csp-table_filter").detach();
+    // $(".rsssl-content-security-policy .rsssl-instructions").append(datatables_search);
 
     var fp_paginate = $("#rsssl-permission-policy-table_paginate").detach();
     $(".rsssl-permissions-policy .rsssl-grid-item-footer").append(fp_paginate);
@@ -291,14 +329,6 @@ jQuery(document).ready(function ($) {
                 action: 'maybe_update_disable_license',
                 value: checkbox_value,
             },
-
-            // function (response) {
-            //     if (response.success) {
-            //
-            //     } else {
-            //
-            //     }
-            // }
         );
     });
 
@@ -386,15 +416,42 @@ jQuery(document).ready(function ($) {
     //Content Security Policy
     $(document).on("click", ".start-add-to-csp", function () {
 
-        /*Show loader css after clicking fix button*/
+        /*Show loader css after clicking button*/
         var btn = $(this);
         var id = btn.attr('data-id');
-        var btnContent = btn.html();
+        // var btnContent = btn.html();
         btn.html('<div class="rsssl-loader"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>');
-
         btn.prop('disabled', true);
 
-        var action = 'update_in_policy_value';
+        var action = 'rsssl_update_in_policy_value';
+        var token = $(this).data("token");
+        var add_revoke = 'add';
+
+        $.post(
+            rsssl_ajax.ajaxurl,
+            {
+                action: action,
+                token: token,
+                id: id,
+                add_revoke: add_revoke,
+            },
+            function (response) {
+                btn.closest('tr').remove();
+            }
+        );
+    });
+
+    $(document).on("click", "#start-revoke-from-csp", function () {
+
+        /*Show loader css after clicking button*/
+        var btn = $(this);
+        var btnContent = btn.html();
+        var id = btn.attr('data-id');
+        var add_revoke = 'revoke';
+        btn.html('<div class="rsssl-loader"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>');
+        btn.prop('disabled', true);
+
+        var action = 'rsssl_update_in_policy_value';
         var token = $(this).data("token");
 
         $.post(
@@ -403,12 +460,61 @@ jQuery(document).ready(function ($) {
                 action: action,
                 token: token,
                 id: id,
+                add_revoke: add_revoke,
             },
             function (response) {
-                btn.closest('tr').remove();
+                btn.html(btnContent);
+                btn.prop('disabled', false);
+                $("#revoke-csp-modal").modal('hide');
+                rsssl_remove_csp_from_results(id);
+                }
+        );
+    });
+
+    $(document).on("click", "#start-revoke-delete-from-csp", function () {
+
+        /*Show loader css after clicking button*/
+        var btn = $(this);
+        var btnContent = btn.html();
+        var id = btn.attr('data-id');
+        var add_revoke = 'revoke';
+        btn.html('<div class="rsssl-loader"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>');
+        btn.prop('disabled', true);
+
+        var action = 'rsssl_update_in_policy_value';
+        var token = $(this).data("token");
+
+        $.post(
+            rsssl_ajax.ajaxurl,
+            {
+                action: action,
+                token: token,
+                id: id,
+                add_revoke: add_revoke,
+            },
+            function (response) {
+                rsssl_delete_from_csp(id, token);
+                btn.prop('disabled', false);
+                btn.html(btnContent);
+                rsssl_remove_csp_from_results(id);
             }
         );
     });
+
+    function rsssl_delete_from_csp(id, token) {
+        $.post(
+            rsssl_ajax.ajaxurl,
+            {
+                action: 'rsssl_delete_from_csp',
+                token: token,
+                id: id,
+            },
+            function (response) {
+                $("#revoke-csp-modal").modal('hide');
+                rsssl_remove_csp_from_results(id);
+            }
+        );
+    }
 
     //remove alerts after closing
     $("#fix-file-modal").on("hidden.bs.modal", function () {
@@ -493,11 +599,10 @@ jQuery(document).ready(function ($) {
         $(this).prop('disabled', false);
     });
 
-    $('.rsssl-modal-dialog').on('show.bs.modal', function (e) {
+    $(document).on('show.bs.modal','.rsssl-modal-dialog', function (e) {
         $(this).find(".rsssl-start-action").attr('data-id', $(e.relatedTarget).data('id'));
         $(this).find(".rsssl-start-action").attr('data-url', $(e.relatedTarget).data('url'));
         $(this).find(".rsssl-start-action").attr('data-path', $(e.relatedTarget).data('path'));
-        $(this).find(".rsssl-start-action").attr('data-results_id', $(e.relatedTarget).data('results_id'));
         $(this).find(".rsssl-start-action").attr('data-results_id', $(e.relatedTarget).data('results_id'));
     });
 
@@ -527,6 +632,12 @@ jQuery(document).ready(function ($) {
     function rsssl_remove_from_results(results_id) {
         $('#rsssl-scan-results [data-results_id='+results_id+']').closest('tr').addClass('rsssl-remove-row');
         var table = $('#rsssl-scan-results').DataTable();
+        table.row('.rsssl-remove-row').remove().draw(false);
+    }
+
+    function rsssl_remove_csp_from_results(id) {
+        $('#rsssl-csp-table [data-id='+id+']').closest('tr').addClass('rsssl-remove-row');
+        var table = $('#rsssl-csp-table').DataTable();
         table.row('.rsssl-remove-row').remove().draw(false);
     }
 

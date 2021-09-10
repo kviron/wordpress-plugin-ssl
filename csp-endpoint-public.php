@@ -8,20 +8,43 @@ defined('ABSPATH') or die("you do not have access to this page!");
  * @return JSON data with Content Security Policy violations
  *
  */
-add_action('rest_api_init', 'rsssl_pro_csp_rest_route');
-function rsssl_pro_csp_rest_route()
-{
-	if (is_multisite()) {
-		$csp_reporting = get_site_option('rsssl_enable_csp_reporting');
-	} else {
-		$csp_reporting = get_option('rsssl_enable_csp_reporting');
-	}
-	if ($csp_reporting) {
+
+if ( rsssl_get_networkwide_option('rsssl_content_security_policy') === 'report-only' ) {
+    add_action('rest_api_init', 'rsssl_pro_csp_rest_route');
+}
+
+if ( !function_exists('rsssl_pro_csp_rest_route')) {
+	function rsssl_pro_csp_rest_route() {
 		register_rest_route( 'rsssl/v1', 'csp/', array(
 			'methods'             => 'POST',
 			'callback'            => 'rsssl_track_csp',
-			'permission_callback' => '__return_true',
+			'permission_callback' => 'rsssl_pro_validate_api_call',
 		) );
+	}
+}
+
+/**
+ * @param $request
+ * @return bool
+ *
+ * Check if the requests comes from own server
+ * @since 4.1.4
+ *
+ */
+
+function rsssl_pro_validate_api_call ( $request ) {
+	$origin = $request->get_header('origin');
+
+	if ($request->get_param('rsssl_apitoken') != rsssl_get_networkwide_option('rsssl_csp_report_token') ) {
+		return false;
+	}
+
+	if ( strpos(site_url(), $origin) !== false || strpos(home_url(), $origin) !== false ) {
+		//we're about to give access to the backend for this api call 
+		if ( !defined('RSSSL_DOING_CSP') ) define( 'RSSSL_DOING_CSP' , true );
+		return true;
+	} else {
+		return false;
 	}
 }
 
@@ -33,14 +56,31 @@ function rsssl_pro_csp_rest_route()
  * Process Content Security Policy violations, add to DB
  *
  * $blockeduri: the domain which is blocked due to content security policy rules
- * $documenturi: the post/page where the violation occured
+ * $documenturi: the post/page where the violation occurred
  *
  */
 
 function rsssl_track_csp(WP_REST_Request $request)
 {
 	//We have added a query parameter (?xx) after the API endpoint, get that value via get_param() and compare to the option value
-	if ($request->get_param('rsssl_apitoken') != get_site_option('rsssl_csp_report_token') ) return;
+	if ($request->get_param('rsssl_apitoken') != rsssl_get_networkwide_option('rsssl_csp_report_token') ) return;
+
+    $request_count = rsssl_get_networkwide_option('rsssl_csp_request_count' );
+	if ( !$request_count ) {
+		$request_count = 0;
+	}
+	$request_count++;
+	rsssl_update_networkwide_option('rsssl_csp_request_count', $request_count );
+
+    if ( $request_count > 20 ) {
+        rsssl_update_networkwide_option('rsssl_content_security_policy', 'report-paused' );
+        // Reporting paused, remove report only rules from htaccess to stop requests to endpoint.
+        // Only when Really Simple SSL free is version 4.0.8 or higher due to compatibility
+        if ( version_compare( rsssl_version, '4.0.8', '>=' ) ) {
+            RSSSL_PRO()->rsssl_premium_options->remove_htaccess_rules('Really_Simple_SSL_CSP_Report_Only');
+        }
+	    RSSSL_PRO()->rsssl_csp_backend->maybe_reset_csp_api_token( '', 'report-paused', '', $force=true );
+    }
 
 	global $wpdb;
 	$table_name = $wpdb->base_prefix . "rsssl_csp_log";
@@ -63,32 +103,24 @@ function rsssl_track_csp(WP_REST_Request $request)
 	//If one of these is empty we cannot generate a CSP rule from it, return
 	if (empty($violateddirective) || (empty($blockeduri) ) ) return;
 
-	//Style-src-elem and script-src-elem are implemented behind a browser flag. Therefore save as style-src and script-src since these are used as a fallback. Results in console warnings otherwise
-//    if ($violateddirective === 'style-src-elem') {
-//        $violateddirective = str_replace('style-src-elem', 'style-src', $violateddirective);
-//    }
-//
-//    if ($violateddirective === 'script-src-elem') {
-//        $violateddirective = str_replace('script-src-elem', 'script-src', $violateddirective);
-//    }
-
 	//Check if the blockeduri and violatedirective already occur in DB. If so, we do not need to add them again.
 	$count = $wpdb->get_var("SELECT count(*) FROM $table_name where blockeduri = '$blockeduri' AND violateddirective='$violateddirective'");
-	if ($count > 0) return;
+	if ($count == 0) {
+		//Insert into table
+		$wpdb->insert($table_name, array(
+			'time' => current_time('mysql'),
+			'documenturi' => $documenturi,
+			//Violateddirective and blockeduri are already sanitized earlier in this function
+			'violateddirective' => $violateddirective,
+			'blockeduri' => $blockeduri,
+		));
+	}
 
-	//Insert into table
-	$wpdb->insert($table_name, array(
-		'time' => current_time('mysql'),
-		'documenturi' => $documenturi,
-		//Violateddirective and blockeduri are already sanitized earlier in this function
-		'violateddirective' => $violateddirective,
-		'blockeduri' => $blockeduri,
-	));
 	exit;
 }
 
 /**
- * @param $str
+ * @param string $str
  * @return string
  *
  * @Since 2.5
@@ -97,15 +129,15 @@ function rsssl_track_csp(WP_REST_Request $request)
  *
  */
 
-function rsssl_sanitize_csp_violated_directive($str){
+function rsssl_sanitize_csp_violated_directive( $str ){
 
 	//Style-src-elem and script-src-elem are implemented behind a browser flag. Therefore save as style-src and script-src since these are used as a fallback
 	if ($str==='style-src-elem') {
-		$str = str_replace('style-src-elem', 'style-src', $str);
+		//$str = str_replace('style-src-elem', 'style-src', $str);
 	}
 
 	if ($str==='script-src-elem') {
-		$str = str_replace('script-src-elem', 'script-src', $str);
+		//$str = str_replace('script-src-elem', 'script-src', $str);
 	}
 
 	//https://www.w3.org/TR/CSP3/#directives-fetch
@@ -137,18 +169,20 @@ function rsssl_sanitize_csp_violated_directive($str){
 		'navigate-to',
 	);
 
-	if (in_array($str, $directives)) return $str;
+	if (in_array($str, $directives)) {
+		return $str;
+	}
 
 	return '';
 }
 
 /**
- * @param $str
+ * Only allow known directives to be returned, otherwise return empty string
+ *
+ * @param string $str
  * @return string
  *
  * @Since 2.5
- *
- * Only allow known directives to be returned, otherwise return empty string
  *
  */
 
@@ -164,34 +198,44 @@ function rsssl_sanitize_csp_blocked_uri($str){
 		$str = str_replace('inline', 'unsafe-inline', $str);
 	}
 
-	//Eval should be unsafe-eval
+	//Eval should be unsafe - eval
 	if ($str==='eval') {
 		$str = str_replace('eval', 'unsafe-eval', $str);
 	}
 
+	if ($str==='unsafe-inline') {
+		$str = str_replace('unsafe-inline', "'unsafe-inline'", $str);
+	}
+
+	if ($str==='unsafe-eval') {
+		$str = str_replace('unsafe-eval', "'unsafe-eval'", $str);
+	}
+
 	$directives = array(
 		//Fetch directives
-		'self',
+		"self",
 		'data:',
-		'unsafe-inline',
-		'unsafe-eval',
-		'about',
+		"'unsafe-inline'",
+		"'unsafe-eval'",
+		"about",
 	);
 
-	if (in_array($str, $directives)) return $str;
+	if (in_array($str, $directives)) {
+		return $str;
+	}
 
 	return '';
-
 }
 
 /**
- * @param $blockeduri
+ * URI can be a domain or a value (e.g. data:). If it's a domain, return the main domain (https://example.com).
+ * Otherwise return one of the other known uri value.
+ *
+ * @param string $blockeduri
  * @return string
  *
  * @since 2.5
  *
- * URI can be a domain or a value (e.g. data:). If it's a domain, return the main domain (https://example.com).
- * Otherwise return one of the other known uri value.
  */
 
 function rsssl_sanitize_uri_value($blockeduri)

@@ -858,12 +858,13 @@ button.close {
   outline: 0;
 }
 .modal-backdrop {
+  display: none;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1040;
+  z-index: 1;
   background-color: #000000;
 }
 .modal-backdrop.fade {
@@ -871,7 +872,7 @@ button.close {
   filter: alpha(opacity=0);
 }
 .modal-backdrop.in {
-  opacity: 0.5;
+  opacity: 0;
   filter: alpha(opacity=50);
 }
 .modal-header {

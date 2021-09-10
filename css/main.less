@@ -75,23 +75,45 @@
   float: right;
   margin-left: 4px;
 }
+@import "../bootstrap/css/bootstrap-theme.less";
+@import "../bootstrap/css/bootstrap.less";
+.modal {
+  z-index: 99999;
+  top: 100px !important;
 
-#rsssl-scan-container {
-  @import "../bootstrap/css/bootstrap-theme.less";
-  @import "../bootstrap/css/bootstrap.less";
-  #rsssl-scan-list {
-    padding-top:15px;
+  .modal-dialog {
+    position: absolute;
+    left: 300px;
+    top: 50px;
+
+    #details-modal-description {
+      padding-bottom: 10px;
+    }
+
+    .modal-footer {
+      text-align: left;
+      padding: 15px;
+      .button {
+        margin-left: 10px;
+      }
+    }
   }
-  .modal {
-    top: 100px !important;
 
-    .close {
-      margin: 20px;
-    }
+  .close {
+    margin: 20px;
+  }
 
-    #rsssl-alert .close {
-      margin: 0;
-    }
+  #rsssl-alert .close {
+    margin: 0;
+  }
+}
+#rsssl-scan-container {
+  .button {
+    margin-left: 9px;
+  }
+
+  #rsssl-scan-list {
+    padding-top: 15px;
   }
 
   .rsssl-buttons .btn-warning {
@@ -136,7 +158,6 @@
   }
 
   img {
-    block-size: 1.2em;
     float: left;
     padding-right: 7px;
     margin-top: 3px;
@@ -227,25 +248,6 @@
     text-align: left;
   }
 
-  .modal {
-    z-index: 99999;
-
-    .modal-dialog {
-      position: absolute;
-      left: 300px;
-      top: 50px;
-
-      #details-modal-description {
-        padding-bottom: 10px;
-      }
-
-      .modal-footer {
-        text-align: left;
-        padding: 15px;
-      }
-    }
-  }
-
   .dataTables_filter {
     display: none;
   }
@@ -267,9 +269,8 @@
     bottom: 100px;
   }
 
-
-  width: 100%;
-  text-align: left;
+  //width: 100%;
+  //text-align: left;
 
   th {
 
@@ -325,7 +326,8 @@
   }
 
   .button {
-    margin-right: 5px;
+    //margin-right: 5px;
+    margin-left: 10px;
     float: right;
   }
 
@@ -338,14 +340,14 @@
   }
 
 
-}
-
 .rsssl-grid-item-footer {
   .rsssl-scan-options {
-    flex-grow:1;
+    flex-grow: 1;
+
     .rsssl-buttons-scan {
-      float:right;
+      float: right;
     }
+
     .rsssl-btn-group-scan {
       display: flex;
       align-items: center;
@@ -362,7 +364,7 @@
       }
     }
   }
-
+}
 }
 /*
     cool checkbox sliders

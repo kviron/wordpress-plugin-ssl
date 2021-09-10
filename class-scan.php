@@ -51,9 +51,7 @@ class rsssl_scan {
 
 		self::$_this = $this;
 
-		add_action( "plugins_loaded", array( $this, "process_scan_submit" ),
-			100 );
-		add_action( 'admin_init', array( $this, 'clear_transient' ), 10 );
+		add_action( "plugins_loaded", array( $this, "process_scan_submit" ), 100 );
 		add_action( "rsssl_scan_modals", array( $this, "fix_post_modal" ) );
 		add_action( "rsssl_scan_modals", array( $this, "fix_postmeta_modal" ) );
 		add_action( "rsssl_scan_modals", array( $this, "details_modal" ) );
@@ -67,9 +65,7 @@ class rsssl_scan {
 		    add_action('admin_init', array($this, 'start_quick_scan') );
         }
 
-		add_action( 'wp_ajax_get_scan_progress',
-			array( $this, 'get_scan_progress' ) );
-
+		add_action( 'wp_ajax_get_scan_progress', array( $this, 'get_scan_progress' ) );
 	}
 
 
@@ -114,6 +110,9 @@ class rsssl_scan {
 		exit();
     }
 
+	/**
+	 * Get the json for the scan progress.
+	 */
 	public function get_scan_progress() {
 		$action = "";
 
@@ -140,29 +139,9 @@ class rsssl_scan {
 		wp_die(); // this is required to terminate immediately and return a proper response
 	}
 
-	/*
-   * The transient is cleared when requested, and expiration time has passed.
-   * For backward compatibility, we move some data to the new options.
-   *
-   * */
-
-	public function clear_transient() {
-		//migrate option to transient
-		if ( get_option( 'rlrsssl_scan' ) ) {
-			$options = get_option( 'rlrsssl_scan' );
-
-			if ( isset( $options['last_scan_time'] ) ) {
-				update_option( 'rsssl_last_scan_time',
-					$options['last_scan_time'] );
-			}
-			if ( isset( $options['scan_completed_no_errors'] ) ) {
-				update_option( 'rsssl_scan_completed_no_errors',
-					$options['scan_completed_no_errors'] );
-			}
-			delete_option( 'rlrsssl_scan' );
-		}
-	}
-
+	/**
+	 * Submit a scan action
+	 */
 	public function process_scan_submit() {
 		if ( ! class_exists( 'rsssl_admin' ) ) {
 			return;
@@ -230,12 +209,11 @@ class rsssl_scan {
 		}
 		if ( ! empty( $this->last_scan_time ) ) {
 			//$date = date(DateTime::RFC850);
-			return
-				date( get_option( 'date_format' ), $this->last_scan_time ) .
-				"&nbsp;" .
-				__( "at", "really-simple-ssl-pro" ) .
-				"&nbsp;" .
-				date( "H:i", $this->last_scan_time );
+			return sprintf(
+			        _x( "%s at %s","'date' at 'time'", "really-simple-ssl-pro" ),
+                    date( get_option( 'date_format' ), $this->last_scan_time ),
+                    date( "H:i", $this->last_scan_time )
+            );
 		}
 		return false;
 	}

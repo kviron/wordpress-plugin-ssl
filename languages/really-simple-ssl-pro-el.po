@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Really Simple SSL pro\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-07 08:36+0100\n"
-"PO-Revision-Date: 2021-01-15 16:10+0000\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2021-05-30 19:36+0000\n"
+"Last-Translator: Manuel\n"
 "Language-Team: Ελληνικά\n"
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
@@ -12,15 +12,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.4.6; wp-5.6"
+"X-Loco-Version: 2.5.2; wp-5.7.2"
 
 #: class-cert-expiration.php:183
 msgid " the SSL certificate is expiring soon. The ValidTo date is:"
 msgstr "το πιστοποιητικό SSL λήγει σύντομα. Η ημερομηνία λήξης είναι:"
 
 #: class-importer.php:12 class-licensing.php:18 class-multisite.php:28
-#: class-premium-options.php:12 class-scan.php:48 class-support.php:14
-#: csp-violation-endpoint.php:15
+#: class-premium-options.php:13 class-scan.php:48 class-support.php:14
+#: csp-violation-endpoint.php:13
 #, php-format
 msgid "%s is a singleton class and you cannot create a second instance."
 msgstr ""
@@ -32,35 +32,41 @@ msgstr ""
 msgid "%s to %s of %s results"
 msgstr "%s σε %s από %s αποτελέσματα"
 
-#: class-licensing.php:469 class-licensing.php:577
+#: class-licensing.php:471 class-licensing.php:579
 #, php-format
 msgid "%s/%s activations available."
 msgstr "%s/%s διαθέσιμες ενεργοποιήσεις."
 
-#: class-premium-options.php:1152
+#: class-premium-options.php:1238
 #, php-format
 msgid "%sActivate%s your license."
 msgstr "%sΕνεργοποίηση%s της άδειας χρήσης σας."
 
-#: class-licensing.php:642
+#: class-licensing.php:644
 #, php-format
 msgid "%sGo to the settings page%s or %spurchase a license%s."
 msgstr "%sΜεταβείτε στη σελίδα ρυθμίσεων%s ή %sαγοράστε μια άδεια χρήσης%s."
 
-#: class-premium-options.php:935
+#: class-premium-options.php:1020
 #, php-format
 msgid "%sRead more%s."
 msgstr "%sΔιαβάστε περισσότερα%s."
 
-#: class-premium-options.php:1992
+#: class-premium-options.php:2096
 #, php-format
 msgid "%sScan again%s"
 msgstr "%sΕπανάληψη σάρωσης%s"
 
-#: class-premium-options.php:1996
+#: class-premium-options.php:2100
 #, php-format
 msgid "%sScan for issues%s"
 msgstr "%sΣάρωση για ζητήματα%s"
+
+#: class-scan.php:213
+#, php-format
+msgctxt "'date' at 'time'"
+msgid "%s at %s"
+msgstr "%s στις %s"
 
 #: class-multisite.php:205
 #, php-format
@@ -68,12 +74,11 @@ msgid "(filtered from %s results)"
 msgstr "(φιλτραρισμένο από %s αποτελέσματα)"
 
 #: grid/templates/feature-policy.php:10
-#: grid/templates/permissions-policy.php:10
 msgid "* is the default value. This means the feature is allowed."
 msgstr ""
-"* είναι η προεπιλεγμένη τιμή. Αυτό σημαίνει ότι η δυνατότητα επιτρέπεται."
+"* είναι η προεπιλεγμένη τιμή. Αυτό σημαίνει ότι η λειτουργία επιτρέπεται."
 
-#: class-premium-options.php:1001
+#: class-premium-options.php:1086
 msgid ""
 ".htaccess file not writable. Set the .htaccess file permissions to writeable "
 "or add the following lines manually:"
@@ -82,18 +87,7 @@ msgstr ""
 "htaccess σε εγγράψιμες ή προσθέστε τις ακόλουθες γραμμές με χειροκίνητο "
 "τρόπο:"
 
-#: class-premium-options.php:844
-msgid ""
-"A Content Security Policy is a whitelist of trusted sources. This will add "
-"an additional block to the settings page where you can select which trusted "
-"sources should be added to your Content Security Policy"
-msgstr ""
-"Μια Πολιτική Ασφαλείας Περιεχομένου (CSP) είναι ένας κατάλογος αξιόπιστων "
-"πηγών. Αυτό θα προσθέσει ένα επιπλέον μπλοκ στη σελίδα ρυθμίσεων όπου "
-"μπορείτε να επιλέξετε ποιες αξιόπιστες πηγές θα πρέπει να προστεθούν στην "
-"Πολιτική Ασφαλείας Περιεχομένου"
-
-#: class-premium-options.php:935
+#: class-premium-options.php:1020
 msgid "A redirect to http was detected. This might result in redirect loops."
 msgstr ""
 "Εντοπίστηκε ανακατεύθυνση σε http. Αυτό μπορεί να έχει ως αποτέλεσμα βρόχους "
@@ -107,7 +101,7 @@ msgstr "Σύμφωνα με τον έλεγχο που έγινε μόλις τ�
 msgid "Action"
 msgstr "Ενέργεια"
 
-#: class-multisite.php:346
+#: class-multisite.php:344
 msgid "activate"
 msgstr "ενεργοποίηση"
 
@@ -115,15 +109,7 @@ msgstr "ενεργοποίηση"
 msgid "Activate license"
 msgstr "Ενεργοποίηση άδειας χρήσης"
 
-#: class-premium-options.php:2158
-msgid "Add the following lines of code to your wp-config.php."
-msgstr "Προσθέστε τις ακόλουθες γραμμές κώδικα στο wp-config.php"
-
-#: grid/templates/csp.php:22
-msgid "Add to policy"
-msgstr "Προσθήκη στην πολιτική"
-
-#: class-premium-options.php:1518
+#: class-premium-options.php:1608
 #, php-format
 msgid ""
 "After enabling this option, you have to %ssubmit%s your site. Please read "
@@ -132,28 +118,36 @@ msgstr ""
 "Αφού ενεργοποιήσετε αυτήν την επιλογή, πρέπει να %sυποβάλλετε%s τον ιστότοπό "
 "σας. Παρακαλώ διαβάστε προσεκτικά τις οδηγίες σε αυτήν τη σελίδα."
 
-#: grid/templates/csp.php:40
+#: csp-violation-endpoint.php:414
 msgid "ago"
 msgstr "πριν"
 
-#: grid/templates/csp.php:49
+#: csp-violation-endpoint.php:402
 msgid "Allow"
 msgstr "Επιτρέπεται"
 
-#: class-scan.php:2637 class-scan.php:2672 class-scan.php:2717
-#: class-scan.php:2789
+#: grid/templates/csp-container.php:12
+msgid "Allow/revoke"
+msgstr "Επιτρέπεται/Άρση"
+
+#: grid/templates/csp-header.php:9
+msgid "Allowed"
+msgstr "Επιτρέπεται"
+
+#: grid/templates/permissions-policy.php:19
+msgid "allowed"
+msgstr "επιτρέπεται"
+
+#: class-scan.php:2615 class-scan.php:2650 class-scan.php:2695
+#: class-scan.php:2767
 msgid "Always backup first!"
 msgstr "Πάντα να δημιουργείτε αντίγραφα ασφαλείας!"
 
-#: class-scan.php:236
-msgid "at"
-msgstr "στις"
-
-#: class-multisite.php:366
+#: class-multisite.php:364
 msgid "Auto replace mixed content"
 msgstr "Αυτόματη αντικατάσταση μεικτού περιεχομένου"
 
-#: class-scan.php:2719
+#: class-scan.php:2697
 msgid ""
 "Be very carefull with this function! Please backup your site before "
 "proceeding."
@@ -161,7 +155,7 @@ msgstr ""
 "Να είστε πολύ προσεκτικοί με αυτή τη λειτουργία! Δημιουργήστε αντίγραφο "
 "ασφαλείας του ιστότοπού σας πριν συνεχίσετε."
 
-#: class-scan.php:2639
+#: class-scan.php:2617
 msgid ""
 "Be very carefull with this function! Please backup your site before "
 "proceeding. This function will also create a backup of each changed file, "
@@ -174,19 +168,23 @@ msgstr ""
 "όνομα rsssl-bkp-filename. Μπορείτε να χρησιμοποιήσετε τη λειτουργία "
 "'επαναφορά αρχείων' για να επαναφέρετε τα αρχικά αρχεία."
 
-#: class-scan.php:1830 class-scan.php:1914 class-scan.php:2016
-#: class-scan.php:2065 class-scan.php:2127
+#: grid/templates/csp-header.php:8
+msgid "Blocked"
+msgstr "Μπλοκαρισμένο"
+
+#: class-scan.php:1808 class-scan.php:1892 class-scan.php:1994
+#: class-scan.php:2043 class-scan.php:2105
 #, php-format
 msgid "Blocked URL: %s"
 msgstr "Αποκλεισμένη διεύθυνση URL: %s"
 
-#: class-scan.php:1886
+#: class-scan.php:1864
 msgid "cached file, deactivate cache to see the actual source"
 msgstr ""
 "προσωρινά αποθηκευμένο αρχείο, απενεργοποιήστε την προσωρινή μνήμη για να "
 "δείτε την πραγματική πηγή"
 
-#: class-scan.php:1916
+#: class-scan.php:1894
 msgid ""
 "Can be fixed automatically by pressing the Fix button. If fixing fails, the "
 "source file can be edited manually by pressing the Edit button."
@@ -195,7 +193,7 @@ msgstr ""
 "αποτύχει, μπορείτε να επεξεργαστείτε το πηγαίο αρχείο με χειροκίνητο τρόπο "
 "πατώντας το κουμπί 'Επεξεργασία'."
 
-#: class-scan.php:1965
+#: class-scan.php:1943
 msgid ""
 "Cannot be fixed automatically, as the mixed content is coming from an "
 "external domain. Contact the owner of the domain to update the CSS/JS file"
@@ -204,67 +202,68 @@ msgstr ""
 "από έναν εξωτερικό τομέα. Επικοινωνήστε με τον κάτοχο του τομέα για να "
 "ενημερώσετε το αρχείο CSS/JS"
 
-#: class-scan.php:429
+#: class-scan.php:407
 #, php-format
 msgid "Checking if external js or css files contain http links, %s of %s"
 msgstr ""
 "Έλεγχος εάν τα εξωτερικά αρχεία JS ή CSS περιέχουν συνδέσμους http, %s από %s"
 
-#: class-scan.php:356
+#: class-scan.php:334
 #, php-format
 msgid "Checking posts for external URLs, %s of %s"
 msgstr "Έλεγχος δημοσιεύσεων για εξωτερικές διευθύνσεις URL, %s από %s"
 
-#: class-scan.php:386
+#: class-scan.php:364
 msgid "Checking which postmeta contain external resources"
 msgstr "Ελέγξτε ποια postmeta περιέχουν εξωτερικούς πόρους"
 
-#: class-scan.php:405
+#: class-scan.php:383
 #, php-format
 msgid "Checking which resources can't load over ssl, %s of %s"
 msgstr "Έλεγχος των πόρων που δεν μπορούν να φορτωθούν μέσω SSL, %s από %s"
 
-#: class-scan.php:372
+#: class-scan.php:350
 msgid "Checking widgets for external URLs"
 msgstr "Έλεγχος μικροεφαρμογών για εξωτερικές διευθύνσεις URL"
 
-#: class-premium-options.php:835
+#: csp-violation-endpoint.php:512
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#: class-premium-options.php:929
 msgid "Configure your site for the HSTS preload list"
 msgstr ""
 "Ρυθμίστε τις παραμέτρους του ιστότοπού σας για τη λίστα προφόρτωσης HSTS"
 
-#: class-premium-options.php:365
+#: class-premium-options.php:933
+msgid "Content Security Policy"
+msgstr "Πολιτική Ασφαλείας Περιεχομένου (CSP)"
+
+#: class-premium-options.php:438
 msgid "Content Security Policy configuration"
 msgstr "Ρύθμιση παραμέτρων Πολιτικής Ασφαλείας Περιεχομένου (CSP)"
 
-#: class-premium-options.php:840
-msgid "Content Security Policy reporting"
-msgstr "Αναφορά Πολιτικής Ασφαλείας Περιεχομένου (CSP)"
-
-#: class-premium-options.php:2212
+#: class-premium-options.php:2195
 msgid "Content Security Policy reporting enabled"
-msgstr "Ενεργοποιημένη αναφοράς Πολιτικής Ασφαλείας Περιεχομένου (CSP)"
+msgstr "Η αναφορά Πολιτικής Ασφαλείας Περιεχομένου (CSP) είναι ενεργοποιημένη"
 
-#: class-premium-options.php:839
+#: class-premium-options.php:1184
 msgid ""
-"Content Security Policy reporting. This will detect new entries for the "
-"Content Security Policy, but won't enforce them yet."
+"Content Security Policy reporting is paused to limit server resources. "
+"Please start configuring your Content Security Policy and enable reporting "
+"again."
 msgstr ""
-"Αναφορά Πολιτικής Ασφαλείας Περιεχομένου (CSP). Αυτό θα εντοπίσει νέες "
-"καταχωρήσεις για την Πολιτική Ασφαλείας Περιεχομένου (CSP), αλλά δεν θα τις "
-"επιβάλλει ακόμα."
+"Η αναφορά Πολιτικής Ασφαλείας Περιεχομένου (CSP) έχει τεθεί σε παύση για να "
+"περιορίσει τους πόρους του διακομιστή. Παρακαλώ ξεκινήστε τη ρύθμιση των "
+"παραμέτρων της Πολιτικής Ασφαλείας Περιεχομένου και επανενεργοποιήστε την "
+"αναφορά."
 
-#: class-scan.php:2501 class-scan.php:2590 class-scan.php:2630
-#: class-scan.php:2710
+#: class-scan.php:2479 class-scan.php:2568 class-scan.php:2608
+#: class-scan.php:2688
 msgid "Copyright warning!"
 msgstr "Προειδοποίηση πνευματικών δικαιωμάτων!"
 
-#: class-premium-options.php:2173
-msgid "Could not insert httponly secure cookie settings."
-msgstr ""
-"Δεν ήταν δυνατή η εισαγωγή των ρυθμίσεων ασφάλισης HttpOnly των cookies."
-
-#: class-multisite.php:346
+#: class-multisite.php:344
 msgid "deactivate"
 msgstr "απενεργοποίηση"
 
@@ -276,12 +275,12 @@ msgstr "Απενεργοποίηση άδειας χρήσης"
 msgid "Description"
 msgstr "Περιγραφή"
 
-#: class-scan.php:1832 class-scan.php:1925 class-scan.php:1967
-#: class-scan.php:2020 class-scan.php:2070 class-scan.php:2128
+#: class-scan.php:1810 class-scan.php:1903 class-scan.php:1945
+#: class-scan.php:1998 class-scan.php:2048 class-scan.php:2106
 msgid "Details"
 msgstr "Λεπτομέρειες"
 
-#: grid/templates/csp.php:19
+#: grid/templates/csp-container.php:9
 msgid "Directive"
 msgstr "Οδηγία"
 
@@ -296,12 +295,16 @@ msgstr ""
 msgid "Disable for all users, except yourself"
 msgstr "Απενεργοποίηση για όλους τους χρήστες, εκτός από εσάς"
 
-#: grid/templates/csp.php:21
+#: class-premium-options.php:1393
+msgid "Disabled"
+msgstr "Απενεργοποιημένο"
+
+#: grid/templates/csp-container.php:11
 msgid "Domain/protocol"
 msgstr "Τομέας / πρωτόκολλο"
 
-#: class-scan.php:2504 class-scan.php:2593 class-scan.php:2632
-#: class-scan.php:2712
+#: class-scan.php:2482 class-scan.php:2571 class-scan.php:2610
+#: class-scan.php:2690
 msgid ""
 "Downloading files from other websites can cause serious copyright issues! It "
 "is always illegal to use images, files, or any copyright protected material "
@@ -315,63 +318,63 @@ msgstr ""
 "Ζητήστε την άδεια του κατόχου των πνευματικών δικαιωμάτων. Χρησιμοποιήστε "
 "αυτή τη λειτουργία με δική σας ευθύνη."
 
-#: class-scan.php:2557 class-scan.php:2784
+#: class-scan.php:2535 class-scan.php:2762
 msgid "Edit"
 msgstr "Επεξεργασία"
 
-#: class-scan.php:2791
+#: class-scan.php:2769
 msgid "Editing files can break your site if you do not do it right!"
 msgstr ""
 "Η επεξεργασία αρχείων μπορεί να καταστρέψει τον ιστότοπό σας εάν δεν "
 "υλοποιηθεί σωστά!"
 
-#: class-premium-options.php:917
+#: class-premium-options.php:1002
 msgid "Elementor mixed content successfully converted."
 msgstr "Το μεικτό περιεχόμενο του Elementor έχει μετατραπεί με επιτυχία."
 
-#: class-multisite.php:373
+#: class-multisite.php:371
 msgid "Enable this if you want the mixed content fixer for admin."
 msgstr ""
 "Ενεργοποιήστε το εάν θέλετε το πρόγραμμα επιδιόρθωσης μεικτού περιεχομένου "
 "για το διαχειριστικό περιβάλλον."
 
-#: class-multisite.php:365
+#: class-multisite.php:363
 msgid "Enable this if you want to automatically replace mixed content."
 msgstr ""
 "Ενεργοποιήστε αυτήν την επιλογή εάν θέλετε να αντικαταστήσετε αυτόματα το "
 "μεικτό περιεχόμενο."
 
-#: class-multisite.php:382
+#: class-multisite.php:380
 msgid "Enable this if you want to block the htaccess file from being edited."
 msgstr ""
 "Ενεργοποιήστε το εάν θέλετε να αποκλείσετε την επεξεργασία του αρχείου ."
 "htaccess"
 
-#: class-multisite.php:371
+#: class-multisite.php:369
 msgid "Enable this if you want to enable certificate expiration notices."
 msgstr ""
 "Ενεργοποιήστε το εάν θέλετε να λαμβάνετε τις ειδοποιήσεις λήξης "
 "πιστοποιητικού."
 
-#: class-multisite.php:367
+#: class-multisite.php:365
 msgid "Enable this if you want to hide the SSL menu on subsites."
 msgstr ""
 "Ενεργοποιήστε το εάν θέλετε να αποκρύψετε το μενού SSL σε δευτερεύουσες "
 "τοποθεσίες."
 
-#: class-multisite.php:377
+#: class-multisite.php:375
 msgid "Enable this if you want to redirect ALL websites to SSL using .htaccess"
 msgstr ""
 "Ενεργοποιήστε το εάν θέλετε να ανακατευθύνετε ΟΛΟΥΣ τους ιστότοπους σε SSL "
 "χρησιμοποιώντας το .htaccess"
 
-#: class-multisite.php:379
+#: class-multisite.php:377
 msgid "Enable this if you want to redirect SSL websites using .htaccess. "
 msgstr ""
 "Ενεργοποιήστε το εάν θέλετε να ανακατευθύνετε ιστότοπους με SSL "
 "χρησιμοποιώντας το .htaccess"
 
-#: class-multisite.php:369
+#: class-multisite.php:367
 msgid ""
 "Enable this if you want to use the internal WordPress 301 redirect for all "
 "SSL websites. Needed on NGINX servers, or if the .htaccess redirect cannot "
@@ -382,9 +385,9 @@ msgstr ""
 "διακομιστές NGINX ή εάν δεν είναι δυνατή η χρήση της ανακατεύθυνσης μέσω ."
 "htaccess."
 
-#: class-premium-options.php:845
-msgid "Enforce Content Security Policy"
-msgstr "Επιβολή Πολιτικής Ασφαλείας Περιεχομένου (CSP)"
+#: class-premium-options.php:1396
+msgid "Enforce"
+msgstr "Επιβολή"
 
 #: grid/templates/license.php:15
 msgid "Enter your license key"
@@ -394,20 +397,24 @@ msgstr "Εισαγάγετε το κλειδί άδειας χρήσης"
 msgid "Error"
 msgstr "Σφάλμα"
 
+#: grid/templates/csp-header.php:7
+msgid "Everything"
+msgstr "Όλα"
+
 #: grid/templates/feature-policy.php:18
 #: grid/templates/permissions-policy.php:18
 msgid "Feature"
-msgstr "Δυνατότητα"
+msgstr "Λειτουργία"
 
-#: class-scan.php:1816 class-scan.php:1890
+#: class-scan.php:1794 class-scan.php:1868
 msgid "file"
 msgstr "αρχείο"
 
-#: class-scan.php:2795
+#: class-scan.php:2773
 msgid "File editing blocked in WordPress!"
 msgstr "Η επεξεργασία αρχείων αποκλείστηκε στο WordPress!"
 
-#: class-scan.php:2797
+#: class-scan.php:2775
 msgid ""
 "File editing is blocked in WordPress. To edit these files, please use your "
 "FTP client."
@@ -415,89 +422,89 @@ msgstr ""
 "Η επεξεργασία αρχείων έχει αποκλειστεί στο WordPress. Για να επεξεργαστείτε "
 "αυτά τα αρχεία, χρησιμοποιήστε το πρόγραμμα FTP client."
 
-#: class-scan.php:505
+#: class-scan.php:483
 msgid "Finished scan"
 msgstr "Ολοκλήρωση σάρωσης"
 
-#: class-multisite.php:210 class-premium-options.php:171
+#: class-multisite.php:210 class-premium-options.php:188
 msgid "First"
 msgstr "Αρχικό"
 
-#: class-scan.php:1919 class-scan.php:2019 class-scan.php:2069
-#: class-scan.php:2125
+#: class-scan.php:1897 class-scan.php:1997 class-scan.php:2047
+#: class-scan.php:2103
 msgid "Fix"
 msgstr "Διόρθωση"
 
-#: class-scan.php:2668
+#: class-scan.php:2646
 msgid "Fix http in CSS and JS files"
 msgstr "Διόρθωση του http σε αρχεία CSS και JS"
 
-#: class-scan.php:2686
+#: class-scan.php:2664
 msgid "Fix URLs"
 msgstr "Διόρθωση των URLs"
 
-#: class-premium-options.php:2202
+#: class-premium-options.php:2184
 msgid "Follow these steps to complete the setup:"
 msgstr "Ακολουθήστε τα εξής βήματα για να ολοκληρώσετε τη ρύθμιση:"
 
-#: class-premium-options.php:2207
+#: class-premium-options.php:2190
 #, php-format
 msgid ""
-"For a detailed explanation of the Content Security Policy, see this %slink%s"
+"For more information about this security header, please follow this %slink%s."
 msgstr ""
-"Για μια λεπτομερή επεξήγηση της Πολιτικής Ασφαλείας Περιεχομένου (CSP), "
-"ανατρέξτε σε αυτόν τον %sσύνδεσμο%s"
+"Για περισσότερες πληροφορίες σχετικά με αυτήν την κεφαλίδα ασφαλείας, "
+"παρακαλώ ακολουθήστε αυτόν τον %sσύνδεσμο%s."
 
-#: grid/templates/csp.php:15
+#: grid/templates/csp-container.php:5
 msgid "Found"
 msgstr "Βρέθηκαν"
 
 #: grid/templates/scan-footer.php:12
 msgid "Full Scan"
-msgstr "Πλήρης Σάρωση"
+msgstr "Πλήρη σάρωση"
 
-#: class-scan.php:337
+#: class-scan.php:315
 msgid "Generating file list"
 msgstr "Δημιουργία λίστας αρχείων"
 
-#: class-scan.php:278
+#: class-scan.php:256
 msgid "Generating web page list"
 msgstr "Δημιουργία λίστας σελίδων ιστού"
 
-#: class-scan.php:2804
+#: class-scan.php:2782
 msgid "Go to editor"
 msgstr "Μετάβαση στο πρόγραμμα επεξεργασίας"
 
-#: class-premium-options.php:1110 class-premium-options.php:1123
+#: class-premium-options.php:1196 class-premium-options.php:1209
 msgid "Great! Your scan last completed without errors."
 msgstr "Τέλεια! Η σάρωση ολοκληρώθηκε τελευταία χωρίς σφάλματα."
 
-#: class-scan.php:2560
+#: class-scan.php:2538
 msgid "Help"
 msgstr "Βοήθεια"
 
-#: class-multisite.php:368
+#: class-multisite.php:366
 msgid "Hide menu for subsites"
 msgstr "Απόκρυψη μενού για τις δευτερεύουσες τοποθεσίες"
 
-#: class-premium-options.php:829
+#: class-premium-options.php:923
 msgid ""
 "HSTS, HTTP Strict Transport Security improves your security by forcing all "
 "your visitors to go to the SSL version of your website for at least a year."
 msgstr ""
 "Το HTTP Strict Transport Security (HSTS) βελτιώνει την ασφάλειά σας "
-"αναγκάζοντας όλους τους επισκέπτες σας να μεταβούν στην SSL έκδοση του "
-"ιστότοπού σας για τουλάχιστον ένα χρόνο."
+"αναγκάζοντας τη μετάβαση όλων των επισκεπτών σας στην SSL έκδοση του "
+"ιστότοπού σας για τουλάχιστον έναν χρόνο."
 
-#: class-multisite.php:381
+#: class-multisite.php:379
 msgid "htaccess redirection to SSL on the network"
 msgstr "ανακατεύθυνση μέσω .htaccess σε SSL στο δίκτυο"
 
-#: class-premium-options.php:987
+#: class-premium-options.php:1072
 msgid "HTTP Strict Transport Security is not enabled. "
 msgstr "Το HTTP Strict Transport Security δεν έχει ενεργοποιηθεί."
 
-#: class-premium-options.php:982
+#: class-premium-options.php:1067
 msgid "HTTP Strict Transport Security was set."
 msgstr "Το HTTP Strict Transport Security ορίστηκε."
 
@@ -509,15 +516,15 @@ msgstr "https://really-simple-ssl.com/pro"
 msgid "https://www.really-simple-plugins.com"
 msgstr "https://www.really-simple-plugins.com"
 
-#: class-scan.php:2515 class-scan.php:2604
+#: class-scan.php:2493 class-scan.php:2582
 msgid "I have read the warning, continue"
 msgstr "Έχω διαβάσει την προειδοποίηση, συνέχεια"
 
-#: class-scan.php:2648 class-scan.php:2728
+#: class-scan.php:2626 class-scan.php:2706
 msgid "I have read the warnings, continue"
 msgstr "Έχω διαβάσει τις προειδοποιήσεις, συνέχεια"
 
-#: class-scan.php:2677
+#: class-scan.php:2655
 msgid ""
 "If these files are generated by a theme or plugin, it is best to change the "
 "settings in that plugin instead. Otherwise your changes maybe overwritten by "
@@ -527,7 +534,19 @@ msgstr ""
 "είναι καλύτερο να αλλάξετε τις ρυθμίσεις σε εκείνο το πρόσθετο αντ' αυτού. "
 "Διαφορετικά, οι αλλαγές σας ενδέχεται να αντικατασταθούν από το πρόσθετο."
 
-#: class-premium-options.php:793
+#: csp-violation-endpoint.php:505
+msgid ""
+"If you revoke a rule from the content security policy,  the rule will be "
+"deleted from the resource list that is considered safe to load.  This might "
+"affect your website,  or specific functions.  You can always allow the "
+"resource if needed."
+msgstr ""
+"Εάν άρετε έναν κανόνα από την πολιτική ασφάλειας περιεχομένου, ο κανόνας θα "
+"διαγραφεί από τη λίστα πόρων που θεωρείται ασφαλής για φόρτωση.  Αυτό "
+"ενδέχεται να επηρεάσει τον ιστότοπό σας ή συγκεκριμένες λειτουργίες.  "
+"Μπορείτε ανά πάσα στιγμή να επιτρέψετε τον πόρο, εάν χρειάζεται."
+
+#: class-premium-options.php:887
 msgid ""
 "If your certificate expires, your site goes offline. Uptime robots don't "
 "alert you when this happens."
@@ -535,71 +554,67 @@ msgstr ""
 "Εάν το πιστοποιητικό σας λήξει, ο ιστότοπός σας θα είναι εκτός σύνδεσης. Τα "
 "uptime robots δεν σας ειδοποιούν όταν αυτό συμβαίνει."
 
-#: class-scan.php:2063
+#: class-scan.php:2041
 msgid "iFrame in the wp_postmeta database table"
 msgstr "iFrame στον πίνακα wp_postmeta της βάσης δεδομένων"
 
-#: class-scan.php:2566
+#: class-scan.php:2544
 msgid "Ignore"
 msgstr "Αγνόηση"
 
-#: class-scan.php:2497 class-scan.php:2586 class-scan.php:2626
-#: class-scan.php:2706
+#: class-scan.php:2475 class-scan.php:2564 class-scan.php:2604
+#: class-scan.php:2684
 msgid "Import and insert file"
 msgstr "Εισαγωγή και εισαγωγή αρχείου"
 
-#: class-scan.php:2072
+#: class-scan.php:2050
 #, php-format
 msgid "In field: %s"
 msgstr "Στο πεδίο: %s"
 
-#: class-scan.php:2035
+#: class-scan.php:2013
 msgid "In post: "
 msgstr "Στη δημοσίευση:"
 
-#: class-scan.php:1812
+#: class-scan.php:1790
 msgid "in uploads directory, possibly generated by plugin or theme"
 msgstr ""
 "στον κατάλογο uploads, που ενδεχομένως δημιουργείται από πρόσθετο ή "
 "εικαστικό θέμα"
 
-#: class-premium-options.php:824
+#: class-premium-options.php:918
 msgid ""
 "It is recommended to enable this feature as soon as your site is running "
 "smoothly on SSL, as it greatly improves security."
 msgstr ""
-"Συνιστάται να ενεργοποιήσετε αυτήν τη δυνατότητα μόλις ο ιστότοπός σας "
+"Συνιστάται να ενεργοποιήσετε αυτήν τη λειτουργία μόλις ο ιστότοπός σας "
 "λειτουργεί ομαλά σε SSL, καθώς βελτιώνει σημαντικά την ασφάλεια."
 
-#: class-premium-options.php:829
+#: class-premium-options.php:923
 msgid ""
 "It is recommended to enable this feature as soon as your site is running "
 "smoothly on SSL, as it improves your security."
 msgstr ""
-"Συνιστάται να ενεργοποιήσετε αυτήν τη δυνατότητα μόλις ο ιστότοπός σας "
+"Συνιστάται να ενεργοποιήσετε αυτήν τη λειτουργία μόλις ο ιστότοπός σας "
 "λειτουργεί ομαλά σε SSL, καθώς βελτιώνει την ασφάλειά σας."
 
-#: class-scan.php:1899
+#: class-scan.php:1877
 msgid "JS or CSS file with mixed content"
 msgstr "Αρχείο JS ή CSS με μεικτό περιεχόμενο"
 
-#: class-multisite.php:213 class-premium-options.php:172
+#: class-multisite.php:213 class-premium-options.php:189
 msgid "Last"
 msgstr "Τελευταίο"
 
-#: class-premium-options.php:2204
-msgid "Let it gather data from the website for a couple of days"
-msgstr "Αφήστε το να συλλέξει δεδομένα από τον ιστότοπο για μερικές ημέρες"
-
-#: class-licensing.php:228 class-licensing.php:488 class-licensing.php:494
-#: class-licensing.php:513 class-licensing.php:576
-#: class-premium-options.php:1158 class-premium-options.php:1165
-#: class-premium-options.php:1172 class-premium-options.php:1179
-#: class-premium-options.php:1186
+#: class-licensing.php:229 class-licensing.php:490 class-licensing.php:496
+#: class-licensing.php:515 class-licensing.php:578
+#: class-premium-options.php:1245 class-premium-options.php:1252
+#: class-premium-options.php:1259 class-premium-options.php:1266
+#: class-premium-options.php:1273
 msgid "License"
 msgstr "Άδεια χρήσης"
 
-#: class-licensing.php:651
+#: class-licensing.php:653
 msgid "License not activated"
 msgstr "Η άδεια χρήσης δεν έχει ενεργοποιηθεί"
 
@@ -607,28 +622,28 @@ msgstr "Η άδεια χρήσης δεν έχει ενεργοποιηθεί"
 msgid "Location"
 msgstr "Τοποθεσία"
 
-#: class-scan.php:449
+#: class-scan.php:427
 #, php-format
 msgid "Looking up blocked resources in files, %s of %s"
 msgstr "Αναζήτηση αποκλεισμένων πόρων σε αρχεία, %s από %s"
 
-#: class-scan.php:480
+#: class-scan.php:458
 msgid "Looking up blocked resources in postmeta"
 msgstr "Αναζήτηση αποκλεισμένων πόρων σε postmeta"
 
-#: class-scan.php:465
+#: class-scan.php:443
 msgid "Looking up blocked resources in posts"
 msgstr "Αναζήτηση αποκλεισμένων πόρων σε δημοσιεύσεις"
 
-#: class-scan.php:496
+#: class-scan.php:474
 msgid "Looking up blocked resources in widgets"
 msgstr "Αναζήτηση αποκλεισμένων πόρων στις μικροεφαρμογές"
 
-#: class-multisite.php:374 class-premium-options.php:797
+#: class-multisite.php:372 class-premium-options.php:891
 msgid "Mixed content fixer on the WordPress back-end"
 msgstr "Πρόγραμμα επιδιόρθωσης μεικτού περιεχομένου στο back-end του WordPress"
 
-#: class-scan.php:2127
+#: class-scan.php:2105
 msgid ""
 "Mixed content found in a widget. Press the edit link to edit the widget "
 "manually."
@@ -636,7 +651,7 @@ msgstr ""
 "Βρέθηκε μεικτό περιεχόμενο σε μικροεφαρμογή. Πατήστε τον σύνδεσμο "
 "'επεξεργασία' για να επεξεργαστείτε την μικροεφαρμογή με χειροκίνητο τρόπο."
 
-#: class-scan.php:2017
+#: class-scan.php:1995
 msgid ""
 "Mixed content found in in a post. Can be fixed automatically by pressing the "
 "fix button. Pressing the edit button allows you to update the link in the "
@@ -646,7 +661,7 @@ msgstr ""
 "πατώντας το κουμπί 'διόρθωση'. Πατώντας το κουμπί 'επεξεργασία' σας "
 "επιτρέπει να ενημερώσετε τον σύνδεσμο στη δημοσίευση με χειροκίνητο τρόπο."
 
-#: class-scan.php:2066
+#: class-scan.php:2044
 msgid ""
 "Mixed content from a postmeta table in your database. Usually won't cause "
 "any mixed content on the front-end. Check the post if it causes mixed "
@@ -657,83 +672,82 @@ msgstr ""
 "προκαλεί μεικτό περιεχόμενο. Σε αυτήν την περίπτωση, ο σύνδεσμος μπορεί να "
 "αντικατασταθεί απευθείας στη βάση δεδομένων."
 
-#: class-scan.php:1825 class-scan.php:1898
+#: class-scan.php:1803 class-scan.php:1876
 #, php-format
 msgid "Mixed content in %s"
 msgstr "Μεικτό περιεχόμενο σε %s"
 
-#: class-scan.php:2110
+#: class-scan.php:2088
 msgid "Mixed content in a widget"
 msgstr "Μεικτό περιεχόμενο σε μικροεφαρμογή"
 
-#: class-scan.php:1961
+#: class-scan.php:1939
 msgid "Mixed content in CSS/JS file from other domain"
 msgstr "Μεικτό περιεχόμενο σε αρχείο CSS/JS από άλλον τομέα"
 
-#: class-scan.php:1983
+#: class-scan.php:1961
 msgid "Mixed content in remote file"
 msgstr "Μεικτό περιεχόμενο σε απομακρυσμένο αρχείο"
 
-#: class-scan.php:2061
+#: class-scan.php:2039
 msgid "Mixed content in the postmeta table"
 msgstr "Μεικτό περιεχόμενο στον πίνακα postmeta"
 
-#: class-scan.php:1966
+#: class-scan.php:1944
 #, php-format
 msgid "Mixed content resources: %s"
 msgstr "Πόροι μεικτού περιεχομένου: %s"
 
-#: class-premium-options.php:341
+#: class-premium-options.php:414
 msgid "Mixed content scan"
 msgstr "Σάρωση μεικτού περιεχομένου"
 
-#: class-scan.php:1805 class-scan.php:1874
+#: class-scan.php:1783 class-scan.php:1852
 msgid "mu plugin file"
 msgstr "αρχείο πρόσθετου mu"
 
-#: class-licensing.php:501
+#: class-licensing.php:503
 msgid "Multisite"
 msgstr "Multisite"
 
-#: class-licensing.php:502
+#: class-licensing.php:504
 #, php-format
 msgid "Multisite detected. Please consider upgrading to %smultisite%s."
 msgstr ""
 "Εντοπίστηκε Multisite. Εξετάστε το ενδεχόμενο αναβάθμισης σε %smultisite%s."
 
-#: class-scan.php:228 class-scan.php:2179
+#: class-scan.php:207 class-scan.php:2157
 msgid "Never"
 msgstr "Ποτέ"
 
-#: class-premium-options.php:2205
-msgid "Newly found rules can be found in the Content Security Policy tab"
-msgstr ""
-"Οι κανόνες που εντοπίσθηκαν πρόσφατα, μπορούν να βρεθούν στην καρτέλα "
-"'Πολιτική Ασφαλείας Περιεχομένου'"
-
-#: class-multisite.php:212 class-premium-options.php:170
+#: class-multisite.php:212 class-premium-options.php:187
 msgid "Next"
 msgstr "Επόμενο"
 
-#: class-premium-options.php:1098
-msgid "No Content Security Policy violations found"
-msgstr "Δεν βρέθηκαν παραβιάσεις Πολιτικής Ασφάλειας Περιεχομένου (CSP)"
+#: class-premium-options.php:1180
+#| msgid "No Content Security Policy violations found"
+msgid "No Content Security Policy violations found."
+msgstr "Δεν βρέθηκαν παραβιάσεις Πολιτικής Ασφαλείας Περιεχομένου (CSP)."
 
-#: class-premium-options.php:168
+#: class-premium-options.php:185
 msgid "No items reported yet. Come back at a later time."
 msgstr "Δεν αναφέρθηκαν ακόμη στοιχεία. Επιστρέψτε αργότερα."
 
-#: class-premium-options.php:144
+#: class-premium-options.php:161
 msgid "No mixed content has been found!"
 msgstr "Δεν βρέθηκε μεικτό περιεχόμενο!"
 
-#: class-premium-options.php:930
+#: class-premium-options.php:1015
 msgid "No redirect to http detected."
 msgstr "Δεν εντοπίστηκε ανακατεύθυνση στο http."
 
-#: class-licensing.php:523
+#: class-licensing.php:525
 msgid "No response"
 msgstr "Καμία ανταπόκριση"
+
+#: grid/templates/permissions-policy.php:10
+msgid "No restrictions for this feature."
+msgstr "Δεν υπάρχουν περιορισμοί για αυτήν τη λειτουργία."
 
 #: class-multisite.php:202
 msgid "No results found"
@@ -747,7 +761,7 @@ msgstr "Δεν βρέθηκαν αποτελέσματα στον πίνακα"
 msgid "No results to show"
 msgstr "Δεν υπάρχουν αποτελέσματα για εμφάνιση"
 
-#: class-premium-options.php:1978
+#: class-premium-options.php:2082
 #, php-format
 msgid ""
 "No scan completed yet. Before migrating to SSL, you should do a %sscan%s"
@@ -755,22 +769,25 @@ msgstr ""
 "Καμία σάρωση δεν έχει ολοκληρωθεί ακόμα. Πριν από τη μετεγκατάσταση σε SSL, "
 "θα πρέπει να πραγματοποιήσετε μια %sσάρωση%s"
 
-#: class-premium-options.php:146
+#: class-premium-options.php:163
 msgid "No scan done yet. Start a quick or full scan to identify any issues."
 msgstr ""
 "Δεν έγινε σάρωση ακόμα. Ξεκινήστε μια γρήγορη ή πλήρη σάρωση για να "
 "εντοπίσετε τυχόν ζητήματα."
 
 #: grid/templates/feature-policy.php:12
-#: grid/templates/permissions-policy.php:12
 msgid ""
 "none means that this feature is not allowed. Enable this to disable the "
 "feature entirely on your site."
 msgstr ""
-"'none' σημαίνει ότι αυτή η δυνατότητα δεν επιτρέπεται. Ενεργοποιήστε το για "
+"'none' σημαίνει ότι αυτή η λειτουργία δεν επιτρέπεται. Ενεργοποιήστε το για "
 "να απενεργοποιήσετε πλήρως τη λειτουργία στον ιστότοπό σας."
 
-#: class-licensing.php:448
+#: grid/templates/permissions-policy.php:21
+msgid "not allowed"
+msgstr "δεν επιτρέπεται"
+
+#: class-licensing.php:450
 msgid "Not available"
 msgstr "Δεν είναι διαθέσιμο"
 
@@ -778,7 +795,7 @@ msgstr "Δεν είναι διαθέσιμο"
 msgid "Not detected"
 msgstr "Δεν εντοπίστηκε"
 
-#: grid/templates/csp.php:17
+#: grid/templates/csp-container.php:7
 msgid "On page"
 msgstr "Στη σελίδα"
 
@@ -794,7 +811,7 @@ msgstr "Μία φορά 10 λεπτά"
 msgid "Once Daily"
 msgstr "Μία φορά την ημέρα"
 
-#: class-licensing.php:530 class-licensing.php:539
+#: class-licensing.php:532 class-licensing.php:541
 msgid "Open"
 msgstr "Ανοικτό"
 
@@ -806,13 +823,7 @@ msgstr ""
 "Βελτιστοποιήστε την ασφάλεια SSL με τη σάρωση μεικτού περιεχομένου, τα "
 "ασφαλή cookies και τις προηγμένες κεφαλίδες ασφαλείας."
 
-#: class-premium-options.php:2168
-msgid "Or set your wp-config.php to writable and reload this page."
-msgstr ""
-"Εναλλακτικά, ρυθμίστε το wp-config.php να είναι εγγράψιμο και να φορτώσετε "
-"ξανά αυτήν τη σελίδα."
-
-#: class-scan.php:1822
+#: class-scan.php:1800
 msgid "PHP file with mixed content"
 msgstr "PHP αρχείο με μεικτό περιεχόμενο"
 
@@ -820,11 +831,11 @@ msgstr "PHP αρχείο με μεικτό περιεχόμενο"
 msgid "Please activate Really Simple SSL network wide."
 msgstr "Παρακαλώ ενεργοποιήστε το Really Simple SSL σε όλο το δίκτυο."
 
-#: class-licensing.php:540
+#: class-licensing.php:542
 msgid "Please activate your license key."
 msgstr "Ενεργοποιήστε το κλειδί άδειας χρήσης."
 
-#: class-premium-options.php:834
+#: class-premium-options.php:928
 msgid ""
 "Please ensure that your site is running over SSL smoothly, and note that all "
 "subdomains, including www and non-www domain need to be HTTPS!"
@@ -833,7 +844,7 @@ msgstr ""
 "ότι όλοι οι υποτομείς, συμπεριλαμβανομένων των τομέων με www και χωρίς www "
 "πρέπει να είναι HTTPS!"
 
-#: class-licensing.php:531
+#: class-licensing.php:533
 #, php-format
 msgid "Please enter your license key. Available in your %saccount%s."
 msgstr ""
@@ -841,13 +852,15 @@ msgstr ""
 "σας%s."
 
 #: really-simple-ssl-pro-multisite.php:209
-msgid ""
-"Please install and activate Really Simple SSL before activating this add-on."
+#| msgid ""
+#| "Please install and activate Really Simple SSL before activating this add-"
+#| "on."
+msgid "Please install and activate Really Simple SSL to enable the add-on."
 msgstr ""
-"Παρακαλώ εγκαταστήστε και ενεργοποιήστε το Really Simple SSL πριν "
-"ενεργοποιήσετε αυτήν την επέκταση."
+"Παρακαλώ εγκαταστήστε και ενεργοποιήστε το Really Simple SSL για να "
+"ενεργοποιήσετε την επέκταση."
 
-#: class-scan.php:2755
+#: class-scan.php:2733
 msgid ""
 "Please note that any changes you have made since to your current files, will "
 "be lost. "
@@ -859,7 +872,7 @@ msgstr ""
 msgid "Please renew your certificate before the expiry date."
 msgstr "Παρακαλώ ανανεώστε το πιστοποιητικό σας πριν από την ημερομηνία λήξης."
 
-#: really-simple-ssl-pro-multisite.php:225
+#: really-simple-ssl-pro-multisite.php:218
 msgid ""
 "Please upgrade to the latest version to be able use the full functionality "
 "of the plugin."
@@ -868,47 +881,47 @@ msgstr ""
 "χρησιμοποιήσει την πλήρη λειτουργικότητα του πρόσθετου."
 
 #: really-simple-ssl-pro-multisite.php:203
-#: really-simple-ssl-pro-multisite.php:223
+#: really-simple-ssl-pro-multisite.php:216
 msgid "Plugin dependency error"
 msgstr "σφάλμα εξάρτησης πρόσθετου"
 
-#: class-scan.php:1808 class-scan.php:1877
+#: class-scan.php:1786 class-scan.php:1855
 msgid "plugin file"
 msgstr "αρχείο πρόσθετου"
 
-#: class-scan.php:2050
+#: class-scan.php:2028
 msgid "Post field with mixed content"
 msgstr "Πεδίο δημοσίευσης με μεικτό περιεχόμενο"
 
-#: class-scan.php:1999
+#: class-scan.php:1977
 msgid "Post with mixed content"
 msgstr "Δημοσίευση με μεικτό περιεχόμενο"
 
-#: class-premium-options.php:934
+#: class-premium-options.php:1019
 msgid "Potential redirect loop."
 msgstr "Πιθανός βρόχος ανακατεύθυνσης."
 
-#: class-premium-options.php:310
+#: class-premium-options.php:383
 msgid "Premium settings"
 msgstr "Ρυθμίσεις Premium"
 
-#: class-premium-options.php:301
+#: class-premium-options.php:374
 msgid "Premium support"
 msgstr "Υποστήριξη Premium"
 
-#: class-multisite.php:211 class-premium-options.php:169
+#: class-multisite.php:211 class-premium-options.php:186
 msgid "Previous"
 msgstr "Προηγούμενο"
 
-#: class-premium-options.php:1984
+#: class-premium-options.php:2088
 msgid "Previous scan completed with issues"
 msgstr "Η προηγούμενη σάρωση ολοκληρώθηκε με ζητήματα"
 
 #: grid/templates/scan-footer.php:11
 msgid "Quick Scan"
-msgstr "Γρήγορη Σάρωση"
+msgstr "Γρήγορη σάρωση"
 
-#: class-premium-options.php:936
+#: class-premium-options.php:1021
 msgid "Re-check the redirect"
 msgstr "Ελέγξτε ξανά την ανακατεύθυνση"
 
@@ -916,7 +929,7 @@ msgstr "Ελέγξτε ξανά την ανακατεύθυνση"
 msgid "Really Simple Plugins"
 msgstr "Really Simple Plugins"
 
-#: really-simple-ssl-pro-multisite.php:224
+#: really-simple-ssl-pro-multisite.php:217
 msgid ""
 "Really Simple SSL needs to be updated to the latest version to be compatible."
 msgstr ""
@@ -940,14 +953,17 @@ msgstr ""
 "WordPress 4.9 ή νεότερη έκδοση"
 
 #: really-simple-ssl-pro-multisite.php:204
+#| msgid ""
+#| "Really Simple SSL pro is an add-on for Really Simple SSL, and cannot do "
+#| "it on its own :("
 msgid ""
 "Really Simple SSL pro is an add-on for Really Simple SSL, and cannot do it "
-"on its own :("
+"on its own :-("
 msgstr ""
-"Το Really Simple SSL Pro είναι μια επέκταση για το πρόσθετο Really Simple "
-"SSL, και δεν μπορεί να το πραγματοποιήσει μόνο του :("
+"Το Really Simple SSL Pro είναι μια επέκταση του πρόσθετου Really Simple SSL "
+"και δεν μπορεί να λειτουργήσει μόνη της :-("
 
-#: class-licensing.php:92
+#: class-licensing.php:93
 msgid "Really Simple SSL Pro license key"
 msgstr "Κλειδί άδειας χρήσης του Really Simple SSL Pro"
 
@@ -955,32 +971,54 @@ msgstr "Κλειδί άδειας χρήσης του Really Simple SSL Pro"
 msgid "Really Simple SSL pro multisite"
 msgstr "Really Simple SSL Pro Multisite"
 
-#: class-licensing.php:667
+#: class-licensing.php:669
 msgid "Really Simple SSL Pro Multisite license key"
 msgstr "Κλειδί άδειας χρήσης του Really Simple SSL Pro Multisite"
 
-#: class-multisite.php:372 class-premium-options.php:795
+#: class-multisite.php:370 class-premium-options.php:889
 msgid "Receive an email when your certificate is about to expire"
 msgstr ""
 "Λήψη μηνύματος ηλεκτρονικού ταχυδρομείου όταν το πιστοποιητικό σας πρόκειται "
 "να λήξει"
 
-#: class-premium-options.php:970
+#: class-premium-options.php:1055
 msgid "Recommended security headers enabled."
-msgstr "Ενεργοποιημένες οι προτεινόμενες κεφαλίδες ασφαλείας."
+msgstr "Oι προτεινόμενες κεφαλίδες ασφαλείας είναι ενεργοποιημένες."
 
-#: class-premium-options.php:965
+#: class-premium-options.php:1050
 #, php-format
 msgid "Recommended security headers not enabled (%sRead more%s)."
 msgstr ""
 "Οι προτεινόμενες κεφαλίδες ασφαλείας δεν είναι ενεργοποιημένες (%sΔιαβάστε "
 "περισσότερα%s)."
 
-#: class-premium-options.php:2213
-msgid "Remind me in one week"
-msgstr "Υπενθύμιση σε μία εβδομάδα"
+#: class-premium-options.php:1394
+msgid "Reporting active"
+msgstr "Η αναφορά είναι ενεργή"
 
-#: class-scan.php:2764
+#: class-premium-options.php:2186
+msgid ""
+"Reporting is active and will gather Content Security Policy directives "
+"available under ‘Content Security Policy configuration’."
+msgstr ""
+"Οι αναφορά είναι ενεργή και θα συγκεντρώσει τις οδηγίες της Πολιτικής "
+"Ασφαλείας Περιεχομένου που είναι διαθέσιμες στην ενότητα 'Ρύθμιση παραμέτρων "
+"Πολιτικής Ασφαλείας Περιεχομένου (CSP)'."
+
+#: class-premium-options.php:1395
+msgid "Reporting paused"
+msgstr "Η αναφορά τέθηκε σε παύση"
+
+#: class-premium-options.php:2187
+msgid ""
+"Reporting will be paused after 20 requests to limit server load. You can "
+"always manually set reporting to paused, if needed."
+msgstr ""
+"Η αναφορά θα διακοπεί προσωρινά μετά από 20 αιτήματα για τον περιορισμό του "
+"φόρτου του διακομιστή. Μπορείτε ανά πάσα στιγμή να ορίσετε χειροκίνητα την "
+"αναφορά σε παύση, εάν χρειάζεται."
+
+#: class-scan.php:2742
 msgid "Restore files"
 msgstr "Επαναφορά αρχείων"
 
@@ -988,7 +1026,23 @@ msgstr "Επαναφορά αρχείων"
 msgid "Resume"
 msgstr "Συνέχιση"
 
-#: class-scan.php:2748
+#: csp-violation-endpoint.php:406
+msgid "Revoke"
+msgstr "Άρση"
+
+#: csp-violation-endpoint.php:526
+msgid "Revoke and delete rule"
+msgstr "Άρση και διαγραφή κανόνα"
+
+#: csp-violation-endpoint.php:519
+msgid "Revoke rule"
+msgstr "Άρση κανόνα"
+
+#: csp-violation-endpoint.php:500
+msgid "Revoking a Rule from the Content Security Policy"
+msgstr "Ανάκληση κανόνα από την Πολιτική Ασφαλείας Περιεχομένου"
+
+#: class-scan.php:2726
 msgid "Roll back changes made to your files"
 msgstr "Επαναφορά των αλλαγών που έγιναν στα αρχεία σας"
 
@@ -1004,11 +1058,11 @@ msgstr "Αποθήκευση"
 msgid "SCAN"
 msgstr "ΣΑΡΩΣΗ"
 
-#: class-multisite.php:200 class-premium-options.php:166
+#: class-multisite.php:200 class-premium-options.php:183
 msgid "Search"
 msgstr "Αναζήτηση"
 
-#: class-scan.php:298
+#: class-scan.php:276
 #, php-format
 msgid ""
 "Searching for js and css files and links to external resources in website, "
@@ -1017,12 +1071,12 @@ msgstr ""
 "Αναζήτηση JS και CSS αρχείων και συνδέσμων σε εξωτερικούς πόρους στον "
 "ιστότοπο, %s από %s"
 
-#: class-scan.php:320
+#: class-scan.php:298
 #, php-format
 msgid "Searching for mixed content in css and js files, %s of %s"
 msgstr "Αναζήτηση μεικτού περιεχομένου σε αρχεία CSS και JS, %s από %s"
 
-#: class-premium-options.php:1016
+#: class-premium-options.php:1101
 msgid ""
 "Security headers have been set via PHP but your site uses caching. Caching "
 "prevents the headers from working correctly. We recommend to add the "
@@ -1033,33 +1087,38 @@ msgstr ""
 "λειτουργία των κεφαλίδων. Συνιστάται να προσθέσετε τις ακόλουθες κεφαλίδες "
 "ασφαλείας στο αρχείο ρύθμισης παραμέτρων του NGINX:"
 
+#: grid/templates/permissions-policy.php:20
+msgid "self"
+msgstr "self"
+
 #: grid/templates/feature-policy.php:11
 #: grid/templates/permissions-policy.php:11
 msgid ""
 "self means this is feature is only allowed for content on your own domain. "
 "External scripts won't be able to use it."
 msgstr ""
-"'self' σημαίνει ότι αυτή η δυνατότητα επιτρέπεται μόνο για περιεχόμενο στον "
+"'self' σημαίνει ότι αυτή η λειτουργία επιτρέπεται μόνο για περιεχόμενο στον "
 "δικό σας τομέα. Τα εξωτερικά scripts δεν θα μπορούν να το χρησιμοποιήσουν."
 
 #: grid/templates/support-footer.php:2
 msgid "Send"
 msgstr "Αποστολή"
 
-#: class-premium-options.php:851
+#: class-premium-options.php:937
 msgid "Set headers with PHP"
 msgstr "Ορισμός κεφαλίδων με PHP"
 
-#: class-premium-options.php:850
+#: class-premium-options.php:936
 msgid ""
 "Set the security headers with PHP. Should be enabled when using NGINX as the "
-"webserver and one of the headers has been enabled"
+"webserver, or when the htaccess security headers are not supported by your "
+"hosting company."
 msgstr ""
-"Ορίστε τις κεφαλίδες ασφαλείας με PHP. Θα πρέπει να ενεργοποιηθεί όταν "
-"χρησιμοποιείτε τον NGINX ως διακομιστή ιστού και έχει ενεργοποιηθεί μία από "
-"τις κεφαλίδες"
+"Ορίστε τις κεφαλίδες ασφαλείας με PHP. Θα πρέπει να είναι ενεργοποιημένη "
+"κατά τη χρήση του NGINX ως διακομιστή Διαδικτύου ή όταν οι htaccess "
+"κεφαλίδες ασφαλείας δεν υποστηρίζονται από την εταιρεία φιλοξενίας σας."
 
-#: class-premium-options.php:1732
+#: class-premium-options.php:1881
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
@@ -1104,11 +1163,11 @@ msgstr ""
 msgid "SSL certificate expiration warning"
 msgstr "Προειδοποίηση λήξης πιστοποιητικού SSL"
 
-#: class-premium-options.php:82
+#: class-premium-options.php:109
 msgid "SSL configuration finished!"
 msgstr "Η ρύθμιση παραμέτρων του SSL ολοκληρώθηκε!"
 
-#: class-premium-options.php:1104
+#: class-premium-options.php:1190
 msgid "Start scan"
 msgstr "Έναρξη σάρωσης"
 
@@ -1116,13 +1175,21 @@ msgstr "Έναρξη σάρωσης"
 msgid "Status"
 msgstr "Κατάσταση"
 
-#: class-multisite.php:383
+#: class-multisite.php:381
 msgid "Stop editing the .htaccess file"
 msgstr "Διακοπή επεξεργασίας του αρχείου .htaccess"
 
 #: grid/templates/scan-footer.php:14
 msgid "Stop scan"
 msgstr "Διακοπή σάρωσης"
+
+#: class-premium-options.php:932
+msgid ""
+"The Content Security Policy allows you to specify which resources to allow "
+"on your site."
+msgstr ""
+"Η Πολιτική Ασφαλείας Περιεχομένου σάς επιτρέπει να καθορίσετε ποιους πόρους "
+"θα επιτρέπονται στον ιστότοπό σας."
 
 #: class-importer.php:179
 msgid ""
@@ -1144,7 +1211,7 @@ msgstr ""
 msgid "The file that's causing a potential mixed content issue."
 msgstr "Το αρχείο που προκαλεί ένα πιθανό ζήτημα μεικτού περιεχομένου."
 
-#: class-premium-options.php:1127
+#: class-premium-options.php:1213
 msgid ""
 "The last scan was completed with errors. Are you sure these issues don't "
 "impact your site?"
@@ -1152,7 +1219,7 @@ msgstr ""
 "Η τελευταία σάρωση ολοκληρώθηκε με σφάλματα. Είστε βέβαιοι ότι αυτά τα "
 "ζητήματα δεν επηρεάζουν τον ιστότοπό σας;"
 
-#: class-premium-options.php:1114
+#: class-premium-options.php:1200
 msgid ""
 "The last scan was completed with errors. Only migrate if you are sure the "
 "found errors are not a problem for your site."
@@ -1161,7 +1228,7 @@ msgstr ""
 "μόνο εάν είστε βέβαιοι ότι τα σφάλματα που εντοπίστηκαν δεν αποτελούν "
 "πρόβλημα για τον ιστότοπό σας"
 
-#: class-licensing.php:524
+#: class-licensing.php:526
 msgid ""
 "The license information could not be retrieved at this moment. Please try "
 "again at a later time."
@@ -1179,7 +1246,7 @@ msgstr ""
 "&rsssl_unlock_license={το κλειδί άδειας χρήσης σας} πίσω από τη διεύθυνση "
 "URL για να ξεκλειδώσετε το μπλοκ άδειας χρήσης."
 
-#: class-premium-options.php:833
+#: class-premium-options.php:927
 msgid ""
 "The preload list offers even more security, as browsers will be instructed "
 "to load the site over HTTPS, even before the first visit."
@@ -1188,20 +1255,7 @@ msgstr ""
 "δοθούν οδηγίες στα προγράμματα περιήγησης να φορτώσουν τον ιστότοπο μέσω "
 "HTTPS, ακόμα και πριν από την πρώτη επίσκεψη."
 
-#: really-simple-ssl-pro-multisite.php:215
-#, php-format
-msgid ""
-"The Really Simple SSL plugin folder in the /wp-content/plugins/ directory "
-"has been renamed to %s. Therefore Really Simple SSL pro cannot work properly."
-" To fix this you can rename the Really Simple SSL folder back to the default "
-"%s"
-msgstr ""
-"Ο φάκελος του πρόσθετου Really Simple SSL στον κατάλογο /wp-content/plugins/ "
-"μετονομάστηκε σε %s. Επομένως, το Really Simple SSL Pro δεν μπορεί να "
-"λειτουργήσει σωστά. Για να το διορθώσετε, μπορείτε να μετονομάσετε τον "
-"φάκελο του Really Simple SSL στο προεπιλεγμένο %s"
-
-#: class-scan.php:1802 class-scan.php:1871
+#: class-scan.php:1780 class-scan.php:1849
 msgid "theme file"
 msgstr "αρχείο εικαστικού θέματος"
 
@@ -1228,7 +1282,7 @@ msgstr ""
 "Παρουσιάστηκε πρόβλημα κατά την επεξεργασία του αρχείου. Δοκιμάστε με "
 "χειροκίνητο τρόπο."
 
-#: class-premium-options.php:866
+#: class-premium-options.php:951
 #, php-format
 msgid ""
 "These settings are only available on the network settings, available with "
@@ -1237,12 +1291,12 @@ msgstr ""
 "Αυτές οι ρυθμίσεις είναι διαθέσιμες μόνο στις ρυθμίσεις δικτύου, οι οποίοι "
 "είναι διαθέσιμες με την %sάδεια χρήσης Agency%s."
 
-#: class-premium-options.php:862
+#: class-premium-options.php:947
 #, php-format
 msgid "These settings are only available under the %snetwork settings%s."
 msgstr "Αυτές οι ρυθμίσεις είναι διαθέσιμες μόνο στις ρυθμίσεις %sδικτύου%s."
 
-#: class-premium-options.php:1173
+#: class-premium-options.php:1260
 msgid ""
 "This domain is not activated for this Really Simple SSL Pro license. Please "
 "activate the license for this domain."
@@ -1250,7 +1304,7 @@ msgstr ""
 "Αυτός ο τομέας δεν είναι ενεργοποιημένος για αυτήν την άδεια Really Simple "
 "SSL Pro. Ενεργοποιήστε την άδεια για αυτόν τον τομέα."
 
-#: class-scan.php:2507 class-scan.php:2596
+#: class-scan.php:2485 class-scan.php:2574
 msgid ""
 "This downloads the file from the domain without SSL, inserts it into WP "
 "media, and changes the URL to the new URL."
@@ -1258,7 +1312,15 @@ msgstr ""
 "Αυτό κάνει λήψη του αρχείου από τον τομέα χωρίς SSL, το εισάγει στα πολυμέσα "
 "του WP και αλλάζει τη διεύθυνση URL στη νέα διεύθυνση URL."
 
-#: class-scan.php:2635 class-scan.php:2715
+#: grid/templates/permissions-policy.php:12
+msgid ""
+"This feature is not allowed. Enable this to disable the feature entirely on "
+"your site."
+msgstr ""
+"Αυτή η λειτουργία δεν επιτρέπεται. Ενεργοποιήστε το για να απενεργοποιήσετε "
+"πλήρως τη λειτουργία στον ιστότοπό σας."
+
+#: class-scan.php:2613 class-scan.php:2693
 msgid ""
 "This function downloads the file from the domain without SSL, inserts it "
 "into WP media, and changes the URL to the new URL."
@@ -1266,7 +1328,7 @@ msgstr ""
 "Αυτή η λειτουργία κάνει λήψη του αρχείου από τον τομέα χωρίς SSL, το εισάγει "
 "στα πολυμέσα του WP και αλλάζει τη διεύθυνση URL στη νέα διεύθυνση URL."
 
-#: class-scan.php:2674
+#: class-scan.php:2652
 msgid ""
 "This function will change the urls to the protocol independent // instead of "
 "http://"
@@ -1274,15 +1336,15 @@ msgstr ""
 "Αυτή η λειτουργία θα αλλάξει τις διευθύνσεις URL στο πρωτόκολλο independent "
 "// αντί για http://"
 
-#: class-premium-options.php:823
+#: class-premium-options.php:917
 msgid ""
 "This header allows you to restrict browser features on your own and embedded "
 "pages."
 msgstr ""
-"Αυτή η κεφαλίδα σάς επιτρέπει να περιορίσετε τις δυνατότητες του "
+"Αυτή η κεφαλίδα σάς επιτρέπει να περιορίσετε τις λειτουργίες του "
 "προγράμματος περιήγησης στις δικές σας και ενσωματωμένες σελίδες."
 
-#: class-premium-options.php:816
+#: class-premium-options.php:910
 msgid ""
 "This header enforces certificate transparency. This is done by expecting "
 "valid Signed Certificate Timestamps (SCTs)."
@@ -1290,7 +1352,7 @@ msgstr ""
 "Αυτή η κεφαλίδα επιβάλλει τη διαφάνεια του πιστοποιητικού. Αυτό γίνεται "
 "περιμένοντας έγκυρες χρονικές σφραγίδες υπογεγραμμένου πιστοποιητικού (SCT)."
 
-#: class-premium-options.php:813
+#: class-premium-options.php:907
 msgid ""
 "This header only sets a referrer when navigating to the same protocol (HTTPS-"
 ">HTTPS) and not when downgrading (HTTPS->HTTP)."
@@ -1298,7 +1360,7 @@ msgstr ""
 "Αυτή η κεφαλίδα ορίζει μόνο ένα referrer κατά την περιήγηση στο ίδιο "
 "πρωτόκολλο (HTTPS->HTTPS) και όχι κατά την υποβάθμιση (HTTPS->HTTP)."
 
-#: class-premium-options.php:810
+#: class-premium-options.php:904
 msgid ""
 "This header prevents MIME-sniffing, which can be used to upload malicious "
 "files disguised as another content type."
@@ -1307,7 +1369,7 @@ msgstr ""
 "για την αποστολή κακόβουλων αρχείων που μεταμφιέζονται ως άλλου τύπου "
 "περιεχομένου."
 
-#: class-premium-options.php:819
+#: class-premium-options.php:913
 msgid ""
 "This header prevents your site from being loaded in an iFrame on other "
 "domains. This is used to prevent clickjacking attacks."
@@ -1315,7 +1377,7 @@ msgstr ""
 "Αυτή η κεφαλίδα εμποδίζει τη φόρτωση του ιστότοπού σας σε ένα iFrame σε "
 "άλλους τομείς. Αυτό χρησιμοποιείται για την αποτροπή επιθέσεων clickjacking."
 
-#: class-premium-options.php:807
+#: class-premium-options.php:901
 msgid ""
 "This header protects your site from cross-site scripting attacks. If a cross-"
 "site scripting attack is detected, the browser will automatically sanitize "
@@ -1326,7 +1388,7 @@ msgstr ""
 "περιήγησης αυτόματα θα καταργήσει μη ασφαλή τμήματα (scripts) όταν αυτή η "
 "κεφαλίδα είναι ενεργοποιημένη."
 
-#: class-premium-options.php:804
+#: class-premium-options.php:898
 msgid ""
 "This is an additional header to force all incoming http:// requests to https:"
 "//."
@@ -1334,7 +1396,16 @@ msgstr ""
 "Αυτή είναι μια πρόσθετη κεφαλίδα για να επιβάλετε όλα τα εισερχόμενα "
 "αιτήματα http:// σε https://."
 
-#: class-licensing.php:569
+#: class-premium-options.php:1405
+#, php-format
+msgid ""
+"This is an advanced feature. Only enable this if you know what you're doing. "
+"See %sour usage guide%s"
+msgstr ""
+"Αυτή είναι μια προηγμένη λειτουργία. Ενεργοποιήστε το μόνο εάν γνωρίζεται τι "
+"κάνετε. Ανατρέξτε στον %sοδηγό χρήσης%s"
+
+#: class-licensing.php:571
 #, php-format
 msgid ""
 "This license is not valid for this product. Find out why on your %saccount%s."
@@ -1342,17 +1413,17 @@ msgstr ""
 "Αυτή η άδεια χρήσης δεν είναι έγκυρη για αυτό το προϊόν. Μάθετε γιατί στον "
 "%λογαριασμό σας%s."
 
-#: class-licensing.php:562
+#: class-licensing.php:564
 #, php-format
 msgid "This license is not valid. Find out why on your %saccount%s."
 msgstr ""
 "Αυτή η άδεια χρήσης δεν είναι έγκυρη. Μάθετε γιατί στον %λογαριασμό σας%s."
 
-#: class-premium-options.php:1452 class-premium-options.php:1483
+#: class-premium-options.php:1542 class-premium-options.php:1573
 msgid "This option is enabled on the network menu."
 msgstr "Αυτή η επιλογή είναι ενεργοποιημένη στο μενού δικτύου."
 
-#: class-premium-options.php:794
+#: class-premium-options.php:888
 #, php-format
 msgid ""
 "This option sends an email to the administrator email address (%s) when your "
@@ -1362,7 +1433,7 @@ msgstr ""
 "ηλεκτρονικού ταχυδρομείου του διαχειριστή (%s) όταν το πιστοποιητικό σας "
 "πρόκειται να λήξει εντός 2 εβδομάδων."
 
-#: class-scan.php:2752
+#: class-scan.php:2730
 msgid ""
 "This will put the files back that were changed by the fix option in Really "
 "Simple SSL pro."
@@ -1370,51 +1441,58 @@ msgstr ""
 "Αυτό θα επαναφέρει τα αρχεία που άλλαξαν με την επιλογή διόρθωσης του Really "
 "Simple SSL Pro."
 
-#: class-premium-options.php:1059
+#: class-premium-options.php:1142
 msgid "TLS version is up-to-date"
 msgstr "Η έκδοση TLS είναι ενημερωμένη"
 
-#: class-premium-options.php:2157
+#: class-premium-options.php:2188
 msgid ""
-"To set the httponly secure cookie settings, your wp-config.php has to be "
-"edited, but the file is not writable."
+"To restart reporting, set Content Security Policy to ‘reporting active’."
 msgstr ""
-"Για να ορίσετε τις ρυθμίσεις ασφάλισης HttpOnly των cookies, το wp-config."
-"php πρέπει να επεξεργαστεί, αλλά το αρχείο δεν είναι εγγράψιμο."
+"Για να επανεκκινήσετε την αναφορά, ορίστε την Πολιτική Ασφαλείας "
+"Περιεχομένου (CSP) σε 'Η αναφορά είναι ενεργή'."
 
-#: grid/templates/csp.php:38
+#: csp-violation-endpoint.php:412
 msgid "Today"
 msgstr "Σήμερα"
 
-#: class-licensing.php:443
+#: class-licensing.php:445
 msgid "unlimited"
 msgstr "απεριόριστες"
 
-#: class-licensing.php:467
+#: class-licensing.php:469
 msgid "Unlimited activations available."
 msgstr "Απεριόριστες ενεργοποιήσεις διαθέσιμες."
 
-#: class-premium-options.php:805
+#: class-premium-options.php:1288
+msgid ""
+"Update Really Simple SSL Free to the latest version for optimal Content "
+"Security Policy compatibility."
+msgstr ""
+"Ενημερώστε το Really Simple SSL δωρεάν στην πιο πρόσφατη έκδοση για βέλτιστη "
+"συμβατότητα της Πολιτικής Ασφαλείας Περιεχομένου."
+
+#: class-premium-options.php:899
 msgid "Upgrade insecure request"
 msgstr "Αναβάθμιση μη ασφαλούς αιτήματος"
 
-#: class-licensing.php:456
+#: class-licensing.php:458
 #, php-format
 msgid "Upgrade to a %s5 sites or Agency%s license."
-msgstr "Αναβάθμιση σε άδεια για %s5 ιστότοπους ή Agency%s."
+msgstr "Αναβάθμιση σε άδεια χρήσης %s5 ιστότοπων ή Agency%s."
 
-#: class-licensing.php:459
+#: class-licensing.php:461
 #, php-format
 msgid "Upgrade to an %sAgency%s license."
 msgstr "Αναβάθμιση σε άδεια χρήσης %sAgency%s."
 
-#: class-scan.php:1881
+#: class-scan.php:1859
 msgid "uploads file, possibly generated by plugin or theme"
 msgstr ""
 "φορτώνει το αρχείο, που δημιουργείται ενδεχομένως από το πρόσθετο ή το "
 "εικαστικό θέμα"
 
-#: class-premium-options.php:796
+#: class-premium-options.php:890
 msgid ""
 "Use this option if you do not have the green lock in the WordPress admin."
 msgstr ""
@@ -1425,36 +1503,33 @@ msgstr ""
 msgid "User not found"
 msgstr "Ο χρήστης δεν βρέθηκε"
 
-#: class-licensing.php:482
+#: class-licensing.php:484
 msgid "Valid"
 msgstr "Έγκυρη"
 
-#: class-licensing.php:489
+#: class-licensing.php:491
 #, php-format
 msgid "Valid license for %s."
-msgstr "Έγκυρη άδεια χρήσης για %s."
+msgstr "Έγκυρη άδεια χρήσης για το %s."
 
-#: class-licensing.php:450
+#: class-licensing.php:452
 #, php-format
 msgid "Valid until %s."
 msgstr "Ισχύει μέχρι %s."
 
-#: class-licensing.php:546 class-licensing.php:553 class-licensing.php:561
-#: class-licensing.php:568 class-licensing.php:583
+#: class-licensing.php:548 class-licensing.php:555 class-licensing.php:563
+#: class-licensing.php:570 class-licensing.php:585
 #: grid/templates/scan-results-element.php:5
 msgid "Warning"
 msgstr "Προειδοποίηση"
 
-#: class-premium-options.php:2206
-#, php-format
+#: class-premium-options.php:2189
 msgid ""
-"When no new exceptions have been found, you can enforce the Content Security "
-"Policy rules by enabling the 'Enforce Content Security Policy' option in the "
-"%ssecurity headers block%s"
+"When there a no new directives reported, you can continue with the "
+"configuration and set the Content Security Policy to ‘Enforce’."
 msgstr ""
-"Όταν δεν έχουν βρεθεί νέες εξαιρέσεις, μπορείτε να επιβάλλετε τους κανόνες "
-"Πολιτικής Ασφαλείας Περιεχομένου (CSP) ενεργοποιώντας την επιλογή 'Επιβολή "
-"Πολιτικής Ασφαλείας Περιεχομένου (CSP)' στο %sμπλοκ κεφαλίδων ασφαλείας%s"
+"Όταν δεν αναφέρονται νέες οδηγίες, μπορείτε να συνεχίσετε με τη ρύθμιση "
+"παραμέτρων και να ορίσετε την Πολιτική Ασφαλείας Περιεχομένου σε 'Επιβολή'."
 
 #: grid/templates/scan-footer.php:21
 msgid ""
@@ -1472,40 +1547,41 @@ msgid ""
 msgstr ""
 "Όταν στέλνετε αυτήν τη φόρμα θα επισυνάψουμε τις ακόλουθες πληροφορίες: "
 "κλειδί άδειας χρήσης, αποτελέσματα σάρωσης, τον τομέα σας, το αρχείο ."
-"htaccess, αρχείο καταγραφής εντοπισμού σφαλμάτων και μια λίστα "
-"ενεργοποιημένων πρόσθετων"
+"htaccess, αρχείο καταγραφής εντοπισμού σφαλμάτων και μια λίστα ενεργών "
+"πρόσθετων"
 
-#: class-scan.php:2120
+#: class-scan.php:2098
 #, php-format
 msgid "Widget area \"%s\""
 msgstr "Περιοχή μικροεφαρμογών '%s'"
 
-#: class-scan.php:2107
+#: class-scan.php:2085
 msgid "Widget with mixed content"
 msgstr "Μικροεφαρμογή με μεικτό περιεχόμενο"
 
-#: class-multisite.php:370
+#: class-multisite.php:368
 msgid "WordPress 301 redirection to SSL for all SSL sites"
 msgstr ""
 "Ανακατεύθυνση 301 του WordPress σε SSL για όλους τους ιστότοπους με SSL"
 
-#: class-scan.php:1830
+#: class-scan.php:1808
 msgid "You can edit the source file manually by pressing the edit button."
 msgstr ""
 "Μπορείτε να επεξεργαστείτε το πηγαίο αρχείο χειροκίνητα πατώντας το κουμπί "
 "'επεξεργασία'."
 
-#: class-licensing.php:462
+#: class-licensing.php:464
 #, php-format
 msgid "You can renew your license on your %saccount%s."
-msgstr "Μπορείτε να ανανεώσετε την άδειά σας από τον %sλογαριασμό σας%s."
+msgstr ""
+"Μπορείτε να ανανεώσετε την άδεια χρήσης σας από τον %sλογαριασμό%s σας."
 
-#: class-premium-options.php:1146
+#: class-premium-options.php:1232
 #, php-format
 msgid "You can upgrade on your %saccount%s."
 msgstr "Μπορείτε να κάνετε αναβάθμιση από τον %sλογαριασμό σας%s."
 
-#: class-premium-options.php:1180
+#: class-premium-options.php:1267
 msgid ""
 "You do not have any activations left on your Really Simple SSL Pro license. "
 "Please upgrade your plan for additional activations."
@@ -1517,15 +1593,15 @@ msgstr ""
 msgid "You do not have permission to install plugin updates"
 msgstr "Δεν έχετε δικαίωμα εγκατάστασης ενημερώσεων του πρόσθετου"
 
-#: class-premium-options.php:1972
+#: class-premium-options.php:2076
 msgid "You finished a scan without errors."
 msgstr "Ολοκληρώσατε μια σάρωση χωρίς σφάλματα."
 
-#: class-licensing.php:450
+#: class-licensing.php:452
 msgid "You have a lifetime license."
 msgstr "Έχετε άδεια χρήσης lifetime."
 
-#: class-premium-options.php:1139
+#: class-premium-options.php:1225
 msgid ""
 "You have a multisite environment. To leverage all configuration options in "
 "Really Simple SSL, we recommend to enabled the plugin networkwide, then use "
@@ -1537,7 +1613,7 @@ msgstr ""
 "επιλογή 'ενεργοποίηση ανά ιστότοπο' για να ενεργοποιήσετε το SSL ανά "
 "ιστότοπο."
 
-#: class-premium-options.php:1024
+#: class-premium-options.php:1109
 msgid ""
 "You have disabled the PHP security header option. Check if the following "
 "security headers have been added to NGINX configuration file:"
@@ -1546,13 +1622,14 @@ msgstr ""
 "προστεθεί οι ακόλουθες κεφαλίδες ασφαλείας στο αρχείο ρύθμισης παραμέτρων "
 "του NGINX:"
 
-#: class-premium-options.php:1092
-msgid "You have new rules that can be added to your Content Security Policy"
+#: class-premium-options.php:1174
+#| msgid "You have new rules that can be added to your Content Security Policy"
+msgid "You have new rules that can be added to your Content Security Policy."
 msgstr ""
 "Έχετε νέους κανόνες που μπορούν να προστεθούν στην Πολιτική Ασφαλείας "
-"Περιεχομένου (CSP)"
+"Περιεχομένου (CSP)."
 
-#: class-premium-options.php:142
+#: class-premium-options.php:159
 msgid ""
 "You have scanned your site before, but the scan results are cleared from the "
 "cache. Run a new scan to see the results."
@@ -1561,7 +1638,7 @@ msgstr ""
 "διαγράφονται από την προσωρινή αποθήκευση. Εκτελέστε μια νέα σάρωση για να "
 "δείτε τα αποτελέσματα."
 
-#: class-licensing.php:640
+#: class-licensing.php:642
 msgid ""
 "You haven't activated your Really Simple SSL Pro Multisite license yet. To "
 "get all future updates, enter your license on the network settings page."
@@ -1570,7 +1647,7 @@ msgstr ""
 "Multisite. Για να λάβετε όλες τις μελλοντικές ενημερώσεις, εισαγάγετε την "
 "άδεια χρήσης σας στη σελίδα ρυθμίσεων δικτύου."
 
-#: class-premium-options.php:1119
+#: class-premium-options.php:1205
 msgid ""
 "You haven't scanned the site yet, you should scan your site to check for "
 "possible issues."
@@ -1578,12 +1655,12 @@ msgstr ""
 "Δεν έχετε σαρώσει ακόμα τον ιστότοπο. Θα πρέπει να σαρώσετε τον ιστότοπό σας "
 "για να ελέγξετε πιθανά ζητήματα."
 
-#: class-premium-options.php:953
+#: class-premium-options.php:1038
 #, php-format
 msgid "Your certificate is valid to: %s"
 msgstr "Το πιστοποιητικό σας είναι έγκυρο μέχρι: %s"
 
-#: class-premium-options.php:949
+#: class-premium-options.php:1034
 #, php-format
 msgid "Your certificate needs to be renewed soon, it is valid to: %s"
 msgstr "Το πιστοποιητικό σας πρέπει να ανανεωθεί σύντομα, ισχύει μέχρι: %s"
@@ -1596,7 +1673,7 @@ msgstr "Τα αρχεία σας έχουν ήδη αποκατασταθεί."
 msgid "Your files were restored."
 msgstr "Τα αρχεία σας αποκαταστάθηκαν."
 
-#: class-licensing.php:554
+#: class-licensing.php:556
 #, php-format
 msgid ""
 "Your license could not be found in our system. Please contact %ssupport%s."
@@ -1604,14 +1681,13 @@ msgstr ""
 "Δεν ήταν δυνατή η εύρεση της άδειας χρήσης σας στο σύστημά μας. Παρακαλώ "
 "επικοινωνήστε με την %sυποστήριξη%s."
 
-#: class-licensing.php:547
+#: class-licensing.php:549
 #, php-format
 msgid "Your license has been revoked. Please contact %ssupport%s."
 msgstr ""
-"Η άδεια χρήσης σας έχει ανακληθεί. Παρακαλώ επικοινωνήστε με την "
-"%sυποστίριξη%s."
+"Η άδεια χρήσης σας έχει αρθεί. Παρακαλώ επικοινωνήστε με την %sυποστίριξη%s."
 
-#: class-licensing.php:584
+#: class-licensing.php:586
 #, php-format
 msgid ""
 "Your license key has expired. Please renew your license key on your "
@@ -1620,7 +1696,7 @@ msgstr ""
 "Το κλειδί άδειας χρήσης έχει λήξει. Ανανεώστε το κλειδί άδειας χρήσης στον "
 "%sλογαριασμό σας%s."
 
-#: class-premium-options.php:1159
+#: class-premium-options.php:1246
 msgid ""
 "Your Really Simple SSL Pro license key has expired. Please renew your "
 "license to continue receiving updates and premium support."
@@ -1628,7 +1704,7 @@ msgstr ""
 "Το κλειδί άδειας χρήσης Really Simple SSL Pro έχει λήξει. Ανανεώστε την "
 "άδειά σας για να συνεχίσετε να λαμβάνετε ενημερώσεις και υποστήριξη premium."
 
-#: class-premium-options.php:1187
+#: class-premium-options.php:1274
 msgid ""
 "Your Really Simple SSL Pro license key hasn't been activated yet. You can "
 "activate your license key on the license tab."
@@ -1636,7 +1712,7 @@ msgstr ""
 "Το κλειδί άδειας χρήσης Really Simple SSL Pro δεν έχει ενεργοποιηθεί ακόμα. "
 "Μπορείτε να ενεργοποιήσετε το κλειδί άδειας χρήσης στην καρτέλα 'Άδεια'."
 
-#: class-premium-options.php:1166
+#: class-premium-options.php:1253
 msgid ""
 "Your Really Simple SSL Pro license key is not activated. Please activate "
 "your license to continue receiving updates and premium support."
@@ -1645,7 +1721,7 @@ msgstr ""
 "Παρακαλώ ενεργοποιήστε την άδεια χρήσης σας για να συνεχίσετε να λαμβάνετε "
 "ενημερώσεις και υποστήριξη premium."
 
-#: class-premium-options.php:1039
+#: class-premium-options.php:1124
 #, php-format
 msgid ""
 "Your site has been configured for the HSTS preload list. If you have "
@@ -1655,12 +1731,12 @@ msgstr ""
 "υποβάλλει τον ιστότοπό σας, θα είναι προφορτωμένος. Κάντε κλικ %sεδώ%s για "
 "υποβολή."
 
-#: class-premium-options.php:1044
+#: class-premium-options.php:1129
 msgid "Your site is not yet configured for the HSTS preload list."
 msgstr ""
 "Ο ιστότοπός σας δεν έχει ρυθμιστεί ακόμα για τη λίστα προφόρτωσης HSTS."
 
-#: class-premium-options.php:1077
+#: class-premium-options.php:1160
 msgid ""
 "Your site redirects 404 pages to the http:// version of your homepage. This "
 "can cause mixed content issues with images."
@@ -1669,7 +1745,7 @@ msgstr ""
 "σελίδας σας. Αυτό μπορεί να προκαλέσει ζητήματα μεικτού περιεχομένου με "
 "εικόνες."
 
-#: class-premium-options.php:1064
+#: class-premium-options.php:1147
 msgid ""
 "Your site uses an outdated version of TLS. Upgrade to TLS 1.2 or TLS 1.3 to "
 "keep your site secure."

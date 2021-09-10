@@ -1,11 +1,11 @@
 === Really Simple SSL pro ===
 Contributors: RogierLankhorst
 Tags: mixed content, insecure content, secure website, website security, ssl, https, tls, security, secure socket layers, hsts
-Requires at least: 4.4
+Requires at least: 4.9
 License: GPL2
-Tested up to: 5.7
+Tested up to: 5.9
 Requires PHP: 5.6
-Stable tag: 4.1.2
+Stable tag: 5.1.0
 
 Premium support and extra features for Really Simple SSL
 
@@ -27,6 +27,51 @@ For more information: go to the [website](https://www.really-simple-ssl.com/), o
 == Frequently Asked Questions ==
 
 == Change log ==
+= 5.1.0 =
+* Improvement: comment on multisite environments caused layout issue
+
+= 5.0 =
+* Updated translations
+
+= 4.1.11 =
+* Fix: for very long .htaccess files, support form in the plugin gave an invalid response. props Vincent
+
+= 4.1.10 =
+* Fix: typo in reset license key obfuscation
+* Translations update
+
+= 4.1.9 =
+* Improvement: 'none' or '*' attribute deprecated for Permissions Policy
+* Improvement: Content Security Policy for unsafe inline
+* Improvement: Interest Cohort added to permissions policy
+
+= 4.1.8 =
+* Fix: PHP headers were set with quotes, causing issues on some servers.
+* Fix: When switching from "enforce" to "paused", CSP headers were not removed
+* Improvement: generalized wrap_header function for more robust header generation
+* Improvement: disable remove .htaccess headers on activation of PHP headers.
+
+= 4.1.7 =
+* Moved secure cookies to free
+
+= 4.1.6 =
+* Improved WP Engine compatibility
+* Improved Content Security Policy, added option to revoke result from overview
+* Lowered Content Security Policy request limit
+
+= 4.1.5 =
+* Fix: set defaults firing even when dependency check not validated
+* Fix: Constant RSSSL_DOING_CSP not set when running the CSP API
+
+= 4.1.4 =
+* Improvement: Added report-paused mode to Content Security Policy generator. Reporting will now automatically pause after 200 requests to prevent high server load
+* Improvement: Further restricted access to Content Security Policy generator REST API calls
+* Fix: Default options won't be reconfigured after plugin deactivation/activation
+
+= 4.1.3 =
+* Made PHP header option available on all configurations
+* Improvement: wrap example code in comments
+
 = 4.1.2 =
 * Fix: File name in upgrade function
 

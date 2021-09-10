@@ -41,16 +41,17 @@ if ( ! class_exists( 'rsssl_support' ) ) {
 
 				$htaccess_file = RSSSL()->really_simple_ssl->htaccess_file();
 				if (file_exists($htaccess_file) ) {
+
 					$htaccess = file_get_contents($htaccess_file);
+					if (strlen($htaccess)>6000){
+						$htaccess = substr($htaccess,0, 6000).'--br----br--'.'## TRUNCATED HTACCESS - FILE TOO LONG ##'.'--br--';
+					}
 					$htaccess = str_replace("\n", '--br--', $htaccess );
 					$htaccess = urlencode($htaccess);
 				}
 
 				//Retrieve the domain
 				$domain = site_url();
-				//Retrieve active plugins
-				$active_plugins = get_option('active_plugins');
-				$active_plugins = print_r($active_plugins, true);
 
 				//Get scan results from transient
 				$scan_results = get_transient("rlrsssl_scan");
@@ -92,7 +93,7 @@ if ( ! class_exists( 'rsssl_support' ) ) {
                     $license_key = 'protected';
                 }
 
-				$url = "https://really-simple-ssl.com/support/?email=$email&customername=$name&domain=$domain&supportrequest=$support_request&debuglog=$debug_log_contents&scanresults=$results&activeplugins=$active_plugins&licensekey=$license_key&htaccesscontents=$htaccess";
+				$url = "https://really-simple-ssl.com/support/?email=$email&customername=$name&domain=$domain&supportrequest=$support_request&debuglog=$debug_log_contents&scanresults=$results&licensekey=$license_key&htaccesscontents=$htaccess";
 
 				wp_redirect($url);
 				exit;

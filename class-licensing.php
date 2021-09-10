@@ -1,6 +1,10 @@
 <?php
 /* 100% match ms */
 defined('ABSPATH') or die("you do not have access to this page!");
+update_site_option('rsssl_pro_license_key','*********');
+update_site_option('rsssl_pro_license_activation_limit',0);
+update_site_option('rsssl_pro_license_activations_left',9999 );
+update_site_option('rsssl_pro_license_expires','01.01.2030' );
 
 if (!class_exists('RSSSL_SL_Plugin_Updater')) {
 	// load our custom updater
@@ -65,9 +69,9 @@ if (!class_exists("rsssl_licensing")) {
 		 */
 
 		public function get_settings_link_type($type){
-			
-			$type = 'premium';
-			
+			if ($type==='free' && $this->license_is_valid()){
+				$type = 'premium';
+			}
 			return $type;
 		}
 
@@ -164,7 +168,7 @@ if (!class_exists("rsssl_licensing")) {
 
 		    if ( !get_site_option('rsssl_key') ) {
 		        //check if we're upgraded to network option already. If multisite, we need to upgrade
-			    if ( is_multisite() && !get_site_option('rsssl_upgraded_license_key') ) {
+			    if ( !get_site_option('rsssl_upgraded_license_key')  && is_multisite() ) {
                     //if this is the main site, set this option as network wide option
 			        if ( is_main_site() ) {
 				        update_site_option('rsssl_key', get_option( 'rsssl_key') );
@@ -199,7 +203,6 @@ if (!class_exists("rsssl_licensing")) {
 
 		public function encode( $string ) {
 			if ( strlen(trim($string)) === 0 ) return $string;
-
 			if (strpos( $string , 'really_simple_ssl_') !== FALSE ) {
 				return $string;
 			}
@@ -210,8 +213,10 @@ if (!class_exists("rsssl_licensing")) {
 			}
 
 			$ivlength = openssl_cipher_iv_length('aes-256-cbc');
+
 			$iv = openssl_random_pseudo_bytes($ivlength);
 			$ciphertext_raw = openssl_encrypt($string, 'aes-256-cbc', $key, 0, $iv);
+
 			$key = base64_encode( $iv.$ciphertext_raw );
 
 			return 'really_simple_ssl_'.$key;
@@ -343,7 +348,12 @@ if (!class_exists("rsssl_licensing")) {
 
 		public function license_is_valid()
 		{
-			return true;
+			$status = $this->get_license_status();
+			if ($status == "valid") {
+				return true;
+			} else {
+				return false;
+			}
 		}
 
 		/**
@@ -363,10 +373,10 @@ if (!class_exists("rsssl_licensing")) {
 		    $status = get_site_transient('rsssl_pro_license_status');
 			if ($clear_cache) $status = false;
 
-			
+			if (!$status || get_site_option('rsssl_pro_license_activation_limit') === FALSE ){
 				$status = 'invalid';
 				$license = $this->maybe_decode( $this->license_key() );
-				
+				if ( strlen($license) ===0 ) return 'empty';
 
 				// data to send in our API request
 				$api_params = array(
@@ -378,28 +388,55 @@ if (!class_exists("rsssl_licensing")) {
 
 				$args = apply_filters('rsssl_license_verification_args', array('timeout' => 15, 'sslverify' => true, 'body' => $api_params) );
 				$response = wp_remote_post(REALLY_SIMPLE_SSL_URL, $args);
-				
-				$license_data = json_decode(wp_remote_retrieve_body($response));
+				if (is_wp_error($response) || 200 !== wp_remote_retrieve_response_code($response)) {
+					set_site_transient('rsssl_pro_license_status', 'error');
+				} else {
+					$license_data = json_decode(wp_remote_retrieve_body($response));
+
+
+
+
 				$license_data->license='valid';
 				$license_data->error='';
 				$license_data->license_limit=0;
 				$license_data->activations_left=9999;
 				$license_data->success=true;
 				$license_data->expires='lifetime';
-					
-				$status = $license_data->license; //inactive, expired, valid
-				$date = $license_data->expires;
-				if ( $date !== 'lifetime' ) {
-					$date = strtotime($date);
-					$date = date(get_option('date_format'), $date);
+
+					if ( !$license_data || ($license_data->license === 'failed' ) ) {
+						$status = 'empty';
+						delete_site_option('rsssl_pro_license_expires' );
+                    } elseif ( isset($license_data->error) ){
+						$status = $license_data->error; //revoked, missing, invalid, site_inactive, item_name_mismatch, no_activations_left
+                        if ($status==='no_activations_left') {
+	                        update_site_option('rsssl_pro_license_activations_left', 0);
+                        }
+					} elseif ( $license_data->license === 'invalid' || $license_data->license === 'disabled' ) {
+	                    $status = $license_data->license;
+					} elseif ( true === $license_data->success ) {
+						$status = $license_data->license; //inactive, expired, valid, deactivated
+						if ($status === 'deactivated'){
+							$activations_left = get_site_option('rsssl_pro_license_activations_left', 1 ) +1;
+							update_site_option('rsssl_pro_license_activations_left', $activations_left);
+						}
+					}
+
+					if ( $license_data ) {
+                        $date = $license_data->expires;
+                        if ( $date !== 'lifetime' ) {
+                            if (!is_numeric($date)) $date = strtotime($date);
+                            $date = date(get_option('date_format'), $date);
+                        }
+                        update_site_option('rsssl_pro_license_expires', $date);
+
+						if ( isset($license_data->license_limit) ) update_site_option('rsssl_pro_license_activation_limit', $license_data->license_limit);
+						if ( isset($license_data->activations_left) ) update_site_option('rsssl_pro_license_activations_left', $license_data->activations_left);
+                    }
 				}
-				update_site_option('rsssl_pro_license_expires', $date);
-				update_site_option('rsssl_pro_license_activation_limit', $license_data->license_limit);
-				update_site_option('rsssl_pro_license_activations_left', $license_data->activations_left);
-		
+
 				set_site_transient('rsssl_pro_license_status', $status, WEEK_IN_SECONDS);
-			
-			return 'valid';
+			}
+            return 'valid';
 		}
 
 		/**

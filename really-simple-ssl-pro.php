@@ -3,7 +3,7 @@
  * Plugin Name: Really Simple SSL pro
  * Plugin URI: https://really-simple-ssl.com/pro
  * Description: Optimize your SSL security with the mixed content scan, secure cookies and advanced security headers.
- * Version: 4.1.2
+ * Version: 5.1.0
  * Text Domain: really-simple-ssl-pro
  * Domain Path: /languages
  * Author: Really Simple Plugins
@@ -26,10 +26,6 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-update_site_option('rsssl_pro_license_key','license_key');
-update_site_option('rsssl_pro_license_activation_limit',0);
-update_site_option('rsssl_pro_license_activations_left',9999 );
-update_site_option('rsssl_pro_license_expires','01.01.2030' );
 defined('ABSPATH') or die("you do not have access to this page!");
 
 if (!function_exists('rsssl_pro_activation_check')) {
@@ -61,8 +57,15 @@ class REALLY_SIMPLE_SSL_PRO {
     public $rsssl_support;
     public $rsssl_licensing;
     public $rsssl_csp_backend;
+    public $rsssl_premium_options;
+    public $rsssl_scan;
+    public $rsssl_importer;
 
-    private function __construct() {}
+    private function __construct() {
+        if (isset($_GET['rsssl_apitoken']) && $_GET['rsssl_apitoken'] == rsssl_get_networkwide_option('rsssl_csp_report_token') ) {
+            if ( !defined('RSSSL_DOING_CSP') ) define( 'RSSSL_DOING_CSP' , true );
+        }
+    }
 
     public static function instance() {
         if ( ! isset( self::$instance ) && ! ( self::$instance instanceof REALLY_SIMPLE_SSL_PRO ) ) {
@@ -71,15 +74,14 @@ class REALLY_SIMPLE_SSL_PRO {
                 self::$instance->setup_constants();
                 self::$instance->includes();
 
-                if (is_admin() || defined('RSSSL_DOING_SYSTEM_STATUS')) {
+                if ( is_admin() || defined('RSSSL_DOING_SYSTEM_STATUS') || defined('RSSSL_DOING_CSP') ) {
 	                self::$instance->rsssl_premium_options = new rsssl_premium_options();
 	                self::$instance->rsssl_scan            = new rsssl_scan();
 	                self::$instance->rsssl_importer        = new rsssl_importer();
-                    self::$instance->rsssl_csp_backend     = new rsssl_csp_backend();
                     self::$instance->rsssl_support         = new rsssl_support();
+                    self::$instance->rsssl_csp_backend     = new rsssl_csp_backend();
+	                self::$instance->rsssl_licensing       = new rsssl_licensing();
                 }
-				//needs to be outside is_admin for automatic updates
-	            self::$instance->rsssl_licensing       = new rsssl_licensing();
 
 	            self::$instance->hooks();
             } else {
@@ -98,7 +100,15 @@ class REALLY_SIMPLE_SSL_PRO {
     public function is_compatible(){
         require_once(ABSPATH.'wp-admin/includes/plugin.php');
         $core_plugin = 'really-simple-ssl/rlrsssl-really-simple-ssl.php';
+
         if ( is_plugin_active($core_plugin)) $core_plugin_data = get_plugin_data( WP_PLUGIN_DIR .'/'. $core_plugin, false, false );
+
+        if (function_exists('is_wpe') && is_wpe()) {
+            if ( is_plugin_active($core_plugin) && version_compare($core_plugin_data['Version'] ,'4.0.9','<=') ) {
+                return false;
+            }
+        }
+
         if ( is_plugin_active($core_plugin) && version_compare($core_plugin_data['Version'] ,'4.0.0','>=') ) {
             return true;
         }
@@ -109,7 +119,7 @@ class REALLY_SIMPLE_SSL_PRO {
             return true;
         }
 
-        //nothing yet? then...sorry, but no, not compatible.
+            //nothing yet? then...sorry, but no, not compatible.
         return false;
     }
 
@@ -122,7 +132,7 @@ class REALLY_SIMPLE_SSL_PRO {
         define('rsssl_pro_plugin', plugin_basename( __FILE__ ) );
 	    define('rsssl_pro_template_path', trailingslashit(plugin_dir_path(__FILE__)).'grid/templates/');
 
-	    $debug = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? time() : '';
+	    $debug = ( defined( 'RSSSL_DEBUG' ) && RSSSL_DEBUG ) ? time() : '';
 	    define('rsssl_pro_version', $plugin_data['Version'] . $debug );
         define('rsssl_pro_plugin_file', __FILE__);
 
@@ -133,19 +143,18 @@ class REALLY_SIMPLE_SSL_PRO {
     }
 
     private function includes() {
-	    require_once(rsssl_pro_path . '/csp-endpoint-public.php');
 
-	    if (is_admin() || defined('RSSSL_DOING_SYSTEM_STATUS') ) {
-	        require_once(rsssl_pro_path . '/csp-violation-endpoint.php');
+        if ( is_admin() || defined('RSSSL_DOING_SYSTEM_STATUS') || defined('RSSSL_DOING_CSP') ) {
+            require_once(rsssl_pro_path . '/csp-violation-endpoint.php');
 	        require_once(rsssl_pro_path . '/class-premium-options.php');
             require_once(rsssl_pro_path . '/class-scan.php');
             require_once(rsssl_pro_path . '/class-cert-expiration.php');
 	        require_once( rsssl_pro_path . '/class-importer.php' );
 	        require_once(rsssl_pro_path . '/class-support.php');
+	        require_once(rsssl_pro_path . '/class-licensing.php');
         }
 
-	    //needs to be outside is_admin for automatic updates
-	    require_once(rsssl_pro_path . '/class-licensing.php');
+
     }
 
     private function hooks() {
@@ -191,23 +200,35 @@ class REALLY_SIMPLE_SSL_PRO {
                     text-indent: 10px;
                 }
             </style>
-            <div id="message" class="error notice really-simple-plugins">
-                <h3 class="rsssl-notice-header"><?php echo __("Plugin dependency error","really-simple-ssl-pro");?></h3>
-                <?php if (!is_rsssl_plugin_active()) {
-                    ?>
-                    <p> <?php echo __("Really Simple SSL pro is an add-on for Really Simple SSL, and cannot do it on its own :(","really-simple-ssl-pro"); ?> </p>
-                    <p> <?php echo __("Please install and activate Really Simple SSL before activating this add-on.","really-simple-ssl-pro"); ?> </p> <?php
-                } else { ?>
-                    <p><?php echo __("Please upgrade to the latest version to be able use the full functionality of the plugin.","really-simple-ssl-pro");?></p>
-                <?php }?>
+            <div id="rsssl-message" class="notice error really-simple-plugins">
+                <div class="rsssl-notice">
+                    <div class="rsssl-notice-header">
+                        <h1><?php echo __("Plugin dependency error","really-simple-ssl-pro");?></h1>
+                    </div>
+                    <div class="rsssl-notice-content">
+                        <?php if (!is_rsssl_plugin_active()) {
+                            ?>
+                            <p> <?php echo __("Really Simple SSL pro is an add-on for Really Simple SSL, and cannot do it on its own :-(","really-simple-ssl-pro"); ?> </p>
+                            <p> <?php echo __("Please install and activate Really Simple SSL to enable the add-on.","really-simple-ssl-pro"); ?> </p> <?php
+                        } else { ?>
+                            <p><?php echo __("Please upgrade to the latest version to be able use the full functionality of the plugin.","really-simple-ssl-pro");?></p>
+                        <?php }?>
+                    </div>
+                </div>
             </div>
             <?php
-        }elseif ( $core_plugin && isset($core_plugin_data['Version']) && version_compare($core_plugin_data['Version'], '4.0.0', '<')) {
+        } elseif ( $core_plugin && isset($core_plugin_data['Version']) && version_compare($core_plugin_data['Version'], '4.0.9', '<=')) {
             ?>
-            <div id="message" class="error notice really-simple-plugins">
-                <h1><?php echo __("Plugin dependency error","really-simple-ssl-pro");?></h1>
-                <p><?php echo __("Really Simple SSL needs to be updated to the latest version to be compatible.","really-simple-ssl-pro");?></p>
-                <p><?php echo __("Please upgrade to the latest version to be able use the full functionality of the plugin.","really-simple-ssl-pro");?></p>
+            <div id="rsssl-message" class="notice error really-simple-plugins">
+                <div class="rsssl-notice">
+                    <div class="rsssl-notice-header">
+                        <h1><?php echo __("Plugin dependency error","really-simple-ssl-pro");?></h1>
+                    </div>
+                    <div class="rsssl-notice-content">
+                        <p><?php echo __("Really Simple SSL needs to be updated to the latest version to be compatible.","really-simple-ssl-pro");?></p>
+                        <p><?php echo __("Please upgrade to the latest version to be able use the full functionality of the plugin.","really-simple-ssl-pro");?></p>
+                    </div>
+                </div>
             </div>
             <?php
         }
@@ -222,17 +243,19 @@ if (!class_exists('REALLY_SIMPLE_SSL_PRO_MULTISITE')) {
 }
 
 require_once( plugin_dir_path(__FILE__ ) . '/front-end.php' );
+require_once( plugin_dir_path(__FILE__ ) . '/csp-endpoint-public.php');
 
 /**
  * Set some defaults
  */
-if (!function_exists('rsssl_enable_security_header_options')) {
-	function rsssl_enable_security_header_options()
+if (!function_exists('rsssl_pro_set_defaults_on_activation')) {
+	function rsssl_pro_set_defaults_on_activation()
 	{
-		set_transient('rsssl_set_defaults', true, DAY_IN_SECONDS);
+	    set_transient('rsssl_pro_redirect_to_settings_page', true, DAY_IN_SECONDS );
+		if (REALLY_SIMPLE_SSL_PRO::instance()->is_compatible() ) RSSSL_PRO()->rsssl_premium_options->rsssl_pro_set_defaults();
 	}
 }
-register_activation_hook(__FILE__ ,'rsssl_enable_security_header_options');
+register_activation_hook(__FILE__ ,'rsssl_pro_set_defaults_on_activation');
 
 if ( !function_exists('rsssl_pro_deactivate') ) {
 	function rsssl_pro_deactivate()

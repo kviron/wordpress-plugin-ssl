@@ -7,18 +7,18 @@ wp_nonce_field( 'submit_security_headers', 'security_headers_update' );
 
 $contents = ob_get_clean();
 
-$help_tip_default = RSSSL()->rsssl_help->get_help_tip(__("* is the default value. This means the feature is allowed.", "really-simple-ssl-pro"), $return=true );
+$help_tip_default = RSSSL()->rsssl_help->get_help_tip(__("No restrictions for this feature.", "really-simple-ssl-pro"), $return=true );
 $help_tip_self = RSSSL()->rsssl_help->get_help_tip(__("self means this is feature is only allowed for content on your own domain. External scripts won't be able to use it.", "really-simple-ssl-pro"), $return=true );
-$help_tip_none = RSSSL()->rsssl_help->get_help_tip(__("none means that this feature is not allowed. Enable this to disable the feature entirely on your site.", "really-simple-ssl-pro"), $return=true );
+$help_tip_none = RSSSL()->rsssl_help->get_help_tip(__("This feature is not allowed. Enable this to disable the feature entirely on your site.", "really-simple-ssl-pro"), $return=true );
 
 $table_html =
 	"<table id='rsssl-permission-policy-table' class='really-simple-ssl-table'>
             <thead>
             <tr>
                 <th>" . __('Feature', 'really-simple-ssl-pro') ."</th>
-                <th>* (default)" . $help_tip_default ."</th>
-                <th>self" . $help_tip_self . "</th>
-                <th>none" . $help_tip_none . "</th>
+                <th>".__("allowed","really-simple-ssl-pro") . $help_tip_default ."</th>
+                <th>".__("self","really-simple-ssl-pro") . $help_tip_self . "</th>
+                <th>".__("not allowed","really-simple-ssl-pro") . $help_tip_none . "</th>
             </tr>
             </thead>
             <tbody>";
