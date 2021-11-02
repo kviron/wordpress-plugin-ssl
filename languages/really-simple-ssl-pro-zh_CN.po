@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: Really Simple SSL pro\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-07 08:36+0100\n"
-"PO-Revision-Date: 2021-06-16 01:31+0800\n"
+"PO-Revision-Date: 2021-09-21 13:56+0000\n"
 "Last-Translator: Rolor\n"
-"Language-Team: 简体中文\n"
+"Language-Team: Chinese (China)\n"
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.4.3; wp-5.5.3\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: really-simple-ssl-zh_CN.po\n"
@@ -32,32 +32,32 @@ msgstr " %s 是一个单例级而且你无法建立第二例"
 msgid "%s to %s of %s results"
 msgstr "%s 到 %s 的 %s 个结果"
 
-#: class-licensing.php:471 class-licensing.php:579
+#: class-licensing.php:476 class-licensing.php:584
 #, php-format
 msgid "%s/%s activations available."
 msgstr "%s/%s 激活可用。"
 
-#: class-premium-options.php:1238
+#: class-premium-options.php:1247
 #, php-format
 msgid "%sActivate%s your license."
 msgstr "%s激活%s 您的许可。"
 
-#: class-licensing.php:644
+#: class-licensing.php:676
 #, php-format
 msgid "%sGo to the settings page%s or %spurchase a license%s."
 msgstr "%s转到设置页面%s 或者 %s购买授权%s。"
 
-#: class-premium-options.php:1020
+#: class-premium-options.php:1045
 #, php-format
 msgid "%sRead more%s."
 msgstr "%s了解更多%s。"
 
-#: class-premium-options.php:2096
+#: class-premium-options.php:2180
 #, php-format
 msgid "%sScan again%s"
 msgstr "%s再次扫描%s"
 
-#: class-premium-options.php:2100
+#: class-premium-options.php:2184
 #, php-format
 msgid "%sScan for issues%s"
 msgstr "%s扫描问题%s"
@@ -77,13 +77,17 @@ msgstr "（从 %s 个结果中过滤）"
 msgid "* is the default value. This means the feature is allowed."
 msgstr "* 是默认值。这表示该功能是允许的。"
 
-#: class-premium-options.php:1086
+#: class-premium-options.php:1095
 msgid ""
 ".htaccess file not writable. Set the .htaccess file permissions to writeable "
 "or add the following lines manually:"
 msgstr ".htaccess 文件不可写。设置 .htaccess 文件权限为可写状态，或者手动添加下面这几行："
 
-#: class-premium-options.php:1020
+#: grid/templates/premium-settings-footer.php:24
+msgid ".htaccess unavailable on nginx"
+msgstr ""
+
+#: class-premium-options.php:1045
 msgid "A redirect to http was detected. This might result in redirect loops."
 msgstr "检测到一个到http的重定向。这可能会导致重定向循环。"
 
@@ -95,7 +99,7 @@ msgstr "根据刚刚执行的检查"
 msgid "Action"
 msgstr "动作"
 
-#: class-multisite.php:344
+#: class-multisite.php:334
 msgid "activate"
 msgstr "激活"
 
@@ -103,18 +107,18 @@ msgstr "激活"
 msgid "Activate license"
 msgstr "激活授权"
 
-#: class-premium-options.php:1608
+#: class-premium-options.php:1647
 #, php-format
 msgid ""
 "After enabling this option, you have to %ssubmit%s your site. Please read "
 "the instructions on this page carefully before doing so."
 msgstr "启用该选项后，您需要 %s提交%s 您的网站。继续操作前，请仔细阅读本页的说明。"
 
-#: csp-violation-endpoint.php:414
+#: csp-violation-endpoint.php:419
 msgid "ago"
 msgstr "以前"
 
-#: csp-violation-endpoint.php:402
+#: csp-violation-endpoint.php:407
 msgid "Allow"
 msgstr "允许"
 
@@ -130,22 +134,22 @@ msgstr "已允许"
 msgid "allowed"
 msgstr "已允许"
 
-#: class-scan.php:2615 class-scan.php:2650 class-scan.php:2695
-#: class-scan.php:2767
+#: class-scan.php:2613 class-scan.php:2648 class-scan.php:2693
+#: class-scan.php:2765
 msgid "Always backup first!"
 msgstr "务必先备份！"
 
-#: class-multisite.php:364
+#: class-multisite.php:354
 msgid "Auto replace mixed content"
 msgstr "自动替换混合内容"
 
-#: class-scan.php:2697
+#: class-scan.php:2695
 msgid ""
 "Be very carefull with this function! Please backup your site before "
 "proceeding."
 msgstr "使用该功能时务必多留心！请在继续之前备份您的网站。"
 
-#: class-scan.php:2617
+#: class-scan.php:2615
 msgid ""
 "Be very carefull with this function! Please backup your site before "
 "proceeding. This function will also create a backup of each changed file, "
@@ -159,23 +163,23 @@ msgstr ""
 msgid "Blocked"
 msgstr "阻止"
 
-#: class-scan.php:1808 class-scan.php:1892 class-scan.php:1994
-#: class-scan.php:2043 class-scan.php:2105
+#: class-scan.php:1806 class-scan.php:1890 class-scan.php:1992
+#: class-scan.php:2041 class-scan.php:2103
 #, php-format
 msgid "Blocked URL: %s"
 msgstr "阻止的URL： %s"
 
-#: class-scan.php:1864
+#: class-scan.php:1862
 msgid "cached file, deactivate cache to see the actual source"
 msgstr "缓存文件，禁用缓存以查看原始代码"
 
-#: class-scan.php:1894
+#: class-scan.php:1892
 msgid ""
 "Can be fixed automatically by pressing the Fix button. If fixing fails, the "
 "source file can be edited manually by pressing the Edit button."
 msgstr "可以通过按下\"修复\"按钮自动修复。如果修复失败，可以通过按\"编辑\"按钮手动编辑源文件。"
 
-#: class-scan.php:1943
+#: class-scan.php:1941
 msgid ""
 "Cannot be fixed automatically, as the mixed content is coming from an "
 "external domain. Contact the owner of the domain to update the CSS/JS file"
@@ -204,39 +208,39 @@ msgstr "正在检查哪些资源无法通过SSL加载，%s of %s"
 msgid "Checking widgets for external URLs"
 msgstr "检查小部件的外部 URL"
 
-#: csp-violation-endpoint.php:512
+#: csp-violation-endpoint.php:517
 msgid "Close"
 msgstr "关闭"
 
-#: class-premium-options.php:929
+#: class-premium-options.php:954
 msgid "Configure your site for the HSTS preload list"
 msgstr "为了 HSTS 预载入列表您要配置您的网站"
 
-#: class-premium-options.php:933
+#: class-premium-options.php:958
 msgid "Content Security Policy"
 msgstr "内容安全策略"
 
-#: class-premium-options.php:438
+#: class-premium-options.php:457
 msgid "Content Security Policy configuration"
 msgstr "内容安全策略设置"
 
-#: class-premium-options.php:2195
+#: class-premium-options.php:2280
 msgid "Content Security Policy reporting enabled"
 msgstr "内容安全策略报告已启用"
 
-#: class-premium-options.php:1184
+#: class-premium-options.php:1193
 msgid ""
 "Content Security Policy reporting is paused to limit server resources. "
 "Please start configuring your Content Security Policy and enable reporting "
 "again."
 msgstr "暂停内容安全策略报告以限制服务器资源。请开始配置您的内容安全策略，并再次启用报告。"
 
-#: class-scan.php:2479 class-scan.php:2568 class-scan.php:2608
-#: class-scan.php:2688
+#: class-scan.php:2477 class-scan.php:2566 class-scan.php:2606
+#: class-scan.php:2686
 msgid "Copyright warning!"
 msgstr "版权警告！"
 
-#: class-multisite.php:344
+#: class-multisite.php:334
 msgid "deactivate"
 msgstr "禁用"
 
@@ -248,8 +252,8 @@ msgstr "禁用许可"
 msgid "Description"
 msgstr "描述"
 
-#: class-scan.php:1810 class-scan.php:1903 class-scan.php:1945
-#: class-scan.php:1998 class-scan.php:2048 class-scan.php:2106
+#: class-scan.php:1808 class-scan.php:1901 class-scan.php:1943
+#: class-scan.php:1996 class-scan.php:2046 class-scan.php:2104
 msgid "Details"
 msgstr "详情"
 
@@ -266,16 +270,21 @@ msgstr "禁用对除您自己的帐户以外的所有其他帐户的许可证页
 msgid "Disable for all users, except yourself"
 msgstr "禁用所有用户，但您自己除外"
 
-#: class-premium-options.php:1393
+#: class-premium-options.php:1402
 msgid "Disabled"
 msgstr "禁用"
+
+#: grid/templates/premium-settings-footer.php:7
+#, php-format
+msgid "Does not work with %s"
+msgstr ""
 
 #: grid/templates/csp-container.php:11
 msgid "Domain/protocol"
 msgstr "域/协议"
 
-#: class-scan.php:2482 class-scan.php:2571 class-scan.php:2610
-#: class-scan.php:2690
+#: class-scan.php:2480 class-scan.php:2569 class-scan.php:2608
+#: class-scan.php:2688
 msgid ""
 "Downloading files from other websites can cause serious copyright issues! It "
 "is always illegal to use images, files, or any copyright protected material "
@@ -284,54 +293,54 @@ msgid ""
 msgstr ""
 "从其他网站下载文件可能会导致严重的版权问题！未经版权所有者的同意，在您自己的网站上使用图像，文件或任何受版权保护的材料始终是非法的。请征询版权所有者的许可。使用此功能需要您自担风险。"
 
-#: class-scan.php:2535 class-scan.php:2762
+#: class-scan.php:2533 class-scan.php:2760
 msgid "Edit"
 msgstr "编辑"
 
-#: class-scan.php:2769
+#: class-scan.php:2767
 msgid "Editing files can break your site if you do not do it right!"
 msgstr "如果操作不正确，编辑文件可能会破坏您的网站！"
 
-#: class-premium-options.php:1002
+#: class-premium-options.php:1027
 msgid "Elementor mixed content successfully converted."
 msgstr "已成功在前端检测到 mixed content 修复器。"
 
-#: class-multisite.php:371
+#: class-multisite.php:361
 msgid "Enable this if you want the mixed content fixer for admin."
 msgstr "启用该选项，如果您希望混合内容修复管理。"
 
-#: class-multisite.php:363
+#: class-multisite.php:353
 msgid "Enable this if you want to automatically replace mixed content."
 msgstr "启用该选项，如果您希望自动替换混合内容。"
 
-#: class-multisite.php:380
+#: class-multisite.php:370
 msgid "Enable this if you want to block the htaccess file from being edited."
 msgstr "启用该选项，如果您希望阻止对htaccess文件的编辑。"
 
-#: class-multisite.php:369
+#: class-multisite.php:359
 msgid "Enable this if you want to enable certificate expiration notices."
 msgstr "启用该选项，如果您希望启用证书过期提示。"
 
-#: class-multisite.php:365
+#: class-multisite.php:355
 msgid "Enable this if you want to hide the SSL menu on subsites."
 msgstr "启用该选项，如果您希望在子站中隐藏SSL菜单。"
 
-#: class-multisite.php:375
+#: class-multisite.php:365
 msgid "Enable this if you want to redirect ALL websites to SSL using .htaccess"
 msgstr "启用该选项，如果您希望使用 .htaccess 重定向所有网站为SSL"
 
-#: class-multisite.php:377
+#: class-multisite.php:367
 msgid "Enable this if you want to redirect SSL websites using .htaccess. "
 msgstr "启用该选项，如果您希望使用 .htaccess 重定向SSL 网站。"
 
-#: class-multisite.php:367
+#: class-multisite.php:357
 msgid ""
 "Enable this if you want to use the internal WordPress 301 redirect for all "
 "SSL websites. Needed on NGINX servers, or if the .htaccess redirect cannot "
 "be used."
 msgstr "启用该选项，如果您希望为所有SSL网站使用内部的WordPress 301 重定向，或者如果 .htaccess 重定向不可用。"
 
-#: class-premium-options.php:1396
+#: class-premium-options.php:1405
 msgid "Enforce"
 msgstr "强制"
 
@@ -352,15 +361,15 @@ msgstr "每件事"
 msgid "Feature"
 msgstr "功能"
 
-#: class-scan.php:1794 class-scan.php:1868
+#: class-scan.php:1792 class-scan.php:1866
 msgid "file"
 msgstr "文件"
 
-#: class-scan.php:2773
+#: class-scan.php:2771
 msgid "File editing blocked in WordPress!"
 msgstr "WordPress 禁止文件编辑！"
 
-#: class-scan.php:2775
+#: class-scan.php:2773
 msgid ""
 "File editing is blocked in WordPress. To edit these files, please use your "
 "FTP client."
@@ -370,28 +379,28 @@ msgstr "WordPress 中禁止了文件编辑。要编辑这些文件，请使用FT
 msgid "Finished scan"
 msgstr "完成扫描"
 
-#: class-multisite.php:210 class-premium-options.php:188
+#: class-multisite.php:210 class-premium-options.php:194
 msgid "First"
 msgstr "首先"
 
-#: class-scan.php:1897 class-scan.php:1997 class-scan.php:2047
-#: class-scan.php:2103
+#: class-scan.php:1895 class-scan.php:1995 class-scan.php:2045
+#: class-scan.php:2101
 msgid "Fix"
 msgstr "修复"
 
-#: class-scan.php:2646
+#: class-scan.php:2644
 msgid "Fix http in CSS and JS files"
 msgstr "修复CSS和JS文件中的http"
 
-#: class-scan.php:2664
+#: class-scan.php:2662
 msgid "Fix URLs"
 msgstr "修复URLs"
 
-#: class-premium-options.php:2184
+#: class-premium-options.php:2269
 msgid "Follow these steps to complete the setup:"
 msgstr "按照下面步骤完成安装："
 
-#: class-premium-options.php:2190
+#: class-premium-options.php:2275
 #, php-format
 msgid ""
 "For more information about this security header, please follow this %slink%s."
@@ -401,7 +410,7 @@ msgstr "了解更多关于安全头部的信息，请点击这个 %s链接%s。"
 msgid "Found"
 msgstr "找到"
 
-#: grid/templates/scan-footer.php:12
+#: grid/templates/scan-footer.php:11
 msgid "Full Scan"
 msgstr "完全扫描"
 
@@ -413,37 +422,41 @@ msgstr "使档案名单产生"
 msgid "Generating web page list"
 msgstr "正在生成网页列表"
 
-#: class-scan.php:2782
+#: class-scan.php:2780
 msgid "Go to editor"
 msgstr "转到编辑器"
 
-#: class-premium-options.php:1196 class-premium-options.php:1209
+#: class-premium-options.php:1205 class-premium-options.php:1218
 msgid "Great! Your scan last completed without errors."
 msgstr "太好了! 你的最后扫瞄已毫无错误完成了。"
 
-#: class-scan.php:2538
+#: class-scan.php:2536
 msgid "Help"
 msgstr "帮助"
 
-#: class-multisite.php:366
+#: class-multisite.php:356
 msgid "Hide menu for subsites"
 msgstr "隐藏子站菜单"
 
-#: class-premium-options.php:923
+#: class-premium-options.php:962
+msgid "How to set the security headers"
+msgstr ""
+
+#: class-premium-options.php:948
 msgid ""
 "HSTS, HTTP Strict Transport Security improves your security by forcing all "
 "your visitors to go to the SSL version of your website for at least a year."
 msgstr "HSTS, HTTP Strict Transport Security 通过强制所有访客转至您网站的SSL版本至少一年，来提高安全性。"
 
-#: class-multisite.php:379
+#: class-multisite.php:369
 msgid "htaccess redirection to SSL on the network"
 msgstr "htaccess 网路重定向至SSL"
 
-#: class-premium-options.php:1072
+#: class-premium-options.php:1081
 msgid "HTTP Strict Transport Security is not enabled. "
 msgstr "HTTP Strict Transport Security 未启用。"
 
-#: class-premium-options.php:1067
+#: class-premium-options.php:1076
 msgid "HTTP Strict Transport Security was set."
 msgstr "HTTP Strict Transport Security 已设置。"
 
@@ -455,22 +468,22 @@ msgstr "https://really-simple-ssl.com/pro"
 msgid "https://www.really-simple-plugins.com"
 msgstr "https://www.really-simple-plugins.com"
 
-#: class-scan.php:2493 class-scan.php:2582
+#: class-scan.php:2491 class-scan.php:2580
 msgid "I have read the warning, continue"
 msgstr "我已阅读了提醒，继续"
 
-#: class-scan.php:2626 class-scan.php:2706
+#: class-scan.php:2624 class-scan.php:2704
 msgid "I have read the warnings, continue"
 msgstr "我已经阅读了提醒，继续"
 
-#: class-scan.php:2655
+#: class-scan.php:2653
 msgid ""
 "If these files are generated by a theme or plugin, it is best to change the "
 "settings in that plugin instead. Otherwise your changes maybe overwritten by "
 "the plugin."
 msgstr "如果这些文件是由主题或插件生成的，最好是在插件中进行修改设置。否则您的设置将被插件所覆盖。"
 
-#: csp-violation-endpoint.php:505
+#: csp-violation-endpoint.php:510
 msgid ""
 "If you revoke a rule from the content security policy,  the rule will be "
 "deleted from the resource list that is considered safe to load.  This might "
@@ -479,67 +492,67 @@ msgid ""
 msgstr ""
 "如果您废除内容安全策略中的一条规则，那么该规则将从被认为安全载入的资源列表中删除。这将影响您的网站，或者某些功能。如果需要，您仍然可以允许该资源。"
 
-#: class-premium-options.php:887
+#: class-premium-options.php:906
 msgid ""
 "If your certificate expires, your site goes offline. Uptime robots don't "
 "alert you when this happens."
 msgstr "如果您的证书过期，您的网站将下线。上线机器人在这种情况下不会提醒你。"
 
-#: class-scan.php:2041
+#: class-scan.php:2039
 msgid "iFrame in the wp_postmeta database table"
 msgstr "wp_postmeta 数据库文件中的iFrame"
 
-#: class-scan.php:2544
+#: class-scan.php:2542
 msgid "Ignore"
 msgstr "忽略"
 
-#: class-scan.php:2475 class-scan.php:2564 class-scan.php:2604
-#: class-scan.php:2684
+#: class-scan.php:2473 class-scan.php:2562 class-scan.php:2602
+#: class-scan.php:2682
 msgid "Import and insert file"
 msgstr "导入和插入文件"
 
-#: class-scan.php:2050
+#: class-scan.php:2048
 #, php-format
 msgid "In field: %s"
 msgstr "在字段：%s"
 
-#: class-scan.php:2013
+#: class-scan.php:2011
 msgid "In post: "
 msgstr "在文章："
 
-#: class-scan.php:1790
+#: class-scan.php:1788
 msgid "in uploads directory, possibly generated by plugin or theme"
 msgstr "在uploads目录，可能是由插件或主题生成的"
 
-#: class-premium-options.php:918
+#: class-premium-options.php:943
 msgid ""
 "It is recommended to enable this feature as soon as your site is running "
 "smoothly on SSL, as it greatly improves security."
 msgstr "您的网站如果可以正常使用SSL访问，那就建议启用该功能，因为它会极大的提高安全性。"
 
-#: class-premium-options.php:923
+#: class-premium-options.php:948
 msgid ""
 "It is recommended to enable this feature as soon as your site is running "
 "smoothly on SSL, as it improves your security."
 msgstr "您的网站如果可以正常使用SSL访问，那就建议启用该功能，因为它可以提高安全性。"
 
-#: class-scan.php:1877
+#: class-scan.php:1875
 msgid "JS or CSS file with mixed content"
 msgstr "混合内容的JS 或 CSS 文件"
 
-#: class-multisite.php:213 class-premium-options.php:189
+#: class-multisite.php:213 class-premium-options.php:195
 msgid "Last"
 msgstr "最后"
 
-#: class-licensing.php:229 class-licensing.php:490 class-licensing.php:496
-#: class-licensing.php:515 class-licensing.php:578
-#: class-premium-options.php:1245 class-premium-options.php:1252
-#: class-premium-options.php:1259 class-premium-options.php:1266
-#: class-premium-options.php:1273
+#: class-licensing.php:234 class-licensing.php:495 class-licensing.php:501
+#: class-licensing.php:520 class-licensing.php:583
+#: class-premium-options.php:1254 class-premium-options.php:1261
+#: class-premium-options.php:1268 class-premium-options.php:1275
+#: class-premium-options.php:1282
 msgid "License"
 msgstr "许可"
 
-#: class-licensing.php:653
+#: class-licensing.php:685
 msgid "License not activated"
 msgstr "许可未激活"
 
@@ -564,24 +577,24 @@ msgstr "查寻在贴文里被阻断的来源"
 msgid "Looking up blocked resources in widgets"
 msgstr "在小工具中查找阻断的资源"
 
-#: class-multisite.php:372 class-premium-options.php:891
+#: class-multisite.php:362 class-premium-options.php:916
 msgid "Mixed content fixer on the WordPress back-end"
 msgstr "WordPress后端的混合内容修复"
 
-#: class-scan.php:2105
+#: class-scan.php:2103
 msgid ""
 "Mixed content found in a widget. Press the edit link to edit the widget "
 "manually."
 msgstr "在小工具中发现混合内容。点击编辑链接对小工具进行手动编辑。"
 
-#: class-scan.php:1995
+#: class-scan.php:1993
 msgid ""
 "Mixed content found in in a post. Can be fixed automatically by pressing the "
 "fix button. Pressing the edit button allows you to update the link in the "
 "post manually."
 msgstr "在贴文中发现了混合内容。可以点击修复按钮自动修复。点击编辑按钮可以手动更新贴文中的链接。"
 
-#: class-scan.php:2044
+#: class-scan.php:2042
 msgid ""
 "Mixed content from a postmeta table in your database. Usually won't cause "
 "any mixed content on the front-end. Check the post if it causes mixed "
@@ -589,74 +602,83 @@ msgid ""
 msgstr ""
 "在您数据库的postmeta表中发现了混合内容。通常不会给前端造成任何混合内容。如果造成混合内容，请检查贴文。真要这样，可以在数据库中直接替换该链接。"
 
-#: class-scan.php:1803 class-scan.php:1876
+#: class-scan.php:1801 class-scan.php:1874
 #, php-format
 msgid "Mixed content in %s"
 msgstr "%s 中的混合内容"
 
-#: class-scan.php:2088
+#: class-scan.php:2086
 msgid "Mixed content in a widget"
 msgstr "小工具中的混合内容"
 
-#: class-scan.php:1939
+#: class-scan.php:1937
 msgid "Mixed content in CSS/JS file from other domain"
 msgstr "其他域上的CSS/JS文件中的混合内容"
 
-#: class-scan.php:1961
+#: class-scan.php:1959
 msgid "Mixed content in remote file"
 msgstr "远程文件中的混合内容"
 
-#: class-scan.php:2039
+#: class-scan.php:2037
 msgid "Mixed content in the postmeta table"
 msgstr "postmeta表中的混合内容"
 
-#: class-scan.php:1944
+#: class-scan.php:1942
 #, php-format
 msgid "Mixed content resources: %s"
 msgstr "混合内容资源：%s"
 
-#: class-premium-options.php:414
+#: class-premium-options.php:433
 msgid "Mixed content scan"
 msgstr "混合内容扫描"
 
-#: class-scan.php:1783 class-scan.php:1852
+#: class-scan.php:1781 class-scan.php:1850
 msgid "mu plugin file"
 msgstr "必备插件文件"
 
-#: class-licensing.php:503
+#: class-licensing.php:508
 msgid "Multisite"
 msgstr "多个网站"
 
-#: class-licensing.php:504
+#: class-licensing.php:509
 #, php-format
 msgid "Multisite detected. Please consider upgrading to %smultisite%s."
 msgstr "检测到多站。请考虑升级到 %s多站授权%s。"
 
-#: class-scan.php:207 class-scan.php:2157
+#: class-scan.php:207 class-scan.php:2155
 msgid "Never"
 msgstr "從不"
 
-#: class-multisite.php:212 class-premium-options.php:187
+#: class-multisite.php:212 class-premium-options.php:193
 msgid "Next"
 msgstr "下一步"
 
-#: class-premium-options.php:1180
+#: grid/templates/premium-settings-footer.php:27
+#, php-format
+msgid "nginx.conf unavailable on %s"
+msgstr ""
+
+#: grid/templates/premium-settings-footer.php:14
+msgid "No caching"
+msgstr ""
+
+#: class-premium-options.php:1189
 msgid "No Content Security Policy violations found."
 msgstr "未找到违反内容安全策略"
 
-#: class-premium-options.php:185
+#: class-premium-options.php:191
 msgid "No items reported yet. Come back at a later time."
 msgstr "尚未报告。稍后回来再看。"
 
-#: class-premium-options.php:161
+#: class-premium-options.php:167
 msgid "No mixed content has been found!"
 msgstr "未找到混合内容！"
 
-#: class-premium-options.php:1015
+#: class-premium-options.php:1040
 msgid "No redirect to http detected."
 msgstr "未检测到http的重定向。"
 
-#: class-licensing.php:525
+#: class-licensing.php:530
 msgid "No response"
 msgstr "无响应"
 
@@ -676,13 +698,13 @@ msgstr "表中未找到结果"
 msgid "No results to show"
 msgstr "无结果要显示"
 
-#: class-premium-options.php:2082
+#: class-premium-options.php:2166
 #, php-format
 msgid ""
 "No scan completed yet. Before migrating to SSL, you should do a %sscan%s"
 msgstr "尚无已完成的扫描。切换到SSL之前，您应该进行一次%s扫描%s"
 
-#: class-premium-options.php:163
+#: class-premium-options.php:169
 msgid "No scan done yet. Start a quick or full scan to identify any issues."
 msgstr "尚无已完成的扫描。开始一次快速或完全扫描来发现问题。"
 
@@ -696,7 +718,7 @@ msgstr "无意味着该功能不允许。启用这里来彻底在您的网站禁
 msgid "not allowed"
 msgstr "不允许"
 
-#: class-licensing.php:450
+#: class-licensing.php:455
 msgid "Not available"
 msgstr "不可用"
 
@@ -720,7 +742,7 @@ msgstr "十分钟一次"
 msgid "Once Daily"
 msgstr "一天一次"
 
-#: class-licensing.php:532 class-licensing.php:541
+#: class-licensing.php:537 class-licensing.php:546
 msgid "Open"
 msgstr "打开"
 
@@ -730,7 +752,7 @@ msgid ""
 "advanced security headers."
 msgstr "使用混合内容扫描、安全cookies和高级安全头部，来优化您的SSL安全。"
 
-#: class-scan.php:1800
+#: class-scan.php:1798
 msgid "PHP file with mixed content"
 msgstr "PHP文件带混合内容"
 
@@ -738,17 +760,17 @@ msgstr "PHP文件带混合内容"
 msgid "Please activate Really Simple SSL network wide."
 msgstr "请在网络范围激活 Really Simple SSL。"
 
-#: class-licensing.php:542
+#: class-licensing.php:547
 msgid "Please activate your license key."
 msgstr "请激活您的授权码。"
 
-#: class-premium-options.php:928
+#: class-premium-options.php:953
 msgid ""
 "Please ensure that your site is running over SSL smoothly, and note that all "
 "subdomains, including www and non-www domain need to be HTTPS!"
 msgstr "请确保您的网站可以正常运行SSL，并注意所有子域名（包括www和非www域名）必须为HTTPS！"
 
-#: class-licensing.php:533
+#: class-licensing.php:538
 #, php-format
 msgid "Please enter your license key. Available in your %saccount%s."
 msgstr "请输入您的授权码。在您的 %s账户%s中。"
@@ -757,7 +779,7 @@ msgstr "请输入您的授权码。在您的 %s账户%s中。"
 msgid "Please install and activate Really Simple SSL to enable the add-on."
 msgstr "请安装并在激活Really Simple SSL来启用附加组件。"
 
-#: class-scan.php:2733
+#: class-scan.php:2731
 msgid ""
 "Please note that any changes you have made since to your current files, will "
 "be lost. "
@@ -778,43 +800,43 @@ msgstr "请升级到最新版本，以便能够使用插件的全部功能。"
 msgid "Plugin dependency error"
 msgstr "插件依赖项错误"
 
-#: class-scan.php:1786 class-scan.php:1855
+#: class-scan.php:1784 class-scan.php:1853
 msgid "plugin file"
 msgstr "插件文件"
 
-#: class-scan.php:2028
+#: class-scan.php:2026
 msgid "Post field with mixed content"
 msgstr "有混合内容的贴文字段"
 
-#: class-scan.php:1977
+#: class-scan.php:1975
 msgid "Post with mixed content"
 msgstr "有混合内容的贴文"
 
-#: class-premium-options.php:1019
+#: class-premium-options.php:1044
 msgid "Potential redirect loop."
 msgstr "潜在的重定向循环。"
 
-#: class-premium-options.php:383
+#: class-premium-options.php:400
 msgid "Premium settings"
 msgstr "豪华版设置"
 
-#: class-premium-options.php:374
+#: class-premium-options.php:391
 msgid "Premium support"
 msgstr "豪华版支持"
 
-#: class-multisite.php:211 class-premium-options.php:186
+#: class-multisite.php:211 class-premium-options.php:192
 msgid "Previous"
 msgstr "前一个"
 
-#: class-premium-options.php:2088
+#: class-premium-options.php:2172
 msgid "Previous scan completed with issues"
 msgstr "前一个扫描带错完成"
 
-#: grid/templates/scan-footer.php:11
+#: grid/templates/scan-footer.php:10
 msgid "Quick Scan"
 msgstr "快速扫描"
 
-#: class-premium-options.php:1021
+#: class-premium-options.php:1046
 msgid "Re-check the redirect"
 msgstr "重新检查重定向"
 
@@ -845,7 +867,7 @@ msgid ""
 "on its own :-("
 msgstr "Really Simple SSL 专业版是 Really Simple SSL的一个附加组件，无法自己来 :-("
 
-#: class-licensing.php:93
+#: class-licensing.php:98
 msgid "Really Simple SSL Pro license key"
 msgstr "Really Simple SSL 专业版授权码"
 
@@ -853,68 +875,68 @@ msgstr "Really Simple SSL 专业版授权码"
 msgid "Really Simple SSL pro multisite"
 msgstr "Really Simple SSL 专业版多站"
 
-#: class-licensing.php:669
+#: class-licensing.php:701
 msgid "Really Simple SSL Pro Multisite license key"
 msgstr "Really Simple SSL 专业版多站授权码"
 
-#: class-multisite.php:370 class-premium-options.php:889
+#: class-multisite.php:360 class-premium-options.php:908
 msgid "Receive an email when your certificate is about to expire"
 msgstr "在您证书将要过期前接收邮件"
 
-#: class-premium-options.php:1055
+#: class-premium-options.php:1064
 msgid "Recommended security headers enabled."
 msgstr "推荐的安全头部已启用。"
 
-#: class-premium-options.php:1050
+#: class-premium-options.php:1059
 #, php-format
 msgid "Recommended security headers not enabled (%sRead more%s)."
 msgstr "推荐的安全头部未启用（%s阅读更多%s）。"
 
-#: class-premium-options.php:1394
+#: class-premium-options.php:1403
 msgid "Reporting active"
 msgstr "报告激活"
 
-#: class-premium-options.php:2186
+#: class-premium-options.php:2271
 msgid ""
 "Reporting is active and will gather Content Security Policy directives "
 "available under ‘Content Security Policy configuration’."
 msgstr "报告已激活，"
 
-#: class-premium-options.php:1395
+#: class-premium-options.php:1404
 msgid "Reporting paused"
 msgstr "报告暂停"
 
-#: class-premium-options.php:2187
+#: class-premium-options.php:2272
 msgid ""
 "Reporting will be paused after 20 requests to limit server load. You can "
 "always manually set reporting to paused, if needed."
 msgstr "在20次请求之后，报告将暂停，以限制服务器负载。如果需要，您可以随时手动设置报告为暂停。"
 
-#: class-scan.php:2742
+#: class-scan.php:2740
 msgid "Restore files"
 msgstr "恢复文件"
 
-#: grid/templates/scan-footer.php:16
+#: grid/templates/scan-footer.php:15
 msgid "Resume"
 msgstr "继续"
 
-#: csp-violation-endpoint.php:406
+#: csp-violation-endpoint.php:411
 msgid "Revoke"
 msgstr "废除"
 
-#: csp-violation-endpoint.php:526
+#: csp-violation-endpoint.php:531
 msgid "Revoke and delete rule"
 msgstr "废除并删除规则"
 
-#: csp-violation-endpoint.php:519
+#: csp-violation-endpoint.php:524
 msgid "Revoke rule"
 msgstr "废除规则"
 
-#: csp-violation-endpoint.php:500
+#: csp-violation-endpoint.php:505
 msgid "Revoking a Rule from the Content Security Policy"
 msgstr "从内容安全策略中废除规则"
 
-#: class-scan.php:2726
+#: class-scan.php:2724
 msgid "Roll back changes made to your files"
 msgstr "回滚文件更改"
 
@@ -923,14 +945,15 @@ msgid "Roll back file changes"
 msgstr "回滚文件更改"
 
 #: grid/templates/license-footer.php:9
+#: grid/templates/premium-settings-footer.php:55
 msgid "Save"
 msgstr "存档"
 
-#: grid/templates/scan-footer.php:9
+#: grid/templates/scan-footer.php:8
 msgid "SCAN"
 msgstr "扫描"
 
-#: class-multisite.php:200 class-premium-options.php:183
+#: class-multisite.php:200 class-premium-options.php:189
 msgid "Search"
 msgstr "查找"
 
@@ -946,7 +969,7 @@ msgstr "在网站中查找js和css文件，以及到外部资源的链接，%s o
 msgid "Searching for mixed content in css and js files, %s of %s"
 msgstr "在css和js文件中查找混合内容，%s of %s"
 
-#: class-premium-options.php:1101
+#: class-premium-options.php:1110
 msgid ""
 "Security headers have been set via PHP but your site uses caching. Caching "
 "prevents the headers from working correctly. We recommend to add the "
@@ -968,18 +991,22 @@ msgstr "自身意思是这个功能仅允许您自有域名上的内容。外部
 msgid "Send"
 msgstr "发送"
 
-#: class-premium-options.php:937
-msgid "Set headers with PHP"
-msgstr "用PHP设置头部"
+#: grid/templates/premium-settings-footer.php:36
+msgid "Server not recognized"
+msgstr ""
 
-#: class-premium-options.php:936
+#: class-premium-options.php:961
 msgid ""
 "Set the security headers with PHP. Should be enabled when using NGINX as the "
 "webserver, or when the htaccess security headers are not supported by your "
 "hosting company."
 msgstr "使用PHP设置安全头部。使用NGINX网站服务器时，或者当您的服务商不支持htaccess安全头部时，应启用。"
 
-#: class-premium-options.php:1881
+#: class-premium-options.php:1434
+msgid "Set with PHP"
+msgstr ""
+
+#: class-premium-options.php:1918
 msgid "Settings"
 msgstr "設定"
 
@@ -988,7 +1015,7 @@ msgstr "設定"
 msgid "Show %s results"
 msgstr "显示 %s 结果"
 
-#: grid/templates/scan-footer.php:23
+#: grid/templates/scan-footer.php:22
 msgid "Show ignored URLs"
 msgstr "显示忽略的URLs"
 
@@ -1020,11 +1047,11 @@ msgstr "出错。如果这还不行，您可以通过重命名文件'rsssl-bkp-f
 msgid "SSL certificate expiration warning"
 msgstr "SSL证书过期提示"
 
-#: class-premium-options.php:109
+#: class-premium-options.php:115
 msgid "SSL configuration finished!"
 msgstr "SSL设置完成！"
 
-#: class-premium-options.php:1190
+#: class-premium-options.php:1199
 msgid "Start scan"
 msgstr "开始扫描"
 
@@ -1032,15 +1059,15 @@ msgstr "开始扫描"
 msgid "Status"
 msgstr "状态"
 
-#: class-multisite.php:381
+#: class-multisite.php:371
 msgid "Stop editing the .htaccess file"
 msgstr "停止编辑 .htaccess 档案"
 
-#: grid/templates/scan-footer.php:14
+#: grid/templates/scan-footer.php:13
 msgid "Stop scan"
 msgstr "停止扫描"
 
-#: class-premium-options.php:932
+#: class-premium-options.php:957
 msgid ""
 "The Content Security Policy allows you to specify which resources to allow "
 "on your site."
@@ -1062,38 +1089,41 @@ msgstr "文件无法下载。文件可能不存在，或者下载被服务器阻
 msgid "The file that's causing a potential mixed content issue."
 msgstr "可能造成潜在混合内容问题的文件。"
 
-#: class-premium-options.php:1213
+#: class-premium-options.php:1222
 msgid ""
 "The last scan was completed with errors. Are you sure these issues don't "
 "impact your site?"
 msgstr "最后的扫瞄已完成但带有错误。你确定这不会对你的网站有影响吗?"
 
-#: class-premium-options.php:1200
+#: class-premium-options.php:1209
 msgid ""
 "The last scan was completed with errors. Only migrate if you are sure the "
 "found errors are not a problem for your site."
 msgstr "最后的扫瞄已完成但带有错误。若你确定所发现的错误并不会对你的网站造成问题你才迁移。"
 
-#: class-licensing.php:526
+#: class-licensing.php:531
 msgid ""
 "The license information could not be retrieved at this moment. Please try "
 "again at a later time."
 msgstr "现在无法收取授权信息。请稍后重试。"
 
 #: grid/templates/license-footer.php:31
-#, php-format
+#, fuzzy, php-format
+#| msgid ""
+#| "The license key is only visible to %s. Add &rsssl_unlock_license={your "
+#| "license key} behind the URL to unlock the license block."
 msgid ""
-"The license key is only visible to %s. Add &rsssl_unlock_license={your "
+"The license key is only visible to %s. Add &rsssl_license_unlock={your "
 "license key} behind the URL to unlock the license block."
 msgstr "授权码仅对 %s可见。添加 &rsssl_unlock_license={your license key} 到链接后面来解除许可锁定。"
 
-#: class-premium-options.php:927
+#: class-premium-options.php:952
 msgid ""
 "The preload list offers even more security, as browsers will be instructed "
 "to load the site over HTTPS, even before the first visit."
 msgstr "预载列表提供更多安全性，因为浏览器将被引导通过HTTPS载入网站，甚至在首次访问之前。"
 
-#: class-scan.php:1780 class-scan.php:1849
+#: class-scan.php:1778 class-scan.php:1847
 msgid "theme file"
 msgstr "主题文件"
 
@@ -1114,25 +1144,25 @@ msgstr "新版的 %1$s 可用。%2$s查看版本 %3$s 详情%4$s。"
 msgid "There was a problem editing the file. Please try manually."
 msgstr "编辑文件出错。请手动尝试。"
 
-#: class-premium-options.php:951
+#: class-premium-options.php:976
 #, php-format
 msgid ""
 "These settings are only available on the network settings, available with "
 "the %sAgency license%s."
 msgstr "这些设置仅在网络设置中可用，可用于 %s代理许可%s。"
 
-#: class-premium-options.php:947
+#: class-premium-options.php:972
 #, php-format
 msgid "These settings are only available under the %snetwork settings%s."
 msgstr "这些设置仅在 %s网络设置%s可用。"
 
-#: class-premium-options.php:1260
+#: class-premium-options.php:1269
 msgid ""
 "This domain is not activated for this Really Simple SSL Pro license. Please "
 "activate the license for this domain."
 msgstr "Really Simple SSL 专业版授权没有激活该域名。请为该域名激活授权许可。"
 
-#: class-scan.php:2485 class-scan.php:2574
+#: class-scan.php:2483 class-scan.php:2572
 msgid ""
 "This downloads the file from the domain without SSL, inserts it into WP "
 "media, and changes the URL to the new URL."
@@ -1144,177 +1174,184 @@ msgid ""
 "your site."
 msgstr "该功能不允许。启用这里来彻底在您的网站禁止该功能。"
 
-#: class-scan.php:2613 class-scan.php:2693
+#: class-scan.php:2611 class-scan.php:2691
 msgid ""
 "This function downloads the file from the domain without SSL, inserts it "
 "into WP media, and changes the URL to the new URL."
 msgstr "该功能会不通过SSL从域名下载文件，将它插入WP媒体，并修改URL为新的URL。"
 
-#: class-scan.php:2652
+#: class-scan.php:2650
 msgid ""
 "This function will change the urls to the protocol independent // instead of "
 "http://"
 msgstr "该功能将修改链接到独立协议 // 而不是 http://"
 
-#: class-premium-options.php:917
+#: class-premium-options.php:942
 msgid ""
 "This header allows you to restrict browser features on your own and embedded "
 "pages."
 msgstr "这个头部使您可以限制浏览器在您自己的和嵌入页面中的功能。"
 
-#: class-premium-options.php:910
+#: class-premium-options.php:935
 msgid ""
 "This header enforces certificate transparency. This is done by expecting "
 "valid Signed Certificate Timestamps (SCTs)."
 msgstr "头部强制证书透明。这是通过期望有效的签名许可时间戳（SCTs）来实现。"
 
-#: class-premium-options.php:907
+#: class-premium-options.php:932
 msgid ""
 "This header only sets a referrer when navigating to the same protocol (HTTPS-"
 ">HTTPS) and not when downgrading (HTTPS->HTTP)."
 msgstr "头部仅在导航到相同协议时 (HTTPS->HTTPS) 设置referrer，而在降级访问时 (HTTPS->HTTP)则不会。"
 
-#: class-premium-options.php:904
+#: class-premium-options.php:929
 msgid ""
 "This header prevents MIME-sniffing, which can be used to upload malicious "
 "files disguised as another content type."
 msgstr "头部阻止 MIME-嗅探，这可能被利用来上传伪装成另一种内容类型的恶意文件。"
 
-#: class-premium-options.php:913
+#: class-premium-options.php:938
 msgid ""
 "This header prevents your site from being loaded in an iFrame on other "
 "domains. This is used to prevent clickjacking attacks."
 msgstr "该头部阻止您的网站被其它网站载入为 iFrame。这个用来阻止 点击劫持（clickjacking）攻击。"
 
-#: class-premium-options.php:901
+#: class-premium-options.php:926
 msgid ""
 "This header protects your site from cross-site scripting attacks. If a cross-"
 "site scripting attack is detected, the browser will automatically sanitize "
 "(remove) unsafe parts (scripts) when this header is enabled."
 msgstr "该头部保护您的网站免受跨站脚本攻击。在该头部启用的情况下，如果检测到跨站脚本攻击，浏览器将自动去除不安全的部分（脚本）。"
 
-#: class-premium-options.php:898
+#: class-premium-options.php:923
 msgid ""
 "This is an additional header to force all incoming http:// requests to https:"
 "//."
 msgstr "这个额外的头部会强制所有进来的 http:// 请求转至 https://。"
 
-#: class-premium-options.php:1405
+#: class-premium-options.php:1414
 #, php-format
 msgid ""
 "This is an advanced feature. Only enable this if you know what you're doing. "
 "See %sour usage guide%s"
 msgstr "这是一个高级功能。仅在您非常了解的情况下启用该功能。查看 %s我们的使用向导%s"
 
-#: class-licensing.php:571
+#: class-licensing.php:576
 #, php-format
 msgid ""
 "This license is not valid for this product. Find out why on your %saccount%s."
 msgstr "该许可对该产品无效。在您的%s账户%s查看原因。"
 
-#: class-licensing.php:564
+#: class-licensing.php:569
 #, php-format
 msgid "This license is not valid. Find out why on your %saccount%s."
 msgstr "该许可无效。在您的 %s账户%s查看原因。"
 
-#: class-premium-options.php:1542 class-premium-options.php:1573
+#: class-premium-options.php:913
+msgid "This option is enabled on the network menu"
+msgstr ""
+
+#: class-premium-options.php:1582
 msgid "This option is enabled on the network menu."
 msgstr "该选项在网际网路的目录可被启动。"
 
-#: class-premium-options.php:888
+#: class-premium-options.php:907
 #, php-format
 msgid ""
 "This option sends an email to the administrator email address (%s) when your "
 "certificate is about to expire within 2 weeks."
 msgstr "该选项会在您的许可将要过期的两个星期内向管理员邮件地址 (%s) 发送一封邮件。"
 
-#: class-scan.php:2730
+#: class-scan.php:2728
 msgid ""
 "This will put the files back that were changed by the fix option in Really "
 "Simple SSL pro."
 msgstr "这会将被 Really Simple SSL 专业版修复选项修改的文件还原。"
 
-#: class-premium-options.php:1142
+#: class-premium-options.php:1151
 msgid "TLS version is up-to-date"
 msgstr "TLS版本已是最新"
 
-#: class-premium-options.php:2188
+#: class-premium-options.php:2273
 msgid ""
 "To restart reporting, set Content Security Policy to ‘reporting active’."
 msgstr "要重启报告，设置内容安全策略为 ‘报告激活’。"
 
-#: csp-violation-endpoint.php:412
+#: csp-violation-endpoint.php:417
 msgid "Today"
 msgstr "今天"
 
-#: class-licensing.php:445
+#: class-licensing.php:450
 msgid "unlimited"
 msgstr "无限制"
 
-#: class-licensing.php:469
+#: class-licensing.php:474
 msgid "Unlimited activations available."
 msgstr "无限制激活可用。"
 
-#: class-premium-options.php:1288
+#: class-premium-options.php:1297
 msgid ""
 "Update Really Simple SSL Free to the latest version for optimal Content "
 "Security Policy compatibility."
 msgstr "升级 Really Simple SSL 免费版到最新版，以获取最佳的内容安全策略兼容性。"
 
-#: class-premium-options.php:899
+#: class-premium-options.php:924
 msgid "Upgrade insecure request"
 msgstr "升级不安全的请求"
 
-#: class-licensing.php:458
+#: class-licensing.php:463
 #, php-format
 msgid "Upgrade to a %s5 sites or Agency%s license."
 msgstr "升级到 %s5站或代理%s授权许可。"
 
-#: class-licensing.php:461
+#: class-licensing.php:466
 #, php-format
 msgid "Upgrade to an %sAgency%s license."
 msgstr "升级到 %s代理%s 授权许可。"
 
-#: class-scan.php:1859
+#: class-scan.php:1857
 msgid "uploads file, possibly generated by plugin or theme"
 msgstr "uploads文件，可能是由插件或主题生成的"
 
-#: class-premium-options.php:890
+#: class-premium-options.php:911
+#, fuzzy
+#| msgid ""
+#| "Use this option if you do not have the green lock in the WordPress admin."
 msgid ""
-"Use this option if you do not have the green lock in the WordPress admin."
+"Use this option if you do not have the secure lock in the WordPress admin."
 msgstr "如果您在WordPress管理界面没有绿锁，使用该选项。"
 
 #: grid/templates/license-footer.php:29
 msgid "User not found"
 msgstr "用户未找到"
 
-#: class-licensing.php:484
+#: class-licensing.php:489
 msgid "Valid"
 msgstr "有效"
 
-#: class-licensing.php:491
+#: class-licensing.php:496
 #, php-format
 msgid "Valid license for %s."
 msgstr "%s的有效授权许可。"
 
-#: class-licensing.php:452
+#: class-licensing.php:457
 #, php-format
 msgid "Valid until %s."
 msgstr "有效期至 %s。"
 
-#: class-licensing.php:548 class-licensing.php:555 class-licensing.php:563
-#: class-licensing.php:570 class-licensing.php:585
+#: class-licensing.php:553 class-licensing.php:560 class-licensing.php:568
+#: class-licensing.php:575 class-licensing.php:590 class-licensing.php:624
 #: grid/templates/scan-results-element.php:5
 msgid "Warning"
 msgstr "警告"
 
-#: class-premium-options.php:2189
+#: class-premium-options.php:2274
 msgid ""
 "When there a no new directives reported, you can continue with the "
 "configuration and set the Content Security Policy to ‘Enforce’."
 msgstr "在没有新的指令报告时，您可以继续设置并将内容安全策略设置为 '强制'。"
 
-#: grid/templates/scan-footer.php:21
+#: grid/templates/scan-footer.php:20
 msgid ""
 "When you enable this option, the URL's that were previously ignored are "
 "shown again."
@@ -1327,34 +1364,49 @@ msgid ""
 "active plugins"
 msgstr "在您发送该表单时，我们将附上下列信息：授权码、扫描结果、网站域名、.htaccess文件、调试日志和活动插件列表"
 
-#: class-scan.php:2098
+#: class-scan.php:2096
 #, php-format
 msgid "Widget area \"%s\""
 msgstr "小工具区域 \"%s\""
 
-#: class-scan.php:2085
+#: class-scan.php:2083
 msgid "Widget with mixed content"
 msgstr "带混合内容的小工具"
 
-#: class-multisite.php:368
+#: class-multisite.php:358
 msgid "WordPress 301 redirection to SSL for all SSL sites"
 msgstr "为所有SSL网站进行WordPress 301 重定向到SSL"
 
-#: class-scan.php:1808
+#: grid/templates/premium-settings-footer.php:10
+#, php-format
+msgid "Works with %s"
+msgstr ""
+
+#: class-licensing.php:619
+#, php-format
+msgid "You can activate your license on the %slicense tab%s."
+msgstr ""
+
+#: class-scan.php:1806
 msgid "You can edit the source file manually by pressing the edit button."
 msgstr "您可以点击编辑按钮手动编辑源文件。"
 
-#: class-licensing.php:464
+#: class-licensing.php:469
 #, php-format
 msgid "You can renew your license on your %saccount%s."
 msgstr "您可以在您的 %s账户%s 更新您的授权许可。"
 
-#: class-premium-options.php:1232
+#: class-premium-options.php:1241
 #, php-format
 msgid "You can upgrade on your %saccount%s."
 msgstr "您可以在您的 %s账户%s 进行升级。"
 
-#: class-premium-options.php:1267
+#: class-licensing.php:621
+#, php-format
+msgid "You can upgrade or renew your license on the %slicense tab%s."
+msgstr ""
+
+#: class-premium-options.php:1276
 msgid ""
 "You do not have any activations left on your Really Simple SSL Pro license. "
 "Please upgrade your plan for additional activations."
@@ -1364,15 +1416,15 @@ msgstr "您的Really Simple SSL 专业版授权许可没有剩余可用的激活
 msgid "You do not have permission to install plugin updates"
 msgstr "您没有安装插件更新的权限"
 
-#: class-premium-options.php:2076
+#: class-premium-options.php:2160
 msgid "You finished a scan without errors."
 msgstr "您已成功完成扫描。"
 
-#: class-licensing.php:452
+#: class-licensing.php:457
 msgid "You have a lifetime license."
 msgstr "您拥有终身授权许可。"
 
-#: class-premium-options.php:1225
+#: class-premium-options.php:1234
 msgid ""
 "You have a multisite environment. To leverage all configuration options in "
 "Really Simple SSL, we recommend to enabled the plugin networkwide, then use "
@@ -1380,43 +1432,37 @@ msgid ""
 msgstr ""
 "您具有多站环境。要应用Really Simple SSL中的所有设置选项，我们建议在网络范围激活插件，然后使用'单站激活'选项来为每个站点启用SSL。"
 
-#: class-premium-options.php:1109
+#: class-premium-options.php:1118
+#, fuzzy
+#| msgid ""
+#| "You have disabled the PHP security header option. Check if the following "
+#| "security headers have been added to NGINX configuration file:"
 msgid ""
-"You have disabled the PHP security header option. Check if the following "
-"security headers have been added to NGINX configuration file:"
+"You have enabled the nginx.conf security header option. Check if the "
+"following security headers have been added to the NGINX configuration file:"
 msgstr "您已禁用了PHP安全头部选项。请检查下面的安全头部是否已经添加到了NGINX配置文件："
 
-#: class-premium-options.php:1174
+#: class-premium-options.php:1183
 msgid "You have new rules that can be added to your Content Security Policy."
 msgstr "您有新的规则可以添加到您的内容安全策略。"
 
-#: class-premium-options.php:159
+#: class-premium-options.php:165
 msgid ""
 "You have scanned your site before, but the scan results are cleared from the "
 "cache. Run a new scan to see the results."
 msgstr "您之前已经扫描过您的网站，但是扫描结果已从缓存中清除。执行全新的扫描来查看结果。"
 
-#: class-licensing.php:642
+#: class-licensing.php:674
 msgid ""
 "You haven't activated your Really Simple SSL Pro Multisite license yet. To "
 "get all future updates, enter your license on the network settings page."
 msgstr "您尚未激活您的Really Simple SSL 专业版多站授权许可。要获取所有未来的更新，请在网络设置页面输入您的授权码。"
 
-#: class-premium-options.php:1205
+#: class-premium-options.php:1214
 msgid ""
 "You haven't scanned the site yet, you should scan your site to check for "
 "possible issues."
 msgstr "你还没有扫瞄你的网站，你应为检查一些潜在的问题而扫瞄你的网站。"
-
-#: class-premium-options.php:1038
-#, php-format
-msgid "Your certificate is valid to: %s"
-msgstr "您的证书有效期至：%s"
-
-#: class-premium-options.php:1034
-#, php-format
-msgid "Your certificate needs to be renewed soon, it is valid to: %s"
-msgstr "您的证书现在需要更新，它的有效期到：%s"
 
 #: class-importer.php:103
 msgid "Your files already were restored."
@@ -1426,60 +1472,68 @@ msgstr "您的文件已经恢复。"
 msgid "Your files were restored."
 msgstr "您的文件已恢复。"
 
-#: class-licensing.php:556
+#: class-licensing.php:561
 #, php-format
 msgid ""
 "Your license could not be found in our system. Please contact %ssupport%s."
 msgstr "我们系统中未找到您的授权码。请联系 %s客服支持%s。"
 
-#: class-licensing.php:549
+#: class-licensing.php:554
 #, php-format
 msgid "Your license has been revoked. Please contact %ssupport%s."
 msgstr "您的授权许可已作废。请联系 %s客服支持%s。"
 
-#: class-licensing.php:586
+#: class-licensing.php:591
 #, php-format
 msgid ""
 "Your license key has expired. Please renew your license key on your "
 "%saccount%s."
 msgstr "您的授权码已过期。请在您的 %s账户%s 更新您的授权码。"
 
-#: class-premium-options.php:1246
+#: class-licensing.php:619
+msgid "Your Really Simple SSL pro license hasn't been activated."
+msgstr ""
+
+#: class-licensing.php:621
+msgid "Your Really Simple SSL pro license is not valid."
+msgstr ""
+
+#: class-premium-options.php:1255
 msgid ""
 "Your Really Simple SSL Pro license key has expired. Please renew your "
 "license to continue receiving updates and premium support."
 msgstr "您的Really Simple SSL 专业版授权码已过期。请更新您的授权码以继续接收更新和专业的服务。"
 
-#: class-premium-options.php:1274
+#: class-premium-options.php:1283
 msgid ""
 "Your Really Simple SSL Pro license key hasn't been activated yet. You can "
 "activate your license key on the license tab."
 msgstr "您的 Really Simple SSL 专业版授权码尚未激活。您可以在许可标签激活您的授权码。"
 
-#: class-premium-options.php:1253
+#: class-premium-options.php:1262
 msgid ""
 "Your Really Simple SSL Pro license key is not activated. Please activate "
 "your license to continue receiving updates and premium support."
 msgstr "您的 Really Simple SSL 专业版授权码未激活。请激活您的授权以及继续接收更新和专业的服务。"
 
-#: class-premium-options.php:1124
+#: class-premium-options.php:1133
 #, php-format
 msgid ""
 "Your site has been configured for the HSTS preload list. If you have "
 "submitted your site, it will be preloaded. Click %shere%s to submit."
 msgstr "您的网站被设置到 HSTS 预载列表中。如果您已提交网站，它将会被预载入。点击 %s这里%s 进行提交。"
 
-#: class-premium-options.php:1129
+#: class-premium-options.php:1138
 msgid "Your site is not yet configured for the HSTS preload list."
 msgstr "您的网站尚未设置到 HSTS 预载列表中。"
 
-#: class-premium-options.php:1160
+#: class-premium-options.php:1169
 msgid ""
 "Your site redirects 404 pages to the http:// version of your homepage. This "
 "can cause mixed content issues with images."
 msgstr "您的网站重定向 404 页面到您网站的 http:// 版本。这可能会造成图片的混合内容问题。"
 
-#: class-premium-options.php:1147
+#: class-premium-options.php:1156
 msgid ""
 "Your site uses an outdated version of TLS. Upgrade to TLS 1.2 or TLS 1.3 to "
 "keep your site secure."

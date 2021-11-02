@@ -28,3 +28,4 @@ $contents = str_replace('<table class="form-table" role="presentation">', $table
 $contents = str_replace('<tr><th scope="row"></th><td>', '', $contents);
 
 echo $contents;
+do_action( "rsssl_premium_footer" );

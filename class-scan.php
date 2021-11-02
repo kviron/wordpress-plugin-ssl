@@ -1261,9 +1261,7 @@ class rsssl_scan {
 						$filelist[] = $file;
 					} elseif ( is_dir( $file ) ) {
 						if ( strpos( $file, "really-simple-ssl" ) === false ) {
-							$filelist = array_merge( $filelist,
-								$this->get_filelist_from_dir( $file,
-									$extensions ) );
+							$filelist = array_merge( $filelist, $this->get_filelist_from_dir( $file) );
 						}
 					}
 				}

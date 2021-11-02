@@ -23,8 +23,14 @@ jQuery(document).ready(function ($) {
 
         });
 
+        var resultCount = $('#rsssl-scan-results').DataTable().count();
+        var pageLength = $('#rsssl-scan-results').DataTable().page.len();
+
         scan_paginate = $("#rsssl-scan-results_paginate").detach()
-        $("#rsssl-scan-pagination").append(scan_paginate);
+
+        if (resultCount > pageLength) {
+            $("#rsssl-scan-pagination").append(scan_paginate);
+        }
     }
 
     $.extend( $.fn.dataTable.defaults, {
@@ -79,6 +85,23 @@ jQuery(document).ready(function ($) {
             function (response) {
                 $('.rsssl-csp-table-container').html('');
                 loadCspTable(token);
+            }
+        );
+    });
+
+    $('#rsssl-security-headers-method').on('change', function () {
+        var value = $(this).val();
+        var token = $(this).data("token");
+        $.post(
+            rsssl_ajax.ajaxurl,
+            {
+                action: 'rsssl_update_security_headers_method_value',
+                rsssl_security_headers_method_value: value,
+                token: token,
+            },
+            function (response) {
+                // $('.rsssl-csp-table-container').html('');
+                // loadCspTable(token);
             }
         );
     });

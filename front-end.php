@@ -12,7 +12,7 @@ if (!function_exists('rsssl_send_php_security_headers')) {
 
 	function rsssl_send_php_security_headers()
     {
-        if (rsssl_get_networkwide_option('rsssl_enable_php_headers') ) {
+        if (rsssl_get_networkwide_option('rsssl_security_headers_method') === 'php' ) {
 
             $hsts = rsssl_get_networkwide_option('rsssl_hsts');
             $upgrade_insecure_requests = rsssl_get_networkwide_option('rsssl_upgrade_insecure_requests');
@@ -38,7 +38,7 @@ if (!function_exists('rsssl_send_php_security_headers')) {
                 && rsssl_get_networkwide_option('rsssl_enable_csp_reporting') !== 'report-only'
                 && rsssl_get_networkwide_option('rsssl_enable_csp_reporting') !== 'report-paused')
             {
-                header('Content-Security-Policy: "upgrade-insecure-requests"');
+                header('Content-Security-Policy: upgrade-insecure-requests');
             }
 
             if ($x_xss_protection) {

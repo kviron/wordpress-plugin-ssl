@@ -109,7 +109,7 @@ if (!class_exists('rsssl_pro_multisite')) {
 				'header' => rsssl_template_path . 'header.php',
 				'content' => rsssl_pro_ms_template_path . 'sites.php',
 				'footer' => '',
-				'class' => 'rsssl_sites_overview',
+				'class' => 'rsssl_sites_overview rsssl-premium',
 				'type' => 'sites_overview',
 				'can_hide' => true,
 			);
@@ -267,16 +267,6 @@ if (!class_exists('rsssl_pro_multisite')) {
 				$saved_options = array_map(array($this, "sanitize_boolean"), $_POST["rlrsssl_network_options"]);
 				$db_options = get_site_option("rlrsssl_network_options");
 				if (!is_array($saved_options)) $saved_options = array();
-
-				$hsts_preload_new = isset($db_options["hsts_preload"]) ? $db_options["hsts_preload"] : FALSE;
-				$hsts_preload_old = isset($saved_options['hsts_preload']) ? $saved_options['hsts_preload'] : FALSE;
-
-				if ($hsts_preload_new != $hsts_preload_old) update_site_option("rsssl_nginx_message_shown", false);
-
-				$hsts_new = isset($db_options['hsts']) ? $db_options['hsts'] : FALSE;
-				$hsts_old = isset($saved_options['hsts']) ? $saved_options['hsts'] : FALSE;
-
-				if ($hsts_new != $hsts_old) update_site_option("rsssl_nginx_message_shown", false);
 
 				if (isset($saved_options["hsts_preload"])) $db_options["hsts_preload"] = $saved_options["hsts_preload"];
 

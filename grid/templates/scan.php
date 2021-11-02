@@ -13,3 +13,4 @@
 	do_action("rsssl_scan_modals");
 	?>
 </div><!-- end rsssl wrapper -->
+<?php do_action( "rsssl_premium_footer" );

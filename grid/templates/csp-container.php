@@ -19,4 +19,4 @@
 </div>
 <?php
 do_action("rsssl_csp_modals");
-?>
+do_action( "rsssl_premium_footer" );

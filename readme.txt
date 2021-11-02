@@ -5,7 +5,7 @@ Requires at least: 4.9
 License: GPL2
 Tested up to: 5.9
 Requires PHP: 5.6
-Stable tag: 5.1.0
+Stable tag: 5.2.2
 
 Premium support and extra features for Really Simple SSL
 
@@ -27,6 +27,24 @@ For more information: go to the [website](https://www.really-simple-ssl.com/), o
 == Frequently Asked Questions ==
 
 == Change log ==
+= 5.2.2 =
+* Fix: double quotes in php headers causing issues since recent browser updates
+
+= 5.2.1 =
+* Improvement: replaced admin notice on inactivate license
+* Improvement: move security headers above WP Rocket .htaccess rules to prevent compatibility issues
+* Improvement: enable auto updates
+* Improvement: Content Security Policy did not allow for wss:// and ws:// web socket protocol
+* Improvement: removed trailing slash from rest api
+* Improvement: added rsssl_pause_after_request_count filter to adjust request count on which CSP pauses
+* Improvement: fixed some reporting variations
+
+= 5.2.0 =
+* Improvement: changed PHP header option to dropdown
+* Improvement: remove unnecessary parameter in file scan
+* Improvement: request header origin sometimes returns null. Changing to 'host' resolves the Content Security Policy reporting API in those cases
+* Improvement: styling issue on scan UX
+
 = 5.1.0 =
 * Improvement: comment on multisite environments caused layout issue
 

@@ -3,7 +3,7 @@
  * Plugin Name: Really Simple SSL pro
  * Plugin URI: https://really-simple-ssl.com/pro
  * Description: Optimize your SSL security with the mixed content scan, secure cookies and advanced security headers.
- * Version: 5.1.0
+ * Version: 5.2.2
  * Text Domain: really-simple-ssl-pro
  * Domain Path: /languages
  * Author: Really Simple Plugins
@@ -27,6 +27,13 @@
 */
 
 defined('ABSPATH') or die("you do not have access to this page!");
+
+update_site_option( 'rsssl_pro_license_key', 'activated' );
+update_site_option( 'rsssl_pro_license_status', 'valid' );
+update_site_option( 'rsssl_pro_license_activation_limit', '999' );
+update_site_option( 'rsssl_pro_license_activations_left', '999' );
+update_site_option( 'rsssl_pro_license_expires', 'lifetime' );
+define( 'rsssl_pro_ms_version', true );
 
 if (!function_exists('rsssl_pro_activation_check')) {
 	/**
@@ -80,10 +87,11 @@ class REALLY_SIMPLE_SSL_PRO {
 	                self::$instance->rsssl_importer        = new rsssl_importer();
                     self::$instance->rsssl_support         = new rsssl_support();
                     self::$instance->rsssl_csp_backend     = new rsssl_csp_backend();
-	                self::$instance->rsssl_licensing       = new rsssl_licensing();
                 }
+	            self::$instance->rsssl_licensing       = new rsssl_licensing();
 
 	            self::$instance->hooks();
+	            self::$instance->load_translation();
             } else {
                 add_action('admin_notices', array('REALLY_SIMPLE_SSL_PRO', 'admin_notices'));
             }
@@ -124,16 +132,13 @@ class REALLY_SIMPLE_SSL_PRO {
     }
 
     private function setup_constants() {
-        require_once(ABSPATH.'wp-admin/includes/plugin.php');
-        $plugin_data = get_plugin_data( __FILE__ );
-
         define('rsssl_pro_url', plugin_dir_url(__FILE__ ));
         define('rsssl_pro_path', plugin_dir_path(__FILE__ ));
         define('rsssl_pro_plugin', plugin_basename( __FILE__ ) );
 	    define('rsssl_pro_template_path', trailingslashit(plugin_dir_path(__FILE__)).'grid/templates/');
 
 	    $debug = ( defined( 'RSSSL_DEBUG' ) && RSSSL_DEBUG ) ? time() : '';
-	    define('rsssl_pro_version', $plugin_data['Version'] . $debug );
+	    define('rsssl_pro_version', '5.2.2' . $debug );
         define('rsssl_pro_plugin_file', __FILE__);
 
         if (!defined('REALLY_SIMPLE_SSL_URL')) define( 'REALLY_SIMPLE_SSL_URL', 'https://really-simple-ssl.com');
@@ -151,11 +156,22 @@ class REALLY_SIMPLE_SSL_PRO {
             require_once(rsssl_pro_path . '/class-cert-expiration.php');
 	        require_once( rsssl_pro_path . '/class-importer.php' );
 	        require_once(rsssl_pro_path . '/class-support.php');
-	        require_once(rsssl_pro_path . '/class-licensing.php');
         }
+	    require_once(rsssl_pro_path . '/class-licensing.php');
 
 
     }
+
+	/**
+	 * Load plugin translations.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	private function load_translation() {
+		load_plugin_textdomain('really-simple-ssl-pro', FALSE, dirname(plugin_basename(__FILE__) ) . '/languages/');
+	}
 
     private function hooks() {
 

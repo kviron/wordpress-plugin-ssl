@@ -56,7 +56,7 @@ class rsssl_premium_options {
         add_action( 'admin_init', array( $this, 'check_upgrade' ), 10, 2 );
 		add_action( "admin_init", array( $this, "insert_security_headers" ), 90 );
 		add_action( "update_option_rlrsssl_options", array( $this, "maybe_clear_certificate_check_schedule" ), 30, 3 );
-        add_action( 'update_option_rsssl_enable_php_headers', array ($this, 'maybe_remove_security_headers_from_htaccess'), 40, 3 );
+        add_action( 'update_option_rsssl_security_headers_method', array ($this, 'maybe_remove_security_headers_from_htaccess'), 40, 3 );
 		add_action( "update_option_rsssl_content_security_policy", array( $this, "maybe_update_csp_activation_time" ), 20, 3 );
 		add_action( 'wp_loaded', array( $this, 'admin_mixed_content_fixer' ), 1 );
 		add_action( 'admin_init', array( $this, 're_check_http_redirect' ), 2 );
@@ -66,6 +66,7 @@ class rsssl_premium_options {
 		add_action( "admin_notices", array($this, 'show_notice_csp_enabled_next_steps') );
 		add_action( 'wp_ajax_dismiss_success_pro_multisite_notice', array($this,'dismiss_pro_multisite_notice_callback') );
 		add_action( 'wp_ajax_dismiss_csp_next_steps_notice', array($this,'dismiss_csp_next_steps_notice_callback') );
+		add_action( 'wp_ajax_rsssl_update_security_headers_method_value', array( $this, 'update_security_headers_method_value' ) );
 		add_action( 'admin_print_footer_scripts', array($this, 'insert_csp_next_steps_dismiss') );
 		$plugin = rsssl_pro_plugin;
 		add_filter( "plugin_action_links_$plugin", array($this,'plugin_settings_link') );
@@ -84,6 +85,9 @@ class rsssl_premium_options {
 		add_action('rsssl_finished_text', array($this, 'finished_text'), 20 );
 		add_action('rsssl_deactivate', array($this, 'deactivate'), 20 );
 
+		add_filter( 'before_rocket_htaccess_rules', array($this, 'add_rules_before_wp_rocket' ) );
+		add_filter( 'admin_init', array($this, 'maybe_flush_wprocket_htaccess' ) );
+
     }
 
 	static function this() {
@@ -92,6 +96,8 @@ class rsssl_premium_options {
 	public function progress_footer_right( $html ) {
 		return '';
 	}
+
+
 
 	public function progress_footer_left( $html ) {
         if ( RSSSL()->really_simple_ssl->ssl_enabled || !RSSSL()->really_simple_ssl->site_has_ssl)  {
@@ -293,12 +299,23 @@ class rsssl_premium_options {
 
         if ( $prev_version && version_compare( $prev_version, '4.1.7', '<' ) ) {
             if (function_exists('is_wpe') && is_wpe()) {
-                $this->update_networkwide_option('rsssl_enable_php_headers', true);
+                $this->update_networkwide_option('rsssl_security_headers_method', 'php');
             }
         }
 
 		if ( $prev_version && version_compare( $prev_version, '4.1.9', '<' ) ) {
 			$this->insert_security_headers(true );
+		}
+		
+		if ( $prev_version && version_compare( $prev_version, '5.2', '<' ) ) {
+		    if ( !$this->get_networkwide_option('rsssl_security_headers_method') && $this->get_networkwide_option('rsssl_enable_php_headers') !== false) {
+			    if ( $this->get_networkwide_option( 'rsssl_enable_php_headers' ) ) {
+				    $this->update_networkwide_option( 'rsssl_security_headers_method', 'php' );
+			    } else {
+				    $this->update_networkwide_option( 'rsssl_security_headers_method', 'htaccess' );
+			    }
+		    }
+		    $this->delete_networkwide_option('rsssl_enable_php_headers');
 		}
 
         update_option( 'rsssl-pro-current-version', rsssl_pro_version );
@@ -332,10 +349,10 @@ class rsssl_premium_options {
 	 */
 
 	public function maybe_enable_php_security_headers_option() {
-		if ( $this->php_headers_conditions() || $this->get_networkwide_option('rsssl_enable_php_headers') ) {
-			$this->update_networkwide_option('rsssl_enable_php_headers', true);
+		if ( $this->php_headers_conditions() ) {
+			$this->update_networkwide_option('rsssl_security_headers_method', 'php');
 		} else {
-			$this->update_networkwide_option('rsssl_enable_php_headers', false);
+			$this->update_networkwide_option('rsssl_security_headers_method', 'htaccess');
 		}
 	}
 
@@ -383,11 +400,13 @@ class rsssl_premium_options {
 			'title' => __("Premium settings", "really-simple-ssl-pro"),
 			'header' => rsssl_template_path . 'header.php',
 			'content' => rsssl_pro_template_path . 'settings.php',
-			'footer' => rsssl_template_path.'/settings-footer.php',
+			'footer' => rsssl_pro_template_path.'premium-settings-footer.php',
 			'type' => 'settings',
 			'class' => 'rsssl-premium-settings half-height',
 			'can_hide' => true,
+            'instructions' => 'https://really-simple-ssl.com/how-to-set-security-headers-on-apache-and-nginx/'
 		);
+
 		return $items;
 	}
 
@@ -846,8 +865,8 @@ class rsssl_premium_options {
      *
      */
 	public function maybe_remove_security_headers_from_htaccess() {
-	    if ( $this->get_networkwide_option('rsssl_enable_php_headers') ) {
-            $this->remove_htaccess_rules('Really_Simple_SSL_SECURITY_HEADERS');
+	    if ( $this->get_networkwide_option('rsssl_security_headers_method') === 'php' ) {
+            $this->remove_htaccess_rules('Really_Simple_SSL_SECURITY_HEADERS', true );
 		    $this->remove_htaccess_rules( 'Really_Simple_SSL_CSP_Report_Only');
 		    $this->remove_htaccess_rules( 'Really_Simple_SSL_Content_Security_Policy');
         }
@@ -940,8 +959,8 @@ class rsssl_premium_options {
         register_setting( 'rlrsssl_security_headers', 'rsssl_content_security_policy', '' );
 
         $help_tip = RSSSL()->rsssl_help->get_help_tip(__("Set the security headers with PHP. Should be enabled when using NGINX as the webserver, or when the htaccess security headers are not supported by your hosting company.", "really-simple-ssl-pro"), $return = true);
-        add_settings_field('id_rsssl_enable_php_headers', $help_tip . __("Set headers with PHP", "really-simple-ssl-pro"), array($this, 'get_option_enable_php_headers'), 'rlrsssl_pro_settings_page', 'rlrsssl_pro_settings_section');
-        register_setting('rlrsssl_pro_options', 'rsssl_enable_php_headers', array($this, 'options_validate'));
+        add_settings_field('id_rsssl_security_headers_method', $help_tip . __("How to set the security headers", "really-simple-ssl-pro"), array($this, 'get_option_enable_php_headers'), 'rlrsssl_pro_settings_page', 'rlrsssl_pro_settings_section');
+        register_setting('rlrsssl_pro_options', 'rsssl_security_headers_method', '');
 
 		//add an overlay
 		if ( !$this->apply_networkwide_ssl_feature() ) {
@@ -1082,7 +1101,7 @@ class rsssl_premium_options {
         );
 
         $notices['security_headers_php_headers_set'] = array(
-            'condition' => array('RSSSL_PRO()->rsssl_premium_options->php_headers_conditions'),
+            'condition' => array('rsssl_ssl_enabled'),
             'callback' => 'rsssl_php_headers_enabled',
             'score' => 10,
             'output' => array(
@@ -1096,7 +1115,7 @@ class rsssl_premium_options {
                 ),
                 'php-headers-option-disabled' => array(
                     'url' => 'https://really-simple-ssl.com/knowledge-base/security-headers-on-nginx/',
-                    'msg' => __("You have disabled the PHP security header option. Check if the following security headers have been added to NGINX configuration file:", "really-simple-ssl-pro")
+                    'msg' => __("You have enabled the nginx.conf security header option. Check if the following security headers have been added to the NGINX configuration file:", "really-simple-ssl-pro")
                         . "<br>" . " <code>".$this->generate_security_header_rules($html_output=true, $type='nginx')."</code>",
                     'icon' => 'warning',
                     'dismissible' => true,
@@ -1229,28 +1248,28 @@ class rsssl_premium_options {
         $notices['rsssl_pro_license_valid'] = array(
 	        'condition' => array('NOT is_multisite'),//only show this one on single sites. Pro has it's own dashboard notice
 	        'callback' => 'rsssl_pro_is_license_expired',
-            'score' => 10,
+            'score' => 30,
             'output' => array(
                 'expired' => array(
                     'title' => __("License", 'really-simple-ssl-pro'),
                     'msg' => __("Your Really Simple SSL Pro license key has expired. Please renew your license to continue receiving updates and premium support.", "really-simple-ssl-pro").$link,
                     'icon' => 'warning',
                     'plusone' => true,
-                    'admin_notice' => true,
+                    'admin_notice' => false,
                 ),
                 'invalid' => array(
                     'title' => __("License", 'really-simple-ssl-pro'),
                     'msg' => __("Your Really Simple SSL Pro license key is not activated. Please activate your license to continue receiving updates and premium support.", "really-simple-ssl-pro").$activate,
                     'icon' => 'warning',
                     'plusone' => true,
-	                'admin_notice' => true,
+	                'admin_notice' => false,
                 ),
                 'site_inactive' => array(
                     'title' => __("License", 'really-simple-ssl-pro'),
                     'msg' => __("This domain is not activated for this Really Simple SSL Pro license. Please activate the license for this domain.", "really-simple-ssl-pro").$link,
                     'icon' => 'warning',
                     'plusone' => true,
-	                'admin_notice' => true,
+	                'admin_notice' => false,
                 ),
                 'no_activations_left' => array(
                     'title' => __("License", 'really-simple-ssl-pro'),
@@ -1264,7 +1283,7 @@ class rsssl_premium_options {
 	                'msg' => __("Your Really Simple SSL Pro license key hasn't been activated yet. You can activate your license key on the license tab.", "really-simple-ssl-pro").$activate,
                     'icon' => 'warning',
 	                'plusone' => true,
-	                'admin_notice' => true,
+	                'admin_notice' => false,
                 ),
             ),
         );
@@ -1407,15 +1426,46 @@ class rsssl_premium_options {
      */
 
     public function get_option_enable_php_headers() {
-        $rsssl_enable_php_headers = $this->get_networkwide_option('rsssl_enable_php_headers');
-        ?>
-        <label class="rsssl-switch">
-            <input name="rsssl_enable_php_headers" size="40" value="1"
-                   type="checkbox" <?php checked(1, $rsssl_enable_php_headers, true) ?> />
-            <span class="rsssl-slider rsssl-round"></span>
-        </label>
-        <?php
+
+        $rsssl_security_headers_method = $this->get_networkwide_option('rsssl_security_headers_method');
+
+	    $options = array(
+		    'htaccess' => '.htaccess',
+		    'php' => __('Set with PHP', 'really-simple-ssl-pro'),
+            'nginxconf' => 'nginx.conf',
+	    );
+
+	    ?>
+        <select name="rsssl_security_headers_method" id="rsssl-security-headers-method">
+            <?php foreach($options as $key => $name) {?>
+            <option value=<?php echo $key?> <?php if ($rsssl_security_headers_method == $key) echo "selected" ?>><?php echo $name ?>
+                <?php } ?>
+        </select>
+	    <?php
     }
+
+	/**
+	 * Update security headers toggle value
+	 * @since 5.2
+	 *
+	 */
+	public function update_security_headers_method_value() {
+
+		if ( !current_user_can('manage_options') ) return;
+		$allowed_values = array(
+			'htaccess',
+			'php',
+		);
+
+		if ( isset($_POST['rsssl_security_headers_method_value'] )
+		     && $_POST['action'] === 'rsssl_update_security_headers_method_value'
+		     && in_array($_POST['rsssl_security_headers_method_value'], $allowed_values) ) {
+			$this->update_networkwide_option('rsssl_security_headers_method', $_POST['rsssl_security_headers_method_value']);
+		}
+
+
+		wp_die();
+	}
 
 	/**
 	 * Insert option into settings form
@@ -1631,8 +1681,7 @@ class rsssl_premium_options {
 
 	public function php_headers_conditions() {
 		if (
-			!RSSSL_PRO()->rsssl_premium_options->get_networkwide_option("rsssl_nginx_message_shown")
-			&& RSSSL()->rsssl_server->get_server() === 'nginx'
+			RSSSL()->rsssl_server->get_server() === 'nginx'
 			&& RSSSL_PRO()->rsssl_premium_options->security_header_enabled()
             || function_exists('is_wpe') && is_wpe()
         )
@@ -1738,7 +1787,6 @@ class rsssl_premium_options {
 				    $rules .= $policy ."=(self)" .", ";
 				    break;
 		    }
-		    //error_log("policy: $policy , value: $value ");
 	    }
 	    // Remove last space and , from string
 	    $rules = substr_replace($rules ,"",-2);
@@ -1749,7 +1797,7 @@ class rsssl_premium_options {
         return $rule;
     }
 
-	/**
+	/**n
 	 * @param string $header
 	 * @param string $rules
 	 * @param string $type
@@ -1882,17 +1930,63 @@ class rsssl_premium_options {
 
 	    if ( !$force && !$this->is_settings_page() ) return;
 		if ( defined('rsssl_pp_version') ) return;
+		if ( function_exists("rocket_clean_domain") ) {
+		    return;
+        }
 
 		//we make sure the headers are generated, for php and nginx purposes.
 		$rules = $this->generate_security_header_rules();
 
-        if ( $this->get_networkwide_option('rsssl_enable_php_headers') ) return;
+        if ( $this->get_networkwide_option('rsssl_security_headers_method') === 'php' ) return;
         if ( empty( $rules) ) {
             $this->remove_htaccess_rules('Really_Simple_SSL_SECURITY_HEADERS');
         } else {
             $this->write_to_htaccess($rules, 'Really_Simple_SSL_SECURITY_HEADERS', $force);
         }
     }
+
+	/**
+     * Add rules to WP Rocket htaccess
+	 * @param string $htaccess_rules
+	 *
+	 * @return string
+	 */
+    public function add_rules_before_wp_rocket($htaccess_rules) {
+	    if ( wp_doing_ajax()
+             || !$this->is_settings_page()
+	         || !RSSSL()->really_simple_ssl->ssl_enabled
+	         || !current_user_can("activate_plugins")
+	         || RSSSL()->really_simple_ssl->do_not_edit_htaccess
+	         || $this->get_networkwide_option('rsssl_enable_php_headers')
+	    ) return $htaccess_rules;
+
+        $output = "# BEGIN Really_Simple_SSL_SECURITY_HEADERS\n";
+        $output .= "# Really Simple SSL / WP Rocket compatibility mode\n";
+        $output .= "<IfModule mod_headers.c>"."\n";
+        $output .= $this->generate_security_header_rules();
+        $output .= "</IfModule>"."\n";
+        $output .= "# END Really_Simple_SSL_SECURITY_HEADERS";
+        $htaccess_rules .= $output;
+
+	    return $htaccess_rules;
+    }
+
+	/**
+	 * Regenerate the wp rocket .htaccess rules
+	 */
+	public function maybe_flush_wprocket_htaccess(){
+		if ( wp_doing_ajax()
+		     || !$this->is_settings_page()
+		     || !RSSSL()->really_simple_ssl->ssl_enabled
+		     || !current_user_can("activate_plugins")
+		     || RSSSL()->really_simple_ssl->do_not_edit_htaccess
+		     || $this->get_networkwide_option('rsssl_enable_php_headers')
+		) return;
+
+		if ( function_exists('flush_rocket_htaccess') ) {
+			flush_rocket_htaccess();
+		}
+	}
 
     /**
      * @param bool $html_output
@@ -1992,7 +2086,7 @@ class rsssl_premium_options {
              || !file_exists( $htaccess_filename )
              || !is_writable( $htaccess_filename )
              || RSSSL()->really_simple_ssl->do_not_edit_htaccess
-             || $this->get_networkwide_option('rsssl_enable_php_headers')
+             || $this->get_networkwide_option('rsssl_security_headers_method') === 'php'
         ) return;
 
 		$htaccess = file_get_contents( $htaccess_filename );
@@ -2020,6 +2114,7 @@ class rsssl_premium_options {
 		}
 		$htaccess = str_replace("\n"."\n"."\n", "\n"."\n", $htaccess);
 		file_put_contents( $htaccess_filename , $htaccess);
+
     }
 
     /**
@@ -2095,14 +2190,15 @@ class rsssl_premium_options {
 
 	/**
      * Remove contents from the .htaccess file from a certain type
-	 * @param $name
+	 * @param string $name
+     * @param bool $force_on_ajax
 	 */
 
-	public function remove_htaccess_rules($name) {
+	public function remove_htaccess_rules($name, $force_on_ajax = false ) {
 
 		$htaccess_filename = RSSSL()->really_simple_ssl->htaccess_file();
-
-		if ( wp_doing_ajax()
+        
+		if ( wp_doing_ajax() && !$force_on_ajax
 		     || (!current_user_can("activate_plugins") && !defined('RSSSL_DOING_CSP'))
 		     || !file_exists( $htaccess_filename )
 		     || !is_writable( $htaccess_filename )
@@ -2231,54 +2327,90 @@ class rsssl_premium_options {
 	/**
 	 * Check if site uses one of the most common caching tools.
 	 *
-	 * @return bool
+	 * @return mixed
 	 */
 
-	public function site_uses_cache(){
+	public function site_uses_cache($str=false){
 
 	    // W3 Total Cache
 		if ( function_exists('w3tc_flush_all') ) {
-			return true;
+		    if ($str) {
+		        return 'W3 Total Cache';
+		    } else {
+			    return true;
+		    }
 		}
 
 		// WP Fastest Cache
 		if ( class_exists('WpFastestCache') ) {
-			return true;
+			if ($str) {
+				return 'Wp Fastest Cache';
+			} else {
+				return true;
+			}
 		}
 
 		// WP Rocket
 		if ( function_exists("rocket_clean_domain") ) {
-			return true;
+			if ($str) {
+				return 'WP Rocket';
+			} else {
+				return true;
+			}
 		}
 
 		// WP Optimize
 		if ( defined('WPO_PLUGIN_MAIN_PATH') ) {
-		    return true;
+			if ($str) {
+				return 'WP Optimize';
+			} else {
+				return true;
+			}
         }
 
 		// WP Super Cache
         if ( defined('WPCACHEHOME') ) {
-            return true;
+	        if ($str) {
+		        return 'WP Super Cache';
+	        } else {
+		        return true;
+	        }
         }
 
         // Hummingbird
         if ( defined('WPHB_VERSION') ) {
-            return true;
+	        if ($str) {
+		        return 'Hummingbird';
+	        } else {
+		        return true;
+	        }
         }
 
         // Litespeed cache
         if ( defined('LSCWP_V') ) {
-            return true;
+	        if ($str) {
+		        return 'Litespeed cache';
+	        } else {
+		        return true;
+	        }
         }
 
         // Autoptimize
         if ( defined('AUTOPTIMIZE_PLUGIN_VERSION') ) {
-            return true;
+	        if ($str) {
+		        return 'Autoptimize';
+	        } else {
+		        return true;
+	        }
         }
 
         // Cache enabler
         if ( defined('CE_VERSION') ) {
-            return true;
+	        if ($str) {
+		        return 'Cache enabler';
+	        } else {
+		        return true;
+	        }
         }
 
 		return false;
@@ -2356,9 +2488,9 @@ if (!function_exists('rsssl_security_headers_htaccess_conditions') ) {
 
 if (!function_exists('rsssl_php_headers_enabled') ) {
     function rsssl_php_headers_enabled() {
-        if ( RSSSL_PRO()->rsssl_premium_options->site_uses_cache() ) {
+        if ( RSSSL_PRO()->rsssl_premium_options->site_uses_cache() && RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_security_headers_method') === 'php' && RSSSL()->rsssl_server->get_server() === 'nginx' ) {
             return 'php-headers-caching';
-        } elseif( !RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_enable_php_headers') ) {
+        } elseif( RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_security_headers_method') === 'nginxconf') {
             return 'php-headers-option-disabled';
         }
     }

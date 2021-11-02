@@ -107,7 +107,7 @@
     margin: 0;
   }
 }
-#rsssl-scan-container {
+.rsssl-scan-container {
   .button {
     margin-left: 9px;
   }
@@ -265,8 +265,6 @@
 
   #rsssl-scan-pagination {
     z-index: 9999;
-    position: absolute;
-    bottom: 100px;
   }
 
   //width: 100%;
@@ -339,32 +337,29 @@
     text-align: center;
   }
 
+  .rsssl-grid-item-footer {
+    .rsssl-scan-options {
+      flex-grow: 1;
 
-.rsssl-grid-item-footer {
-  .rsssl-scan-options {
-    flex-grow: 1;
+      .rsssl-buttons-scan {
+        .rsssl-btn-group-scan {
+          display: flex;
+          align-items: center;
 
-    .rsssl-buttons-scan {
-      float: right;
-    }
+          span {
+            input {
+              margin-right: 5px;
+              margin-left: 10px;
+            }
+          }
 
-    .rsssl-btn-group-scan {
-      display: flex;
-      align-items: center;
-
-      span {
-        input {
-          margin-right: 5px;
-          margin-left: 10px;
+          button {
+            margin-left: 10px;
+          }
         }
-      }
-
-      button {
-        margin-left: 10px;
       }
     }
   }
-}
 }
 /*
     cool checkbox sliders
@@ -693,5 +688,32 @@ input:focus + .rsssl-slider {
 
       padding: 8px 17px 8px 0;
     }
+  }
+}
+
+.rsssl-locked{
+  position: absolute;
+  top:0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8);
+  .rsssl-locked-overlay{
+    z-index:99;
+    .rsssl-open {
+      float: left;
+      margin-right:12px;
+    }
+    .rsssl-progress-status {
+      float:left;
+      margin-right:20px;
+    }
+    position:absolute;
+    width: calc(100% - 65px);
+    bottom: 0;
+    background-color: #fff;
+    padding: 20px;
+    margin:12px;
+    box-shadow: 0 0 5px 5px rgba(223,222,222,0.4);
   }
 }

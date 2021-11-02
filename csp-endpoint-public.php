@@ -33,7 +33,7 @@ if ( !function_exists('rsssl_pro_csp_rest_route')) {
  */
 
 function rsssl_pro_validate_api_call ( $request ) {
-	$origin = $request->get_header('origin');
+	$origin = $request->get_header('host');
 
 	if ($request->get_param('rsssl_apitoken') != rsssl_get_networkwide_option('rsssl_csp_report_token') ) {
 		return false;
@@ -72,7 +72,7 @@ function rsssl_track_csp(WP_REST_Request $request)
 	$request_count++;
 	rsssl_update_networkwide_option('rsssl_csp_request_count', $request_count );
 
-    if ( $request_count > 20 ) {
+	if ( $request_count > apply_filters('rsssl_pause_after_request_count',20) ) {
         rsssl_update_networkwide_option('rsssl_content_security_policy', 'report-paused' );
         // Reporting paused, remove report only rules from htaccess to stop requests to endpoint.
         // Only when Really Simple SSL free is version 4.0.8 or higher due to compatibility
@@ -94,6 +94,7 @@ function rsssl_track_csp(WP_REST_Request $request)
 	//Decode to associative array
 	$json_data = json_decode($json_data, true);
 
+
 	$blockeduri = rsssl_sanitize_uri_value($json_data['csp-report']['blocked-uri']);
 	$violateddirective = rsssl_sanitize_csp_violated_directive($json_data['csp-report']['violated-directive']);
 	$documenturi = esc_url_raw($json_data['csp-report']['document-uri']);
@@ -104,7 +105,7 @@ function rsssl_track_csp(WP_REST_Request $request)
 	if (empty($violateddirective) || (empty($blockeduri) ) ) return;
 
 	//Check if the blockeduri and violatedirective already occur in DB. If so, we do not need to add them again.
-	$count = $wpdb->get_var("SELECT count(*) FROM $table_name where blockeduri = '$blockeduri' AND violateddirective='$violateddirective'");
+	$count = $wpdb->get_var($wpdb->prepare("SELECT count(*) FROM $table_name where blockeduri = %s AND violateddirective=%s", $blockeduri, $violateddirective));
 	if ($count == 0) {
 		//Insert into table
 		$wpdb->insert($table_name, array(
@@ -173,6 +174,13 @@ function rsssl_sanitize_csp_violated_directive( $str ){
 		return $str;
 	}
 
+	//not found? check if it's part of the string
+	foreach ($directives as $directive ) {
+		if ( strpos($str, $directive) !== false ) {
+			return $directive;
+		}
+	}
+
 	return '';
 }
 
@@ -238,15 +246,22 @@ function rsssl_sanitize_csp_blocked_uri($str){
  *
  */
 
+
 function rsssl_sanitize_uri_value($blockeduri)
 {
 	$uri = '';
 
 	//Check if uri starts with http(s)
 	if (substr($blockeduri, 0, 4) === 'http') {
+		$url = parse_url( $blockeduri );
+		if ( ( isset( $url['scheme'] ) ) && isset( $url['host'] ) ) {
+			$uri = esc_url_raw( $url['scheme'] . "://" . $url['host'] );
+		}
+		//allow for wss:// and ws:// websocket scheme
+	} else if (substr($blockeduri, 0, 2) === 'ws') {
 		$url = parse_url($blockeduri);
 		if ( (isset($url['scheme'])) && isset($url['host']) ) {
-			$uri = esc_url_raw($url['scheme'] . "://" . $url['host']);
+			$uri = $url['scheme'] . "://" . $url['host'];
 		}
 	} else {
 		$uri = rsssl_sanitize_csp_blocked_uri($blockeduri);

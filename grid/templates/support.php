@@ -10,3 +10,4 @@ $placeholder = __("When you send this form we will attach the following informat
 	<?php wp_nonce_field('rsssl_support', 'rsssl_nonce') ?>
 	<textarea name="rsssl_support_request" required placeholder="<?php echo $placeholder?>"></textarea>
 </div>
+<?php do_action( "rsssl_premium_footer" );

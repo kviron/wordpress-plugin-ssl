@@ -6,3 +6,4 @@ settings_fields('rlrsssl_security_headers');
 do_settings_sections('rlrsssl_security_headers_page');
 
 wp_nonce_field( 'submit_security_headers', 'security_headers_update' );
+do_action( "rsssl_premium_footer" );

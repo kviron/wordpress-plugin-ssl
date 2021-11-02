@@ -1345,33 +1345,33 @@ button.close {
 .modal #rsssl-alert .close {
   margin: 0;
 }
-#rsssl-scan-container .button {
+.rsssl-scan-container .button {
   margin-left: 9px;
 }
-#rsssl-scan-container #rsssl-scan-list {
+.rsssl-scan-container #rsssl-scan-list {
   padding-top: 15px;
 }
-#rsssl-scan-container .rsssl-buttons .btn-warning {
+.rsssl-scan-container .rsssl-buttons .btn-warning {
   font-weight: 700;
 }
-#rsssl-scan-container .alert {
+.rsssl-scan-container .alert {
   max-width: 1000px;
   max-height: 75px;
   margin-bottom: 15px;
   margin-top: 15px;
 }
-#rsssl-scan-container .rsssl-buttons {
+.rsssl-scan-container .rsssl-buttons {
   float: right;
   padding-top: 18px;
 }
-#rsssl-scan-container .rsssl-buttons a {
+.rsssl-scan-container .rsssl-buttons a {
   color: #fff;
 }
-#rsssl-scan-container .panel-body {
+.rsssl-scan-container .panel-body {
   background-color: #E4E4E4;
   padding: 5px 5px 5px 15px;
 }
-#rsssl-scan-container .rsssl-files {
+.rsssl-scan-container .rsssl-files {
   max-width: 1920px;
   min-height: 60px;
   background-color: #F8F8F8;
@@ -1380,48 +1380,48 @@ button.close {
   float: left;
   width: 100%;
 }
-#rsssl-scan-container .rsssl-files img {
+.rsssl-scan-container .rsssl-files img {
   position: absolute;
   block-size: 1em;
   padding-right: 0;
 }
-#rsssl-scan-container img {
+.rsssl-scan-container img {
   float: left;
   padding-right: 7px;
   margin-top: 3px;
 }
-#rsssl-scan-container img.rsssl-icons {
+.rsssl-scan-container img.rsssl-icons {
   block-size: 1em;
 }
-#rsssl-scan-container .panel-title {
+.rsssl-scan-container .panel-title {
   background-color: #DBDBDB;
   font-size: 14px;
   color: inherit;
 }
-#rsssl-scan-container .panel-body {
+.rsssl-scan-container .panel-body {
   display: none;
 }
-#rsssl-scan-container .panel-heading {
+.rsssl-scan-container .panel-heading {
   background-color: #DBDBDB;
   padding: 5px 5px;
   border-bottom: 1px solid transparent;
   display: inline-block;
   vertical-align: middle;
 }
-#rsssl-scan-container .blockedurls {
+.rsssl-scan-container .blockedurls {
   background-color: #DBDBDB;
 }
-#rsssl-scan-container #edit-files-blocked {
+.rsssl-scan-container #edit-files-blocked {
   display: none;
 }
-#rsssl-scan-container #resultsblock {
+.rsssl-scan-container #resultsblock {
   padding-bottom: 10px;
 }
-#rsssl-scan-container .rsssl-description {
+.rsssl-scan-container .rsssl-description {
   float: left;
   margin-left: 18px;
 }
-#rsssl-scan-container .rsssl-scan-more-options {
+.rsssl-scan-container .rsssl-scan-more-options {
   display: block;
   text-indent: 0.7em;
   max-width: 350px;
@@ -1430,121 +1430,116 @@ button.close {
   background-color: #E4E4E4;
   padding-left: 5px;
 }
-#rsssl-scan-container .rsssl-scan-more-options h3 {
+.rsssl-scan-container .rsssl-scan-more-options h3 {
   padding: 10px 0 0 2px;
 }
-#rsssl-scan-container .panel {
+.rsssl-scan-container .panel {
   margin-bottom: 10px;
   background-color: #E4E4E4;
 }
-#rsssl-scan-container .panel-results {
+.rsssl-scan-container .panel-results {
   background-color: #E4E4E4;
   padding-top: 10px;
 }
-#rsssl-scan-container .rsssl-scan-more-options {
+.rsssl-scan-container .rsssl-scan-more-options {
   display: none;
   margin-bottom: 15px;
 }
-#rsssl-scan-container .form-table th {
+.rsssl-scan-container .form-table th {
   width: 260px !important;
 }
-#rsssl-scan-container .rsssl-btn-group {
+.rsssl-scan-container .rsssl-btn-group {
   padding-top: 5px;
 }
-#rsssl-scan-container .rsssl-tips {
+.rsssl-scan-container .rsssl-tips {
   list-style-type: disc;
   margin-left: 18px;
 }
-#rsssl-scan-container .rsssl.bar.progress-bar {
+.rsssl-scan-container .rsssl.bar.progress-bar {
   text-align: left;
 }
-#rsssl-scan-container .dataTables_filter {
+.rsssl-scan-container .dataTables_filter {
   display: none;
 }
-#rsssl-scan-container .rsssl progress {
+.rsssl-scan-container .rsssl progress {
   margin-top: 20px;
 }
-#rsssl-scan-container #rsssl-scan-results_info {
+.rsssl-scan-container #rsssl-scan-results_info {
   position: absolute;
   bottom: 65px;
   width: 200px;
   left: 370px;
 }
-#rsssl-scan-container #rsssl-scan-pagination {
+.rsssl-scan-container #rsssl-scan-pagination {
   z-index: 9999;
-  position: absolute;
-  bottom: 100px;
 }
-#rsssl-scan-container th {
+.rsssl-scan-container th {
   padding-left: 5px;
 }
-#rsssl-scan-container td {
+.rsssl-scan-container td {
   word-break: break-all;
   padding: 3px 0;
 }
-#rsssl-scan-container td:first-child {
+.rsssl-scan-container td:first-child {
   font-size: 12px;
 }
-#rsssl-scan-container td:first-child,
-#rsssl-scan-container th:first-child {
+.rsssl-scan-container td:first-child,
+.rsssl-scan-container th:first-child {
   min-width: 100px;
 }
-#rsssl-scan-container td:first-child.dataTables_empty,
-#rsssl-scan-container th:first-child.dataTables_empty {
+.rsssl-scan-container td:first-child.dataTables_empty,
+.rsssl-scan-container th:first-child.dataTables_empty {
   padding: 10px;
   width: 100%;
 }
-#rsssl-scan-container td:first-child .rsssl-progress-status,
-#rsssl-scan-container th:first-child .rsssl-progress-status {
+.rsssl-scan-container td:first-child .rsssl-progress-status,
+.rsssl-scan-container th:first-child .rsssl-progress-status {
   padding: 0;
 }
-#rsssl-scan-container td:nth-child(2),
-#rsssl-scan-container th:nth-child(2) {
+.rsssl-scan-container td:nth-child(2),
+.rsssl-scan-container th:nth-child(2) {
   min-width: 200px;
 }
-#rsssl-scan-container td:nth-child(3),
-#rsssl-scan-container th:nth-child(3) {
+.rsssl-scan-container td:nth-child(3),
+.rsssl-scan-container th:nth-child(3) {
   width: 100%;
 }
-#rsssl-scan-container td:nth-child(4),
-#rsssl-scan-container th:nth-child(4) {
+.rsssl-scan-container td:nth-child(4),
+.rsssl-scan-container th:nth-child(4) {
   min-width: 120px;
 }
-#rsssl-scan-container .rsssl-blocked-url {
+.rsssl-scan-container .rsssl-blocked-url {
   padding-right: 10px;
 }
-#rsssl-scan-container .rsssl-scan-status {
+.rsssl-scan-container .rsssl-scan-status {
   width: 100px;
 }
-#rsssl-scan-container .rsssl-progress-status {
+.rsssl-scan-container .rsssl-progress-status {
   width: 60px;
 }
-#rsssl-scan-container .button {
+.rsssl-scan-container .button {
   margin-left: 10px;
   float: right;
 }
-#rsssl-scan-container tr td .button {
+.rsssl-scan-container tr td .button {
   min-width: 40px;
   padding: 4px 6px;
   line-height: 8px;
   min-height: 20px;
   text-align: center;
 }
-#rsssl-scan-container .rsssl-grid-item-footer .rsssl-scan-options {
+.rsssl-scan-container .rsssl-grid-item-footer .rsssl-scan-options {
   flex-grow: 1;
 }
-#rsssl-scan-container .rsssl-grid-item-footer .rsssl-scan-options .rsssl-buttons-scan {
-  float: right;
-}
-#rsssl-scan-container .rsssl-grid-item-footer .rsssl-scan-options .rsssl-btn-group-scan {
+.rsssl-scan-container .rsssl-grid-item-footer .rsssl-scan-options .rsssl-buttons-scan .rsssl-btn-group-scan {
   display: flex;
   align-items: center;
 }
-#rsssl-scan-container .rsssl-grid-item-footer .rsssl-scan-options .rsssl-btn-group-scan span input {
+.rsssl-scan-container .rsssl-grid-item-footer .rsssl-scan-options .rsssl-buttons-scan .rsssl-btn-group-scan span input {
   margin-right: 5px;
   margin-left: 10px;
 }
-#rsssl-scan-container .rsssl-grid-item-footer .rsssl-scan-options .rsssl-btn-group-scan button {
+.rsssl-scan-container .rsssl-grid-item-footer .rsssl-scan-options .rsssl-buttons-scan .rsssl-btn-group-scan button {
   margin-left: 10px;
 }
 /*
@@ -1806,5 +1801,31 @@ input:focus + .rsssl-slider {
 }
 .rsssl_sites_overview #rsssl_sites_overview tbody tr td:nth-child(3) {
   text-align: right;
+}
+.rsssl-locked {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8);
+}
+.rsssl-locked .rsssl-locked-overlay {
+  z-index: 99;
+  position: absolute;
+  width: calc(100% - 65px);
+  bottom: 0;
+  background-color: #fff;
+  padding: 20px;
+  margin: 12px;
+  box-shadow: 0 0 5px 5px rgba(223, 222, 222, 0.4);
+}
+.rsssl-locked .rsssl-locked-overlay .rsssl-open {
+  float: left;
+  margin-right: 12px;
+}
+.rsssl-locked .rsssl-locked-overlay .rsssl-progress-status {
+  float: left;
+  margin-right: 20px;
 }
 /*# sourceMappingURL=main.css.map */

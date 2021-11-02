@@ -1,5 +1,4 @@
 <?php defined('ABSPATH') or die("you do not have access to this page!"); ?>
-<div id="rsssl-scan-pagination"></div>
 <div class="rsssl-scan-options">
     <div class="rsssl-buttons-scan">
         <div class="rsssl-btn-group-scan" role="group" aria-label="...">
@@ -26,4 +25,5 @@
         </div>
     </div>
 </div>
+<div id="rsssl-scan-pagination"></div>
 

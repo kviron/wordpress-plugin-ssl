@@ -395,9 +395,14 @@
 
             foreach ( $rows as $row ) {
                 $uri = substr(str_replace(site_url(), "", $row->documenturi), 0, 40);
+
+                //should not contain protocol anymore, so replace anything that's left
+                //document-uri values that do not start with http are auto prepended with http:// by the esc_url_raw sanitization. This is the fix.
+	            $uri = str_replace(array('http://', 'https://'), '', $uri);
+
                 if ($uri === '/' || $uri === '') $uri = 'Home';
 
-                if (  empty($row->inpolicy) || $row->inpolicy === 'false' ) {
+                if ( empty($row->inpolicy) || $row->inpolicy === 'false' ) {
                     $id = 'button-secondary start-add-to-csp';
                     $button_text = __("Allow", "really-simple-ssl-pro");
                     $modal = '';
@@ -502,7 +507,7 @@
                         </div>
                         <div class="modal-body">
                             <div id='revoke-csp-modal-description'>
-                                <?php _e("If you revoke a rule from the content security policy,  the rule will be deleted from the resource list that is considered safe to load.  This might affect your website,  or specific functions.  You can always allow the resource if needed.", "really-simple-ssl-pro"); ?>
+                                <?php _e("If you revoke a rule from the content security policy, the rule will be deleted from the resource list that is considered safe to load. This might affect your website, or specific functions. You can always allow the resource if needed.", "really-simple-ssl-pro"); ?>
                             </div>
                             <div id='revoke-csp-modal-type'></div>
                         </div>
