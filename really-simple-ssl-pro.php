@@ -3,14 +3,14 @@
  * Plugin Name: Really Simple SSL pro
  * Plugin URI: https://really-simple-ssl.com/pro
  * Description: Optimize your SSL security with the mixed content scan, secure cookies and advanced security headers.
- * Version: 5.2.2
+ * Version: 5.3.1
  * Text Domain: really-simple-ssl-pro
  * Domain Path: /languages
  * Author: Really Simple Plugins
  * Author URI: https://www.really-simple-plugins.com
  */
 
-/*  Copyright 2020  Really Simple Plugins B.V.  (email : support@really-simple-plugins.com)
+/*  Copyright 2020  Really Simple Plugins B.V.  (email : support@really-simple-ssl.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as
@@ -54,7 +54,7 @@ if (!function_exists('rsssl_pro_activation_check')) {
 	}
 	register_activation_hook( __FILE__, 'rsssl_pro_activation_check' );
 }
-
+if (!class_exists('REALLY_SIMPLE_SSL_PRO')) {
 class REALLY_SIMPLE_SSL_PRO {
 
     private static $instance;
@@ -108,26 +108,21 @@ class REALLY_SIMPLE_SSL_PRO {
     public function is_compatible(){
         require_once(ABSPATH.'wp-admin/includes/plugin.php');
         $core_plugin = 'really-simple-ssl/rlrsssl-really-simple-ssl.php';
+	    $core_plugin_data = $per_page_plugin_data = false;
 
         if ( is_plugin_active($core_plugin)) $core_plugin_data = get_plugin_data( WP_PLUGIN_DIR .'/'. $core_plugin, false, false );
 
-        if (function_exists('is_wpe') && is_wpe()) {
-            if ( is_plugin_active($core_plugin) && version_compare($core_plugin_data['Version'] ,'4.0.9','<=') ) {
-                return false;
-            }
-        }
-
-        if ( is_plugin_active($core_plugin) && version_compare($core_plugin_data['Version'] ,'4.0.0','>=') ) {
+        if ( is_plugin_active($core_plugin) && $core_plugin_data && version_compare($core_plugin_data['Version'] ,'5.2.0','>=') ) {
             return true;
         }
 
+        //drop per page plugin integration
         $per_page_plugin = 'really-simple-ssl-on-specific-pages/really-simple-ssl-on-specific-pages.php';
-        if (is_plugin_active($per_page_plugin)) $per_page_plugin_data = get_plugin_data( WP_PLUGIN_DIR .'/'. $per_page_plugin, false, false );
-        if (is_plugin_active($per_page_plugin) && version_compare($per_page_plugin_data['Version'] , '4.0.0','>' )) {
-            return true;
+        if (is_plugin_active($per_page_plugin))  {
+            return false;
         }
 
-            //nothing yet? then...sorry, but no, not compatible.
+        //nothing yet? then...sorry, but no, not compatible.
         return false;
     }
 
@@ -138,9 +133,8 @@ class REALLY_SIMPLE_SSL_PRO {
 	    define('rsssl_pro_template_path', trailingslashit(plugin_dir_path(__FILE__)).'grid/templates/');
 
 	    $debug = ( defined( 'RSSSL_DEBUG' ) && RSSSL_DEBUG ) ? time() : '';
-	    define('rsssl_pro_version', '5.2.2' . $debug );
+	    define('rsssl_pro_version', '5.3.1' . $debug );
         define('rsssl_pro_plugin_file', __FILE__);
-
         if (!defined('REALLY_SIMPLE_SSL_URL')) define( 'REALLY_SIMPLE_SSL_URL', 'https://really-simple-ssl.com');
         define( 'RSSSL_ITEM_ID', 860 );
         define( 'RSSSL_ITEM_NAME', 'Really Simple SSL Pro' );
@@ -156,6 +150,7 @@ class REALLY_SIMPLE_SSL_PRO {
             require_once(rsssl_pro_path . '/class-cert-expiration.php');
 	        require_once( rsssl_pro_path . '/class-importer.php' );
 	        require_once(rsssl_pro_path . '/class-support.php');
+	        require_once(rsssl_pro_path . '/modal/class-modal.php');
         }
 	    require_once(rsssl_pro_path . '/class-licensing.php');
 
@@ -206,13 +201,13 @@ class REALLY_SIMPLE_SSL_PRO {
                     border-bottom: 1px solid #DEDEDE;
                     padding-bottom: 15px;
                 }
-                #message {
+                #rsssl-message {
                     padding: 0 !important;
                 }
-                #message h3 {
+                #rsssl-message h3 {
                     text-indent: 10px;
                 }
-                #message p {
+                #rsssl-message p {
                     text-indent: 10px;
                 }
             </style>
@@ -250,10 +245,13 @@ class REALLY_SIMPLE_SSL_PRO {
         }
     }
 }
+}
 
 if (!class_exists('REALLY_SIMPLE_SSL_PRO_MULTISITE')) {
-	function RSSSL_PRO() {
-        return REALLY_SIMPLE_SSL_PRO::instance();
+	if (!function_exists('RSSSL_PRO') ){
+        function RSSSL_PRO() {
+	        return REALLY_SIMPLE_SSL_PRO::instance();
+		}
     }
 	add_action( 'plugins_loaded', 'RSSSL_PRO', 10 );
 }

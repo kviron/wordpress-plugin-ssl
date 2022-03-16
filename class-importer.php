@@ -87,7 +87,7 @@ if (!class_exists('rsssl_importer')) {
 
         public function rollback_filechanges($filepath)
         {
-            $error = $this->alert(__("Someting went wrong. If this doesn't work, you can put the original files back by changing files named 'rsssl-bkp-filename' to filename.", "really-simple-ssl-pro"));
+            $error = $this->alert(__("Something went wrong. If this doesn't work, you can put the original files back by changing files named 'rsssl-bkp-filename' to filename.", "really-simple-ssl-pro"));
             if (current_user_can('manage_options') && isset($_POST["token"]) && wp_verify_nonce($_POST["token"], "rsssl_fix_post")) {
                 $changed_files = get_option("rsssl_changed_files");
                 if ($changed_files) {

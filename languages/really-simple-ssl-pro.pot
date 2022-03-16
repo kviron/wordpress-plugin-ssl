@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Really Simple SSL pro multisite\n"
-"POT-Creation-Date: 2021-10-28 07:17+0200\n"
-"PO-Revision-Date: 2021-10-28 07:17+0200\n"
+"POT-Creation-Date: 2022-02-17 14:44+0100\n"
+"PO-Revision-Date: 2022-02-17 14:44+0100\n"
 "Last-Translator: Rogier Lankhorst <rogierlankhorst@gmail.com>\n"
 "Language-Team: Rogier Lankhorst <rogierlankhorst@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -74,7 +74,7 @@ msgstr ""
 msgid "Please renew your certificate before the expiry date."
 msgstr ""
 
-#: class-importer.php:12 class-licensing.php:18 class-multisite.php:28
+#: class-importer.php:12 class-licensing.php:18 class-multisite.php:26
 #: class-premium-options.php:13 class-scan.php:48 class-support.php:14
 #: csp-violation-endpoint.php:13
 #, php-format
@@ -135,9 +135,9 @@ msgstr ""
 
 #: class-licensing.php:250 class-licensing.php:511 class-licensing.php:517
 #: class-licensing.php:536 class-licensing.php:599
-#: class-premium-options.php:1254 class-premium-options.php:1261
-#: class-premium-options.php:1268 class-premium-options.php:1275
-#: class-premium-options.php:1282
+#: class-premium-options.php:1354 class-premium-options.php:1361
+#: class-premium-options.php:1368 class-premium-options.php:1375
+#: class-premium-options.php:1382
 msgid "License"
 msgstr ""
 
@@ -295,54 +295,54 @@ msgstr ""
 msgid "Really Simple SSL Pro Multisite license key"
 msgstr ""
 
-#: class-multisite.php:108
+#: class-multisite.php:102
 msgid "Sites"
 msgstr ""
 
-#: class-multisite.php:200 class-premium-options.php:189
+#: class-multisite.php:194 class-premium-options.php:192
 msgid "Search"
 msgstr ""
 
-#: class-multisite.php:201
+#: class-multisite.php:195
 #, php-format
 msgid "Show %s results"
 msgstr ""
 
-#: class-multisite.php:202
+#: class-multisite.php:196
 msgid "No results found"
 msgstr ""
 
-#: class-multisite.php:203
+#: class-multisite.php:197
 #, php-format
 msgid "%s to %s of %s results"
 msgstr ""
 
-#: class-multisite.php:204
+#: class-multisite.php:198
 msgid "No results to show"
 msgstr ""
 
-#: class-multisite.php:205
+#: class-multisite.php:199
 #, php-format
 msgid "(filtered from %s results)"
 msgstr ""
 
-#: class-multisite.php:207
+#: class-multisite.php:201
 msgid "No results found in the table"
 msgstr ""
 
-#: class-multisite.php:210 class-premium-options.php:194
+#: class-multisite.php:204 class-premium-options.php:197
 msgid "First"
 msgstr ""
 
-#: class-multisite.php:211 class-premium-options.php:192
+#: class-multisite.php:205 class-premium-options.php:195
 msgid "Previous"
 msgstr ""
 
-#: class-multisite.php:212 class-premium-options.php:193
+#: class-multisite.php:206 class-premium-options.php:196
 msgid "Next"
 msgstr ""
 
-#: class-multisite.php:213 class-premium-options.php:195
+#: class-multisite.php:207 class-premium-options.php:198
 msgid "Last"
 msgstr ""
 
@@ -385,7 +385,7 @@ msgstr ""
 msgid "Enable this if you want to enable certificate expiration notices."
 msgstr ""
 
-#: class-multisite.php:360 class-premium-options.php:908
+#: class-multisite.php:360 class-premium-options.php:912
 msgid "Receive an email when your certificate is about to expire"
 msgstr ""
 
@@ -393,7 +393,7 @@ msgstr ""
 msgid "Enable this if you want the mixed content fixer for admin."
 msgstr ""
 
-#: class-multisite.php:362 class-premium-options.php:916
+#: class-multisite.php:362 class-premium-options.php:920
 msgid "Mixed content fixer on the WordPress back-end"
 msgstr ""
 
@@ -417,462 +417,505 @@ msgstr ""
 msgid "Stop editing the .htaccess file"
 msgstr ""
 
-#: class-premium-options.php:115
+#: class-premium-options.php:117
 msgid "SSL configuration finished!"
 msgstr ""
 
-#: class-premium-options.php:165
+#: class-premium-options.php:168
 msgid ""
 "You have scanned your site before, but the scan results are cleared from the "
 "cache. Run a new scan to see the results."
 msgstr ""
 
-#: class-premium-options.php:167
+#: class-premium-options.php:170
 msgid "No mixed content has been found!"
 msgstr ""
 
-#: class-premium-options.php:169
+#: class-premium-options.php:172
 msgid "No scan done yet. Start a quick or full scan to identify any issues."
 msgstr ""
 
-#: class-premium-options.php:191
+#: class-premium-options.php:194
 msgid "No items reported yet. Come back at a later time."
 msgstr ""
 
-#: class-premium-options.php:391
+#: class-premium-options.php:394
 msgid "Premium support"
 msgstr ""
 
-#: class-premium-options.php:400
+#: class-premium-options.php:403
 msgid "Premium settings"
 msgstr ""
 
-#: class-premium-options.php:433
+#: class-premium-options.php:436
 msgid "Mixed content scan"
 msgstr ""
 
-#: class-premium-options.php:457
+#: class-premium-options.php:460
 msgid "Content Security Policy configuration"
 msgstr ""
 
-#: class-premium-options.php:906
+#: class-premium-options.php:910
 msgid ""
 "If your certificate expires, your site goes offline. Uptime robots don't "
 "alert you when this happens."
 msgstr ""
 
-#: class-premium-options.php:907
+#: class-premium-options.php:911
 #, php-format
 msgid ""
 "This option sends an email to the administrator email address (%s) when your "
 "certificate is about to expire within 2 weeks."
 msgstr ""
 
-#: class-premium-options.php:911
+#: class-premium-options.php:915
 msgid ""
 "Use this option if you do not have the secure lock in the WordPress admin."
 msgstr ""
 
-#: class-premium-options.php:913
+#: class-premium-options.php:917
 msgid "This option is enabled on the network menu"
 msgstr ""
 
-#: class-premium-options.php:923
+#: class-premium-options.php:927
 msgid ""
 "This is an additional header to force all incoming http:// requests to "
 "https://."
 msgstr ""
 
-#: class-premium-options.php:924
+#: class-premium-options.php:928
 msgid "Upgrade insecure request"
 msgstr ""
 
-#: class-premium-options.php:926
+#: class-premium-options.php:930
 msgid ""
 "This header protects your site from cross-site scripting attacks. If a cross-"
 "site scripting attack is detected, the browser will automatically sanitize "
 "(remove) unsafe parts (scripts) when this header is enabled."
 msgstr ""
 
-#: class-premium-options.php:929
+#: class-premium-options.php:933
 msgid ""
 "This header prevents MIME-sniffing, which can be used to upload malicious "
 "files disguised as another content type."
 msgstr ""
 
-#: class-premium-options.php:932
+#: class-premium-options.php:936
 msgid ""
 "This header only sets a referrer when navigating to the same protocol (HTTPS-"
 ">HTTPS) and not when downgrading (HTTPS->HTTP)."
 msgstr ""
 
-#: class-premium-options.php:935
+#: class-premium-options.php:939
 msgid ""
 "This header enforces certificate transparency. This is done by expecting "
 "valid Signed Certificate Timestamps (SCTs)."
 msgstr ""
 
-#: class-premium-options.php:938
+#: class-premium-options.php:942
 msgid ""
 "This header prevents your site from being loaded in an iFrame on other "
 "domains. This is used to prevent clickjacking attacks."
 msgstr ""
 
-#: class-premium-options.php:942
+#: class-premium-options.php:946
 msgid ""
 "This header allows you to restrict browser features on your own and embedded "
 "pages."
 msgstr ""
 
-#: class-premium-options.php:943
+#: class-premium-options.php:947
 msgid ""
 "It is recommended to enable this feature as soon as your site is running "
 "smoothly on SSL, as it greatly improves security."
 msgstr ""
 
-#: class-premium-options.php:948
-msgid ""
-"HSTS, HTTP Strict Transport Security improves your security by forcing all "
-"your visitors to go to the SSL version of your website for at least a year."
-msgstr ""
-
-#: class-premium-options.php:948
-msgid ""
-"It is recommended to enable this feature as soon as your site is running "
-"smoothly on SSL, as it improves your security."
-msgstr ""
-
-#: class-premium-options.php:952
-msgid ""
-"The preload list offers even more security, as browsers will be instructed "
-"to load the site over HTTPS, even before the first visit."
-msgstr ""
-
-#: class-premium-options.php:953
-msgid ""
-"Please ensure that your site is running over SSL smoothly, and note that all "
-"subdomains, including www and non-www domain need to be HTTPS!"
-msgstr ""
-
-#: class-premium-options.php:954
-msgid "Configure your site for the HSTS preload list"
-msgstr ""
-
-#: class-premium-options.php:957
+#: class-premium-options.php:951 class-premium-options.php:964
 msgid ""
 "The Content Security Policy allows you to specify which resources to allow "
 "on your site."
 msgstr ""
 
-#: class-premium-options.php:958
+#: class-premium-options.php:952 class-premium-options.php:965
 msgid "Content Security Policy"
 msgstr ""
 
+#: class-premium-options.php:955
+msgid ""
+"HSTS, HTTP Strict Transport Security improves your security by forcing all "
+"your visitors to go to the SSL version of your website for at least a year."
+msgstr ""
+
+#: class-premium-options.php:955
+msgid ""
+"It is recommended to enable this feature as soon as your site is running "
+"smoothly on SSL, as it improves your security."
+msgstr ""
+
+#: class-premium-options.php:959
+msgid ""
+"The preload list offers even more security, as browsers will be instructed "
+"to load the site over HTTPS, even before the first visit."
+msgstr ""
+
+#: class-premium-options.php:960
+msgid ""
+"Please ensure that your site is running over SSL smoothly, and note that all "
+"subdomains, including www and non-www domain need to be HTTPS!"
+msgstr ""
+
 #: class-premium-options.php:961
+msgid "Configure your site for the HSTS preload list"
+msgstr ""
+
+#: class-premium-options.php:968
+msgid ""
+"Cross-Origin Policies can prevent loading or passing resources outside of "
+"trusted domains. Enabling these policies can protect your website, and your "
+"users from malicious attacks. For more information, see our Tips & Tricks on "
+"your dashboard."
+msgstr ""
+
+#: class-premium-options.php:969
+msgid "Cross-Origin Policies"
+msgstr ""
+
+#: class-premium-options.php:972
 msgid ""
 "Set the security headers with PHP. Should be enabled when using NGINX as the "
 "webserver, or when the htaccess security headers are not supported by your "
 "hosting company."
 msgstr ""
 
-#: class-premium-options.php:962
+#: class-premium-options.php:973
 msgid "How to set the security headers"
 msgstr ""
 
-#: class-premium-options.php:972
+#: class-premium-options.php:983
 #, php-format
 msgid "These settings are only available under the %snetwork settings%s."
 msgstr ""
 
-#: class-premium-options.php:976
+#: class-premium-options.php:987
 #, php-format
 msgid ""
 "These settings are only available on the network settings, available with "
 "the %sAgency license%s."
 msgstr ""
 
-#: class-premium-options.php:1027
+#: class-premium-options.php:1100
+msgid ""
+"Not all enabled security headers have been detected. Please check the "
+"configuration for the following headers:"
+msgstr ""
+
+#: class-premium-options.php:1107
+msgid ""
+"Not all enabled security headers have been detected. Please enable the "
+"option 'configure with PHP' in the setting 'How to set the security headers'."
+msgstr ""
+
+#: class-premium-options.php:1122
 msgid "Elementor mixed content successfully converted."
 msgstr ""
 
-#: class-premium-options.php:1040
+#: class-premium-options.php:1135
 msgid "No redirect to http detected."
 msgstr ""
 
-#: class-premium-options.php:1044
+#: class-premium-options.php:1139
 msgid "Potential redirect loop."
 msgstr ""
 
-#: class-premium-options.php:1045
+#: class-premium-options.php:1140
 msgid "A redirect to http was detected. This might result in redirect loops."
 msgstr ""
 
-#: class-premium-options.php:1045
+#: class-premium-options.php:1140
 #, php-format
 msgid "%sRead more%s."
 msgstr ""
 
-#: class-premium-options.php:1046
+#: class-premium-options.php:1141
 msgid "Re-check the redirect"
 msgstr ""
 
-#: class-premium-options.php:1059
-#, php-format
-msgid "Recommended security headers not enabled (%sRead more%s)."
+#: class-premium-options.php:1154
+msgid "Pretty permalinks not enabled."
 msgstr ""
 
-#: class-premium-options.php:1064
-msgid "Recommended security headers enabled."
+#: class-premium-options.php:1155
+msgid ""
+"Pretty permalinks are not enabled on your site. This can cause issues with "
+"the REST API, used by Really Simple SSL Pro."
 msgstr ""
 
-#: class-premium-options.php:1076
-msgid "HTTP Strict Transport Security was set."
+#: class-premium-options.php:1171
+msgid "We have added four new Security Headers!"
 msgstr ""
 
-#: class-premium-options.php:1081
-msgid "HTTP Strict Transport Security is not enabled. "
-msgstr ""
-
-#: class-premium-options.php:1095
+#: class-premium-options.php:1186
 msgid ""
 ".htaccess file not writable. Set the .htaccess file permissions to writeable "
 "or add the following lines manually:"
 msgstr ""
 
-#: class-premium-options.php:1110
+#: class-premium-options.php:1201
 msgid ""
 "Security headers have been set via PHP but your site uses caching. Caching "
 "prevents the headers from working correctly. We recommend to add the "
 "following security headers to your NGINX configuration file:"
 msgstr ""
 
-#: class-premium-options.php:1118
+#: class-premium-options.php:1209
 msgid ""
 "You have enabled the nginx.conf security header option. Check if the "
 "following security headers have been added to the NGINX configuration file:"
 msgstr ""
 
-#: class-premium-options.php:1133
+#: class-premium-options.php:1224
 #, php-format
 msgid ""
 "Your site has been configured for the HSTS preload list. If you have "
 "submitted your site, it will be preloaded. Click %shere%s to submit."
 msgstr ""
 
-#: class-premium-options.php:1138
+#: class-premium-options.php:1229
 msgid "Your site is not yet configured for the HSTS preload list."
 msgstr ""
 
-#: class-premium-options.php:1151
+#: class-premium-options.php:1242
 msgid "TLS version is up-to-date"
 msgstr ""
 
-#: class-premium-options.php:1156
+#: class-premium-options.php:1247
 msgid ""
 "Your site uses an outdated version of TLS. Upgrade to TLS 1.2 or TLS 1.3 to "
 "keep your site secure."
 msgstr ""
 
-#: class-premium-options.php:1169
+#: class-premium-options.php:1260
 msgid ""
 "Your site redirects 404 pages to the http:// version of your homepage. This "
 "can cause mixed content issues with images."
 msgstr ""
 
-#: class-premium-options.php:1183
+#: class-premium-options.php:1274
 msgid "You have new rules that can be added to your Content Security Policy."
 msgstr ""
 
-#: class-premium-options.php:1189
+#: class-premium-options.php:1280
 msgid "No Content Security Policy violations found."
 msgstr ""
 
-#: class-premium-options.php:1193
+#: class-premium-options.php:1284
 msgid ""
 "Content Security Policy reporting is paused to limit server resources. "
 "Please start configuring your Content Security Policy and enable reporting "
 "again."
 msgstr ""
 
-#: class-premium-options.php:1199
+#: class-premium-options.php:1292
 msgid "Start scan"
 msgstr ""
 
-#: class-premium-options.php:1205 class-premium-options.php:1218
+#: class-premium-options.php:1300 class-premium-options.php:2415
+#, php-format
+msgid "%sActivate%s your license."
+msgstr ""
+
+#: class-premium-options.php:1307 class-premium-options.php:1324
 msgid "Great! Your scan last completed without errors."
 msgstr ""
 
-#: class-premium-options.php:1209
+#: class-premium-options.php:1311
 msgid ""
 "The last scan was completed with errors. Only migrate if you are sure the "
 "found errors are not a problem for your site."
 msgstr ""
 
-#: class-premium-options.php:1214
+#: class-premium-options.php:1316
+msgid ""
+"You haven't scanned the site yet, you should scan your site to check for "
+"possible issues. Activate your license key to start a scan."
+msgstr ""
+
+#: class-premium-options.php:1320
 msgid ""
 "You haven't scanned the site yet, you should scan your site to check for "
 "possible issues."
 msgstr ""
 
-#: class-premium-options.php:1222
+#: class-premium-options.php:1328
 msgid ""
 "The last scan was completed with errors. Are you sure these issues don't "
 "impact your site?"
 msgstr ""
 
-#: class-premium-options.php:1234
+#: class-premium-options.php:1340
 msgid ""
 "You have a multisite environment. To leverage all configuration options in "
 "Really Simple SSL, we recommend to enabled the plugin networkwide, then use "
 "the 'activate per site' option to enable SSL per site."
 msgstr ""
 
-#: class-premium-options.php:1241
+#: class-premium-options.php:1347
 #, php-format
 msgid "You can upgrade on your %saccount%s."
 msgstr ""
 
-#: class-premium-options.php:1247
-#, php-format
-msgid "%sActivate%s your license."
-msgstr ""
-
-#: class-premium-options.php:1255
+#: class-premium-options.php:1355
 msgid ""
 "Your Really Simple SSL Pro license key has expired. Please renew your "
 "license to continue receiving updates and premium support."
 msgstr ""
 
-#: class-premium-options.php:1262
+#: class-premium-options.php:1362
 msgid ""
 "Your Really Simple SSL Pro license key is not activated. Please activate "
 "your license to continue receiving updates and premium support."
 msgstr ""
 
-#: class-premium-options.php:1269
+#: class-premium-options.php:1369
 msgid ""
 "This domain is not activated for this Really Simple SSL Pro license. Please "
 "activate the license for this domain."
 msgstr ""
 
-#: class-premium-options.php:1276
+#: class-premium-options.php:1376
 msgid ""
 "You do not have any activations left on your Really Simple SSL Pro license. "
 "Please upgrade your plan for additional activations."
 msgstr ""
 
-#: class-premium-options.php:1283
+#: class-premium-options.php:1383
 msgid ""
 "Your Really Simple SSL Pro license key hasn't been activated yet. You can "
 "activate your license key on the license tab."
 msgstr ""
 
-#: class-premium-options.php:1297
+#: class-premium-options.php:1397
 msgid ""
 "Update Really Simple SSL Free to the latest version for optimal Content "
 "Security Policy compatibility."
 msgstr ""
 
-#: class-premium-options.php:1402
+#: class-premium-options.php:1502
 msgid "Disabled"
 msgstr ""
 
-#: class-premium-options.php:1403
+#: class-premium-options.php:1503
 msgid "Reporting active"
 msgstr ""
 
-#: class-premium-options.php:1404
+#: class-premium-options.php:1504
 msgid "Reporting paused"
 msgstr ""
 
-#: class-premium-options.php:1405
+#: class-premium-options.php:1505
 msgid "Enforce"
 msgstr ""
 
-#: class-premium-options.php:1414
+#: class-premium-options.php:1514
 #, php-format
 msgid ""
 "This is an advanced feature. Only enable this if you know what you're doing. "
 "See %sour usage guide%s"
 msgstr ""
 
-#: class-premium-options.php:1434
+#: class-premium-options.php:1531
+msgid "disabled"
+msgstr ""
+
+#: class-premium-options.php:1532
+msgid "same-origin"
+msgstr ""
+
+#: class-premium-options.php:1533
+msgid "cross-origin"
+msgstr ""
+
+#: class-premium-options.php:1560
 msgid "Set with PHP"
 msgstr ""
 
-#: class-premium-options.php:1582
+#: class-premium-options.php:1720
 msgid "This option is enabled on the network menu."
 msgstr ""
 
-#: class-premium-options.php:1647
+#: class-premium-options.php:1785
 #, php-format
 msgid ""
 "After enabling this option, you have to %ssubmit%s your site. Please read "
 "the instructions on this page carefully before doing so."
 msgstr ""
 
-#: class-premium-options.php:1918
+#: class-premium-options.php:2136
 msgid "Settings"
 msgstr ""
 
-#: class-premium-options.php:2160
+#: class-premium-options.php:2398
+msgid "Scan again"
+msgstr ""
+
+#: class-premium-options.php:2400
+msgid "Scan for issues"
+msgstr ""
+
+#: class-premium-options.php:2404
 msgid "You finished a scan without errors."
 msgstr ""
 
-#: class-premium-options.php:2166
+#: class-premium-options.php:2418
+msgid ""
+"No scan completed yet. Before migrating to SSL, you should do a scan. "
+"Activate your license to start a scan."
+msgstr ""
+
+#: class-premium-options.php:2421
 #, php-format
 msgid ""
 "No scan completed yet. Before migrating to SSL, you should do a %sscan%s"
 msgstr ""
 
-#: class-premium-options.php:2172
+#: class-premium-options.php:2427
 msgid "Previous scan completed with issues"
 msgstr ""
 
-#: class-premium-options.php:2180
-#, php-format
-msgid "%sScan again%s"
-msgstr ""
-
-#: class-premium-options.php:2184
-#, php-format
-msgid "%sScan for issues%s"
-msgstr ""
-
-#: class-premium-options.php:2269
+#: class-premium-options.php:2519
 msgid "Follow these steps to complete the setup:"
 msgstr ""
 
-#: class-premium-options.php:2271
+#: class-premium-options.php:2521
 msgid ""
 "Reporting is active and will gather Content Security Policy directives "
 "available under ‘Content Security Policy configuration’."
 msgstr ""
 
-#: class-premium-options.php:2272
+#: class-premium-options.php:2522
 msgid ""
 "Reporting will be paused after 20 requests to limit server load. You can "
 "always manually set reporting to paused, if needed."
 msgstr ""
 
-#: class-premium-options.php:2273
+#: class-premium-options.php:2523
 msgid ""
 "To restart reporting, set Content Security Policy to ‘reporting active’."
 msgstr ""
 
-#: class-premium-options.php:2274
+#: class-premium-options.php:2524
 msgid ""
 "When there a no new directives reported, you can continue with the "
 "configuration and set the Content Security Policy to ‘Enforce’."
 msgstr ""
 
-#: class-premium-options.php:2275
+#: class-premium-options.php:2525
 #, php-format
 msgid ""
 "For more information about this security header, please follow this %slink%s."
 msgstr ""
 
-#: class-premium-options.php:2280
+#: class-premium-options.php:2530
 msgid "Content Security Policy reporting enabled"
 msgstr ""
 
@@ -1223,27 +1266,27 @@ msgstr ""
 msgid "Go to editor"
 msgstr ""
 
-#: csp-violation-endpoint.php:407
+#: csp-violation-endpoint.php:415
 msgid "Allow"
 msgstr ""
 
-#: csp-violation-endpoint.php:411
+#: csp-violation-endpoint.php:419
 msgid "Revoke"
 msgstr ""
 
-#: csp-violation-endpoint.php:417
+#: csp-violation-endpoint.php:425
 msgid "Today"
 msgstr ""
 
-#: csp-violation-endpoint.php:419
+#: csp-violation-endpoint.php:427
 msgid "ago"
 msgstr ""
 
-#: csp-violation-endpoint.php:505
+#: csp-violation-endpoint.php:513
 msgid "Revoking a Rule from the Content Security Policy"
 msgstr ""
 
-#: csp-violation-endpoint.php:510
+#: csp-violation-endpoint.php:518
 msgid ""
 "If you revoke a rule from the content security policy, the rule will be "
 "deleted from the resource list that is considered safe to load. This might "
@@ -1251,15 +1294,15 @@ msgid ""
 "resource if needed."
 msgstr ""
 
-#: csp-violation-endpoint.php:517
+#: csp-violation-endpoint.php:525
 msgid "Close"
 msgstr ""
 
-#: csp-violation-endpoint.php:524
+#: csp-violation-endpoint.php:532
 msgid "Revoke rule"
 msgstr ""
 
-#: csp-violation-endpoint.php:531
+#: csp-violation-endpoint.php:539
 msgid "Revoke and delete rule"
 msgstr ""
 

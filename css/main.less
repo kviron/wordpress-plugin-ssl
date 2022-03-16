@@ -7,7 +7,6 @@
 @border-color: #DEDEDE;
 @color_open: #FBC43D;
 
-
 .rsssl-text-input {
   width: 336px;
 }
@@ -75,39 +74,37 @@
   float: right;
   margin-left: 4px;
 }
-@import "../bootstrap/css/bootstrap-theme.less";
-@import "../bootstrap/css/bootstrap.less";
-.modal {
-  z-index: 99999;
-  top: 100px !important;
 
-  .modal-dialog {
-    position: absolute;
-    left: 300px;
-    top: 50px;
-
-    #details-modal-description {
-      padding-bottom: 10px;
-    }
-
-    .modal-footer {
-      text-align: left;
-      padding: 15px;
-      .button {
-        margin-left: 10px;
-      }
-    }
-  }
-
-  .close {
-    margin: 20px;
-  }
-
-  #rsssl-alert .close {
-    margin: 0;
-  }
-}
 .rsssl-scan-container {
+
+  .progress {
+    overflow: hidden;
+    height: 20px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 2px rgb(0 0 0 / 10%);
+    box-shadow: inset 0 1px 2px rgb(0 0 0 / 10%);
+    .progress-bar {
+      float: left;
+      width: 0;
+      height: 100%;
+      font-size: 12px;
+      line-height: 20px;
+      color: #ffffff;
+      text-align: center;
+      background-color: #29b6f6;
+      -webkit-box-shadow: inset 0 -1px 0 rgb(0 0 0 / 15%);
+      box-shadow: inset 0 -1px 0 rgb(0 0 0 / 15%);
+      -webkit-transition: width 0.6s ease;
+      -o-transition: width 0.6s ease;
+      transition: width 0.6s ease;
+    }
+    .progress-bar-success {
+      background-color: #61ce70;
+    }
+  }
+
   .button {
     margin-left: 9px;
   }
@@ -146,7 +143,7 @@
     min-height: 60px;
     background-color: #F8F8F8;
     padding: 5px 25px 10px 5px;
-    margin: 0px 3px 2px 0px;
+    margin: 0 3px 2px 0;
     float: left;
     width: 100%;
 
@@ -267,9 +264,6 @@
     z-index: 9999;
   }
 
-  //width: 100%;
-  //text-align: left;
-
   th {
 
     padding-left: 5px;
@@ -311,8 +305,8 @@
     }
   }
 
-  .rsssl-blocked-url {
-    padding-right: 10px;
+  .rsssl-action-buttons {
+    display: flex;
   }
 
   .rsssl-scan-status {
@@ -324,7 +318,6 @@
   }
 
   .button {
-    //margin-right: 5px;
     margin-left: 10px;
     float: right;
   }
@@ -361,19 +354,13 @@
     }
   }
 }
+
+.rsssl-blocked-url {
+  overflow-wrap: anywhere;
+}
 /*
     cool checkbox sliders
 */
-.rsssl-switch {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 21px;
-
-  input {
-    display: none;
-  }
-}
 
 .rsssl-slider {
   position: absolute;
@@ -500,6 +487,8 @@ input:focus + .rsssl-slider {
 
 // Need to be outside wrapper
 .dataTables_paginate, #rsssl-scan-results_paginate {
+  //display: contents is needed to display it nicely in case of over 100 pages.
+  display:contents;
   flex: 1;
   cursor: pointer;
 
@@ -509,7 +498,7 @@ input:focus + .rsssl-slider {
     padding: 8px 13px;
     box-sizing: border-box;
     border: 1px solid @border-color;
-    box-shadow: 0px 1px 1px @border-color;
+    box-shadow: 0 1px 1px @border-color;
 
     &.previous {
       border-top-left-radius: 5px;
@@ -527,7 +516,8 @@ input:focus + .rsssl-slider {
 
     &.current {
       color: black;
-      border: 1px solid @color_open;
+      //because of display:contents on the paginate_button, we need a 3px border to get the height of the buttons the same.
+      border: 3px solid @color_open;
       background-color: @color_open;
     }
   }
@@ -631,6 +621,14 @@ input:focus + .rsssl-slider {
   #rsssl-csp-table {
     td {
       word-break: break-all;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 200px;
+      &:hover:nth-child(4) {
+        overflow: initial;
+        white-space: break-spaces;
+      }
     }
 
     td:nth-child(1) {

@@ -9,8 +9,5 @@
 			<?php echo RSSSL_PRO()->rsssl_scan->generate_output(); ?>
 		</div>
 	</div>
-	<?php
-	do_action("rsssl_scan_modals");
-	?>
 </div><!-- end rsssl wrapper -->
 <?php do_action( "rsssl_premium_footer" );

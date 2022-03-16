@@ -1,5 +1,4 @@
 <?php
-/* 100% match ms */
 defined('ABSPATH') or die("you do not have access to this page!");
 
 if (!class_exists('rsssl_pro_multisite')) {
@@ -23,27 +22,22 @@ if (!class_exists('rsssl_pro_multisite')) {
 		function __construct()
 		{
 			$this->load_security_header_options();
-
 			if (isset(self::$_this))
 				wp_die(sprintf(__('%s is a singleton class and you cannot create a second instance.', 'really-simple-ssl'), get_class($this)));
 
 			self::$_this = $this;
 			if (is_network_admin()) {
-
 				if (RSSSL()->rsssl_multisite->ssl_enabled_networkwide) {
 					add_action( 'network_admin_menu', array($this, 'add_pro_settings'), 9);
 				}
-
 				add_action('rsssl_process_network_options', array($this, 'update_network_options') );
 				add_action('rsssl_process_network_options', array($this, 'update_security_headers') );
 			}
 			add_action('wp_ajax_dismiss_success_message_nginx', array($this, 'dismiss_nginx_message_callback'));
-
 			add_action('admin_print_footer_scripts-settings_page_really-simple-ssl', array($this, 'inline_scripts'));
 			add_action('admin_init', array($this, 'check_upgrade'));
 			add_action('wp_ajax_rsssl_site_switch', array($this, 'ajax_site_switch'));
 			add_filter( 'rsssl_grid_items_ms', array($this, 'add_pro_grid_items'));
-
 		}
 
 		/**
@@ -224,6 +218,11 @@ if (!class_exists('rsssl_pro_multisite')) {
 			<?php
 		}
 
+		/**
+		 * Switch SSL enabled per site.
+		 * @hooked ajax
+		 * @return void
+		 */
 
 		public function ajax_site_switch(){
 			$error = false;
@@ -234,11 +233,13 @@ if (!class_exists('rsssl_pro_multisite')) {
 
 				$action = $_POST['switch_action'];
 				$blog_id = intval($_POST['blog_id']);
-
 				if (!$error) {
 					switch_to_blog($blog_id);
 					if ($action == "deactivate") {
 						RSSSL()->really_simple_ssl->deactivate_ssl();
+						//we need to force ssl to false here, otherwise it doesn't deactivate correctly.
+						RSSSL()->really_simple_ssl->ssl_enabled = false;
+						RSSSL()->really_simple_ssl->save_options();
 					} else {
 						RSSSL()->really_simple_ssl->activate_ssl();
 						$site = get_site($blog_id);
@@ -324,7 +325,6 @@ if (!class_exists('rsssl_pro_multisite')) {
 
 		public function generate_sites_overview_row($site, $enabled, $disabled, $snippet) {
 			switch_to_blog( $site->blog_id );
-
 			$options = get_option( 'rlrsssl_options' );
 			if ( isset( $options ) ) {
 				$ssl_enabled = isset( $options['ssl_enabled'] ) ? $options['ssl_enabled'] : false;

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Really Simple SSL pro\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-07 08:36+0100\n"
-"PO-Revision-Date: 2021-10-01 08:10+0000\n"
+"PO-Revision-Date: 2021-11-10 14:41+0000\n"
 "Last-Translator: Polish - Sergiusz Szczepaniak\n"
 "Language-Team: Polski\n"
 "Language: pl_PL\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.5.3; wp-5.8.1"
+"X-Loco-Version: 2.5.5; wp-5.8.1"
 
 #: class-cert-expiration.php:183
 msgid " the SSL certificate is expiring soon. The ValidTo date is:"
@@ -112,7 +112,7 @@ msgstr "Aktywuj licencję"
 
 #: class-licensing.php:60
 msgid "Activate your license for automatic updates."
-msgstr ""
+msgstr "Aktywuj swoją licencję dla automatycznych aktualizacji."
 
 #: class-premium-options.php:1647
 #, php-format
@@ -538,6 +538,10 @@ msgid ""
 "affect your website, or specific functions. You can always allow the "
 "resource if needed."
 msgstr ""
+"Jeśli odwołasz regułę z zasad bezpieczeństwa treści, reguła zostanie "
+"usunięta z listy zasobów, które są uważane za bezpieczne do załadowania. "
+"Może to wpłynąć na twoją witrynę lub określone funkcje. W razie potrzeby "
+"zawsze możesz zezwolić na zasób."
 
 #: class-premium-options.php:906
 msgid ""
@@ -1000,6 +1004,9 @@ msgid ""
 "Reporting is active and will gather Content Security Policy directives "
 "available under ‘Content Security Policy configuration’."
 msgstr ""
+"Raportowanie jest aktywne i będzie gromadzić wytyczne polityki "
+"bezpieczeństwa treści dostępne w sekcji \"Konfiguracja polityki "
+"bezpieczeństwa treści”."
 
 #: class-premium-options.php:1404
 msgid "Reporting paused"
@@ -1086,7 +1093,7 @@ msgstr ""
 
 #: grid/templates/permissions-policy.php:20
 msgid "self"
-msgstr ""
+msgstr "ja"
 
 #: grid/templates/feature-policy.php:11
 #: grid/templates/permissions-policy.php:11
@@ -1354,6 +1361,8 @@ msgid ""
 "This header only sets a referrer when navigating to the same protocol (HTTPS-"
 ">HTTPS) and not when downgrading (HTTPS->HTTP)."
 msgstr ""
+"Ten nagłówek ustawia referrer tylko podczas nawigowania do tego samego "
+"protokołu (HTTPS->HTTPS), a nie przy degradacji (HTTPS->HTTP)."
 
 #: class-premium-options.php:929
 msgid ""
@@ -1520,6 +1529,8 @@ msgid ""
 "When there a no new directives reported, you can continue with the "
 "configuration and set the Content Security Policy to ‘Enforce’."
 msgstr ""
+"Jeśli nie zgłoszono żadnych nowych dyrektyw, możesz kontynuować konfigurację "
+"i ustawić Politykę bezpieczeństwa treści na \"Wymuszaj”."
 
 #: grid/templates/scan-footer.php:20
 msgid ""

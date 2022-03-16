@@ -3,13 +3,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "Project-Id-Version: Really Simple SSL pro multisite\n"
 "POT-Creation-Date: 2020-12-07 08:36+0100\n"
-"PO-Revision-Date: 2021-09-21 13:57+0000\n"
+"PO-Revision-Date: 2021-11-18 13:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian (Bokmål)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/\n"
+"X-Generator: Poedit 2.4.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: really-simple-ssl-pro-multisite.php\n"
@@ -17,11 +17,11 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
 "Report-Msgid-Bugs-To: \n"
 "Language: nb_NO\n"
-"X-Loco-Version: 2.4.6; wp-5.6"
+"X-Loco-Version: 2.5.5; wp-5.8.2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
 
 #: class-cert-expiration.php:183
 msgid " the SSL certificate is expiring soon. The ValidTo date is:"
@@ -39,7 +39,7 @@ msgstr "%s er en singleton-klasse, og du kan ikke opprette en andre forekomst."
 msgid "%s to %s of %s results"
 msgstr "%s til %s av %s resultater"
 
-#: class-licensing.php:476 class-licensing.php:584
+#: class-licensing.php:492 class-licensing.php:600
 #, php-format
 msgid "%s/%s activations available."
 msgstr "%s/%s aktiveringer tilgjengelig."
@@ -49,7 +49,7 @@ msgstr "%s/%s aktiveringer tilgjengelig."
 msgid "%sActivate%s your license."
 msgstr "%sAktiver%s  lisensen din."
 
-#: class-licensing.php:676
+#: class-licensing.php:692
 #, php-format
 msgid "%sGo to the settings page%s or %spurchase a license%s."
 msgstr "%sGå til innstillingssiden%s eller %skjøp en lisens%s."
@@ -97,14 +97,13 @@ msgstr ""
 #: class-premium-options.php:1045
 msgid "A redirect to http was detected. This might result in redirect loops."
 msgstr ""
-"En omdirigering til http ble oppdaget. Dette kan føre til "
-"viderekoblingsløkker."
+"En omdirigering til http ble oppdaget. Dette kan føre til viderekoblingsløkker."
 
 #: class-cert-expiration.php:182
 msgid "According to the check that was performed just now on "
 msgstr "I følge sjekken som ble utført akkurat nå"
 
-#: grid/templates/scan-results-container.php:9 grid_ms/templates/sites.php:71
+#: grid/templates/scan-results-container.php:9 grid_ms/templates/sites.php:70
 msgid "Action"
 msgstr "Handling"
 
@@ -116,14 +115,18 @@ msgstr "aktiver"
 msgid "Activate license"
 msgstr "Aktiver lisens"
 
+#: class-licensing.php:60
+msgid "Activate your license for automatic updates."
+msgstr ""
+
 #: class-premium-options.php:1647
 #, php-format
 msgid ""
-"After enabling this option, you have to %ssubmit%s your site. Please read "
-"the instructions on this page carefully before doing so."
+"After enabling this option, you have to %ssubmit%s your site. Please read the "
+"instructions on this page carefully before doing so."
 msgstr ""
-"Etter at du har aktivert dette alternativet, må du %ssende%s nettstedet ditt."
-" Vennligst les instruksjonene på denne siden nøye før du gjør det."
+"Etter at du har aktivert dette alternativet, må du %ssende%s nettstedet ditt. "
+"Vennligst les instruksjonene på denne siden nøye før du gjør det."
 
 #: csp-violation-endpoint.php:419
 msgid "ago"
@@ -156,8 +159,7 @@ msgstr "Bytt ut blandet innhold automatisk"
 
 #: class-scan.php:2695
 msgid ""
-"Be very carefull with this function! Please backup your site before "
-"proceeding."
+"Be very carefull with this function! Please backup your site before proceeding."
 msgstr ""
 "Vær veldig forsiktig med denne funksjonen! Ta sikkerhetskopi av nettstedet "
 "ditt før du fortsetter."
@@ -165,9 +167,9 @@ msgstr ""
 #: class-scan.php:2615
 msgid ""
 "Be very carefull with this function! Please backup your site before "
-"proceeding. This function will also create a backup of each changed file, "
-"name rsssl-bkp-filename. You can use the 'roll back files' function to "
-"restore the original files."
+"proceeding. This function will also create a backup of each changed file, name "
+"rsssl-bkp-filename. You can use the 'roll back files' function to restore the "
+"original files."
 msgstr ""
 "Vær veldig forsiktig med denne funksjonen! Ta sikkerhetskopi av nettstedet "
 "ditt før du fortsetter. Denne funksjonen vil også lage en sikkerhetskopi av "
@@ -187,8 +189,7 @@ msgstr "Blokkert URL: %s"
 #: class-scan.php:1862
 msgid "cached file, deactivate cache to see the actual source"
 msgstr ""
-"hurtigbufret fil, deaktiver hurtigbufferen (cache) for å se den faktiske "
-"kilden"
+"hurtigbufret fil, deaktiver hurtigbufferen (cache) for å se den faktiske kilden"
 
 #: class-scan.php:1892
 msgid ""
@@ -200,8 +201,8 @@ msgstr ""
 
 #: class-scan.php:1941
 msgid ""
-"Cannot be fixed automatically, as the mixed content is coming from an "
-"external domain. Contact the owner of the domain to update the CSS/JS file"
+"Cannot be fixed automatically, as the mixed content is coming from an external "
+"domain. Contact the owner of the domain to update the CSS/JS file"
 msgstr ""
 "Kan ikke løses automatisk, ettersom det blandede innholdet kommer fra et "
 "eksternt domene. Kontakt eieren av domenet for å oppdatere CSS / JS-filen"
@@ -252,9 +253,8 @@ msgstr "Rapportering av innholdssikkerhetspolicyer aktivert"
 
 #: class-premium-options.php:1193
 msgid ""
-"Content Security Policy reporting is paused to limit server resources. "
-"Please start configuring your Content Security Policy and enable reporting "
-"again."
+"Content Security Policy reporting is paused to limit server resources. Please "
+"start configuring your Content Security Policy and enable reporting again."
 msgstr ""
 
 #: class-scan.php:2477 class-scan.php:2566 class-scan.php:2606
@@ -310,8 +310,8 @@ msgstr "Domene / protokoll"
 #: class-scan.php:2688
 msgid ""
 "Downloading files from other websites can cause serious copyright issues! It "
-"is always illegal to use images, files, or any copyright protected material "
-"on your own site without the consent of the copyrightholder. Please ask the "
+"is always illegal to use images, files, or any copyright protected material on "
+"your own site without the consent of the copyrightholder. Please ask the "
 "copyrightholder for permission. Use this function at your own risk."
 msgstr ""
 "Nedlasting av filer fra andre nettsteder kan forårsake alvorlige "
@@ -327,8 +327,7 @@ msgstr "Rediger"
 #: class-scan.php:2767
 msgid "Editing files can break your site if you do not do it right!"
 msgstr ""
-"Redigering av filer kan ødelegge nettstedet ditt hvis du ikke gjør det "
-"riktig!"
+"Redigering av filer kan ødelegge nettstedet ditt hvis du ikke gjør det riktig!"
 
 #: class-premium-options.php:1027
 msgid "Elementor mixed content successfully converted."
@@ -337,8 +336,7 @@ msgstr "Elementors blandede innhold ble konvertert."
 #: class-multisite.php:361
 msgid "Enable this if you want the mixed content fixer for admin."
 msgstr ""
-"Aktiver dette hvis du vil ha reparasjonsmulighet for blandet innhold for "
-"admin."
+"Aktiver dette hvis du vil ha reparasjonsmulighet for blandet innhold for admin."
 
 #: class-multisite.php:353
 msgid "Enable this if you want to automatically replace mixed content."
@@ -350,8 +348,7 @@ msgstr "Aktiver dette hvis du vil blokkere htaccess-filen fra å bli redigert."
 
 #: class-multisite.php:359
 msgid "Enable this if you want to enable certificate expiration notices."
-msgstr ""
-"Aktiver dette hvis du vil aktivere varsler for sertifikatets gyldighet."
+msgstr "Aktiver dette hvis du vil aktivere varsler for sertifikatets gyldighet."
 
 #: class-multisite.php:355
 msgid "Enable this if you want to hide the SSL menu on subsites."
@@ -370,12 +367,11 @@ msgstr ""
 
 #: class-multisite.php:357
 msgid ""
-"Enable this if you want to use the internal WordPress 301 redirect for all "
-"SSL websites. Needed on NGINX servers, or if the .htaccess redirect cannot "
-"be used."
+"Enable this if you want to use the internal WordPress 301 redirect for all SSL "
+"websites. Needed on NGINX servers, or if the .htaccess redirect cannot be used."
 msgstr ""
-"Aktiver dette hvis du vil bruke den interne WordPress 301-viderekoblingen "
-"for alle SSL-nettsteder. Nødvendig på NGINX-servere, eller hvis .htaccess-"
+"Aktiver dette hvis du vil bruke den interne WordPress 301-viderekoblingen for "
+"alle SSL-nettsteder. Nødvendig på NGINX-servere, eller hvis .htaccess-"
 "viderekoblingen ikke kan brukes."
 
 #: class-premium-options.php:1405
@@ -394,8 +390,7 @@ msgstr "Feil"
 msgid "Everything"
 msgstr ""
 
-#: grid/templates/feature-policy.php:18
-#: grid/templates/permissions-policy.php:18
+#: grid/templates/feature-policy.php:18 grid/templates/permissions-policy.php:18
 msgid "Feature"
 msgstr "Funksjon"
 
@@ -409,8 +404,8 @@ msgstr "Filredigering blokkert i WordPress!"
 
 #: class-scan.php:2773
 msgid ""
-"File editing is blocked in WordPress. To edit these files, please use your "
-"FTP client."
+"File editing is blocked in WordPress. To edit these files, please use your FTP "
+"client."
 msgstr ""
 "Filredigering er blokkert i WordPress. For å redigere disse filene, bruk FTP-"
 "klienten din."
@@ -525,21 +520,21 @@ msgid ""
 "the plugin."
 msgstr ""
 "Hvis disse filene genereres av et tema eller en plugin, er det best å endre "
-"innstillingene i pluginen i stedet. Ellers kan endringene dine overskrives "
-"av pluginen."
+"innstillingene i pluginen i stedet. Ellers kan endringene dine overskrives av "
+"pluginen."
 
 #: csp-violation-endpoint.php:510
 msgid ""
-"If you revoke a rule from the content security policy,  the rule will be "
-"deleted from the resource list that is considered safe to load.  This might "
-"affect your website,  or specific functions.  You can always allow the "
-"resource if needed."
+"If you revoke a rule from the content security policy, the rule will be "
+"deleted from the resource list that is considered safe to load. This might "
+"affect your website, or specific functions. You can always allow the resource "
+"if needed."
 msgstr ""
 
 #: class-premium-options.php:906
 msgid ""
-"If your certificate expires, your site goes offline. Uptime robots don't "
-"alert you when this happens."
+"If your certificate expires, your site goes offline. Uptime robots don't alert "
+"you when this happens."
 msgstr ""
 "Hvis sertifikatet utløper, går nettstedet ditt offline. Oppetid-roboter "
 "varsler deg ikke når dette skjer."
@@ -594,15 +589,14 @@ msgstr "JS- eller CSS-fil med blandet innhold"
 msgid "Last"
 msgstr "Siste"
 
-#: class-licensing.php:234 class-licensing.php:495 class-licensing.php:501
-#: class-licensing.php:520 class-licensing.php:583
-#: class-premium-options.php:1254 class-premium-options.php:1261
-#: class-premium-options.php:1268 class-premium-options.php:1275
-#: class-premium-options.php:1282
+#: class-licensing.php:250 class-licensing.php:511 class-licensing.php:517
+#: class-licensing.php:536 class-licensing.php:599 class-premium-options.php:1254
+#: class-premium-options.php:1261 class-premium-options.php:1268
+#: class-premium-options.php:1275 class-premium-options.php:1282
 msgid "License"
 msgstr "Lisens"
 
-#: class-licensing.php:685
+#: class-licensing.php:701
 msgid "License not activated"
 msgstr "Lisensen er ikke aktivert"
 
@@ -642,8 +636,8 @@ msgstr ""
 #: class-scan.php:1993
 msgid ""
 "Mixed content found in in a post. Can be fixed automatically by pressing the "
-"fix button. Pressing the edit button allows you to update the link in the "
-"post manually."
+"fix button. Pressing the edit button allows you to update the link in the post "
+"manually."
 msgstr ""
 "Blandet innhold funnet i et innlegg. Kan fikses automatisk ved å trykke på "
 "fikse-knappen. Ved å trykke på redigeringsknappen kan du oppdatere lenken i "
@@ -651,9 +645,9 @@ msgstr ""
 
 #: class-scan.php:2042
 msgid ""
-"Mixed content from a postmeta table in your database. Usually won't cause "
-"any mixed content on the front-end. Check the post if it causes mixed "
-"content. If so, the link can be replace directly in the database."
+"Mixed content from a postmeta table in your database. Usually won't cause any "
+"mixed content on the front-end. Check the post if it causes mixed content. If "
+"so, the link can be replace directly in the database."
 msgstr ""
 "Blandet innhold fra en postmetatabell i databasen din. Vanligvis forårsaker "
 "ikke noe blandet innhold på front-end. Sjekk innlegget hvis det forårsaker "
@@ -693,11 +687,11 @@ msgstr "Skanning av blandet innhold"
 msgid "mu plugin file"
 msgstr "mu-pluginfil"
 
-#: class-licensing.php:508
+#: class-licensing.php:524
 msgid "Multisite"
 msgstr "Multisite"
 
-#: class-licensing.php:509
+#: class-licensing.php:525
 #, php-format
 msgid "Multisite detected. Please consider upgrading to %smultisite%s."
 msgstr "Multisite oppdaget. Vennligst vurder å oppgradere til %smultisite%s."
@@ -737,7 +731,7 @@ msgstr "Ingen blandet innhold er funnet!"
 msgid "No redirect to http detected."
 msgstr "Ingen omdirigering til http oppdaget."
 
-#: class-licensing.php:530
+#: class-licensing.php:546
 msgid "No response"
 msgstr "Ingen respons"
 
@@ -759,11 +753,10 @@ msgstr "Ingen resultater å vise"
 
 #: class-premium-options.php:2166
 #, php-format
-msgid ""
-"No scan completed yet. Before migrating to SSL, you should do a %sscan%s"
+msgid "No scan completed yet. Before migrating to SSL, you should do a %sscan%s"
 msgstr ""
-"Ingen skanning fullført ennå. Før du migrerer til SSL, bør du kjøre en "
-"%sskann%s"
+"Ingen skanning fullført ennå. Før du migrerer til SSL, bør du kjøre en %sskann"
+"%s"
 
 #: class-premium-options.php:169
 msgid "No scan done yet. Start a quick or full scan to identify any issues."
@@ -783,7 +776,7 @@ msgstr ""
 msgid "not allowed"
 msgstr ""
 
-#: class-licensing.php:455
+#: class-licensing.php:471
 msgid "Not available"
 msgstr "Ikke tilgjengelig"
 
@@ -807,7 +800,7 @@ msgstr "En gang 10 minutter"
 msgid "Once Daily"
 msgstr "En gang om dagen"
 
-#: class-licensing.php:537 class-licensing.php:546
+#: class-licensing.php:553 class-licensing.php:562
 msgid "Open"
 msgstr "Åpen"
 
@@ -821,11 +814,11 @@ msgstr ""
 msgid "PHP file with mixed content"
 msgstr "PHP-fil med blandet innhold"
 
-#: really-simple-ssl-pro-multisite.php:207
+#: really-simple-ssl-pro-multisite.php:219
 msgid "Please activate Really Simple SSL network wide."
 msgstr "Vennligst aktiver Really Simple SSL-nettverk bredt/overalt."
 
-#: class-licensing.php:547
+#: class-licensing.php:563
 msgid "Please activate your license key."
 msgstr "Vennligst aktiver lisensnøkkelen."
 
@@ -834,20 +827,18 @@ msgid ""
 "Please ensure that your site is running over SSL smoothly, and note that all "
 "subdomains, including www and non-www domain need to be HTTPS!"
 msgstr ""
-"Forsikre deg om at nettstedet kjører problemfritt over SSL, og vær "
-"oppmerksom på at alle underdomener, inkludert www og ikke-www-domene, må "
-"være HTTPS!"
+"Forsikre deg om at nettstedet kjører problemfritt over SSL, og vær oppmerksom "
+"på at alle underdomener, inkludert www og ikke-www-domene, må være HTTPS!"
 
-#: class-licensing.php:538
+#: class-licensing.php:554
 #, php-format
 msgid "Please enter your license key. Available in your %saccount%s."
 msgstr "Vennligst skriv inn lisensnøkkelen. Tilgjengelig på %sdin konto%s."
 
-#: really-simple-ssl-pro-multisite.php:209
+#: really-simple-ssl-pro-multisite.php:221
 #, fuzzy
 #| msgid ""
-#| "Please install and activate Really Simple SSL before activating this add-"
-#| "on."
+#| "Please install and activate Really Simple SSL before activating this add-on."
 msgid "Please install and activate Really Simple SSL to enable the add-on."
 msgstr ""
 "Vennligst installer og aktiver Really Simple SSL før du aktiverer dette "
@@ -858,23 +849,23 @@ msgid ""
 "Please note that any changes you have made since to your current files, will "
 "be lost. "
 msgstr ""
-"Vær oppmerksom på at eventuelle endringer du har gjort i dine nåværende "
-"filer, vil gå tapt."
+"Vær oppmerksom på at eventuelle endringer du har gjort i dine nåværende filer, "
+"vil gå tapt."
 
 #: class-cert-expiration.php:185
 msgid "Please renew your certificate before the expiry date."
 msgstr "Forny sertifikatet ditt før utløpsdatoen."
 
-#: really-simple-ssl-pro-multisite.php:218
+#: really-simple-ssl-pro-multisite.php:230
 msgid ""
-"Please upgrade to the latest version to be able use the full functionality "
-"of the plugin."
+"Please upgrade to the latest version to be able use the full functionality of "
+"the plugin."
 msgstr ""
-"Vennligst oppgrader til den nyeste versjonen for å kunne bruke pluginens "
-"fulle funksjonalitet."
+"Vennligst oppgrader til den nyeste versjonen for å kunne bruke pluginens fulle "
+"funksjonalitet."
 
-#: really-simple-ssl-pro-multisite.php:203
-#: really-simple-ssl-pro-multisite.php:216
+#: really-simple-ssl-pro-multisite.php:215
+#: really-simple-ssl-pro-multisite.php:228
 msgid "Plugin dependency error"
 msgstr "Plugin-avhengighets-feil"
 
@@ -922,12 +913,11 @@ msgstr "Kontroller viderekoblingen på nytt"
 msgid "Really Simple Plugins"
 msgstr "Really Simple Plugins"
 
-#: really-simple-ssl-pro-multisite.php:217
+#: really-simple-ssl-pro-multisite.php:229
 msgid ""
 "Really Simple SSL needs to be updated to the latest version to be compatible."
 msgstr ""
-"Really Simple SSL må oppdateres til den nyeste versjonen for å være "
-"kompatibel."
+"Really Simple SSL må oppdateres til den nyeste versjonen for å være kompatibel."
 
 #: really-simple-ssl-pro-multisite.php:39
 msgid ""
@@ -944,19 +934,19 @@ msgstr ""
 "Really Simple SSL Pro kan ikke aktiveres. Plugin krever WordPress 4.9 eller "
 "høyere"
 
-#: really-simple-ssl-pro-multisite.php:204
+#: really-simple-ssl-pro-multisite.php:216
 #, fuzzy
 #| msgid ""
-#| "Really Simple SSL pro is an add-on for Really Simple SSL, and cannot do "
-#| "it on its own :("
+#| "Really Simple SSL pro is an add-on for Really Simple SSL, and cannot do it "
+#| "on its own :("
 msgid ""
-"Really Simple SSL pro is an add-on for Really Simple SSL, and cannot do it "
-"on its own :-("
+"Really Simple SSL pro is an add-on for Really Simple SSL, and cannot do it on "
+"its own :-("
 msgstr ""
 "Really Simple SSL Pro er et tillegg for Really Simple SSL, og kan ikke gjøre "
 "det alene :("
 
-#: class-licensing.php:98
+#: class-licensing.php:114
 msgid "Really Simple SSL Pro license key"
 msgstr "Really Simple SSL Pro lisensnøkkel"
 
@@ -964,7 +954,7 @@ msgstr "Really Simple SSL Pro lisensnøkkel"
 msgid "Really Simple SSL pro multisite"
 msgstr "Really Simple SSL Pro multisite"
 
-#: class-licensing.php:701
+#: class-licensing.php:717
 msgid "Really Simple SSL Pro Multisite license key"
 msgstr "Really Simple SSL Pro Multisite lisensnøkkel"
 
@@ -1049,8 +1039,8 @@ msgstr "Søk"
 #: class-scan.php:276
 #, php-format
 msgid ""
-"Searching for js and css files and links to external resources in website, "
-"%s of %s"
+"Searching for js and css files and links to external resources in website, %s "
+"of %s"
 msgstr ""
 "Søker etter js- og css-filer og lenker til eksterne ressurser på nettstedet, "
 "%s av %s"
@@ -1063,16 +1053,15 @@ msgstr "Søker etter blandet innhold i css- og js-filer, %s av %s"
 #: class-premium-options.php:1110
 msgid ""
 "Security headers have been set via PHP but your site uses caching. Caching "
-"prevents the headers from working correctly. We recommend to add the "
-"following security headers to your NGINX configuration file:"
+"prevents the headers from working correctly. We recommend to add the following "
+"security headers to your NGINX configuration file:"
 msgstr ""
 
 #: grid/templates/permissions-policy.php:20
 msgid "self"
 msgstr ""
 
-#: grid/templates/feature-policy.php:11
-#: grid/templates/permissions-policy.php:11
+#: grid/templates/feature-policy.php:11 grid/templates/permissions-policy.php:11
 msgid ""
 "self means this is feature is only allowed for content on your own domain. "
 "External scripts won't be able to use it."
@@ -1112,7 +1101,7 @@ msgstr "Vis %s resultater"
 msgid "Show ignored URLs"
 msgstr "Vis ignorerte URLs"
 
-#: grid_ms/templates/sites.php:70
+#: grid_ms/templates/sites.php:69
 msgid "Site"
 msgstr "Nettstedet"
 
@@ -1129,13 +1118,12 @@ msgstr "Noe gikk galt."
 msgid ""
 "Something went wrong. Please refresh the page and try again, or fix manually."
 msgstr ""
-"Noe gikk galt. Vennligst oppdater siden og prøv på nytt, eller reparer "
-"manuelt."
+"Noe gikk galt. Vennligst oppdater siden og prøv på nytt, eller reparer manuelt."
 
 #: class-importer.php:90
 msgid ""
-"Someting went wrong. If this doesn't work, you can put the original files "
-"back by changing files named 'rsssl-bkp-filename' to filename."
+"Someting went wrong. If this doesn't work, you can put the original files back "
+"by changing files named 'rsssl-bkp-filename' to filename."
 msgstr ""
 "Noe gikk galt. Hvis dette ikke fungerer, kan du sette de originale filene "
 "tilbake ved å endre på filene som heter 'rsssl-bkp-filnavn' til filnavn."
@@ -1152,7 +1140,7 @@ msgstr "SSL-konfigurasjon ferdig!"
 msgid "Start scan"
 msgstr "Start skann"
 
-#: grid/templates/scan-results-container.php:6 grid_ms/templates/sites.php:69
+#: grid/templates/scan-results-container.php:6 grid_ms/templates/sites.php:68
 msgid "Status"
 msgstr "Status"
 
@@ -1166,8 +1154,8 @@ msgstr "Stop skann"
 
 #: class-premium-options.php:957
 msgid ""
-"The Content Security Policy allows you to specify which resources to allow "
-"on your site."
+"The Content Security Policy allows you to specify which resources to allow on "
+"your site."
 msgstr ""
 
 #: class-importer.php:179
@@ -1180,8 +1168,8 @@ msgstr ""
 
 #: class-importer.php:226 class-importer.php:266 class-importer.php:308
 msgid ""
-"The file could not be downloaded. The file might not exist, or downloading "
-"is be blocked by the server. Fix manually."
+"The file could not be downloaded. The file might not exist, or downloading is "
+"be blocked by the server. Fix manually."
 msgstr ""
 "Filen kunne ikke lastes ned. Det kan hende at filen ikke eksisterer, eller "
 "nedlasting blokkeres av serveren. Løs det manuelt."
@@ -1203,33 +1191,33 @@ msgid ""
 "The last scan was completed with errors. Only migrate if you are sure the "
 "found errors are not a problem for your site."
 msgstr ""
-"Den siste skanningen ble fullført med feil. Overfør bare hvis du er sikker "
-"på at disse feilene ikke er et problem for nettstedet ditt."
+"Den siste skanningen ble fullført med feil. Overfør bare hvis du er sikker på "
+"at disse feilene ikke er et problem for nettstedet ditt."
 
-#: class-licensing.php:531
+#: class-licensing.php:547
 msgid ""
 "The license information could not be retrieved at this moment. Please try "
 "again at a later time."
 msgstr ""
-"Lisensinformasjonen kunne ikke hentes for øyeblikket. Prøv igjen på et "
-"senere tidspunkt."
+"Lisensinformasjonen kunne ikke hentes for øyeblikket. Prøv igjen på et senere "
+"tidspunkt."
 
 #: grid/templates/license-footer.php:31
-#, fuzzy, php-format
+#, fuzzy
 #| msgid ""
 #| "The license key is only visible to %s. Add &rsssl_unlock_license={your "
 #| "license key} behind the URL to unlock the license block."
 msgid ""
-"The license key is only visible to %s. Add &rsssl_license_unlock={your "
-"license key} behind the URL to unlock the license block."
+"The license key is only visible to %s. Add &rsssl_license_unlock={your license "
+"key} behind the URL to unlock the license block."
 msgstr ""
 "Lisensnøkkelen er bare synlig for %s. Legg til &rsssl_unlock_license={din "
 "lisensnøkkel} bak URL-en for å låse opp lisens blokkeringen."
 
 #: class-premium-options.php:952
 msgid ""
-"The preload list offers even more security, as browsers will be instructed "
-"to load the site over HTTPS, even before the first visit."
+"The preload list offers even more security, as browsers will be instructed to "
+"load the site over HTTPS, even before the first visit."
 msgstr ""
 "Forhåndslastelisten gir enda mer sikkerhet, ettersom nettlesere vil bli bedt "
 "om å laste nettstedet over HTTPS, selv før det første besøket."
@@ -1241,8 +1229,8 @@ msgstr "temafil"
 #: EDD_SL_Plugin_Updater.php:258
 #, php-format
 msgid ""
-"There is a new version of %1$s available. %2$sView version %3$s details%4$s "
-"or %5$supdate now%6$s."
+"There is a new version of %1$s available. %2$sView version %3$s details%4$s or "
+"%5$supdate now%6$s."
 msgstr ""
 "Det er en ny versjon av %1$s tilgjengelig. %2$sVis versjon %3$s detaljer%4$s "
 "eller %5$soppdater nå%6$s."
@@ -1261,8 +1249,8 @@ msgstr "Det oppsto et problem med å redigere filen. Prøv manuelt."
 #: class-premium-options.php:976
 #, php-format
 msgid ""
-"These settings are only available on the network settings, available with "
-"the %sAgency license%s."
+"These settings are only available on the network settings, available with the "
+"%sAgency license%s."
 msgstr ""
 "Disse innstillingene er bare tilgjengelige i nettverksinnstillingene, "
 "tilgjengelig med %sByrå-lisensen%s."
@@ -1283,8 +1271,8 @@ msgstr ""
 
 #: class-scan.php:2483 class-scan.php:2572
 msgid ""
-"This downloads the file from the domain without SSL, inserts it into WP "
-"media, and changes the URL to the new URL."
+"This downloads the file from the domain without SSL, inserts it into WP media, "
+"and changes the URL to the new URL."
 msgstr ""
 "Dette laster ned filen fra domenet uten SSL, setter den inn i WP-media og "
 "endrer URL-en til den nye URL-en."
@@ -1297,8 +1285,8 @@ msgstr ""
 
 #: class-scan.php:2611 class-scan.php:2691
 msgid ""
-"This function downloads the file from the domain without SSL, inserts it "
-"into WP media, and changes the URL to the new URL."
+"This function downloads the file from the domain without SSL, inserts it into "
+"WP media, and changes the URL to the new URL."
 msgstr ""
 "Denne funksjonen laster ned filen fra domenet uten SSL, setter den inn i WP-"
 "media og endrer URL-en til den nye URL-en."
@@ -1321,8 +1309,8 @@ msgstr ""
 
 #: class-premium-options.php:935
 msgid ""
-"This header enforces certificate transparency. This is done by expecting "
-"valid Signed Certificate Timestamps (SCTs)."
+"This header enforces certificate transparency. This is done by expecting valid "
+"Signed Certificate Timestamps (SCTs)."
 msgstr ""
 "Denne overskriften håndhever sertifikatets åpenhet/gjennomsiktighet. Dette "
 "gjøres ved å forvente gyldige tidsstempler for signerte sertifikater (SCT)."
@@ -1364,8 +1352,8 @@ msgstr ""
 
 #: class-premium-options.php:923
 msgid ""
-"This is an additional header to force all incoming http:// requests to https:"
-"//."
+"This is an additional header to force all incoming http:// requests to "
+"https://."
 msgstr ""
 "Dette er en ekstra overskrift for å tvinge alle innkommende http:// "
 "forespørsler til https://."
@@ -1377,7 +1365,7 @@ msgid ""
 "See %sour usage guide%s"
 msgstr ""
 
-#: class-licensing.php:576
+#: class-licensing.php:592
 #, php-format
 msgid ""
 "This license is not valid for this product. Find out why on your %saccount%s."
@@ -1385,7 +1373,7 @@ msgstr ""
 "Denne lisensen er ikke gyldig for dette produktet. Finn ut hvorfor på %sdin "
 "konto%s."
 
-#: class-licensing.php:569
+#: class-licensing.php:585
 #, php-format
 msgid "This license is not valid. Find out why on your %saccount%s."
 msgstr "Denne lisensen er ikke gyldig. Finn ut hvorfor på %sdin konto%s."
@@ -1412,27 +1400,26 @@ msgid ""
 "This will put the files back that were changed by the fix option in Really "
 "Simple SSL pro."
 msgstr ""
-"Dette vil tilbakestille filene som de ble endret av fix-alternativet i "
-"Really Simple SSL pro."
+"Dette vil tilbakestille filene som de ble endret av fix-alternativet i Really "
+"Simple SSL pro."
 
 #: class-premium-options.php:1151
 msgid "TLS version is up-to-date"
 msgstr "TLS-versjonen er oppdatert"
 
 #: class-premium-options.php:2273
-msgid ""
-"To restart reporting, set Content Security Policy to ‘reporting active’."
+msgid "To restart reporting, set Content Security Policy to ‘reporting active’."
 msgstr ""
 
 #: csp-violation-endpoint.php:417
 msgid "Today"
 msgstr "I dag"
 
-#: class-licensing.php:450
+#: class-licensing.php:466
 msgid "unlimited"
 msgstr "ubegrenset"
 
-#: class-licensing.php:474
+#: class-licensing.php:490
 msgid "Unlimited activations available."
 msgstr "Ubegrenset aktivering tilgjengelig."
 
@@ -1446,12 +1433,12 @@ msgstr ""
 msgid "Upgrade insecure request"
 msgstr "Oppgrader usikker forespørsel"
 
-#: class-licensing.php:463
+#: class-licensing.php:479
 #, php-format
 msgid "Upgrade to a %s5 sites or Agency%s license."
 msgstr "Oppgrader til en %s5-nettsted eller Byrå%s -lisens."
 
-#: class-licensing.php:466
+#: class-licensing.php:482
 #, php-format
 msgid "Upgrade to an %sAgency%s license."
 msgstr "Oppgrader til en %sByrå%s lisens."
@@ -1473,22 +1460,22 @@ msgstr ""
 msgid "User not found"
 msgstr "Bruker ikke funnet"
 
-#: class-licensing.php:489
+#: class-licensing.php:505
 msgid "Valid"
 msgstr "Gyldig"
 
-#: class-licensing.php:496
+#: class-licensing.php:512
 #, php-format
 msgid "Valid license for %s."
 msgstr "Gyldig lisens for %s."
 
-#: class-licensing.php:457
+#: class-licensing.php:473
 #, php-format
 msgid "Valid until %s."
 msgstr "Gyldig til %s."
 
-#: class-licensing.php:553 class-licensing.php:560 class-licensing.php:568
-#: class-licensing.php:575 class-licensing.php:590 class-licensing.php:624
+#: class-licensing.php:569 class-licensing.php:576 class-licensing.php:584
+#: class-licensing.php:591 class-licensing.php:606 class-licensing.php:640
 #: grid/templates/scan-results-element.php:5
 msgid "Warning"
 msgstr "Advarsel"
@@ -1501,17 +1488,17 @@ msgstr ""
 
 #: grid/templates/scan-footer.php:20
 msgid ""
-"When you enable this option, the URL's that were previously ignored are "
-"shown again."
+"When you enable this option, the URL's that were previously ignored are shown "
+"again."
 msgstr ""
 "Når du aktiverer dette alternativet, vises URL-ene, som tidligere ble "
 "ignorert, igjen."
 
 #: grid/templates/support.php:6
 msgid ""
-"When you send this form we will attach the following information: license "
-"key, scan results, your domain, .htaccess file, debug log and a list of "
-"active plugins"
+"When you send this form we will attach the following information: license key, "
+"scan results, your domain, .htaccess file, debug log and a list of active "
+"plugins"
 msgstr ""
 "Når du sender dette skjemaet, legger vi til følgende informasjon: "
 "lisensnøkkel, skanneresultater, domenet ditt, .htaccess-fil, feilsøkingslogg "
@@ -1535,7 +1522,7 @@ msgstr "WordPress 301-omdirigering til SSL for alle SSL-nettsteder"
 msgid "Works with %s"
 msgstr ""
 
-#: class-licensing.php:619
+#: class-licensing.php:635
 #, php-format
 msgid "You can activate your license on the %slicense tab%s."
 msgstr ""
@@ -1544,7 +1531,7 @@ msgstr ""
 msgid "You can edit the source file manually by pressing the edit button."
 msgstr "Du kan redigere kildefilen manuelt ved å trykke på redigeringsknappen."
 
-#: class-licensing.php:469
+#: class-licensing.php:485
 #, php-format
 msgid "You can renew your license on your %saccount%s."
 msgstr "Du kan fornye lisensen på %sdin konto%s."
@@ -1552,9 +1539,9 @@ msgstr "Du kan fornye lisensen på %sdin konto%s."
 #: class-premium-options.php:1241
 #, php-format
 msgid "You can upgrade on your %saccount%s."
-msgstr "Du kan oppgradere på %-kontoen din%s."
+msgstr "Du kan oppgradere på %skontoen din%s."
 
-#: class-licensing.php:621
+#: class-licensing.php:637
 #, php-format
 msgid "You can upgrade or renew your license on the %slicense tab%s."
 msgstr ""
@@ -1575,7 +1562,7 @@ msgstr "Du har ikke tillatelse til å installere programvareoppdateringer"
 msgid "You finished a scan without errors."
 msgstr "Du fullførte en skanning uten feil."
 
-#: class-licensing.php:457
+#: class-licensing.php:473
 msgid "You have a lifetime license."
 msgstr "Du har en livstidslisens."
 
@@ -1591,8 +1578,8 @@ msgstr ""
 
 #: class-premium-options.php:1118
 msgid ""
-"You have enabled the nginx.conf security header option. Check if the "
-"following security headers have been added to the NGINX configuration file:"
+"You have enabled the nginx.conf security header option. Check if the following "
+"security headers have been added to the NGINX configuration file:"
 msgstr ""
 
 #: class-premium-options.php:1183
@@ -1609,10 +1596,10 @@ msgstr ""
 "Du har skannet nettstedet ditt før, men skanningsresultatene er tømt fra "
 "hurtigbufferen. Kjør en ny skanning for å se resultatene."
 
-#: class-licensing.php:674
+#: class-licensing.php:690
 msgid ""
-"You haven't activated your Really Simple SSL Pro Multisite license yet. To "
-"get all future updates, enter your license on the network settings page."
+"You haven't activated your Really Simple SSL Pro Multisite license yet. To get "
+"all future updates, enter your license on the network settings page."
 msgstr ""
 "Du har ikke aktivert Really Simple SSL Pro Multisite-lisensen ennå. For å få "
 "alle fremtidige oppdateringer, skriv inn lisensen på "
@@ -1634,36 +1621,36 @@ msgstr "Filene dine ble allerede gjenopprettet."
 msgid "Your files were restored."
 msgstr "Filene dine ble gjenopprettet."
 
-#: class-licensing.php:561
+#: class-licensing.php:577
 #, php-format
 msgid ""
 "Your license could not be found in our system. Please contact %ssupport%s."
 msgstr "Lisensen din ble ikke funnet i systemet vårt. Kontakt %support%s."
 
-#: class-licensing.php:554
+#: class-licensing.php:570
 #, php-format
 msgid "Your license has been revoked. Please contact %ssupport%s."
 msgstr "Lisensen din er tilbakekalt. Kontakt %support%s."
 
-#: class-licensing.php:591
+#: class-licensing.php:607
 #, php-format
 msgid ""
-"Your license key has expired. Please renew your license key on your "
-"%saccount%s."
+"Your license key has expired. Please renew your license key on your %saccount"
+"%s."
 msgstr "Lisensnøkkelen din har utløpt. Forny lisensnøkkelen på din %skonto% s."
 
-#: class-licensing.php:619
+#: class-licensing.php:635
 msgid "Your Really Simple SSL pro license hasn't been activated."
 msgstr ""
 
-#: class-licensing.php:621
+#: class-licensing.php:637
 msgid "Your Really Simple SSL pro license is not valid."
 msgstr ""
 
 #: class-premium-options.php:1255
 msgid ""
-"Your Really Simple SSL Pro license key has expired. Please renew your "
-"license to continue receiving updates and premium support."
+"Your Really Simple SSL Pro license key has expired. Please renew your license "
+"to continue receiving updates and premium support."
 msgstr ""
 "Din Really Simple SSL Pro-lisensnøkkel har utløpt. Forny lisensen din for å "
 "fortsette å motta oppdateringer og premiumstøtte."
@@ -1678,21 +1665,20 @@ msgstr ""
 
 #: class-premium-options.php:1262
 msgid ""
-"Your Really Simple SSL Pro license key is not activated. Please activate "
-"your license to continue receiving updates and premium support."
+"Your Really Simple SSL Pro license key is not activated. Please activate your "
+"license to continue receiving updates and premium support."
 msgstr ""
-"Din Really Simple SSL Pro-lisensnøkkel er ikke aktivert. Aktiver lisensen "
-"din for å fortsette å motta oppdateringer og premiumstøtte."
+"Din Really Simple SSL Pro-lisensnøkkel er ikke aktivert. Aktiver lisensen din "
+"for å fortsette å motta oppdateringer og premiumstøtte."
 
 #: class-premium-options.php:1133
 #, php-format
 msgid ""
-"Your site has been configured for the HSTS preload list. If you have "
-"submitted your site, it will be preloaded. Click %shere%s to submit."
+"Your site has been configured for the HSTS preload list. If you have submitted "
+"your site, it will be preloaded. Click %shere%s to submit."
 msgstr ""
-"Nettstedet ditt er konfigurert for HSTS-forhåndslastelisten. Hvis du har "
-"sendt inn nettstedet ditt, blir det forhåndslastet. Klikk %sher%s for å "
-"sende inn."
+"Nettstedet ditt er konfigurert for HSTS-forhåndslastelisten. Hvis du har sendt "
+"inn nettstedet ditt, blir det forhåndslastet. Klikk %sher%s for å sende inn."
 
 #: class-premium-options.php:1138
 msgid "Your site is not yet configured for the HSTS preload list."
@@ -1711,5 +1697,5 @@ msgid ""
 "Your site uses an outdated version of TLS. Upgrade to TLS 1.2 or TLS 1.3 to "
 "keep your site secure."
 msgstr ""
-"Nettstedet ditt bruker en utdatert versjon av TLS. Oppgrader til TLS 1.2 "
-"eller TLS 1.3 for å holde nettstedet ditt sikkert."
+"Nettstedet ditt bruker en utdatert versjon av TLS. Oppgrader til TLS 1.2 eller "
+"TLS 1.3 for å holde nettstedet ditt sikkert."

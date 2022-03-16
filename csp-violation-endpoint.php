@@ -31,7 +31,7 @@
             add_action( 'wp_ajax_rsssl_delete_from_csp', array( $this, 'delete_from_csp' ) );
             add_action( 'wp_ajax_rsssl_update_csp_toggle_option', array( $this, 'update_csp_toggle_value' ) );
             add_action( 'wp_ajax_rsssl_load_csp_table', array( $this, 'get_csp_table' ) );
-            add_action('rsssl_csp_modals', array( $this , 'revoke_csp_modal' ), 99 );
+            add_action('rsssl_modals', array( $this , 'revoke_csp_modal' ), 99 );
 
             $this->directives = array(
 				'child-src'         => "child-src 'self' {uri}; ",
@@ -175,7 +175,6 @@
 		    //script-src-elem 'self' 'unsafe-inline' https://goingtoamerica.nl http://pvcsd.org; style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
 			$rules = array();
 			global $wpdb;
-			$header = false;
 			//The base content security policy rules, used in later functions to generate the Content Security Policy
 			$rules['default-src'] = "default-src 'self' ;";
 			$rules['script-src'] = "script-src 'self' 'unsafe-inline' ;";
@@ -185,7 +184,7 @@
 
 			$table_name = $wpdb->base_prefix . "rsssl_csp_log";
 			$rows = $wpdb->get_results("SELECT * FROM $table_name ORDER BY time DESC");
-			if (!empty($rows)) {
+			if ( !empty($rows) ) {
 				foreach ($rows as $row) {
 					if ( $row->inpolicy === 'true' ) {
 						$violatedirective = $row->violateddirective;
@@ -199,33 +198,38 @@
 			}
 			$rules = implode(" ", $rules);
 
-			//Update CSP-Report-Only rules
 			if ( RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_content_security_policy') === 'report-only' ) {
-				$csp_violation_endpoint = home_url('wp-json/rsssl/v1/csp');
+				$csp_violation_endpoint = get_rest_url(null, 'rsssl/v1/csp');
 				if (RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_csp_report_token')) {
 					$token = RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_csp_report_token');
 				} else {
 					$token = time();
 					RSSSL_PRO()->rsssl_premium_options->update_networkwide_option('rsssl_csp_report_token', $token);
 				}
-				$header = 'Content-Security-Policy-Report-Only';
-				$rules =  "$rules report-uri $csp_violation_endpoint?rsssl_apitoken=$token";
-			}
+				//report-uri is deprecated, but still the most used in browsers. We simply add both
+				$header = 'Report-To';
+				$csp_endpoint_rules = "{'url': '".$csp_violation_endpoint."', 'group': 'csp-endpoint', 'max-age': 10886400}";
+				$report_to_header = RSSSL_PRO()->rsssl_premium_options->wrap_header($header, $csp_endpoint_rules, $type, $html_output);
 
-			//Update CSP rules when policy is enforced.
-			if ( RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_content_security_policy') === 'enforce' ) {
+				$header = 'Content-Security-Policy-Report-Only';
+				$rules =  "$rules report-uri $csp_violation_endpoint?rsssl_apitoken=$token; report-to csp-endpoint";
+				if ( RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_upgrade_insecure_requests') ) {
+					$rules = "upgrade-insecure-requests; $rules";
+				}
+                $report_uri_header = RSSSL_PRO()->rsssl_premium_options->wrap_header($header, $rules, $type, $html_output);
+
+				return $report_to_header.$report_uri_header;
+
+            } else if ( RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_content_security_policy') === 'enforce' ) {
 				// If the upgrade-insecure-requests header has been enabled, add it to this CSP.
                 $header = 'Content-Security-Policy';
-			}
-
-			if ( $header ) {
 				if ( RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_upgrade_insecure_requests') ) {
 					$rules = "upgrade-insecure-requests; $rules";
 				}
 				return RSSSL_PRO()->rsssl_premium_options->wrap_header($header, $rules, $type, $html_output);
-			} else {
-			    return '';
-            }
+			}
+
+		    return '';
 		}
 
 		/**
@@ -362,6 +366,7 @@
                   violateddirective text  NOT NULL,
                   blockeduri text  NOT NULL,
                   inpolicy text NOT NULL,
+                  hide text NOT NULL,
                   PRIMARY KEY  (id)
                 ) $charset_collate";
 
@@ -385,12 +390,15 @@
             global $wpdb;
             $table_name = $wpdb->base_prefix . "rsssl_csp_log";
 
+            // Allow override of display limit
+			$limit = defined('RSSSL_CSP_DISPLAY_LIMIT_OVERRIDE') ? intval(RSSSL_CSP_DISPLAY_LIMIT_OVERRIDE) : 1000;
+
             if ( RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_content_security_policy_toggle') === 'blocked' ) {
-                $rows = $wpdb->get_results("SELECT * FROM $table_name WHERE `inpolicy` != 'true'  ORDER BY time DESC LIMIT 100");
+                $rows = $wpdb->get_results("SELECT * FROM $table_name WHERE `inpolicy` != 'true'  ORDER BY time DESC LIMIT $limit");
             } elseif ( RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_content_security_policy_toggle') === 'allowed' ) {
-                $rows = $wpdb->get_results("SELECT * FROM $table_name WHERE `inpolicy` = 'true'  ORDER BY time DESC LIMIT 100");
+                $rows = $wpdb->get_results("SELECT * FROM $table_name WHERE `inpolicy` = 'true'  ORDER BY time DESC LIMIT $limit");
             } else {
-                $rows = $wpdb->get_results("SELECT * FROM $table_name ORDER BY time DESC LIMIT 100");
+                $rows = $wpdb->get_results("SELECT * FROM $table_name ORDER BY time DESC LIMIT $limit");
             }
 
             foreach ( $rows as $row ) {
@@ -409,7 +417,7 @@
                 } else {
                     $id = 'button-rsssl-tertiary revoke-from-csp';
                     $button_text = __("Revoke", "really-simple-ssl-pro");
-                    $modal = "data-toggle='modal' data-target='#revoke-csp-modal'";
+                    $modal = "data-toggle='modal' data-target='revoke-csp-modal'";
                 }
 
                 // Check if date is today
@@ -492,49 +500,34 @@
          */
 
         public function revoke_csp_modal() {
-		    ?>
-            <div class="modal fade rsssl-modal-dialog" id="revoke-csp-modal" tabindex="-1" role="dialog"
-                 aria-labelledby="revoke-csp-modal">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close notice-dismiss" data-dismiss="modal"
-                                    aria-label="Close"><span aria-hidden="true"></span>
-                            </button>
-                            <h3 class="modal-title" id="revoke-csp-title">
-                                <?php _e("Revoking a Rule from the Content Security Policy", "really-simple-ssl-pro"); ?>
-                            </h3>
-                        </div>
-                        <div class="modal-body">
-                            <div id='revoke-csp-modal-description'>
-                                <?php _e("If you revoke a rule from the content security policy, the rule will be deleted from the resource list that is considered safe to load. This might affect your website, or specific functions. You can always allow the resource if needed.", "really-simple-ssl-pro"); ?>
-                            </div>
-                            <div id='revoke-csp-modal-type'></div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button"
-                                    class="button button-primary" data-dismiss="modal" aria-label="Close">
-                                    <?php _e( "Close",
-                                    "really-simple-ssl-pro" ) ?>
-                            </button>
-                            <button type="button" data-results_id=0 data-id=0
-                                    data-path=0 data-url=0
-                                    data-token="<?php echo wp_create_nonce( 'rsssl_revoke_from_csp' ); ?>"
-                                    class="button button-rsssl-primary rsssl-start-action"
-                                    id="start-revoke-from-csp"><?php _e( "Revoke rule",
-                                    "really-simple-ssl-pro" ) ?>
-                            </button>
-                            <button type="button" data-results_id=0 data-id=0
-                                    data-path=0 data-url=0
-                                    data-token="<?php echo wp_create_nonce( 'rsssl_revoke_from_csp' ); ?>"
-                                    class="button button-rsssl-tertiary rsssl-start-action"
-                                    id="start-revoke-delete-from-csp"><?php _e( "Revoke and delete rule",
-                                    "really-simple-ssl-pro" ) ?>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-		    <?php
+            $args = array(
+                'title' => __( "Revoke rule", "really-simple-ssl-pro" ),
+                'id' => 'revoke-csp-modal',
+                'fix_target_id' => 'start-revoke-from-csp',
+				'subtitle' => __( "Revoking a Rule from the Content Security Policy!", "really-simple-ssl-pro" ),
+                'content' => array(
+                    __( "If you revoke a rule from the content security policy,  the rule will be deleted from the resource list that is considered safe to load.  This might affect your website,  or specific functions.  You can always allow the resource if needed.",
+                        "really-simple-ssl-pro" ),
+                ),
+                'footer' => '',
+                'buttons' => array(
+                    1 => array(
+                        'text' => __('Revoke rule', 'really-simple-ssl-pro'),
+                        'id' => 'start-revoke-from-csp',
+                        'type' => 'data',
+                        'class' => 'button-secondary',
+                        'action' => 'rsssl_revoke_from_csp',
+                    ),
+                    2 => array(
+                        'text' => __('Revoke and delete rule', 'really-simple-ssl-pro'),
+                        'id' => 'start-revoke-delete-from-csp',
+                        'type' => 'data',
+                        'class' => 'button-rsssl-tertiary',
+                        'action' => 'rsssl_revoke_from_csp',
+                    ),
+                )
+            );
+
+            return new rsssl_modal( $args );
     }
 }

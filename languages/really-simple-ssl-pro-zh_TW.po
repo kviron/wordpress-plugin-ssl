@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Really Simple SSL pro\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-07 08:36+0100\n"
-"PO-Revision-Date: 2021-09-21 13:59+0000\n"
+"PO-Revision-Date: 2021-11-11 09:33+0000\n"
 "Last-Translator: \n"
 "Language-Team: Chinese (Taiwan)\n"
 "Language: zh_TW\n"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "%s to %s of %s results"
 msgstr ""
 
-#: class-licensing.php:476 class-licensing.php:584
+#: class-licensing.php:492 class-licensing.php:600
 #, php-format
 msgid "%s/%s activations available."
 msgstr ""
@@ -41,7 +41,7 @@ msgstr ""
 msgid "%sActivate%s your license."
 msgstr ""
 
-#: class-licensing.php:676
+#: class-licensing.php:692
 #, php-format
 msgid "%sGo to the settings page%s or %spurchase a license%s."
 msgstr ""
@@ -94,7 +94,7 @@ msgstr ""
 msgid "According to the check that was performed just now on "
 msgstr ""
 
-#: grid/templates/scan-results-container.php:9 grid_ms/templates/sites.php:71
+#: grid/templates/scan-results-container.php:9 grid_ms/templates/sites.php:70
 msgid "Action"
 msgstr ""
 
@@ -104,6 +104,10 @@ msgstr ""
 
 #: grid/templates/license-footer.php:14
 msgid "Activate license"
+msgstr ""
+
+#: class-licensing.php:60
+msgid "Activate your license for automatic updates."
 msgstr ""
 
 #: class-premium-options.php:1647
@@ -485,9 +489,9 @@ msgstr ""
 
 #: csp-violation-endpoint.php:510
 msgid ""
-"If you revoke a rule from the content security policy,  the rule will be "
-"deleted from the resource list that is considered safe to load.  This might "
-"affect your website,  or specific functions.  You can always allow the "
+"If you revoke a rule from the content security policy, the rule will be "
+"deleted from the resource list that is considered safe to load. This might "
+"affect your website, or specific functions. You can always allow the "
 "resource if needed."
 msgstr ""
 
@@ -543,15 +547,15 @@ msgstr ""
 msgid "Last"
 msgstr ""
 
-#: class-licensing.php:234 class-licensing.php:495 class-licensing.php:501
-#: class-licensing.php:520 class-licensing.php:583
+#: class-licensing.php:250 class-licensing.php:511 class-licensing.php:517
+#: class-licensing.php:536 class-licensing.php:599
 #: class-premium-options.php:1254 class-premium-options.php:1261
 #: class-premium-options.php:1268 class-premium-options.php:1275
 #: class-premium-options.php:1282
 msgid "License"
 msgstr "執照"
 
-#: class-licensing.php:685
+#: class-licensing.php:701
 msgid "License not activated"
 msgstr ""
 
@@ -634,11 +638,11 @@ msgstr ""
 msgid "mu plugin file"
 msgstr ""
 
-#: class-licensing.php:508
+#: class-licensing.php:524
 msgid "Multisite"
 msgstr ""
 
-#: class-licensing.php:509
+#: class-licensing.php:525
 #, php-format
 msgid "Multisite detected. Please consider upgrading to %smultisite%s."
 msgstr ""
@@ -676,7 +680,7 @@ msgstr ""
 msgid "No redirect to http detected."
 msgstr ""
 
-#: class-licensing.php:530
+#: class-licensing.php:546
 msgid "No response"
 msgstr ""
 
@@ -716,7 +720,7 @@ msgstr ""
 msgid "not allowed"
 msgstr ""
 
-#: class-licensing.php:455
+#: class-licensing.php:471
 msgid "Not available"
 msgstr ""
 
@@ -740,7 +744,7 @@ msgstr ""
 msgid "Once Daily"
 msgstr ""
 
-#: class-licensing.php:537 class-licensing.php:546
+#: class-licensing.php:553 class-licensing.php:562
 msgid "Open"
 msgstr ""
 
@@ -754,11 +758,11 @@ msgstr ""
 msgid "PHP file with mixed content"
 msgstr ""
 
-#: really-simple-ssl-pro-multisite.php:207
+#: really-simple-ssl-pro-multisite.php:219
 msgid "Please activate Really Simple SSL network wide."
 msgstr ""
 
-#: class-licensing.php:547
+#: class-licensing.php:563
 msgid "Please activate your license key."
 msgstr ""
 
@@ -768,12 +772,12 @@ msgid ""
 "subdomains, including www and non-www domain need to be HTTPS!"
 msgstr ""
 
-#: class-licensing.php:538
+#: class-licensing.php:554
 #, php-format
 msgid "Please enter your license key. Available in your %saccount%s."
 msgstr ""
 
-#: really-simple-ssl-pro-multisite.php:209
+#: really-simple-ssl-pro-multisite.php:221
 #, fuzzy
 #| msgid ""
 #| "Please install and activate Really Simple SSL before activating this add-"
@@ -791,14 +795,14 @@ msgstr ""
 msgid "Please renew your certificate before the expiry date."
 msgstr ""
 
-#: really-simple-ssl-pro-multisite.php:218
+#: really-simple-ssl-pro-multisite.php:230
 msgid ""
 "Please upgrade to the latest version to be able use the full functionality "
 "of the plugin."
 msgstr ""
 
-#: really-simple-ssl-pro-multisite.php:203
-#: really-simple-ssl-pro-multisite.php:216
+#: really-simple-ssl-pro-multisite.php:215
+#: really-simple-ssl-pro-multisite.php:228
 #, fuzzy
 #| msgid "Plugin dependency error."
 msgid "Plugin dependency error"
@@ -850,7 +854,7 @@ msgstr ""
 msgid "Really Simple Plugins"
 msgstr ""
 
-#: really-simple-ssl-pro-multisite.php:217
+#: really-simple-ssl-pro-multisite.php:229
 msgid ""
 "Really Simple SSL needs to be updated to the latest version to be compatible."
 msgstr ""
@@ -867,7 +871,7 @@ msgid ""
 "or higher"
 msgstr ""
 
-#: really-simple-ssl-pro-multisite.php:204
+#: really-simple-ssl-pro-multisite.php:216
 #, fuzzy
 #| msgid ""
 #| "Really Simple SSL pro is an add-on for Really Simple SSL, and cannot do "
@@ -877,7 +881,7 @@ msgid ""
 "on its own :-("
 msgstr "Really Simple SSL pro 是 Really Simple SSL一個附加元件, 無法自己來:("
 
-#: class-licensing.php:98
+#: class-licensing.php:114
 msgid "Really Simple SSL Pro license key"
 msgstr ""
 
@@ -885,7 +889,7 @@ msgstr ""
 msgid "Really Simple SSL pro multisite"
 msgstr ""
 
-#: class-licensing.php:701
+#: class-licensing.php:717
 msgid "Really Simple SSL Pro Multisite license key"
 msgstr ""
 
@@ -1031,7 +1035,7 @@ msgstr ""
 msgid "Show ignored URLs"
 msgstr ""
 
-#: grid_ms/templates/sites.php:70
+#: grid_ms/templates/sites.php:69
 msgid "Site"
 msgstr ""
 
@@ -1067,7 +1071,7 @@ msgstr ""
 msgid "Start scan"
 msgstr ""
 
-#: grid/templates/scan-results-container.php:6 grid_ms/templates/sites.php:69
+#: grid/templates/scan-results-container.php:6 grid_ms/templates/sites.php:68
 msgid "Status"
 msgstr ""
 
@@ -1114,7 +1118,7 @@ msgid ""
 "found errors are not a problem for your site."
 msgstr "最後的掃瞄已完成帶有錯誤。若你確定所發現的錯誤並不會對你的網站造成問題你才遷移。"
 
-#: class-licensing.php:531
+#: class-licensing.php:547
 msgid ""
 "The license information could not be retrieved at this moment. Please try "
 "again at a later time."
@@ -1246,13 +1250,13 @@ msgid ""
 "See %sour usage guide%s"
 msgstr ""
 
-#: class-licensing.php:576
+#: class-licensing.php:592
 #, php-format
 msgid ""
 "This license is not valid for this product. Find out why on your %saccount%s."
 msgstr ""
 
-#: class-licensing.php:569
+#: class-licensing.php:585
 #, php-format
 msgid "This license is not valid. Find out why on your %saccount%s."
 msgstr ""
@@ -1291,11 +1295,11 @@ msgstr ""
 msgid "Today"
 msgstr ""
 
-#: class-licensing.php:450
+#: class-licensing.php:466
 msgid "unlimited"
 msgstr ""
 
-#: class-licensing.php:474
+#: class-licensing.php:490
 msgid "Unlimited activations available."
 msgstr ""
 
@@ -1309,12 +1313,12 @@ msgstr ""
 msgid "Upgrade insecure request"
 msgstr ""
 
-#: class-licensing.php:463
+#: class-licensing.php:479
 #, php-format
 msgid "Upgrade to a %s5 sites or Agency%s license."
 msgstr ""
 
-#: class-licensing.php:466
+#: class-licensing.php:482
 #, php-format
 msgid "Upgrade to an %sAgency%s license."
 msgstr ""
@@ -1332,22 +1336,22 @@ msgstr ""
 msgid "User not found"
 msgstr ""
 
-#: class-licensing.php:489
+#: class-licensing.php:505
 msgid "Valid"
 msgstr ""
 
-#: class-licensing.php:496
+#: class-licensing.php:512
 #, php-format
 msgid "Valid license for %s."
 msgstr ""
 
-#: class-licensing.php:457
+#: class-licensing.php:473
 #, php-format
 msgid "Valid until %s."
 msgstr ""
 
-#: class-licensing.php:553 class-licensing.php:560 class-licensing.php:568
-#: class-licensing.php:575 class-licensing.php:590 class-licensing.php:624
+#: class-licensing.php:569 class-licensing.php:576 class-licensing.php:584
+#: class-licensing.php:591 class-licensing.php:606 class-licensing.php:640
 #: grid/templates/scan-results-element.php:5
 msgid "Warning"
 msgstr ""
@@ -1389,7 +1393,7 @@ msgstr ""
 msgid "Works with %s"
 msgstr ""
 
-#: class-licensing.php:619
+#: class-licensing.php:635
 #, php-format
 msgid "You can activate your license on the %slicense tab%s."
 msgstr ""
@@ -1398,7 +1402,7 @@ msgstr ""
 msgid "You can edit the source file manually by pressing the edit button."
 msgstr ""
 
-#: class-licensing.php:469
+#: class-licensing.php:485
 #, php-format
 msgid "You can renew your license on your %saccount%s."
 msgstr ""
@@ -1408,7 +1412,7 @@ msgstr ""
 msgid "You can upgrade on your %saccount%s."
 msgstr ""
 
-#: class-licensing.php:621
+#: class-licensing.php:637
 #, php-format
 msgid "You can upgrade or renew your license on the %slicense tab%s."
 msgstr ""
@@ -1427,7 +1431,7 @@ msgstr ""
 msgid "You finished a scan without errors."
 msgstr ""
 
-#: class-licensing.php:457
+#: class-licensing.php:473
 msgid "You have a lifetime license."
 msgstr ""
 
@@ -1454,7 +1458,7 @@ msgid ""
 "cache. Run a new scan to see the results."
 msgstr ""
 
-#: class-licensing.php:674
+#: class-licensing.php:690
 msgid ""
 "You haven't activated your Really Simple SSL Pro Multisite license yet. To "
 "get all future updates, enter your license on the network settings page."
@@ -1474,29 +1478,29 @@ msgstr ""
 msgid "Your files were restored."
 msgstr ""
 
-#: class-licensing.php:561
+#: class-licensing.php:577
 #, php-format
 msgid ""
 "Your license could not be found in our system. Please contact %ssupport%s."
 msgstr ""
 
-#: class-licensing.php:554
+#: class-licensing.php:570
 #, php-format
 msgid "Your license has been revoked. Please contact %ssupport%s."
 msgstr ""
 
-#: class-licensing.php:591
+#: class-licensing.php:607
 #, php-format
 msgid ""
 "Your license key has expired. Please renew your license key on your "
 "%saccount%s."
 msgstr ""
 
-#: class-licensing.php:619
+#: class-licensing.php:635
 msgid "Your Really Simple SSL pro license hasn't been activated."
 msgstr ""
 
-#: class-licensing.php:621
+#: class-licensing.php:637
 msgid "Your Really Simple SSL pro license is not valid."
 msgstr ""
 

@@ -3,12 +3,14 @@ jQuery(document).ready(function ($) {
     var rsssl_interval = 3000;
     var progress = rsssl_ajax.progress;
     var progressBar = $('#rsssl-scan-list').find('.progress-bar');
+    //need to count before the datatable is initialized. Otherwise the count is the page size.
+    var rsssl_scan_results = $('#rsssl-scan-results tr').length;
 
     rsslInitScanDatatable();
     initCspTable();
     var scan_paginate;
     function rsslInitScanDatatable(){
-        $('#rsssl-scan-results').DataTable( {
+        var scan_table = $('#rsssl-scan-results').DataTable( {
             "pageLength": 4,
             "info": false,
             "language" : {
@@ -20,15 +22,12 @@ jQuery(document).ready(function ($) {
                     "last": rsssl_ajax.last,
                 },
             },
-
         });
 
-        var resultCount = $('#rsssl-scan-results').DataTable().count();
-        var pageLength = $('#rsssl-scan-results').DataTable().page.len();
-
+        var pageLength = scan_table.page.len();
         scan_paginate = $("#rsssl-scan-results_paginate").detach()
 
-        if (resultCount > pageLength) {
+        if (rsssl_scan_results > pageLength) {
             $("#rsssl-scan-pagination").append(scan_paginate);
         }
     }
@@ -56,7 +55,7 @@ jQuery(document).ready(function ($) {
 
     function initCspTable() {
         $('#rsssl-csp-table').DataTable({
-            "pageLength": 4,
+            "pageLength": 8,
             "bSort": false,
             "bFilter" : false,
             "language": {
@@ -64,13 +63,13 @@ jQuery(document).ready(function ($) {
             },
         });
         var datatable_csp_paginate = $("#rsssl-csp-table_paginate").detach();
-        $(".rsssl-content-security-policy  .rsssl-grid-item-footer").html('');
-        $(".rsssl-content-security-policy  .rsssl-grid-item-footer").append(datatable_csp_paginate);
+        var csp_footer = $(".rsssl-content-security-policy  .rsssl-grid-item-footer");
+        csp_footer.html('');
+        csp_footer.append(datatable_csp_paginate);
         var datatable_csp_info = $("#rsssl-csp-table_info").detach();
-        $(".rsssl-content-security-policy  .rsssl-grid-item-footer").append('<div id="rsssl-csp-entries"></div>');
+        csp_footer.append('<div id="rsssl-csp-entries"></div>');
         $('#rsssl-csp-entries').append(datatable_csp_info);
     }
-
 
     $('#rsssl_content_security_policy_toggle').on('change', function () {
         var value = $(this).val();
@@ -120,12 +119,10 @@ jQuery(document).ready(function ($) {
         );
     }
 
-
     var permissions_policy_table = $('#rsssl-permission-policy-table').DataTable( {
         "info": false,
         "pageLength": 6,
     });
-
 
     // Add hidden fields to submit all rows in table. Without this, only the current page will be posted!
     $('form').on('submit', function(e){
@@ -164,13 +161,9 @@ jQuery(document).ready(function ($) {
         $('.rsssl-button-save').prop('disabled', false);
     });
 
-
     $('.paginate_button').click(function() {
         $('.rsssl-button-save').prop('disabled', false);
     });
-
-    // var datatables_search = $("#rsssl-csp-table_filter").detach();
-    // $(".rsssl-content-security-policy .rsssl-instructions").append(datatables_search);
 
     var fp_paginate = $("#rsssl-permission-policy-table_paginate").detach();
     $(".rsssl-permissions-policy .rsssl-grid-item-footer").append(fp_paginate);
@@ -182,7 +175,6 @@ jQuery(document).ready(function ($) {
 
     // Required to line out 'Advanced settings' heading
     $( ".rsssl-advanced-settings" ).closest( "th" ).css( "display", "block" );
-
 
     function get_scan_progress() {
         if (progress >= 100) return;
@@ -217,14 +209,6 @@ jQuery(document).ready(function ($) {
         );
     }
 
-
-    /*tooltips*/
-
-    $("body").tooltip({
-        selector: '.tooltip',
-        placement: 'bottom',
-    });
-
     /* Start fix post */
     $(document).on('click', "#start-fix-post", function (e) {
 
@@ -255,13 +239,13 @@ jQuery(document).ready(function ($) {
                 btn.prop('disabled', false);
 
                 if (response.success) {
-                    console.log(caller);
                     rsssl_remove_from_results(caller);
-                    $("#fix-post-modal").modal('hide');
+                    $("#fix-post-modal").hide();
+                    rsssl_RemoveBackdrop();
                 } else {
-                    $("#fix-post-modal").find(".modal-body").prepend(response.error);
-                }
-            });
+                    $("#fix-post-modal").append(response.error);
+            }
+        });
     });
 
     $(document).on('click', "#start-fix-postmeta", function (e) {
@@ -292,9 +276,10 @@ jQuery(document).ready(function ($) {
 
                 if (response.success) {
                     rsssl_remove_from_results(caller);
-                    $("#fix-postmeta-modal").modal('hide');
+                    $("#fix-postmeta-modal").hide();
+                    rsssl_RemoveBackdrop();
                 } else {
-                    $("#fix-postmeta-modal").find(".modal-body").prepend(response.error);
+                    $("#fix-postmeta-modal").append(response.error);
                 }
             }
         );
@@ -330,9 +315,10 @@ jQuery(document).ready(function ($) {
 
                 if (response.success) {
                     rsssl_remove_from_results(caller);
-                    $("#fix-file-modal").modal('hide');
+                    $("#fix-file-modal").hide();
+                    rsssl_RemoveBackdrop();
                 } else {
-                    $("#fix-file-modal").find(".modal-body").prepend(response.error);
+                    $("#fix-file-modal").append(response.error);
                 }
             }
         );
@@ -387,9 +373,10 @@ jQuery(document).ready(function ($) {
 
                 if (response.success) {
                     rsssl_remove_from_results(caller);
-                    $("#details-modal").modal('hide');
+                    $(".rsssl-modal").hide();
+                    rsssl_RemoveBackdrop();
                 } else {
-                    $("#details-modal").find(".modal-body").prepend(response.error);
+                    $("#details-modal").append(response.error);
                 }
             }
         );
@@ -426,9 +413,10 @@ jQuery(document).ready(function ($) {
 
                 if (response.success) {
                     rsssl_remove_from_results(caller);
-                    $("#fix-widget-modal").modal('hide');
+                    $(".rsssl-modal").hide();
+                    rsssl_RemoveBackdrop();
                 } else {
-                    $("#fix-widget-modal").find(".modal-body").prepend(response.error);
+                    $("#fix-widget-modal").append(response.error);
                 }
 
             }
@@ -488,8 +476,9 @@ jQuery(document).ready(function ($) {
             function (response) {
                 btn.html(btnContent);
                 btn.prop('disabled', false);
-                $("#revoke-csp-modal").modal('hide');
+                $(".rsssl-modal").hide();
                 rsssl_remove_csp_from_results(id);
+                rsssl_RemoveBackdrop();
                 }
         );
     });
@@ -520,6 +509,7 @@ jQuery(document).ready(function ($) {
                 btn.prop('disabled', false);
                 btn.html(btnContent);
                 rsssl_remove_csp_from_results(id);
+                rsssl_RemoveBackdrop();
             }
         );
     });
@@ -533,31 +523,11 @@ jQuery(document).ready(function ($) {
                 id: id,
             },
             function (response) {
-                $("#revoke-csp-modal").modal('hide');
+                $("#revoke-csp-modal").hide();
                 rsssl_remove_csp_from_results(id);
             }
         );
     }
-
-    //remove alerts after closing
-    $("#fix-file-modal").on("hidden.bs.modal", function () {
-        $("#fix-file-modal").find("#rsssl-alert").remove();
-    });
-
-    //remove alerts after closing
-    $("#fix-post-modal").on("hidden.bs.modal", function () {
-        $("#fix-post-modal").find("#rsssl-alert").remove();
-    });
-
-    //remove alerts after closing
-    $("#fix-postmeta-modal").on("hidden.bs.modal", function () {
-        $("#fix-postmeta-modal").find("#rsssl-alert").remove();
-    });
-
-    //remove alerts after closing
-    $("#fix-widget-modal").on("hidden.bs.modal", function () {
-        $("#fix-widget-modal").find("#rsssl-alert").remove();
-    });
 
     $(document).on('click', "#start-roll-back", function (e) {
         $(this).prop('disabled', true);
@@ -569,30 +539,10 @@ jQuery(document).ready(function ($) {
                 token: token,
             },
             function (response) {
-                $("#roll-back-modal").find(".modal-body").prepend(response.error);
+                $("#roll-back-modal").append(response.error);
             }
         );
         $(this).prop('disabled', false);
-    });
-
-    $("#roll-back-modal").on("hidden.bs.modal", function () {
-        $("#roll-back-modal").find("#rsssl-alert").remove();
-    });
-
-    $('#editor-modal').on('show.bs.modal', function (e) {
-
-        if ($(e.relatedTarget).data('url') == 'FILE_EDIT_BLOCKED' || $(e.relatedTarget).data('url') == '') {
-            $(this).find('#edit-files-blocked').show();
-            $(this).find('#edit-files').hide();
-            $(this).find("#open-editor").attr("disabled", true);
-        } else {
-            $(this).find("#open-editor").data('url', $(e.relatedTarget).data('url'));
-        }
-    });
-
-    $("#open-editor").click(function (e) {
-        window.location.href = $("#open-editor").data('url');
-        $('#editor-modal').modal('hide');
     });
 
     $("#start-fix-cssjs").click(function (e) {
@@ -615,37 +565,11 @@ jQuery(document).ready(function ($) {
                     rsssl_remove_from_results(caller);
                     $("#fix-cssjs-modal").modal('hide');
                 } else {
-                    $("#fix-cssjs-modal").find(".modal-body").prepend(response.error);
+                    $("#fix-cssjs-modal").append(response.error);
                 }
             }
         );
         $(this).prop('disabled', false);
-    });
-
-    $(document).on('show.bs.modal','.rsssl-modal-dialog', function (e) {
-        $(this).find(".rsssl-start-action").attr('data-id', $(e.relatedTarget).data('id'));
-        $(this).find(".rsssl-start-action").attr('data-url', $(e.relatedTarget).data('url'));
-        $(this).find(".rsssl-start-action").attr('data-path', $(e.relatedTarget).data('path'));
-        $(this).find(".rsssl-start-action").attr('data-results_id', $(e.relatedTarget).data('results_id'));
-    });
-
-    $('#details-modal').on('show.bs.modal', function (e) {
-        var editLink= $(e.relatedTarget).attr('data-edit-link');
-        if (!editLink) {
-            $("#edit-button").hide();
-        }
-
-        var helpLink= $(e.relatedTarget).attr('data-help-link');
-        if (!helpLink) {
-            $("#help-button").hide();
-        }
-
-        var description= $(e.relatedTarget).attr('data-description');
-        var title = $(e.relatedTarget).data('title');
-        $("#edit-button").attr("href", editLink);
-        $("#help-button").attr("href", helpLink);
-        $("#details-modal-description").html(description);
-        $("#details-title").text(title);
     });
 
     /**
@@ -703,4 +627,96 @@ jQuery(document).ready(function ($) {
         rsssl_pro_show_hide_preload();
     });
 
+    /**
+     * Modals
+     */
+
+    rsssl_addEvent('click', '.fix-button', function(e) {
+
+        let modal = document.getElementById(e.target.dataset.target);
+        let modalBtns = modal.getElementsByClassName('button');
+
+        // Assign vals from fix button to modal button
+        let postId = e.target.dataset.id;
+        modalBtns[0].setAttribute('data-id', postId);
+        let url = e.target.dataset.url;
+        modalBtns[0].setAttribute('data-url', url);
+        let path = e.target.dataset.path;
+        modalBtns[0].setAttribute('data-path', path);
+
+        rsssl_AddBackdrop();
+        // Now unhide the modal
+        modal.style.display = 'block';
+
+    });
+
+    // on click details button
+    rsssl_addEvent('click', '.details-button', function(e) {
+
+        let modal = document.getElementById(e.target.dataset.target);
+        let modalBtns = modal.getElementsByClassName('button');
+
+        let editBtn = modalBtns[0];
+        let helpBtn = modalBtns[1];
+        let ignoreBtn = modalBtns[2];
+
+        let postId = e.target.dataset.id;
+        let url = e.target.dataset.url;
+        let token = e.target.dataset.token;
+        let editLink = e.target.dataset.editLink;
+        let helpLink = e.target.dataset.helpLink;
+
+        let description = e.target.dataset.description;
+        let modalContent = modal.querySelector('.rsssl-modal-content');
+        modalContent.innerHTML = description;
+
+        editBtn.setAttribute('data-id', postId);
+
+        if ( editLink === 'FILE_EDIT_BLOCKED' ) {
+            editBtn.disabled = true;
+        } else {
+            editBtn.href = editLink;
+        }
+
+        helpBtn.setAttribute('data-id', postId);
+        helpBtn.href = helpLink;
+
+        ignoreBtn.setAttribute('data-id', postId);
+        ignoreBtn.setAttribute('data-url', url);
+        ignoreBtn.setAttribute('data-token', token);
+
+        rsssl_AddBackdrop();
+
+        modal.style.display = 'block';
+
+    });
+
+    rsssl_addEvent('click', '.revoke-from-csp', function(e) {
+
+        let modal = document.getElementById(e.target.dataset.target);
+        let modalBtns = modal.getElementsByClassName('button');
+
+        let id = e.target.dataset.id;
+        modalBtns[0].setAttribute('data-id', id);
+        modalBtns[1].setAttribute('data-id', id);
+
+        rsssl_AddBackdrop();
+
+        modal.style.display = 'block';
+    });
+
+    // Close modal
+    rsssl_addEvent('click', '.rsssl-modal-close', function(e) {
+
+        let modal = e.target.closest('.rsssl-modal');
+        let alert = modal.querySelector('.alert');
+
+        if ( alert ) {
+            modal.querySelector('.alert').remove();
+        }
+
+        modal.style.display = 'none';
+
+        rsssl_RemoveBackdrop();
+    });
 });

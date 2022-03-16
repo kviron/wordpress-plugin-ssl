@@ -281,16 +281,22 @@ if (!class_exists("rsssl_licensing")) {
 
 		public function activate_license()
 		{
-			if (!current_user_can('manage_options')) return;
-
-			if (isset($_POST['rsssl_pro_license_activate'])) {
-				if (!check_admin_referer('rsssl_pro_nonce', 'rsssl_pro_nonce'))
-					return;
-
-				$license = trim($_POST['rsssl_pro_license_key']);
-				update_site_option('rsssl_pro_license_key', $this->encode($license) );
-				$this->get_license_status('activate_license', true );
+			if ( !current_user_can('manage_options') ) {
+                return;
 			}
+
+			$auto_installed_license = get_site_option('rsssl_auto_installed_license');
+			if ( $auto_installed_license || isset($_POST['rsssl_pro_license_activate'])) {
+				if ( !$auto_installed_license ) {
+					if ( !check_admin_referer('rsssl_pro_nonce', 'rsssl_pro_nonce') ) {
+						return;
+					}
+				}
+				$license = $auto_installed_license ?: trim($_POST['rsssl_pro_license_key']);
+                update_site_option('rsssl_pro_license_key', $this->encode($license) );
+				delete_site_option('rsssl_auto_installed_license');
+				$this->get_license_status('activate_license', true );
+            }
 		}
 
 		/**
@@ -387,12 +393,18 @@ if (!class_exists("rsssl_licensing")) {
 		public function get_license_status($action = 'check_license', $clear_cache = false )
 		{
 			return 'valid';
-		
+
+            //if we're in the process of auto installing, return 'valid' here.
+            if ($action==='check_license' && get_site_option('rsssl_auto_installed_license')){
+                return 'valid';
+            }
+
 		    $status = get_site_transient('rsssl_pro_license_status');
 			if ($clear_cache) $status = false;
 
-			if (!$status || get_site_option('rsssl_pro_license_activation_limit') === FALSE ){
+			if ( !$status || get_site_option('rsssl_pro_license_activation_limit') === FALSE ){
 				$status = 'invalid';
+				$transient_expiration = WEEK_IN_SECONDS;
 				$license = $this->maybe_decode( $this->license_key() );
 				if ( strlen($license) ===0 ) return 'empty';
 
@@ -410,12 +422,27 @@ if (!class_exists("rsssl_licensing")) {
 					'item_id' => RSSSL_ITEM_ID,
 					'url' => $home_url,
 				);
-
-				$args = apply_filters('rsssl_license_verification_args', array('timeout' => 15, 'sslverify' => true, 'body' => $api_params) );
+				$ssl_verify = get_site_option('rsssl_ssl_verify', 'true' ) === 'true';
+				$args = apply_filters('rsssl_license_verification_args', array('timeout' => 15, 'sslverify' => $ssl_verify, 'body' => $api_params) );
 				$response = wp_remote_post(REALLY_SIMPLE_SSL_URL, $args);
+				$attempts = get_site_option('rsssl_license_attempts', 0);
+				$attempts++;
 				if (is_wp_error($response) || 200 !== wp_remote_retrieve_response_code($response)) {
-					set_site_transient('rsssl_pro_license_status', 'error');
+                    if (is_wp_error($response)) {
+	                    $message = $response->get_error_message( 'http_request_failed' );
+	                    if ( strpos( $message, '60' ) !== false ) {
+		                    update_site_option( 'rsssl_ssl_verify', 'false' );
+		                    if ( $attempts < 5 ) {
+			                    $transient_expiration = 5 * MINUTE_IN_SECONDS;
+		                    } else {
+			                    update_site_option( 'rsssl_ssl_verify', 'true' );
+		                    }
+	                    }
+                    }
+					set_site_transient('rsssl_pro_license_status', 'error', $transient_expiration);
+					update_option('rsssl_license_attempts', $attempts);
 				} else {
+					update_option('rsssl_license_attempts', 0);
 					$license_data = json_decode(wp_remote_retrieve_body($response));
 					if ( !$license_data || ($license_data->license === 'failed' ) ) {
 						$status = 'empty';
@@ -436,7 +463,7 @@ if (!class_exists("rsssl_licensing")) {
 						}
 					}
 
-					if ( $license_data ) {
+					if ( $license_data && isset($license_data->expires) ) {
                         $date = $license_data->expires;
                         if ( $date !== 'lifetime' ) {
                             if (!is_numeric($date)) $date = strtotime($date);
@@ -449,7 +476,7 @@ if (!class_exists("rsssl_licensing")) {
                     }
 				}
 
-				set_site_transient('rsssl_pro_license_status', $status, WEEK_IN_SECONDS);
+				set_site_transient('rsssl_pro_license_status', $status, $transient_expiration);
 			}
             return $status;
 		}
@@ -687,6 +714,10 @@ if (!class_exists("rsssl_licensing")) {
 			if ( $screen->base === 'post' ) return;
 
 			if ( !is_network_admin() ) return;
+
+            if (get_site_option('rsssl_auto_installed_license')) {
+                return;
+            }
 
 			if ( !$this->license_is_valid() ) {
 				$content = __("You haven't activated your Really Simple SSL Pro Multisite license yet. To get all future updates, enter your license on the network settings page.","really-simple-ssl-pro");

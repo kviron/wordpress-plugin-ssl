@@ -23,7 +23,7 @@ if (!function_exists('rsssl_send_php_security_headers')) {
             $x_frame_options = rsssl_get_networkwide_option('rsssl_x_frame_options');
             $permissions_policy = rsssl_get_networkwide_option('rsssl_turn_on_permissions_policy');
 
-            if ($hsts) {
+            if ( $hsts ) {
                 $hsts_preload = rsssl_get_networkwide_option("rsssl_hsts_preload");
                 if ($hsts_preload) {
                     if ( is_ssl() ) header('Strict-Transport-Security: max-age=63072000; includeSubDomains; preload');

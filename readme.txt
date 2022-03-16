@@ -3,9 +3,9 @@ Contributors: RogierLankhorst
 Tags: mixed content, insecure content, secure website, website security, ssl, https, tls, security, secure socket layers, hsts
 Requires at least: 4.9
 License: GPL2
-Tested up to: 5.9
+Tested up to: 5.10
 Requires PHP: 5.6
-Stable tag: 5.2.2
+Stable tag: 5.3.1
 
 Premium support and extra features for Really Simple SSL
 
@@ -27,6 +27,34 @@ For more information: go to the [website](https://www.really-simple-ssl.com/), o
 == Frequently Asked Questions ==
 
 == Change log ==
+= 5.3.1 =
+* Improvement: fix site health still showing header notice if activated in pro
+* Improvement: set ssl verify to false on failed license check
+* Improvement: improved CORS settings
+
+= 5.3.0 =
+* Improvement: add support for report-to in CSP
+* Improvement: increase CSP display limit
+* Improvement: auto update option
+
+= 5.2.5 =
+* Improvement: add direct link to permalinks when permalinks notice pops up
+* Fix: navigation in scan overview
+
+= 5.2.4 =
+* Improvement: feedback on not detected headers
+
+= 5.2.3.1 =
+* Fix: Rest API and pretty permalinks check inverted, causing false positive notification in dashboard about the permalink structure
+
+= 5.2.3 =
+* Improvement: various Content Security Improvements: added override to 20 reporting/100 display limit. Fixed CSS when 100+ pages
+* Improvement: added default required WordPress rules to Content Security Policy
+* Improvement: fixed advanced header warning position
+* Disable scan on invalid license
+* Improvement: moved recommended security headers notice to free, added override in Pro
+* Added Cross-Origin resource policy security headers
+
 = 5.2.2 =
 * Fix: double quotes in php headers causing issues since recent browser updates
 

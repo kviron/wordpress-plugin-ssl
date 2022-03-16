@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Really Simple SSL pro\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-07 08:36+0100\n"
-"PO-Revision-Date: 2021-09-21 13:56+0000\n"
+"PO-Revision-Date: 2021-11-11 09:34+0000\n"
 "Last-Translator: Rolor\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh_CN\n"
@@ -32,7 +32,7 @@ msgstr " %s 是一个单例级而且你无法建立第二例"
 msgid "%s to %s of %s results"
 msgstr "%s 到 %s 的 %s 个结果"
 
-#: class-licensing.php:476 class-licensing.php:584
+#: class-licensing.php:492 class-licensing.php:600
 #, php-format
 msgid "%s/%s activations available."
 msgstr "%s/%s 激活可用。"
@@ -42,7 +42,7 @@ msgstr "%s/%s 激活可用。"
 msgid "%sActivate%s your license."
 msgstr "%s激活%s 您的许可。"
 
-#: class-licensing.php:676
+#: class-licensing.php:692
 #, php-format
 msgid "%sGo to the settings page%s or %spurchase a license%s."
 msgstr "%s转到设置页面%s 或者 %s购买授权%s。"
@@ -95,7 +95,7 @@ msgstr "检测到一个到http的重定向。这可能会导致重定向循环�
 msgid "According to the check that was performed just now on "
 msgstr "根据刚刚执行的检查"
 
-#: grid/templates/scan-results-container.php:9 grid_ms/templates/sites.php:71
+#: grid/templates/scan-results-container.php:9 grid_ms/templates/sites.php:70
 msgid "Action"
 msgstr "动作"
 
@@ -106,6 +106,10 @@ msgstr "激活"
 #: grid/templates/license-footer.php:14
 msgid "Activate license"
 msgstr "激活授权"
+
+#: class-licensing.php:60
+msgid "Activate your license for automatic updates."
+msgstr ""
 
 #: class-premium-options.php:1647
 #, php-format
@@ -484,10 +488,16 @@ msgid ""
 msgstr "如果这些文件是由主题或插件生成的，最好是在插件中进行修改设置。否则您的设置将被插件所覆盖。"
 
 #: csp-violation-endpoint.php:510
+#, fuzzy
+#| msgid ""
+#| "If you revoke a rule from the content security policy,  the rule will be "
+#| "deleted from the resource list that is considered safe to load.  This "
+#| "might affect your website,  or specific functions.  You can always allow "
+#| "the resource if needed."
 msgid ""
-"If you revoke a rule from the content security policy,  the rule will be "
-"deleted from the resource list that is considered safe to load.  This might "
-"affect your website,  or specific functions.  You can always allow the "
+"If you revoke a rule from the content security policy, the rule will be "
+"deleted from the resource list that is considered safe to load. This might "
+"affect your website, or specific functions. You can always allow the "
 "resource if needed."
 msgstr ""
 "如果您废除内容安全策略中的一条规则，那么该规则将从被认为安全载入的资源列表中删除。这将影响您的网站，或者某些功能。如果需要，您仍然可以允许该资源。"
@@ -544,15 +554,15 @@ msgstr "混合内容的JS 或 CSS 文件"
 msgid "Last"
 msgstr "最后"
 
-#: class-licensing.php:234 class-licensing.php:495 class-licensing.php:501
-#: class-licensing.php:520 class-licensing.php:583
+#: class-licensing.php:250 class-licensing.php:511 class-licensing.php:517
+#: class-licensing.php:536 class-licensing.php:599
 #: class-premium-options.php:1254 class-premium-options.php:1261
 #: class-premium-options.php:1268 class-premium-options.php:1275
 #: class-premium-options.php:1282
 msgid "License"
 msgstr "许可"
 
-#: class-licensing.php:685
+#: class-licensing.php:701
 msgid "License not activated"
 msgstr "许可未激活"
 
@@ -636,11 +646,11 @@ msgstr "混合内容扫描"
 msgid "mu plugin file"
 msgstr "必备插件文件"
 
-#: class-licensing.php:508
+#: class-licensing.php:524
 msgid "Multisite"
 msgstr "多个网站"
 
-#: class-licensing.php:509
+#: class-licensing.php:525
 #, php-format
 msgid "Multisite detected. Please consider upgrading to %smultisite%s."
 msgstr "检测到多站。请考虑升级到 %s多站授权%s。"
@@ -678,7 +688,7 @@ msgstr "未找到混合内容！"
 msgid "No redirect to http detected."
 msgstr "未检测到http的重定向。"
 
-#: class-licensing.php:530
+#: class-licensing.php:546
 msgid "No response"
 msgstr "无响应"
 
@@ -718,7 +728,7 @@ msgstr "无意味着该功能不允许。启用这里来彻底在您的网站禁
 msgid "not allowed"
 msgstr "不允许"
 
-#: class-licensing.php:455
+#: class-licensing.php:471
 msgid "Not available"
 msgstr "不可用"
 
@@ -742,7 +752,7 @@ msgstr "十分钟一次"
 msgid "Once Daily"
 msgstr "一天一次"
 
-#: class-licensing.php:537 class-licensing.php:546
+#: class-licensing.php:553 class-licensing.php:562
 msgid "Open"
 msgstr "打开"
 
@@ -756,11 +766,11 @@ msgstr "使用混合内容扫描、安全cookies和高级安全头部，来优�
 msgid "PHP file with mixed content"
 msgstr "PHP文件带混合内容"
 
-#: really-simple-ssl-pro-multisite.php:207
+#: really-simple-ssl-pro-multisite.php:219
 msgid "Please activate Really Simple SSL network wide."
 msgstr "请在网络范围激活 Really Simple SSL。"
 
-#: class-licensing.php:547
+#: class-licensing.php:563
 msgid "Please activate your license key."
 msgstr "请激活您的授权码。"
 
@@ -770,12 +780,12 @@ msgid ""
 "subdomains, including www and non-www domain need to be HTTPS!"
 msgstr "请确保您的网站可以正常运行SSL，并注意所有子域名（包括www和非www域名）必须为HTTPS！"
 
-#: class-licensing.php:538
+#: class-licensing.php:554
 #, php-format
 msgid "Please enter your license key. Available in your %saccount%s."
 msgstr "请输入您的授权码。在您的 %s账户%s中。"
 
-#: really-simple-ssl-pro-multisite.php:209
+#: really-simple-ssl-pro-multisite.php:221
 msgid "Please install and activate Really Simple SSL to enable the add-on."
 msgstr "请安装并在激活Really Simple SSL来启用附加组件。"
 
@@ -789,14 +799,14 @@ msgstr "请注意，截止当前文件之前您所做的任何修改都将丢失
 msgid "Please renew your certificate before the expiry date."
 msgstr "请在过期日之前更新您的证书。"
 
-#: really-simple-ssl-pro-multisite.php:218
+#: really-simple-ssl-pro-multisite.php:230
 msgid ""
 "Please upgrade to the latest version to be able use the full functionality "
 "of the plugin."
 msgstr "请升级到最新版本，以便能够使用插件的全部功能。"
 
-#: really-simple-ssl-pro-multisite.php:203
-#: really-simple-ssl-pro-multisite.php:216
+#: really-simple-ssl-pro-multisite.php:215
+#: really-simple-ssl-pro-multisite.php:228
 msgid "Plugin dependency error"
 msgstr "插件依赖项错误"
 
@@ -844,7 +854,7 @@ msgstr "重新检查重定向"
 msgid "Really Simple Plugins"
 msgstr "Really Simple Plugins"
 
-#: really-simple-ssl-pro-multisite.php:217
+#: really-simple-ssl-pro-multisite.php:229
 msgid ""
 "Really Simple SSL needs to be updated to the latest version to be compatible."
 msgstr "Really Simple SSL 需要升级到最新版才能兼容。"
@@ -861,13 +871,13 @@ msgid ""
 "or higher"
 msgstr "Really Simple SSL 专业版无法激活。该插件需要 WordPress 4.9 或更高"
 
-#: really-simple-ssl-pro-multisite.php:204
+#: really-simple-ssl-pro-multisite.php:216
 msgid ""
 "Really Simple SSL pro is an add-on for Really Simple SSL, and cannot do it "
 "on its own :-("
 msgstr "Really Simple SSL 专业版是 Really Simple SSL的一个附加组件，无法自己来 :-("
 
-#: class-licensing.php:98
+#: class-licensing.php:114
 msgid "Really Simple SSL Pro license key"
 msgstr "Really Simple SSL 专业版授权码"
 
@@ -875,7 +885,7 @@ msgstr "Really Simple SSL 专业版授权码"
 msgid "Really Simple SSL pro multisite"
 msgstr "Really Simple SSL 专业版多站"
 
-#: class-licensing.php:701
+#: class-licensing.php:717
 msgid "Really Simple SSL Pro Multisite license key"
 msgstr "Really Simple SSL 专业版多站授权码"
 
@@ -1019,7 +1029,7 @@ msgstr "显示 %s 结果"
 msgid "Show ignored URLs"
 msgstr "显示忽略的URLs"
 
-#: grid_ms/templates/sites.php:70
+#: grid_ms/templates/sites.php:69
 msgid "Site"
 msgstr "站点"
 
@@ -1055,7 +1065,7 @@ msgstr "SSL设置完成！"
 msgid "Start scan"
 msgstr "开始扫描"
 
-#: grid/templates/scan-results-container.php:6 grid_ms/templates/sites.php:69
+#: grid/templates/scan-results-container.php:6 grid_ms/templates/sites.php:68
 msgid "Status"
 msgstr "状态"
 
@@ -1101,7 +1111,7 @@ msgid ""
 "found errors are not a problem for your site."
 msgstr "最后的扫瞄已完成但带有错误。若你确定所发现的错误并不会对你的网站造成问题你才迁移。"
 
-#: class-licensing.php:531
+#: class-licensing.php:547
 msgid ""
 "The license information could not be retrieved at this moment. Please try "
 "again at a later time."
@@ -1236,13 +1246,13 @@ msgid ""
 "See %sour usage guide%s"
 msgstr "这是一个高级功能。仅在您非常了解的情况下启用该功能。查看 %s我们的使用向导%s"
 
-#: class-licensing.php:576
+#: class-licensing.php:592
 #, php-format
 msgid ""
 "This license is not valid for this product. Find out why on your %saccount%s."
 msgstr "该许可对该产品无效。在您的%s账户%s查看原因。"
 
-#: class-licensing.php:569
+#: class-licensing.php:585
 #, php-format
 msgid "This license is not valid. Find out why on your %saccount%s."
 msgstr "该许可无效。在您的 %s账户%s查看原因。"
@@ -1281,11 +1291,11 @@ msgstr "要重启报告，设置内容安全策略为 ‘报告激活’。"
 msgid "Today"
 msgstr "今天"
 
-#: class-licensing.php:450
+#: class-licensing.php:466
 msgid "unlimited"
 msgstr "无限制"
 
-#: class-licensing.php:474
+#: class-licensing.php:490
 msgid "Unlimited activations available."
 msgstr "无限制激活可用。"
 
@@ -1299,12 +1309,12 @@ msgstr "升级 Really Simple SSL 免费版到最新版，以获取最佳的内�
 msgid "Upgrade insecure request"
 msgstr "升级不安全的请求"
 
-#: class-licensing.php:463
+#: class-licensing.php:479
 #, php-format
 msgid "Upgrade to a %s5 sites or Agency%s license."
 msgstr "升级到 %s5站或代理%s授权许可。"
 
-#: class-licensing.php:466
+#: class-licensing.php:482
 #, php-format
 msgid "Upgrade to an %sAgency%s license."
 msgstr "升级到 %s代理%s 授权许可。"
@@ -1325,22 +1335,22 @@ msgstr "如果您在WordPress管理界面没有绿锁，使用该选项。"
 msgid "User not found"
 msgstr "用户未找到"
 
-#: class-licensing.php:489
+#: class-licensing.php:505
 msgid "Valid"
 msgstr "有效"
 
-#: class-licensing.php:496
+#: class-licensing.php:512
 #, php-format
 msgid "Valid license for %s."
 msgstr "%s的有效授权许可。"
 
-#: class-licensing.php:457
+#: class-licensing.php:473
 #, php-format
 msgid "Valid until %s."
 msgstr "有效期至 %s。"
 
-#: class-licensing.php:553 class-licensing.php:560 class-licensing.php:568
-#: class-licensing.php:575 class-licensing.php:590 class-licensing.php:624
+#: class-licensing.php:569 class-licensing.php:576 class-licensing.php:584
+#: class-licensing.php:591 class-licensing.php:606 class-licensing.php:640
 #: grid/templates/scan-results-element.php:5
 msgid "Warning"
 msgstr "警告"
@@ -1382,7 +1392,7 @@ msgstr "为所有SSL网站进行WordPress 301 重定向到SSL"
 msgid "Works with %s"
 msgstr ""
 
-#: class-licensing.php:619
+#: class-licensing.php:635
 #, php-format
 msgid "You can activate your license on the %slicense tab%s."
 msgstr ""
@@ -1391,7 +1401,7 @@ msgstr ""
 msgid "You can edit the source file manually by pressing the edit button."
 msgstr "您可以点击编辑按钮手动编辑源文件。"
 
-#: class-licensing.php:469
+#: class-licensing.php:485
 #, php-format
 msgid "You can renew your license on your %saccount%s."
 msgstr "您可以在您的 %s账户%s 更新您的授权许可。"
@@ -1401,7 +1411,7 @@ msgstr "您可以在您的 %s账户%s 更新您的授权许可。"
 msgid "You can upgrade on your %saccount%s."
 msgstr "您可以在您的 %s账户%s 进行升级。"
 
-#: class-licensing.php:621
+#: class-licensing.php:637
 #, php-format
 msgid "You can upgrade or renew your license on the %slicense tab%s."
 msgstr ""
@@ -1420,7 +1430,7 @@ msgstr "您没有安装插件更新的权限"
 msgid "You finished a scan without errors."
 msgstr "您已成功完成扫描。"
 
-#: class-licensing.php:457
+#: class-licensing.php:473
 msgid "You have a lifetime license."
 msgstr "您拥有终身授权许可。"
 
@@ -1452,7 +1462,7 @@ msgid ""
 "cache. Run a new scan to see the results."
 msgstr "您之前已经扫描过您的网站，但是扫描结果已从缓存中清除。执行全新的扫描来查看结果。"
 
-#: class-licensing.php:674
+#: class-licensing.php:690
 msgid ""
 "You haven't activated your Really Simple SSL Pro Multisite license yet. To "
 "get all future updates, enter your license on the network settings page."
@@ -1472,29 +1482,29 @@ msgstr "您的文件已经恢复。"
 msgid "Your files were restored."
 msgstr "您的文件已恢复。"
 
-#: class-licensing.php:561
+#: class-licensing.php:577
 #, php-format
 msgid ""
 "Your license could not be found in our system. Please contact %ssupport%s."
 msgstr "我们系统中未找到您的授权码。请联系 %s客服支持%s。"
 
-#: class-licensing.php:554
+#: class-licensing.php:570
 #, php-format
 msgid "Your license has been revoked. Please contact %ssupport%s."
 msgstr "您的授权许可已作废。请联系 %s客服支持%s。"
 
-#: class-licensing.php:591
+#: class-licensing.php:607
 #, php-format
 msgid ""
 "Your license key has expired. Please renew your license key on your "
 "%saccount%s."
 msgstr "您的授权码已过期。请在您的 %s账户%s 更新您的授权码。"
 
-#: class-licensing.php:619
+#: class-licensing.php:635
 msgid "Your Really Simple SSL pro license hasn't been activated."
 msgstr ""
 
-#: class-licensing.php:621
+#: class-licensing.php:637
 msgid "Your Really Simple SSL pro license is not valid."
 msgstr ""
 

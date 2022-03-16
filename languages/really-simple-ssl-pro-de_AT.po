@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: Really Simple SSL pro\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-07 08:36+0100\n"
-"PO-Revision-Date: 2021-09-21 13:58+0000\n"
-"Last-Translator: \n"
-"Language-Team: German (Austria)\n"
-"Language: de_AT\n"
+"PO-Revision-Date: 2021-11-14 11:43+0000\n"
+"Last-Translator: German - Creative Pudding\n"
+"Language-Team: Deutsch\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.4.3; wp-5.5.3"
+"X-Loco-Version: 2.5.5; wp-5.8.2"
 
 #: class-cert-expiration.php:183
 msgid " the SSL certificate is expiring soon. The ValidTo date is:"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "%s to %s of %s results"
 msgstr "%s nach %s von %s Resultaten"
 
-#: class-licensing.php:476 class-licensing.php:584
+#: class-licensing.php:492 class-licensing.php:600
 #, php-format
 msgid "%s/%s activations available."
 msgstr "%s/%s Aktivierungen verfügbar."
@@ -41,7 +41,7 @@ msgstr "%s/%s Aktivierungen verfügbar."
 msgid "%sActivate%s your license."
 msgstr "%sAktiviere%s deine Lizenz."
 
-#: class-licensing.php:676
+#: class-licensing.php:692
 #, php-format
 msgid "%sGo to the settings page%s or %spurchase a license%s."
 msgstr "%sSpringe zu deinen Einstellungen%s oder %skaufe eine Lizenz%s."
@@ -65,7 +65,7 @@ msgstr "%sScan nach Fehlern%s"
 #, php-format
 msgctxt "'date' at 'time'"
 msgid "%s at %s"
-msgstr ""
+msgstr "%s um %s"
 
 #: class-multisite.php:205
 #, php-format
@@ -81,10 +81,12 @@ msgid ""
 ".htaccess file not writable. Set the .htaccess file permissions to writeable "
 "or add the following lines manually:"
 msgstr ""
+".htaccess-Datei nicht beschreibbar. Setze die Berechtigungen für die ."
+"htaccess-Datei auf beschreibbar oder füge die folgenden Zeilen manuell hinzu:"
 
 #: grid/templates/premium-settings-footer.php:24
 msgid ".htaccess unavailable on nginx"
-msgstr ""
+msgstr ".htaccess nicht auf dem Nginx-Server verfügbar"
 
 #: class-premium-options.php:1045
 msgid "A redirect to http was detected. This might result in redirect loops."
@@ -96,7 +98,7 @@ msgstr ""
 msgid "According to the check that was performed just now on "
 msgstr "Weiterführung nach der gerade durchgeführten Überprüfung"
 
-#: grid/templates/scan-results-container.php:9 grid_ms/templates/sites.php:71
+#: grid/templates/scan-results-container.php:9 grid_ms/templates/sites.php:70
 msgid "Action"
 msgstr "Aktion"
 
@@ -107,6 +109,10 @@ msgstr "aktiviere"
 #: grid/templates/license-footer.php:14
 msgid "Activate license"
 msgstr "Lizenz aktivieren"
+
+#: class-licensing.php:60
+msgid "Activate your license for automatic updates."
+msgstr "Aktiviere deine Lizenz für automatische Updates."
 
 #: class-premium-options.php:1647
 #, php-format
@@ -127,15 +133,15 @@ msgstr "Erlauben"
 
 #: grid/templates/csp-container.php:12
 msgid "Allow/revoke"
-msgstr ""
+msgstr "Zulassen/Widerrufen"
 
 #: grid/templates/csp-header.php:9
 msgid "Allowed"
-msgstr ""
+msgstr "Zugelassen"
 
 #: grid/templates/permissions-policy.php:19
 msgid "allowed"
-msgstr ""
+msgstr "zugelassen"
 
 #: class-scan.php:2613 class-scan.php:2648 class-scan.php:2693
 #: class-scan.php:2765
@@ -169,7 +175,7 @@ msgstr ""
 
 #: grid/templates/csp-header.php:8
 msgid "Blocked"
-msgstr ""
+msgstr "Blockiert"
 
 #: class-scan.php:1806 class-scan.php:1890 class-scan.php:1992
 #: class-scan.php:2041 class-scan.php:2103
@@ -228,7 +234,7 @@ msgstr "Überprüfen von Widgets auf externe URLs"
 
 #: csp-violation-endpoint.php:517
 msgid "Close"
-msgstr ""
+msgstr "Schließen"
 
 #: class-premium-options.php:954
 msgid "Configure your site for the HSTS preload list"
@@ -236,7 +242,7 @@ msgstr "Konfiguriere deine Site für die HSTS-Vorladeliste"
 
 #: class-premium-options.php:958
 msgid "Content Security Policy"
-msgstr ""
+msgstr "Inhaltssicherheitsrichtlinie"
 
 #: class-premium-options.php:457
 msgid "Content Security Policy configuration"
@@ -252,6 +258,10 @@ msgid ""
 "Please start configuring your Content Security Policy and enable reporting "
 "again."
 msgstr ""
+"Die Berichterstellung für die Inhaltssicherheitsrichtlinie wird angehalten, "
+"um die Serverressourcen zu begrenzen. Bitte beginne mit der Konfiguration "
+"deiner Inhaltssicherheitsrichtlinie und aktiviere die Berichterstellung "
+"erneut."
 
 #: class-scan.php:2477 class-scan.php:2566 class-scan.php:2606
 #: class-scan.php:2686
@@ -292,12 +302,12 @@ msgstr "Deaktivierung für alle Benutzer außer dir"
 
 #: class-premium-options.php:1402
 msgid "Disabled"
-msgstr ""
+msgstr "Deaktiviert"
 
 #: grid/templates/premium-settings-footer.php:7
 #, php-format
 msgid "Does not work with %s"
-msgstr ""
+msgstr "Funktioniert nicht mit %s"
 
 #: grid/templates/csp-container.php:11
 msgid "Domain/protocol"
@@ -385,7 +395,7 @@ msgstr ""
 
 #: class-premium-options.php:1405
 msgid "Enforce"
-msgstr ""
+msgstr "Erzwingen"
 
 #: grid/templates/license.php:15
 msgid "Enter your license key"
@@ -397,7 +407,7 @@ msgstr "Fehler"
 
 #: grid/templates/csp-header.php:7
 msgid "Everything"
-msgstr ""
+msgstr "Alles"
 
 #: grid/templates/feature-policy.php:18
 #: grid/templates/permissions-policy.php:18
@@ -450,6 +460,8 @@ msgstr "Folge bitte den Schritten, um das Setup fertigzustellen:"
 msgid ""
 "For more information about this security header, please follow this %slink%s."
 msgstr ""
+"Für weitere Informationen zu diesem Sicherheitsheader folge bitte diesem "
+"%slink%s."
 
 #: grid/templates/csp-container.php:5
 msgid "Found"
@@ -485,7 +497,7 @@ msgstr "Menü für Unterwebsites ausblenden"
 
 #: class-premium-options.php:962
 msgid "How to set the security headers"
-msgstr ""
+msgstr "Einstellen der Sicherheitskopfzeilen"
 
 #: class-premium-options.php:948
 msgid ""
@@ -535,12 +547,21 @@ msgstr ""
 "Andernfalls werden deine Änderungen möglicherweise vom Plugin überschrieben."
 
 #: csp-violation-endpoint.php:510
+#| msgid ""
+#| "If you revoke a rule from the content security policy,  the rule will be "
+#| "deleted from the resource list that is considered safe to load.  This "
+#| "might affect your website,  or specific functions.  You can always allow "
+#| "the resource if needed."
 msgid ""
-"If you revoke a rule from the content security policy,  the rule will be "
-"deleted from the resource list that is considered safe to load.  This might "
-"affect your website,  or specific functions.  You can always allow the "
+"If you revoke a rule from the content security policy, the rule will be "
+"deleted from the resource list that is considered safe to load. This might "
+"affect your website, or specific functions. You can always allow the "
 "resource if needed."
 msgstr ""
+"Wenn du eine Regel aus der Inhaltssicherheitsrichtlinie widerrufst, wird die "
+"Regel aus der Ressourcenliste gelöscht, welche als \"gefahrlos zu laden\" "
+"berücksichtigt wird. Dies kann deine Website oder bestimmte Funktionen "
+"beeinträchtigen. Du kannst die Ressource bei Bedarf jederzeit zulassen."
 
 #: class-premium-options.php:906
 msgid ""
@@ -601,15 +622,15 @@ msgstr "JS- oder CSS-Datei mit gemischtem Inhalt"
 msgid "Last"
 msgstr "Zuletzt"
 
-#: class-licensing.php:234 class-licensing.php:495 class-licensing.php:501
-#: class-licensing.php:520 class-licensing.php:583
+#: class-licensing.php:250 class-licensing.php:511 class-licensing.php:517
+#: class-licensing.php:536 class-licensing.php:599
 #: class-premium-options.php:1254 class-premium-options.php:1261
 #: class-premium-options.php:1268 class-premium-options.php:1275
 #: class-premium-options.php:1282
 msgid "License"
 msgstr "Lizenz"
 
-#: class-licensing.php:685
+#: class-licensing.php:701
 msgid "License not activated"
 msgstr "Lizenz nicht aktiviert"
 
@@ -662,6 +683,10 @@ msgid ""
 "any mixed content on the front-end. Check the post if it causes mixed "
 "content. If so, the link can be replace directly in the database."
 msgstr ""
+"Gemischter Inhalt aus einer Postmeta-Tabelle in deiner Datenbank. Verursacht "
+"normalerweise keine gemischten Inhalte im Frontend. Überprüfe den Beitrag, "
+"wenn er gemischte Inhalte verursacht. In diesem Fall kann der Link direkt in "
+"der Datenbank ersetzt werden."
 
 #: class-scan.php:1801 class-scan.php:1874
 #, php-format
@@ -697,11 +722,11 @@ msgstr "Scan mit gemischten Inhalten"
 msgid "mu plugin file"
 msgstr "mu Plugin-Datei"
 
-#: class-licensing.php:508
+#: class-licensing.php:524
 msgid "Multisite"
 msgstr "Multisite"
 
-#: class-licensing.php:509
+#: class-licensing.php:525
 #, php-format
 msgid "Multisite detected. Please consider upgrading to %smultisite%s."
 msgstr "Multisite erkannt. Bitte erwäge eine Aktualisierung auf %sMultisite%s"
@@ -717,17 +742,16 @@ msgstr "Nächste"
 #: grid/templates/premium-settings-footer.php:27
 #, php-format
 msgid "nginx.conf unavailable on %s"
-msgstr ""
+msgstr "nginx.conf nicht verfügbar auf %s"
 
 #: grid/templates/premium-settings-footer.php:14
 msgid "No caching"
-msgstr ""
+msgstr "Kein Zwischenspeichern"
 
 #: class-premium-options.php:1189
-#, fuzzy
 #| msgid "No Content Security Policy violations found"
 msgid "No Content Security Policy violations found."
-msgstr "Keine Verletzung der Inhaltssicherheitsrichtlinie erkannt"
+msgstr "Keine Verstöße gegen die Inhaltssicherheitsrichtlinie gefunden."
 
 #: class-premium-options.php:191
 msgid "No items reported yet. Come back at a later time."
@@ -743,13 +767,13 @@ msgstr "Es wurde kein gemischter Inhalt gefunden!"
 msgid "No redirect to http detected."
 msgstr "Keine Weiterleitung zu http erkannt."
 
-#: class-licensing.php:530
+#: class-licensing.php:546
 msgid "No response"
-msgstr ""
+msgstr "Keine Antwort"
 
 #: grid/templates/permissions-policy.php:10
 msgid "No restrictions for this feature."
-msgstr ""
+msgstr "Keine Einschränkungen für diese Funktion."
 
 #: class-multisite.php:202
 msgid "No results found"
@@ -787,11 +811,11 @@ msgstr ""
 
 #: grid/templates/permissions-policy.php:21
 msgid "not allowed"
-msgstr ""
+msgstr "nicht erlaubt"
 
-#: class-licensing.php:455
+#: class-licensing.php:471
 msgid "Not available"
-msgstr ""
+msgstr "Nicht verfügbar"
 
 #: class-cert-expiration.php:11
 msgid "Not detected"
@@ -813,7 +837,7 @@ msgstr "Einmal in 10 Minuten"
 msgid "Once Daily"
 msgstr "Einmal Täglich"
 
-#: class-licensing.php:537 class-licensing.php:546
+#: class-licensing.php:553 class-licensing.php:562
 msgid "Open"
 msgstr "Öffnen"
 
@@ -822,16 +846,18 @@ msgid ""
 "Optimize your SSL security with the mixed content scan, secure cookies and "
 "advanced security headers."
 msgstr ""
+"Optimiere deine SSL-Sicherheit mit dem Mixed Content Scan, sicheren Cookies "
+"und erweiterten Sicherheits-Header."
 
 #: class-scan.php:1798
 msgid "PHP file with mixed content"
 msgstr "PHP-Datei mit gemischtem Inhalt"
 
-#: really-simple-ssl-pro-multisite.php:207
+#: really-simple-ssl-pro-multisite.php:219
 msgid "Please activate Really Simple SSL network wide."
 msgstr "Bitte aktiviere Really Simple SSL netzwerkweit."
 
-#: class-licensing.php:547
+#: class-licensing.php:563
 msgid "Please activate your license key."
 msgstr "Bitte aktiviere deinen Lizenzschlüssel."
 
@@ -844,22 +870,21 @@ msgstr ""
 "alle Subdomains, einschließlich der WWW- und Nicht-WWW-Domain, HTTPS sein "
 "müssen!"
 
-#: class-licensing.php:538
+#: class-licensing.php:554
 #, php-format
 msgid "Please enter your license key. Available in your %saccount%s."
 msgstr ""
 "Bitte aktiviere deinen Lizenzschlüssel. Dieser ist in deinem %sKonto%s "
 "verfügbar."
 
-#: really-simple-ssl-pro-multisite.php:209
-#, fuzzy
+#: really-simple-ssl-pro-multisite.php:221
 #| msgid ""
 #| "Please install and activate Really Simple SSL before activating this add-"
 #| "on."
 msgid "Please install and activate Really Simple SSL to enable the add-on."
 msgstr ""
-"Bitte installiere und aktiviere Really Simple SSL, bevor du dieses Add-On "
-"aktivierst."
+"Bitte installiere und aktiviere Really Simple SSL, um dieses Add-On zu "
+"aktivieren"
 
 #: class-scan.php:2731
 msgid ""
@@ -873,7 +898,7 @@ msgstr ""
 msgid "Please renew your certificate before the expiry date."
 msgstr "Bitte erneuere dein Zertifikat vor dem Ablaufdatum."
 
-#: really-simple-ssl-pro-multisite.php:218
+#: really-simple-ssl-pro-multisite.php:230
 msgid ""
 "Please upgrade to the latest version to be able use the full functionality "
 "of the plugin."
@@ -881,8 +906,8 @@ msgstr ""
 "Bitte aktualisiere auf die neueste Version, um die volle Funktionalität des "
 "Plugins nutzen zu können."
 
-#: really-simple-ssl-pro-multisite.php:203
-#: really-simple-ssl-pro-multisite.php:216
+#: really-simple-ssl-pro-multisite.php:215
+#: really-simple-ssl-pro-multisite.php:228
 msgid "Plugin dependency error"
 msgstr "Plugin-Abhängigkeitsfehler"
 
@@ -930,7 +955,7 @@ msgstr "Überprüfe die Umleitung erneut"
 msgid "Really Simple Plugins"
 msgstr "Really Simple Plugins"
 
-#: really-simple-ssl-pro-multisite.php:217
+#: really-simple-ssl-pro-multisite.php:229
 msgid ""
 "Really Simple SSL needs to be updated to the latest version to be compatible."
 msgstr ""
@@ -953,8 +978,7 @@ msgstr ""
 "Really Simple SSL Pro kann nicht aktiviert werden. Das Plugin benötigt "
 "WordPress 4.9 oder höher"
 
-#: really-simple-ssl-pro-multisite.php:204
-#, fuzzy
+#: really-simple-ssl-pro-multisite.php:216
 #| msgid ""
 #| "Really Simple SSL pro is an add-on for Really Simple SSL, and cannot do "
 #| "it on its own :("
@@ -963,9 +987,9 @@ msgid ""
 "on its own :-("
 msgstr ""
 "Really Simple SSL Pro ist ein Add-On für Really Simple SSL und kann es nicht "
-"alleine tun :("
+"alleine :("
 
-#: class-licensing.php:98
+#: class-licensing.php:114
 msgid "Really Simple SSL Pro license key"
 msgstr "Really Simple SSL Pro-Lizenzschlüssel"
 
@@ -973,7 +997,7 @@ msgstr "Really Simple SSL Pro-Lizenzschlüssel"
 msgid "Really Simple SSL pro multisite"
 msgstr "Really Simple SSL Pro-Multisite"
 
-#: class-licensing.php:701
+#: class-licensing.php:717
 msgid "Really Simple SSL Pro Multisite license key"
 msgstr "Really Simple SSL Pro Multisite-Lizenzschlüssel"
 
@@ -992,23 +1016,29 @@ msgstr "Empfohlene Sicherheits-Header nicht aktiviert (%sWeiterlesen%s)."
 
 #: class-premium-options.php:1403
 msgid "Reporting active"
-msgstr ""
+msgstr "Berichterstellung aktiv"
 
 #: class-premium-options.php:2271
 msgid ""
 "Reporting is active and will gather Content Security Policy directives "
 "available under ‘Content Security Policy configuration’."
 msgstr ""
+"Die Berichterstellung ist aktiv und sammelt Richtlinien zur "
+"Inhaltssicherheit, die unter \"Konfiguration der "
+"Inhaltssicherheitsrichtlinie\" verfügbar sind."
 
 #: class-premium-options.php:1404
 msgid "Reporting paused"
-msgstr ""
+msgstr "Berichterstattung angehalten"
 
 #: class-premium-options.php:2272
 msgid ""
 "Reporting will be paused after 20 requests to limit server load. You can "
 "always manually set reporting to paused, if needed."
 msgstr ""
+"Die Berichterstellung wird nach 20 Anfragen angehalten, um die Serverlast zu "
+"begrenzen. Du kannst die Berichterstellung bei Bedarf jederzeit manuell auf "
+"pausieren setzen."
 
 #: class-scan.php:2740
 msgid "Restore files"
@@ -1020,19 +1050,19 @@ msgstr "Fortsetzen"
 
 #: csp-violation-endpoint.php:411
 msgid "Revoke"
-msgstr ""
+msgstr "Widerrufen "
 
 #: csp-violation-endpoint.php:531
 msgid "Revoke and delete rule"
-msgstr ""
+msgstr "Widerrufen und Regel löschen"
 
 #: csp-violation-endpoint.php:524
 msgid "Revoke rule"
-msgstr ""
+msgstr "Regel widerrufen"
 
 #: csp-violation-endpoint.php:505
 msgid "Revoking a Rule from the Content Security Policy"
-msgstr ""
+msgstr "Widerrufen einer Regel aus der Inhaltssicherheitsrichtlinie"
 
 #: class-scan.php:2724
 msgid "Roll back changes made to your files"
@@ -1075,10 +1105,14 @@ msgid ""
 "prevents the headers from working correctly. We recommend to add the "
 "following security headers to your NGINX configuration file:"
 msgstr ""
+"Sicherheits-Header wurden über PHP festgelegt, aber deine Site verwendet "
+"Caching. Das Caching verhindert, dass die Header ordnungsgemäß funktionieren."
+" Wir empfehlen, deiner NGINX-Konfigurationsdatei die folgenden "
+"Sicherheitsheader hinzuzufügen:"
 
 #: grid/templates/permissions-policy.php:20
 msgid "self"
-msgstr ""
+msgstr "selbst"
 
 #: grid/templates/feature-policy.php:11
 #: grid/templates/permissions-policy.php:11
@@ -1095,7 +1129,7 @@ msgstr "Senden"
 
 #: grid/templates/premium-settings-footer.php:36
 msgid "Server not recognized"
-msgstr ""
+msgstr "Server wurde nicht erkannt"
 
 #: class-premium-options.php:961
 msgid ""
@@ -1103,10 +1137,13 @@ msgid ""
 "webserver, or when the htaccess security headers are not supported by your "
 "hosting company."
 msgstr ""
+"Setze die Sicherheitsheader mit PHP. Dies sollte aktiviert sein, wenn NGINX "
+"als Webserver verwendet wird oder wenn die htaccess-Sicherheitsheader von "
+"deinem Hosting-Unternehmen nicht unterstützt werden."
 
 #: class-premium-options.php:1434
 msgid "Set with PHP"
-msgstr ""
+msgstr "Mit PHP einstellen"
 
 #: class-premium-options.php:1918
 msgid "Settings"
@@ -1121,7 +1158,7 @@ msgstr "Zeige %s Resultate an"
 msgid "Show ignored URLs"
 msgstr "Zeige ignorierte URLs"
 
-#: grid_ms/templates/sites.php:70
+#: grid_ms/templates/sites.php:69
 msgid "Site"
 msgstr "Seite"
 
@@ -1162,7 +1199,7 @@ msgstr "SSL-Konfiguration beendet"
 msgid "Start scan"
 msgstr "Scan starten"
 
-#: grid/templates/scan-results-container.php:6 grid_ms/templates/sites.php:69
+#: grid/templates/scan-results-container.php:6 grid_ms/templates/sites.php:68
 msgid "Status"
 msgstr "Status"
 
@@ -1179,6 +1216,8 @@ msgid ""
 "The Content Security Policy allows you to specify which resources to allow "
 "on your site."
 msgstr ""
+"Mit der Inhaltssicherheitsrichtlinie kannst du angeben, welche Ressourcen "
+"auf deiner Site zugelassen werden sollen."
 
 #: class-importer.php:179
 msgid ""
@@ -1219,7 +1258,7 @@ msgstr ""
 "dir sicher bist, dass die gefundenen Fehler keine Probleme für deine Site "
 "sind."
 
-#: class-licensing.php:531
+#: class-licensing.php:547
 msgid ""
 "The license information could not be retrieved at this moment. Please try "
 "again at a later time."
@@ -1228,7 +1267,7 @@ msgstr ""
 "versuche es später noch einmal."
 
 #: grid/templates/license-footer.php:31
-#, fuzzy, php-format
+#, php-format
 #| msgid ""
 #| "The license key is only visible to %s. Add &rsssl_unlock_license={your "
 #| "license key} behind the URL to unlock the license block."
@@ -1237,8 +1276,8 @@ msgid ""
 "license key} behind the URL to unlock the license block."
 msgstr ""
 "Der Lizenzschlüssel ist nur für %s sichtbar. Füge "
-"&rsssl_unlock_license={dein Lizenzschlüssel} hinter die URL um den "
-"Lizenzblock freizuschalten."
+"&rsssl_license_unlock={your license key} hinter die URL um den Lizenzblock "
+"freizuschalten."
 
 #: class-premium-options.php:952
 msgid ""
@@ -1295,6 +1334,8 @@ msgid ""
 "This domain is not activated for this Really Simple SSL Pro license. Please "
 "activate the license for this domain."
 msgstr ""
+"Diese Domain ist für diese Really Simple SSL Pro-Lizenz nicht aktiviert. "
+"Bitte aktiviere die Lizenz für diese Domain."
 
 #: class-scan.php:2483 class-scan.php:2572
 msgid ""
@@ -1309,6 +1350,8 @@ msgid ""
 "This feature is not allowed. Enable this to disable the feature entirely on "
 "your site."
 msgstr ""
+"Diese Funktion ist nicht zulässig. Aktiviere diese Option, um die Funktion "
+"auf deiner Website vollständig zu deaktivieren."
 
 #: class-scan.php:2611 class-scan.php:2691
 msgid ""
@@ -1392,8 +1435,10 @@ msgid ""
 "This is an advanced feature. Only enable this if you know what you're doing. "
 "See %sour usage guide%s"
 msgstr ""
+"Dies ist eine erweiterte Funktion. Aktiviere diese nur, wenn du weißt, was "
+"du tust. Siehe %sunsere Gebrauchsanleitung%s"
 
-#: class-licensing.php:576
+#: class-licensing.php:592
 #, php-format
 msgid ""
 "This license is not valid for this product. Find out why on your %saccount%s."
@@ -1401,14 +1446,14 @@ msgstr ""
 "Die Lizenz ist für dieses Produkt nicht gültig. Finde in deinem %sKonto%s "
 "heraus warum."
 
-#: class-licensing.php:569
+#: class-licensing.php:585
 #, php-format
 msgid "This license is not valid. Find out why on your %saccount%s."
 msgstr "Diese Lizenz ist nicht gültig. Finde in deinem %sKonto%s heraus warum."
 
 #: class-premium-options.php:913
 msgid "This option is enabled on the network menu"
-msgstr ""
+msgstr "Diese Option ist im Netzwerkmenü aktiviert"
 
 #: class-premium-options.php:1582
 msgid "This option is enabled on the network menu."
@@ -1439,35 +1484,39 @@ msgstr "Die TLS-Version ist aktuell"
 msgid ""
 "To restart reporting, set Content Security Policy to ‘reporting active’."
 msgstr ""
+"Um die Berichterstellung neu zu starten, setze die "
+"Inhaltssicherheitsrichtlinie auf „Berichterstellung aktiv“."
 
 #: csp-violation-endpoint.php:417
 msgid "Today"
 msgstr "Heute"
 
-#: class-licensing.php:450
+#: class-licensing.php:466
 msgid "unlimited"
-msgstr ""
+msgstr "unbegrenzt"
 
-#: class-licensing.php:474
+#: class-licensing.php:490
 msgid "Unlimited activations available."
-msgstr ""
+msgstr "Unbegrenzte Aktivierungen verfügbar."
 
 #: class-premium-options.php:1297
 msgid ""
 "Update Really Simple SSL Free to the latest version for optimal Content "
 "Security Policy compatibility."
 msgstr ""
+"Aktualisiere Really Simple SSL Free auf die neueste Version für optimale "
+"Kompatibilität mit den Inhaltssicherheitsrichtlinien."
 
 #: class-premium-options.php:924
 msgid "Upgrade insecure request"
 msgstr "Unsichere Anfrage aktualisieren"
 
-#: class-licensing.php:463
+#: class-licensing.php:479
 #, php-format
 msgid "Upgrade to a %s5 sites or Agency%s license."
 msgstr "Aktualisiere auf eine %s5fach Seite oder Geschäfts%s-Lizenz."
 
-#: class-licensing.php:466
+#: class-licensing.php:482
 #, php-format
 msgid "Upgrade to an %sAgency%s license."
 msgstr "Aktualisiere auf deine %sGeschäfts%s-Lizenz."
@@ -1478,7 +1527,6 @@ msgstr ""
 "lädt eine Datei hoch, möglicherweise generiert durch Plugins oder Themes"
 
 #: class-premium-options.php:911
-#, fuzzy
 #| msgid ""
 #| "Use this option if you do not have the green lock in the WordPress admin."
 msgid ""
@@ -1491,22 +1539,22 @@ msgstr ""
 msgid "User not found"
 msgstr "Benutzer nicht gefunden"
 
-#: class-licensing.php:489
+#: class-licensing.php:505
 msgid "Valid"
-msgstr ""
+msgstr "Gültig"
 
-#: class-licensing.php:496
+#: class-licensing.php:512
 #, php-format
 msgid "Valid license for %s."
 msgstr "Gültige Lizenz für %s."
 
-#: class-licensing.php:457
+#: class-licensing.php:473
 #, php-format
 msgid "Valid until %s."
 msgstr "Gültig bis %s."
 
-#: class-licensing.php:553 class-licensing.php:560 class-licensing.php:568
-#: class-licensing.php:575 class-licensing.php:590 class-licensing.php:624
+#: class-licensing.php:569 class-licensing.php:576 class-licensing.php:584
+#: class-licensing.php:591 class-licensing.php:606 class-licensing.php:640
 #: grid/templates/scan-results-element.php:5
 msgid "Warning"
 msgstr "Warnung"
@@ -1516,6 +1564,9 @@ msgid ""
 "When there a no new directives reported, you can continue with the "
 "configuration and set the Content Security Policy to ‘Enforce’."
 msgstr ""
+"Wenn keine neuen Anweisungen gemeldet werden, kannst du mit der "
+"Konfiguration fortfahren und die Inhaltssicherheitsrichtlinie auf "
+"„Erzwingen“ setzen."
 
 #: grid/templates/scan-footer.php:20
 msgid ""
@@ -1551,12 +1602,12 @@ msgstr "WordPress 301-Umleitung zu SSL für alle SSL-Sites"
 #: grid/templates/premium-settings-footer.php:10
 #, php-format
 msgid "Works with %s"
-msgstr ""
+msgstr "Funktioniert mit %s"
 
-#: class-licensing.php:619
+#: class-licensing.php:635
 #, php-format
 msgid "You can activate your license on the %slicense tab%s."
-msgstr ""
+msgstr "Du kannst deine Lizenz auf der Registerkarte %sLizenz%s aktivieren."
 
 #: class-scan.php:1806
 msgid "You can edit the source file manually by pressing the edit button."
@@ -1564,7 +1615,7 @@ msgstr ""
 "Du kannst die Quelldatei manuell bearbeiten, indem du auf die Schaltfläche "
 "\"Bearbeiten\" klickst."
 
-#: class-licensing.php:469
+#: class-licensing.php:485
 #, php-format
 msgid "You can renew your license on your %saccount%s."
 msgstr "Du kannst deine Lizenz in deinem %sKonto%s erneuern."
@@ -1574,16 +1625,20 @@ msgstr "Du kannst deine Lizenz in deinem %sKonto%s erneuern."
 msgid "You can upgrade on your %saccount%s."
 msgstr "Du kannst dein %sKonto%s aktualisieren"
 
-#: class-licensing.php:621
+#: class-licensing.php:637
 #, php-format
 msgid "You can upgrade or renew your license on the %slicense tab%s."
 msgstr ""
+"Du kannst ein Upgrade oder eine Verlängerung deiner Lizenz auf der "
+"Registerkarte %sLizenz%s durchführen"
 
 #: class-premium-options.php:1276
 msgid ""
 "You do not have any activations left on your Really Simple SSL Pro license. "
 "Please upgrade your plan for additional activations."
 msgstr ""
+"Deine Really Simple SSL Pro-Lizenz enthält keine Aktivierungen mehr. Bitte "
+"aktualisiere deinen Plan für zusätzliche Aktivierungen."
 
 #: EDD_SL_Plugin_Updater.php:502
 msgid "You do not have permission to install plugin updates"
@@ -1593,7 +1648,7 @@ msgstr "Du hast keine Berechtigung zum Installieren von Plugin-Updates"
 msgid "You finished a scan without errors."
 msgstr "Du hast den Scan ohne Fehler abgeschlossen."
 
-#: class-licensing.php:457
+#: class-licensing.php:473
 msgid "You have a lifetime license."
 msgstr "Du hast eine zeitlich unbegrenzte Lizenz."
 
@@ -1609,17 +1664,23 @@ msgstr ""
 "aktivieren\" zu verwenden, um SSL pro Site zu aktivieren."
 
 #: class-premium-options.php:1118
+#| msgid ""
+#| "You have disabled the PHP security header option. Check if the following "
+#| "security headers have been added to NGINX configuration file:"
 msgid ""
 "You have enabled the nginx.conf security header option. Check if the "
 "following security headers have been added to the NGINX configuration file:"
 msgstr ""
+"Du hast die Option nginx.conf-Sicherheitskopfzeile aktiviert. Bitte prüfen, "
+"ob die folgenden Sicherheitsheader zur NGINX-Konfigurationsdatei hinzugefügt "
+"wurden:"
 
 #: class-premium-options.php:1183
-#, fuzzy
 #| msgid "You have new rules that can be added to your Content Security Policy"
 msgid "You have new rules that can be added to your Content Security Policy."
 msgstr ""
-"Du kannst neue Regeln zu deiner Inhaltssicherheitsrichtlinie hinzufügen."
+"Du hast neue Regeln, welche du zu deiner Inhaltssicherheitsrichtlinie "
+"hinzufügen kannst."
 
 #: class-premium-options.php:165
 msgid ""
@@ -1629,7 +1690,7 @@ msgstr ""
 "Du hast deine Site bereits gescannt, aber die Scanergebnisse werden aus dem "
 "Cache gelöscht. Führe einen neuen Scan durch, um die Ergebnisse anzuzeigen."
 
-#: class-licensing.php:674
+#: class-licensing.php:690
 msgid ""
 "You haven't activated your Really Simple SSL Pro Multisite license yet. To "
 "get all future updates, enter your license on the network settings page."
@@ -1654,7 +1715,7 @@ msgstr "Deine Dateien wurden bereits wiederhergestellt."
 msgid "Your files were restored."
 msgstr "Deine Dateien wurden gesichert."
 
-#: class-licensing.php:561
+#: class-licensing.php:577
 #, php-format
 msgid ""
 "Your license could not be found in our system. Please contact %ssupport%s."
@@ -1662,12 +1723,12 @@ msgstr ""
 "Deine Lizenz konnte in unserem System nicht gefunden werden. Bitte wende "
 "dich an den %sSuppport%s."
 
-#: class-licensing.php:554
+#: class-licensing.php:570
 #, php-format
 msgid "Your license has been revoked. Please contact %ssupport%s."
 msgstr "Deine Lizenz wurde widerrufen. Bitte kontaktiere den %sSupport%s."
 
-#: class-licensing.php:591
+#: class-licensing.php:607
 #, php-format
 msgid ""
 "Your license key has expired. Please renew your license key on your "
@@ -1676,31 +1737,37 @@ msgstr ""
 "Dein Lizenzschlüssel ist abgelaufen. Bitte erneuere deinen Lizenzschlüssel "
 "in deinem %sKonto%s."
 
-#: class-licensing.php:619
+#: class-licensing.php:635
 msgid "Your Really Simple SSL pro license hasn't been activated."
-msgstr ""
+msgstr "Deine Really Simple SSL Pro-Lizenz wurde nicht aktiviert."
 
-#: class-licensing.php:621
+#: class-licensing.php:637
 msgid "Your Really Simple SSL pro license is not valid."
-msgstr ""
+msgstr "Deine Really Simple SSL Pro-Lizenz ist ungültig."
 
 #: class-premium-options.php:1255
 msgid ""
 "Your Really Simple SSL Pro license key has expired. Please renew your "
 "license to continue receiving updates and premium support."
 msgstr ""
+"Dein Really Simple SSL Pro-Lizenzschlüssel ist abgelaufen. Bitte erneuere "
+"die Lizenz, um weiterhin Updates und Premium-Support zu erhalten."
 
 #: class-premium-options.php:1283
 msgid ""
 "Your Really Simple SSL Pro license key hasn't been activated yet. You can "
 "activate your license key on the license tab."
 msgstr ""
+"Dein Really Simple SSL Pro-Lizenzschlüssel wurde noch nicht aktiviert. Du "
+"kannst den Lizenzschlüssel auf der Registerkarte Lizenz aktivieren."
 
 #: class-premium-options.php:1262
 msgid ""
 "Your Really Simple SSL Pro license key is not activated. Please activate "
 "your license to continue receiving updates and premium support."
 msgstr ""
+"Dein Really Simple SSL Pro-Lizenzschlüssel ist nicht aktiviert. Bitte "
+"aktiviere die Lizenz, um weiterhin Updates und Premium-Support zu erhalten."
 
 #: class-premium-options.php:1133
 #, php-format

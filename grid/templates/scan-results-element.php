@@ -7,10 +7,10 @@
     <td>
         [DESCRIPTION_BLOCKED_URL]
     </td>
-    <td class="rsssl-blocked-url">
+    <td class="rsssl-blocked-url-link">
         [FILE]
     </td>
-    <td>
+    <td class="rsssl-action-buttons">
         [RSSSL_FIX]
         [DETAILS]
     </td>
