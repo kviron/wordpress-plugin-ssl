@@ -1,7 +1,4 @@
-<?php
-
-/* 100% match ms */
-defined( 'ABSPATH' ) or die( "you do not have access to this page!" );
+<?php defined( 'ABSPATH' ) or die();
 
 class rsssl_scan {
 	private static $_this;
@@ -28,7 +25,7 @@ class rsssl_scan {
 	private $files_with_external_css_js = array();
 	public $external_css_js_with_mixed_content = array();
 	private $queue = 0;
-	private $scan_completed_no_errors = "NEVER";
+	private $scan_completed_no_errors;
 	private $last_scan_time;
 	private $error_number = 0;
 	private $safe_domains
@@ -44,27 +41,15 @@ class rsssl_scan {
 
 	function __construct() {
 		if ( isset( self::$_this ) ) {
-			wp_die( sprintf( __( '%s is a singleton class and you cannot create a second instance.',
-				'really-simple-ssl-pro' ), get_class( $this ) ) );
+			wp_die( sprintf( __( '%s is a singleton class and you cannot create a second instance.', 'really-simple-ssl-pro' ), get_class( $this ) ) );
 		}
 
 		self::$_this = $this;
-
-		add_action( "plugins_loaded", array( $this, "process_scan_submit" ), 100 );
-		add_action( "rsssl_modals", array( $this, "fix_post_modal" ) );
-		add_action( "rsssl_modals", array( $this, "fix_postmeta_modal" ) );
-		add_action( "rsssl_modals", array( $this, "details_modal" ) );
-		add_action( "rsssl_modals", array( $this, "fix_file_modal" ) );
-		add_action( "rsssl_modals", array( $this, "fix_cssjs_modal" ) );
-		add_action( "rsssl_modals", array( $this, "roll_back_modal" ) );
-		add_action( "rsssl_modals", array( $this, "fix_widget_modal" ) );
-
-		if ( isset($_GET['rsssl_start_scan']) ) {
-		  add_action('admin_init', array($this, 'start_quick_scan') );
-    }
-
-		add_action( 'wp_ajax_get_scan_progress', array( $this, 'get_scan_progress' ) );
+		add_filter("rsssl_run_test", array($this, 'mixed_content_scan'), 10, 3 );
+		add_action('admin_init', array($this, 'start_quick_scan_from_url') );
+		add_filter( 'rsssl_notices', array($this,'get_notices_list'),20, 1 );
 	}
+
 
 
 	static function this() {
@@ -72,122 +57,157 @@ class rsssl_scan {
 	}
 
 	/**
-   * Check if the user has completed a scan before, but the data was cleared due to timeout of transient
+	 * Catch rest api request
+	 * @param $response
+	 * @param $test
+	 * @param $data
+	 *
+	 * @return mixed
+	 */
+
+	public function mixed_content_scan($response, $test, $data ){
+		if ( $test=== 'mixed_content_scan' ){
+			$state = $data['state'];
+			switch ($state) {
+				case 'start':
+					update_option( "rsssl_iteration", 1, false );
+					delete_transient( 'rsssl_scan' );
+					update_option( "rsssl_progress", 0, false );
+					update_option( "rsssl_current_action", "", false );
+					update_option( "rsssl_scan_type", "home", false );
+				case 'start_full':
+					update_option( "rsssl_scan_type", "all", false );
+				case 'running':
+			}
+
+			$state = $state === 'start' || $state === 'start_full' ? 'running' : $state;
+			update_option( "rsssl_scan_active", $state, false );
+
+			//can be false or 'stop', if not active
+			if ( get_option( 'rsssl_scan_active' ) === 'running' ) {
+				$this->run_scan();
+			}
+
+			$progress = get_option( 'rsssl_progress' );
+			if ( $progress>=100 ) {
+				update_option( "rsssl_scan_active", 'stop', false );
+			}
+
+			$response = $this->get();
+		}
+		return $response;
+	}
+
+	/**
+	 * Check if the user has completed a scan before, but the data was cleared due to timeout of transient
 	 * @return bool
 	 */
 
 	public function has_cleared_scan_data() {
 		$completed_scan_before = false;
-	  if ($this->scan_completed_no_errors === 'COMPLETED' || $this->scan_completed_no_errors === 'ERRORS') {
-		  $completed_scan_before = true;
-    }
-
-		if ( !get_transient( 'rlrsssl_scan' ) && $completed_scan_before && get_option( 'rsssl_progress' ) == 100 ) {
-		  return true;
+		if ( $this->scan_completed_no_errors === 'COMPLETED' || $this->scan_completed_no_errors === 'ERRORS' ) {
+			$completed_scan_before = true;
 		}
+
+		if ( ! get_transient( 'rsssl_scan' ) && $completed_scan_before && get_option( 'rsssl_progress' ) == 100 ) {
+			return true;
+		}
+
 		return false;
+	}
+
+
+	/**
+	 * Get list of notices for the dashboard
+	 * @param array $notices
+	 *
+	 * @return array
+	 */
+	public function get_notices_list($notices)
+	{
+		$notices['mixed_content_scan'] = array(
+			'callback' => 'RSSSL_PRO()->scan->pro_scan_notice',
+			'score' => 10,
+			'output' => array(
+				'has-ssl-no-scan-errors' => array(
+					'msg' => __("Great! Your scan last completed without errors.", "really-simple-ssl-pro"),
+					'icon' => 'success'
+				),
+				'has-ssl-scan-has-errors' => array(
+					'msg' => __("The last scan was completed with errors. Only migrate if you are sure the found errors are not a problem for your site.", "really-simple-ssl-pro"),
+					'icon' => 'warning',
+					'dismissible' => true,
+				),
+				'no-scan-done' => array(
+					'msg' => __("You haven't scanned the site yet, you should scan your site to check for possible issues.", "really-simple-ssl-pro"),
+					'icon' => 'open',
+					'highlight_field_id' => 'mixedcontentscan',
+				),
+				'no-ssl-no-scan-errors' => array(
+					'msg' => __("Great! Your scan last completed without errors.", "really-simple-ssl-pro"),
+					'icon' => 'success'
+				),
+				'no-ssl-scan-has-errors' => array(
+					'msg' => __("The last scan was completed with errors. Are you sure these issues don't impact your site?", "really-simple-ssl-pro"),
+					'icon' => 'warning',
+					'dismissible' => true,
+				),
+			),
+		);
+
+		return $notices;
+	}
+
+	/**
+	 * Conditions for a notice
+	 *
+	 * @return string
+	 */
+	public function pro_scan_notice() {
+		if ( !rsssl_get_option('site_has_ssl') ) {
+			if ( $this->scan_completed_no_errors() == "COMPLETED" ) {
+				return 'has-ssl-no-scan-errors';
+			} elseif ( $this->scan_completed_no_errors() == "ERRORS" ) {
+				return 'has-ssl-scan-has-errors';
+			} elseif ( ! RSSSL_PRO()->licensing->license_is_valid() ) {
+				return 'no-ssl-no-scan-done-invalid-license';
+			} else {
+				return 'no-scan-done';
+			}
+		} else {
+			if ( $this->scan_completed_no_errors() == "COMPLETED" ) {
+				return 'no-ssl-no-scan-errors';
+			} elseif ( $this->scan_completed_no_errors() == "ERRORS" ) {
+				return 'no-ssl-scan-has-errors';
+			} elseif ( ! RSSSL_PRO()->licensing->license_is_valid() ) {
+				return 'no-ssl-no-scan-done-invalid-license';
+			} else {
+				return 'no-scan-done';
+			}
+		}
 	}
 
   /**
    * Start a quick scan, invoked via $_GET parameter
    */
 
-	public function start_quick_scan() {
+	public function start_quick_scan_from_url() {
+		if ( !isset($_GET['rsssl_start_scan']) ) {
+			return;
+		}
+		if ( ! rsssl_user_can_manage() ) {
+			return;
+	    }
 
-	  if ( ! current_user_can( 'manage_options' ) ) {
-      return;
-    }
-
-    update_option( "rsssl_scan_active", true );
-    update_option( "rsssl_iteration", 1 );
-    delete_transient( 'rlrsssl_scan' );
-    update_option( "rsssl_progress", 0 );
-    update_option( "rsssl_current_action", "" );
-    update_option( "rsssl_scan_type", "home" );
-		wp_redirect(add_query_arg(array('page'=>'rlrsssl_really_simple_ssl','tab'=>'premium'), admin_url( 'options-general.php' ) ));
+	    update_option( "rsssl_scan_active", 'running', false );
+	    update_option( "rsssl_iteration", 1, false );
+		delete_transient( 'rsssl_scan' );
+	    update_option( "rsssl_progress", 0, false );
+	    update_option( "rsssl_current_action", "", false );
+	    update_option( "rsssl_scan_type", "home", false );
+		wp_redirect(add_query_arg(array('page'=>'really-simple-security','#'=>'settings/mixed_content_scan'), admin_url( 'options-general.php' ) ));
 		exit();
-  }
-
-	/**
-	 * Get the json for the scan progress.
-	 */
-	public function get_scan_progress() {
-		$action = "";
-
-		if ( get_option( 'rsssl_scan_active' ) ) {
-			$this->run_scan();
-			$action = '&nbsp;&nbsp;' . get_option( 'rsssl_current_action' );
-		}
-
-		$progress = get_option( 'rsssl_progress' );
-
-		$output = array(
-			"progress" => $progress,
-			"action"  => $action,
-		);
-		if ( $progress ) {
-			error_log( "Scan progress is $progress" );
-		}
-		if ( $progress >= 100 ) {
-			$output["output"] = $this->generate_output();
-		}
-		$obj = new stdClass();
-		$obj = $output;
-		echo json_encode( $obj );
-		wp_die(); // this is required to terminate immediately and return a proper response
-	}
-
-	/**
-	 * Submit a scan action
-	 */
-	public function process_scan_submit() {
-		if ( ! class_exists( 'rsssl_admin' ) ) {
-			return;
-		}
-		if ( ! current_user_can( 'manage_options' ) ) {
-			return;
-		}
-
-		if ( isset( $_POST['rsssl_stop_scan'] ) ) {
-			error_log( "stopping scan" );
-			update_option( "rsssl_scan_active", false );
-			return;
-		}
-
-		if ( isset( $_POST['rsssl_resume_scan'] ) ) {
-			error_log( "resuming scan" );
-			update_option( "rsssl_scan_active", true );
-			return;
-		}
-
-		if ( isset( $_POST['rsssl_no_scan'] ) ) {
-			if ( isset( $_POST['rsssl_show_ignore_urls'] ) ) {
-				update_option( "rsssl_show_ignore_urls", 1 );
-			} else {
-				update_option( "rsssl_show_ignore_urls", 0 );
-			}
-
-		} elseif ( isset( $_POST['rsssl_do_scan'] ) || isset( $_POST['rsssl_do_scan_home'] ) ) {
-			if ( isset( $_POST['rsssl_show_ignore_urls'] ) ) {
-				update_option( "rsssl_show_ignore_urls", 1 );
-			} else {
-				update_option( "rsssl_show_ignore_urls", 0 );
-			}
-
-		  update_option( "rsssl_scan_active", true );
-	      update_option( "rsssl_iteration", 1 );
-	      delete_transient( 'rlrsssl_scan' );
-	      update_option( "rsssl_progress", 0 );
-	      update_option( "rsssl_current_action", "" );
-
-      if ( isset( $_POST['rsssl_do_scan'] ) ) {
-				update_option( "rsssl_scan_type", "all" );
-			} else {
-				update_option( "rsssl_scan_type", "home" );
-			}
-
-		}
-	}
+    }
 
 	/**
    * Get last scan time
@@ -214,81 +234,73 @@ class rsssl_scan {
 	 */
 
 	public function run_scan() {
-		if ( ! get_option( 'rsssl_scan_active' ) ) {
-			error_log( "scan not active, stop" );
+		if ( get_option( 'rsssl_scan_active' ) !== 'running' ) {
 			return;
 		}
 		//we don't want the ajax request trigger a cron request
 		if ( isset( $_GET['rsssl_scan_request'] ) ) {
-			error_log( "scan request, do not trigger scan " );
 			return;
 		}
 
 		$total_iterations = 14;
 		$iteration = get_option( "rsssl_iteration", 1 );
-		error_log( "iteration " . $iteration );
 		$in_queue = false;
 
 		if ( $iteration == 1 ) {
 			$this->load_results( true ); //true to reset all values
-			error_log( "generating web page list" );
 			//get all pages of this website
 			$this->webpages = $this->get_webpage_list();
 			$this->queue    = 1;
 			$progress       = $this->calculate_queue_progress( 1, 1, $total_iterations, $iteration );
 			$in_queue       = $this->still_in_queue( 0 );
-			update_option( 'rsssl_progress', $progress );
-			update_option( 'rsssl_current_action', __( "Generating web page list", "really-simple-ssl-pro" ) );
+			update_option( 'rsssl_progress', $progress, false  );
+			update_option( 'rsssl_current_action', __( "Generating web page list", "really-simple-ssl-pro" ), false );
 			$this->save_results();
 		}
 
 		if ( $iteration == 2 ) {
-			error_log( "searching js css files and external resources" );
 			$this->load_results();
 			//find all css and js files
 			$this->parse_for_css_js_and_external_files( $this->webpages );
 			$progress = $this->calculate_queue_progress( count( $this->webpages ), $this->queue, $total_iterations, $iteration );
 			$current_queue = ( $this->queue == 0 ) ? count( $this->webpages ) : $this->queue;
 
-			update_option( 'rsssl_progress', $progress );
+			update_option( 'rsssl_progress', $progress, false );
 			update_option( 'rsssl_current_action',
 				sprintf( __( "Searching for js and css files and links to external resources in website, %s of %s",
 					"really-simple-ssl-pro" ), $current_queue,
-					count( $this->webpages ) ) );
+					count( $this->webpages ) ), false );
 
 			$in_queue = $this->still_in_queue( count( $this->webpages ) );
 			$this->save_results();
 		}
 
 		if ( $iteration == 3 ) {
-			error_log( "searching mixed content in js and css files" );
 			$this->load_results();
 			//parse these files for http links
 			$this->css_js_with_mixed_content = $this->parse_for_http( $this->css_js_files, $this->css_js_with_mixed_content );
 			$progress = $this->calculate_queue_progress( count( $this->css_js_files ), $this->queue, $total_iterations, $iteration );
 			$current_queue = ( $this->queue == 0 ) ? count( $this->css_js_files ) : $this->queue;
-			update_option( 'rsssl_progress', $progress );
+			update_option( 'rsssl_progress', $progress, false );
 			update_option( 'rsssl_current_action', sprintf( __( "Searching for mixed content in css and js files, %s of %s",
 					"really-simple-ssl-pro" ), $current_queue,
-					count( $this->css_js_files ) + 2 ) );
+					count( $this->css_js_files ) + 2 ), false );
 			$in_queue = $this->still_in_queue( count( $this->css_js_files ) );
 			$this->save_results();
 		}
 
 		if ( $iteration == 4 ) {
-			error_log( "generating file list" );
 			$this->load_results();
 			$this->get_file_array();
 			$this->queue = $this->still_in_queue( 1 );
 			$progress    = $this->calculate_queue_progress( 1, 1, $total_iterations, $iteration );
 			$in_queue    = $this->still_in_queue( 0 );
-			update_option( 'rsssl_progress', $progress );
-			update_option( 'rsssl_current_action', __( "Generating file list", "really-simple-ssl-pro" ) );
+			update_option( 'rsssl_progress', $progress, false );
+			update_option( 'rsssl_current_action', __( "Generating file list", "really-simple-ssl-pro" ), false );
 			$this->save_results();
 		}
 
 		if ( $iteration == 5 ) {
-			error_log( "checking which posts contain external resources" );
 			$this->load_results();
 			$this->search_posts_for_external_urls();
 			//get the number of rows total
@@ -296,57 +308,50 @@ class rsssl_scan {
 			$progress = $this->calculate_queue_progress( $total_post_count, $this->queue, $total_iterations, $iteration );
 			$in_queue         = $this->still_in_queue( $total_post_count );
 			$current_queue    = ( $this->queue == 0 ) ? $total_post_count : $this->queue;
-			update_option( 'rsssl_progress', $progress );
+			update_option( 'rsssl_progress', $progress, false );
 			update_option( 'rsssl_current_action',
 				sprintf( __( "Checking posts for external URLs, %s of %s",
 					"really-simple-ssl-pro" ), $current_queue,
-					$total_post_count ) );
+					$total_post_count ), false );
 			$this->save_results();
 		}
 
 		if ( $iteration == 6 ) {
-			error_log( "checking which widgets contain external resources" );
 			$this->load_results();
 			//Also search for widgets with external urls
 			$this->search_widgets_for_external_urls();
 			$progress = $this->calculate_queue_progress( 1, 1, $total_iterations, $iteration );
 			$in_queue = $this->still_in_queue( 0 );
-			update_option( 'rsssl_progress', $progress );
-			update_option( 'rsssl_current_action', __( "Checking widgets for external URLs", "really-simple-ssl-pro" ) );
+			update_option( 'rsssl_progress', $progress, false );
+			update_option( 'rsssl_current_action', __( "Checking widgets for external URLs", "really-simple-ssl-pro" ), false );
 			$this->save_results();
 		}
 
 		if ( $iteration == 7 ) {
-			error_log( "checking which postmeta tables contain external resources" );
 			$this->load_results();
 			$this->search_postmeta_for_external_urls();
 			$progress = $this->calculate_queue_progress( 1, 1, $total_iterations, $iteration );
 			$in_queue = $this->still_in_queue( 0 );
-			update_option( 'rsssl_progress', $progress );
+			update_option( 'rsssl_progress', $progress, false );
 			update_option( 'rsssl_current_action',
 				__( "Checking which postmeta contain external resources",
-					"really-simple-ssl-pro" ) );
+					"really-simple-ssl-pro" ), false );
 			$this->save_results();
 		}
 
 		if ( $iteration == 8 ) {
-			error_log( "checking if external resources can load over ssl" );
 			$this->load_results();
 			//check which of these files cannot load over ssl
 			$this->find_blocked_resources( $this->external_resources );
 			$progress = $this->calculate_queue_progress( count( $this->external_resources ), $this->queue, $total_iterations, $iteration );
 			$in_queue = $this->still_in_queue( count( $this->external_resources ) );
 			$current_queue = ( $this->queue == 0 ) ? count( $this->external_resources ) : $this->queue;
-			update_option( 'rsssl_progress', $progress );
-			update_option( 'rsssl_current_action',
-				sprintf( __( "Checking which resources can't load over ssl, %s of %s",
-					"really-simple-ssl-pro" ), $current_queue,
-					count( $this->external_resources ) ) );
+			update_option( 'rsssl_progress', $progress, false );
+			update_option( 'rsssl_current_action', sprintf( __( "Checking which resources can't load over ssl, %s of %s", "really-simple-ssl-pro" ), $current_queue, count( $this->external_resources ) ), false );
 			$this->save_results();
 		}
 
 		if ( $iteration == 9 ) {
-			error_log( "checking if external js or css files contain http links" );
 			$this->load_results();
 
 			$external_css_js_files = $this->get_external_css_js_files();
@@ -355,60 +360,56 @@ class rsssl_scan {
 			$progress = $this->calculate_queue_progress( count( $external_css_js_files ), $this->queue, $total_iterations, $iteration );
 			$in_queue = $this->still_in_queue( count( $external_css_js_files ) );
 			$current_queue = ( $this->queue == 0 ) ? count( $external_css_js_files ) : $this->queue;
-			update_option( 'rsssl_progress', $progress );
+			update_option( 'rsssl_progress', $progress , false);
 			update_option( 'rsssl_current_action',
 				sprintf( __( "Checking if external js or css files contain http links, %s of %s",
 					"really-simple-ssl-pro" ), $current_queue,
-					count( $external_css_js_files ) ) );
+					count( $external_css_js_files ) ), false );
 			$this->save_results();
 		}
 
 		if ( $iteration == 10 ) {
-			error_log( "Looking up blocked resources in files" );
 			$this->load_results();
 			//search in php files and db for references to ext res.
 			$this->search_files_for_urls();
 			$progress = $this->calculate_queue_progress( count( $this->file_array ), $this->queue, $total_iterations, $iteration );
 			$in_queue = $this->still_in_queue( count( $this->file_array ) );
 			$current_queue = ( $this->queue == 0 ) ? count( $this->file_array ) : $this->queue;
-			update_option( 'rsssl_progress', $progress );
+			update_option( 'rsssl_progress', $progress, false );
 			update_option( 'rsssl_current_action',
 				sprintf( __( "Looking up blocked resources in files, %s of %s",
 					"really-simple-ssl-pro" ), $current_queue,
-					count( $this->file_array ) ) );
+					count( $this->file_array ) ), false );
 			$this->save_results();
 		}
 
 		if ( $iteration == 11 ) {
-			error_log( "Looking up blocked resources in posts" );
 			$this->load_results();
 			$this->find_posts_with_blocked_urls();
 			$this->queue = 1;
 			$progress    = $this->calculate_queue_progress( 1, 1, $total_iterations, $iteration );
 			$in_queue    = $this->still_in_queue( 0 );
-			update_option( 'rsssl_progress', $progress );
+			update_option( 'rsssl_progress', $progress, false );
 			update_option( 'rsssl_current_action',
 				__( "Looking up blocked resources in posts",
-					"really-simple-ssl-pro" ) );
+					"really-simple-ssl-pro" ), false );
 			$this->save_results();
 		}
 
 		if ( $iteration == 12 ) {
-			error_log( "Looking up blocked resources in postmeta" );
 			$this->load_results();
 			$this->find_postmeta_with_blocked_urls();
 			$this->queue = 1;
 			$progress    = $this->calculate_queue_progress( 1, 1, $total_iterations, $iteration );
 			$in_queue    = $this->still_in_queue( 0 );
-			update_option( 'rsssl_progress', $progress );
+			update_option( 'rsssl_progress', $progress, false );
 			update_option( 'rsssl_current_action',
 				__( "Looking up blocked resources in postmeta",
-					"really-simple-ssl-pro" ) );
+					"really-simple-ssl-pro" ), false );
 			$this->save_results();
 		}
 
 		if ( $iteration == 13 ) {
-			error_log( "looking up widgets with blocked resources" );
 			$this->load_results();
 			$this->find_widgets_with_blocked_urls();
 			$this->queue = 1;
@@ -416,20 +417,20 @@ class rsssl_scan {
 					$total_iterations, $iteration )
 			        - 1;//prevent progress from being 100 before last step
 			$in_queue  = $this->still_in_queue( 0 );
-			update_option( 'rsssl_progress', $progress );
+			update_option( 'rsssl_progress', $progress, false );
 			update_option( 'rsssl_current_action',
 				__( "Looking up blocked resources in widgets",
-					"really-simple-ssl-pro" ) );
+					"really-simple-ssl-pro" ), false );
 			$this->save_results();
 		}
 
 		if ( $iteration == 14 ) {
 			$this->load_results();
 			//dropped brute force database search
-			update_option( 'rsssl_current_action', __( "Finished scan", "really-simple-ssl-pro" ) );
+			update_option( 'rsssl_current_action', __( "Finished scan", "really-simple-ssl-pro" ), false );
 			$in_queue = $this->still_in_queue( 1 );
-			update_option( 'rsssl_progress', 100 );
-			update_option( "rsssl_scan_active", false );
+			update_option( 'rsssl_progress', 100, false );
+			update_option( "rsssl_scan_active", 'stop', false );
 			$this->save_results();
 		}
 
@@ -437,7 +438,7 @@ class rsssl_scan {
 			$iteration ++;
 		}
 
-		update_option( "rsssl_iteration", $iteration );
+		update_option( "rsssl_iteration", $iteration, false );
 	}
 
 	/**
@@ -566,10 +567,13 @@ class rsssl_scan {
 
 	}
 
-	/*
-   * Save the edited html of a widget to the widget in question.
-   *
-   * */
+	/**
+	 * Save the edited html of a widget to the widget in question.
+	 * @param string $title
+	 * @param string $content
+	 *
+	 * @return bool
+	 */
 
 	public function update_widget_data( $title, $content ) {
 
@@ -597,7 +601,7 @@ class rsssl_scan {
 		}
 
 		if ( $type_found ) {
-			update_option( "widget_" . $type, $widget_array );
+			update_option( "widget_" . $type, $widget_array, false );
 		}
 
 		return true;
@@ -828,13 +832,7 @@ class rsssl_scan {
 
 		$external_resources = $this->external_resources;
 		$postmeta_array   = $this->postmeta_with_external_resources;
-
 		$patterns = $this->external_domain_patterns();
-
-		//look only in posts of used post types.
-		$args = array(
-			'public' => true,
-		);
 
 		$query
 			= "select post_id, meta_key, meta_value from $wpdb->postmeta LIMIT "
@@ -876,14 +874,13 @@ class rsssl_scan {
 	}
 
 
-	/*
-  *
-  * Check if this URL should be ignored
-  * Should be ignored if
-  * - show ignored URLs is false OR
-  * - the url is in the ignored list
-  *
-  */
+	/**
+	 * Check if this URL should be ignored
+	 * Should be ignored if
+	 * - show ignored URLs is false OR
+	 * - the url is in the ignored list
+	 *
+	 */
 
 	public function ignore( $url ) {
 		$show_ignore_urls = get_option( "rsssl_show_ignore_urls" );
@@ -902,40 +899,6 @@ class rsssl_scan {
 
 		return false;
 	}
-
-	public function ignore_array_search( $value, $key = false ) {
-		if ( $this->ignore( $value ) || $this->ignore( $key ) ) {
-			return false;
-		}
-
-		return true;
-	}
-
-	/*
-  * Remove all URLs that should be ignored
-  *
-  *
-  * */
-
-	function filter_ignored_urls( $urls ) {
-
-		if ( get_option( 'rsssl_show_ignore_urls' ) == 0 ) {
-
-			//prevent older php version breaking stuff
-			if ( version_compare( PHP_VERSION, '5.6.0' ) >= 0 ) {
-				$urls = array_filter( $urls,
-					array( $this, 'ignore_array_search' ),
-					ARRAY_FILTER_USE_BOTH );
-			} else {
-				$urls = array_filter( $urls,
-					array( $this, 'ignore_array_search' ) );
-			}
-
-		}
-
-		return $urls;
-	}
-
 
 	/**
 	 * check each item in the array to see if it can load over https, if no, adds it to the output array.
@@ -1049,61 +1012,47 @@ class rsssl_scan {
 	private function get_webpage_list() {
 		$scan_type = get_option( "rsssl_scan_type" );
 		$url_list = array();
+		$url_list[] = home_url();
+		if ( $scan_type != "home" ) {
 
-		//check if the per page plugin is used.
-		if ( class_exists( 'REALLY_SIMPLE_SSL_PP' ) ) {
+			$menus = get_nav_menu_locations();
+			foreach ( $menus as $location => $menu_id ) {
+				$menu_items = wp_get_nav_menu_items( $menu_id );
 
-			$pages = RSSSL()->really_simple_ssl->get_ssl_pages();
-			if ( ! empty( $pages ) ) {
-				foreach ( $pages as $page_id ) {
-					$url_list[] = get_permalink( $page_id );
+				foreach ( (array) $menu_items as $key => $menu_item ) {
+					//only insert url if on the same domain as homeurl
+					if ( isset( $menu_item->url )
+					   && strpos( $menu_item->url, home_url() ) !== false
+					) {
+						$url_list[] = $menu_item->url;
+					}
 				}
 			}
-		} else {
-			//we're on the default ssl plugin.
 
-			$url_list[] = home_url();
-			if ( $scan_type != "home" ) {
+			//also add an url from each post type that is used in this website.
+			$args = array(
+				'public' => true,
+			);
 
-				$menus = get_nav_menu_locations();
-				foreach ( $menus as $location => $menu_id ) {
-					$menu_items = wp_get_nav_menu_items( $menu_id );
+			$post_types    = get_post_types( $args );
+			$post_types_query = array();
+			foreach ( $post_types as $post_type ) {
+				$post_types_query[] = " post_type = '" . $post_type . "'";
+			}
 
-					foreach ( (array) $menu_items as $key => $menu_item ) {
-						//only insert url if on the same domain as homeurl
-						if ( isset( $menu_item->url )
-						   && strpos( $menu_item->url, home_url() ) !== false
-						) {
-							$url_list[] = $menu_item->url;
-						}
-					}
-				}
+			$sql = implode( " OR ", $post_types_query );
+			global $wpdb;
+			$sql
+				= "SELECT ID FROM $wpdb->posts where post_status='publish' and ("
+				 . $sql . ") group by post_type";
 
-				//also add an url from each post type that is used in this website.
-				$args = array(
-					'public' => true,
-				);
+			$results = $wpdb->get_results( $sql );
 
-				$post_types    = get_post_types( $args );
-				$post_types_query = array();
-				foreach ( $post_types as $post_type ) {
-					$post_types_query[] = " post_type = '" . $post_type . "'";
-				}
-
-				$sql = implode( " OR ", $post_types_query );
-				global $wpdb;
-				$sql
-					= "SELECT ID FROM $wpdb->posts where post_status='publish' and ("
-					 . $sql . ") group by post_type";
-
-				$results = $wpdb->get_results( $sql );
-
-				foreach ( $results as $result ) {
-					if ( ! in_array( get_permalink( $result->ID ),
-						$url_list )
-					) {
-						$url_list[] = get_permalink( $result->ID );
-					}
+			foreach ( $results as $result ) {
+				if ( ! in_array( get_permalink( $result->ID ),
+					$url_list )
+				) {
+					$url_list[] = get_permalink( $result->ID );
 				}
 			}
 		}
@@ -1234,7 +1183,6 @@ class rsssl_scan {
 			$file = $this->convert_url_to_path( $url );
 
 			if ( ! file_exists( $file ) ) {
-				error_log( $file . " does not exist" );
 				continue;
 			}
 			$str = file_get_contents( $file );
@@ -1322,7 +1270,6 @@ class rsssl_scan {
 			$url = $urls[ $i ];
 			$str = $this->get_contents( $url );
 			if ( $this->error_number != 0 ) {
-				error_log( "file could not be loaded " . $url );
 				continue;
 			}
 			foreach ( $patterns as $pattern ) {
@@ -1531,45 +1478,6 @@ class rsssl_scan {
 	}
 
 	/**
-	 * Returns a success, error or warning image for the settings page
-	 *
-	 * @param string $type the type of image
-	 *
-	 * @return html string
-	 * @since 2.0
-	 *
-	 * @access public
-	 *
-	 */
-
-	public function img_path( $type ) {
-		if ( $type == 'success' ) {
-			return rsssl_pro_url . "img/check-icon.png";
-		} elseif ( $type == "error" ) {
-			return rsssl_pro_url . "img/cross-icon.png";
-		} else {
-			return rsssl_pro_url . "img/warning-icon.png";
-		}
-	}
-
-	/*
-   deprecated
-*/
-
-	public function plugin_url() {
-		$plugin_url = trailingslashit( plugin_dir_url( __FILE__ ) );
-		if ( strpos( str_replace( "http://", "https://", $plugin_url ),
-				str_replace( "http://", "https://", home_url() ) ) === false
-		) {
-			//make sure we do not have a slash at the start
-			$plugin_url = ltrim( $plugin_url, "/" );
-			$plugin_url = trailingslashit( home_url() ) . $plugin_url;
-		}
-
-		return $plugin_url;
-	}
-
-	/**
 	 * Get the absolute path the the www directory of this site, where .htaccess lives.
 	 *
 	 * @since 1.0
@@ -1661,104 +1569,117 @@ class rsssl_scan {
 		return $patterns;
 	}
 
+	//make distinction between $src on own domain and $src on remote domain
+	//remote domain resources need to be downloaded.
+	//compare non www url.
+	public function is_third_party($src){
+		$home_url_no_www = str_replace( "https://", "http://", str_replace( "://www.", "://", home_url() ) );
+		$src_no_www   = str_replace( "://www.", "://", $src );
+		if ( strpos( $src_no_www, $home_url_no_www ) === false ) {
+			return true;
+		} else {
+			return  false;
+		}
+	}
+
+	/**
+	 * Get type of a file by path
+	 * @param string $file
+	 *
+	 * @return string
+	 */
+	public function get_file_type($file){
+		if ( strpos( $file, "themes" ) !== false ) {
+			return "themes";
+		} elseif ( strpos( $file, "mu-plugins" ) !== false ) {
+			return "mu-plugins";
+		} elseif ( strpos( $file, "plugins" ) !== false ) {
+			return "plugins";
+		} elseif ( strpos( $file, "uploads" ) !== false ) {
+			return $this->uploads_dirname();
+		} elseif ( strpos( $file, "cache" ) !== false ) {
+			return $this->uploads_dirname();
+		} else {
+			return "na";
+		}
+	}
+
+	/**
+	 * Get description of path based on location
+	 *
+	 * @param string $file
+	 *
+	 * @return string
+	 */
+	public function get_file_type_description($file){
+		if ( strpos( $file, "themes" ) !== false ) {
+			return __( "theme file", "really-simple-ssl-pro" );
+		} elseif ( strpos( $file, "mu-plugins" ) !== false ) {
+			return __( "mu plugin file", "really-simple-ssl-pro" );
+		} elseif ( strpos( $file, "plugins" ) !== false ) {
+			return __( "plugin file", "really-simple-ssl-pro" );
+		} elseif ( strpos( $file, "uploads" ) !== false ) {
+			return __( "uploads file, possibly generated by plugin or theme", "really-simple-ssl-pro" );
+		} elseif ( strpos( $file, "cache" ) !== false ) {
+			return __( "cached file, deactivate cache to see the actual source", "really-simple-ssl-pro" );
+		} else {
+			return __( "file", "really-simple-ssl-pro" );
+		}
+	}
+
+
 	/**
 	 *
 	 *   Generate the result output for the scan
 	 *
 	 */
 
-	public function generate_output() {
+	public function get() {
+		$data = [];
 		//results id is used for removal of rows after successful fix.
 		$results_id = 0;
 		$this->load_results();
 		$mixed_content_detected = false;
-
-		$container
-			  = RSSSL()->really_simple_ssl->get_template( 'scan-results-container.php',
-			rsssl_pro_path . 'grid/' );
-		$element
-			  = RSSSL()->really_simple_ssl->get_template( 'scan-results-element.php',
-			rsssl_pro_path . 'grid/' );
-		$output = '';
+		$copyright_fix_warning = [__( "Downloading files from other websites can cause serious copyright issues! It is always illegal to use images, files, or any copyright protected material on your own site without the consent of the copyrightholder. Please ask the copyrightholder for permission. Use this function at your own risk.", "really-simple-ssl-pro" ),
+		                         __( "This downloads the file from the domain without SSL, inserts it into WP media, and changes the URL to the new URL.", "really-simple-ssl-pro" )];
 
 		/**
 		 *    Blocked urls
 		 *    check if we have urls that can't load over https .
 		 */
 
-		foreach ( $this->blocked_resources as $url ) {
-			if ( $this->in_array_r( $url, $this->traced_urls ) ) {
-				continue;
-			}
-			$not_traceable_urls_found = true;
-		}
-
 		if ( ( count( $this->files_with_blocked_resources ) > 0 )
-		   || count( $this->posts_with_blocked_resources ) > 0
-		   || count( $this->postmeta_with_blocked_resources ) > 0
-		   || count( $this->css_js_with_mixed_content ) > 0
-       || count( $this->external_css_js_with_mixed_content ) > 0
+		     || count( $this->posts_with_blocked_resources ) > 0
+		     || count( $this->postmeta_with_blocked_resources ) > 0
+		     || count( $this->css_js_with_mixed_content ) > 0
+		     || count( $this->external_css_js_with_mixed_content ) > 0
 		) {
 			$mixed_content_detected = true;
 		}
 
 		foreach ( $this->files_with_blocked_resources as $file => $urls ) {
-			if ( strpos( $file, "themes" ) !== false ) {
-				$item_title = __( "theme file", "really-simple-ssl-pro" );
-				$file_type = "themes";
-			} elseif ( strpos( $file, "mu-plugins" ) !== false ) {
-				$item_title = __( "mu plugin file", "really-simple-ssl-pro" );
-				$file_type = "mu-plugins";
-			} elseif ( strpos( $file, "plugins" ) !== false ) {
-				$item_title = __( "plugin file", "really-simple-ssl-pro" );
-				$file_type = "plugins";
-			} elseif ( strpos( $file, "uploads" ) !== false ) {
-				$item_title
-					    = __( "in uploads directory, possibly generated by plugin or theme",
-					"really-simple-ssl-pro" );
-				$file_type = $this->uploads_dirname();
-			} else {
-				$item_title = __( "file", "really-simple-ssl-pro" );
-				$file_type = "na";
-			}
-
-			$edit_link        = $this->get_edit_link( $file );
-			$nice_file_path     = $this->get_path_to( $file_type, $file );
-			$description_blocked_url = __( "PHP file with mixed content", "really-simple-ssl-pro" );
-
-			$results_id ++;
-			$title = sprintf( __( "Mixed content in %s", "really-simple-ssl-pro" ), $item_title );
-			$help_link = "https://really-simple-ssl.com/knowledge-base/fix-blocked-resources-content-files";
-
+			$item_title = $this->get_file_type_description($file);
+			$file_type = $this->get_file_type($file);
 			foreach ( $urls as $blocked_url ) {
 				$results_id ++;
-				$description = '<p class="rsssl-blocked-url">' . sprintf( __( "Blocked URL: %s", "really-simple-ssl-pro" ), $blocked_url ) . '</p>' . __( "You can edit the source file manually by pressing the edit button.", "really-simple-ssl-pro" );
-				$details_button
-				       = "<a class='button button-secondary details-button' data-results_id = '$results_id' data-url='$blocked_url' data-title='$title' data-description='$description' data-help-link='$help_link' data-edit-link='$edit_link' data-path='$nice_file_path' data-toggle='modal' data-target='details-modal'>".__("Details", "really-simple-ssl-pro")."</a>";
+				$modal_explanation = [sprintf( __( "Blocked URL: %s", "really-simple-ssl-pro" ), $blocked_url ), __( "You can edit the source file manually by pressing the edit button.", "really-simple-ssl-pro" )];
+				$data[] = [
+					'id'               => $results_id,
+					'ignored'          => $this->ignore($blocked_url),
+					'type'             => 'blocked_url',
+					'description'      => sprintf( __( "Mixed content in PHP file in %s", "really-simple-ssl-pro" ), $item_title ),
+					'blocked_url'      => $blocked_url,
+					'location'         => $this->get_path_to( $file_type, $file ),
+					'details'    => [
+						'title'       => __("Details", "really-simple-ssl"),
+						'description' => $modal_explanation,
+						'view'        => $this->get_path_to( $file_type, $file ),
+						'edit'        => $this->get_edit_link( $file ),
+						'help'        => "https://really-simple-ssl.com/knowledge-base/fix-blocked-resources-content-files",
+						'action'      => 'ignore_url',
+					],
 
-				$output .= str_replace(
-					array(
-						"[ITEM_TITLE]",
-						"[BLOCKED_URL]",
-						"[FILE]",
-						"[PATH]",
-						"[DESCRIPTION_BLOCKED_URL]",
-						"[DESCRIPTION_FILE]",
-						"[RSSSL_FIX]",
-						"[DETAILS]",
-					),
-					array(
-						$item_title,
-						$blocked_url,
-						$nice_file_path,
-						$file,
-						$description_blocked_url,
-						'',
-						'',
-						$details_button
-					),
-					$element
-				);
+				];
 			}
 		}
 
@@ -1767,97 +1688,40 @@ class rsssl_scan {
 		 *    List CSS and JS files that contain http links
 		 *
 		 */
-
-
-		foreach (
-			$this->css_js_with_mixed_content as $file => $mixed_resources
-		) {
-			if ( strpos( $file, "themes" ) !== false ) {
-				$item_title = __( "theme file", "really-simple-ssl-pro" );
-				$file_type = "themes";
-			} elseif ( strpos( $file, "mu-plugins" ) !== false ) {
-				$item_title = __( "mu plugin file", "really-simple-ssl-pro" );
-				$file_type = "mu-plugins";
-			} elseif ( strpos( $file, "plugins" ) !== false ) {
-				$item_title = __( "plugin file", "really-simple-ssl-pro" );
-				$file_type = "plugins";
-			} elseif ( strpos( $file, "uploads" ) !== false ) {
-				$item_title
-					    = __( "uploads file, possibly generated by plugin or theme",
-					"really-simple-ssl-pro" );
-				$file_type = $this->uploads_dirname();
-			} elseif ( strpos( $file, "cache" ) !== false ) {
-				$item_title
-					    = __( "cached file, deactivate cache to see the actual source",
-					"really-simple-ssl-pro" );
-				$file_type = $this->uploads_dirname();
-			} else {
-				$item_title = __( "file", "really-simple-ssl-pro" );
-				$file_type = "na";
-			}
-
-			$nice_file_path     = $this->get_path_to( $file_type, $file );
-			$edit_link        = $this->get_edit_link( $file );
-			$help_link
-			             = "https://really-simple-ssl.com/knowledge-base/fix-css-and-js-files-with-mixed-content";
-			$title          = sprintf(__("Mixed content in %s", "really-simple-ssl-pro"), $item_title);
-			$description_blocked_url = __( "JS or CSS file with mixed content", "really-simple-ssl-pro" );
-
-			foreach ( $mixed_resources as $src ) {
-				//make distinction between $src on own domain and $src on remote domain
-				//remote domain resources need to be downloaded.
-				//compare non www url.
-				$home_url_no_www = str_replace( "https://", "http://",
-					str_replace( "://www.", "://", home_url() ) );
-				$src_no_www   = str_replace( "://www.", "://", $src );
-				if ( strpos( $src_no_www, $home_url_no_www ) === false ) {
-					$modal = "fix-file-modal";
-				} else {
-					$modal = "fix-cssjs-modal";
-				}
-
-				$description = '<p class="rsssl-blocked-url">' . sprintf( __( "Blocked URL: %s",
-						"really-simple-ssl-pro" ), $src ) . '</p>';
-
-				if ( $file_type === 'mu-plugins' ) {
-					$description .= __( "Can be fixed manually by editing the respective mu-plugin file in the /wp-content/mu-plugins/ directory ",
-						"really-simple-ssl-pro" );
-				} else {
-		              $description .= __( "Can be fixed automatically by pressing the Fix button. If fixing fails, the source file can be edited manually by pressing the Edit button.",
-						"really-simple-ssl-pro" );
-				}
-
-				$fix = __("Fix", "really-simple-ssl-pro" );
+//		$this->css_js_with_mixed_content = [
+//			'https://really-simple-ssl.com/wp-content/themes/theme/css.css' => ['https://nu.nl', 'http://complianz.io']
+//		];
+		foreach ( $this->css_js_with_mixed_content as $file => $mixed_resources ) {
+			$item_title = $this->get_file_type_description($file);
+			$file_type = $this->get_file_type($file);
+			foreach ( $mixed_resources as $blocked_url ) {
+				$type = $this->is_third_party($blocked_url) ? "css_js_thirdparty" : "css_js";
+				$modal_explanation = [sprintf( __( "Blocked URL: %s", "really-simple-ssl-pro" ), $blocked_url )];
+				$modal_explanation[] = $file_type === 'mu-plugins' ? __( "Can be fixed manually by editing the respective mu-plugin file in the /wp-content/mu-plugins/ directory ", "really-simple-ssl-pro" ) : __( "Can be fixed automatically by pressing the Fix button. If fixing fails, the source file can be edited manually by pressing the Edit button.", "really-simple-ssl-pro" );
 				$results_id ++;
-				$fix_button
-					= "<a class='button button-secondary rsssl_fix fix-button' data-results_id = '$results_id' data-url='$src' data-path='$nice_file_path' data-toggle='modal' data-target='$modal'>$fix</a>";
-
-				$details_button
-					= "<a class='button button-secondary details-button' data-results_id = '$results_id' data-url='$src' data-title='$title' data-description='$description' data-edit-link='$edit_link' data-path='$nice_file_path' data-help-link='$help_link' data-toggle='modal' data-target='details-modal'>".__("Details", "really-simple-ssl-pro")."</a>";
-
-				$output .= str_replace(
-					array(
-						"[ITEM_TITLE]",
-						"[BLOCKED_URL]",
-						"[FILE]",
-						"[PATH]",
-						"[DESCRIPTION_BLOCKED_URL]",
-						"[DESCRIPTION_FILE]",
-						"[DETAILS]",
-						"[RSSSL_FIX]",
-					),
-					array(
-						$item_title,
-						$src,
-						$nice_file_path,
-						$file,
-						$description_blocked_url,
-						'',
-						$details_button,
-						$fix_button,
-					),
-					$element
-				);
+				$data[] = [
+					'id'               => $results_id,
+					'ignored'          => $this->ignore($blocked_url),
+					'description'      => sprintf(__("Mixed content in %s", "really-simple-ssl-pro"), $item_title),
+					'type'             => $type,
+					'blocked_url'      => $blocked_url,
+					'location'         => $this->get_path_to( $file_type, $file ),
+					'details'    => [
+						'title'       => __("Details", "really-simple-ssl"),
+						'description' => $modal_explanation,
+						'view'        => $this->get_path_to( $file_type, $file ),
+						'edit'        =>  $this->get_edit_link( $file ),
+						'help'        => "https://really-simple-ssl.com/knowledge-base/fix-css-and-js-files-with-mixed-content",
+						'action'      => 'ignore_url',
+					],
+					'fix'    => [
+						'title'       => __( "Import and insert file", "really-simple-ssl-pro" ),
+						'subtitle'    => __( "Copyright warning!", "really-simple-ssl-pro" ),
+						'description' => $copyright_fix_warning,
+						'action'      => $this->is_third_party( $blocked_url ) ? "fix_cssjs" : "fix_file",
+						'path'        => $this->get_path_to( $file_type, $file ),
+					]
+				];
 			}
 		}
 
@@ -1867,37 +1731,28 @@ class rsssl_scan {
 		 *
 		 */
 
-		$external_css_js_with_mixed_content = $this->filter_ignored_urls( $this->external_css_js_with_mixed_content );
-		$help_link = "https://really-simple-ssl.com/knowledge-base/fix-css-js-files-mixed-content-domains/";
-		$title = __( "Mixed content in CSS/JS file from other domain", "really-simple-ssl-pro" );
-		$item_title = "";
+		$external_css_js_with_mixed_content = $this->external_css_js_with_mixed_content;
 		foreach ( $external_css_js_with_mixed_content as $remote_url => $blocked_urls ) {
 			foreach ( $blocked_urls as $blocked_url ) {
-				$description = __( "Cannot be fixed automatically, as the mixed content is coming from an external domain. Contact the owner of the domain to update the CSS/JS file", "really-simple-ssl-pro" );
-				$description = '<p>' . sprintf( __( "Mixed content resources: %s", "really-simple-ssl-pro" ), $blocked_url ) . '</p>' . $description;
-				$details_button = "<a class='button button-secondary details-button' data-url='src' data-title='$title' data-description='$description' data-edit-link='' data-path='' data-help-link='$help_link' data-toggle='modal' data-target='details-modal'>".__("Details", "really-simple-ssl-pro")."</a>";
-
-				$output .= str_replace(
-					array(
-						"[ITEM_TITLE]",
-						"[BLOCKED_URL]",
-						"[FILE]",
-						"[DESCRIPTION_BLOCKED_URL]",
-						"[DESCRIPTION_FILE]",
-						"[RSSSL_FIX]",
-						"[DETAILS]"
-					),
-					array(
-						$item_title,
-						$blocked_url,
-						$remote_url,
-						__( "Mixed content in remote file", "really-simple-ssl-pro" ),
-						'',
-						'',
-						$details_button
-					),
-					$element
-				);
+				$results_id ++;
+				$modal_explanation = [__( "Cannot be fixed automatically, as the mixed content is coming from an external domain. Contact the owner of the domain to update the CSS/JS file", "really-simple-ssl-pro" )];
+				$modal_explanation[] = sprintf( __( "Mixed content resources: %s", "really-simple-ssl-pro" ), $blocked_url );
+				$data[] = [
+					'id'               => $results_id,
+					'ignored'          => $this->ignore($blocked_url),
+					'type'             => 'css_js_other_domains',
+					'description'      => __( "Mixed content in CSS/JS file from other domain", "really-simple-ssl-pro" ),
+					'blocked_url'      => $blocked_url,
+					'location'         => $remote_url,
+					'details'   => [
+						'title'       => __("Details", "really-simple-ssl"),
+						'description' => $modal_explanation,
+						'view'        => '',
+						'edit'        => '',
+						'help'        => "https://really-simple-ssl.com/knowledge-base/fix-css-js-files-mixed-content-domains/",
+						'action'      => 'ignore_url',
+					]
+				];
 			}
 		}
 
@@ -1907,105 +1762,79 @@ class rsssl_scan {
 		 *
 		 */
 
-		$description_blocked_url = __( "Post with mixed content", "really-simple-ssl-pro" );
-		$path = "";
-		$help_link = "https://really-simple-ssl.com/fix-posts-with-blocked-resources-domains-without-ssl-certificate/";
-
 		foreach ( $this->posts_with_blocked_resources as $post_id ) {
-			$blocked_urls = $this->filter_ignored_urls( $this->posts_with_external_resources[ $post_id ] );
+			$blocked_urls = $this->posts_with_external_resources[ $post_id ];
 			if ( get_post_type( $post_id ) === "wp_block" ) {
 				$post_id = $this->get_post_using_this_block( $post_id );
 			}
-			foreach ( $blocked_urls as $url ) {
-				if ( ! in_array( $url, $this->blocked_resources ) ) {
+			foreach ( $blocked_urls as $blocked_url ) {
+				if ( ! in_array( $blocked_url, $this->blocked_resources ) ) {
 					continue;
 				}
-
-				$edit_link = get_admin_url( null, 'post.php?post=' . $post_id . '&action=edit' );
-				$post_title = get_the_title( $post_id );
-				$title    = "Mixed content in post $post_title";
-				$description = '<p class="rsssl-blocked-url">' . sprintf( __( "Blocked URL: %s", "really-simple-ssl-pro" ), $url ) . '</p>'
-				        . __( "Mixed content found in in a post. Can be fixed automatically by pressing the fix button. Pressing the edit button allows you to update the link in the post manually.", "really-simple-ssl-pro" );
 				$results_id ++;
-				$fix_button = "<a class='button button-secondary fix-button' data-results_id = '$results_id' data-url='$url' data-path='$path' data-id='$post_id' data-toggle='modal' data-target='fix-post-modal'>".__("Fix", "really-simple-ssl-pro")."</a>";
-				$details_button = "<a class='button button-secondary details-button' data-results_id = '$results_id' data-url='$url' data-title='$title' data-description='$description' data-id='$post_id' data-edit-link='$edit_link' data-path='$path' data-help-link='$help_link' data-toggle='modal' data-target='details-modal'>".__("Details", "really-simple-ssl-pro")."</a>";
-
-				$output .= str_replace(
-					array(
-						"[ITEM_TITLE]",
-						"[BLOCKED_URL]",
-						"[FILE]",
-						"[PATH]",
-						"[POST_ID]",
-						"[DESCRIPTION_BLOCKED_URL]",
-						"[DESCRIPTION_FILE]",
-						"[RSSSL_FIX]",
-						"[DETAILS]",
-					),
-					array(
-						__( "In post: ", "really-simple-ssl-pro" ) . $post_title,
-						$url,
-						'<a href="'.get_permalink($post_id).'" target="_blank">'.get_the_title($post_id).'</a>',
-						"",
-						$post_id,
-						$description_blocked_url,
-						"",
-						$fix_button,
-						$details_button,
-					),
-					$element
-				);
+				$explanation = [sprintf( __( "Blocked URL: %s", "really-simple-ssl-pro" ), $blocked_url ),
+				                __( "Mixed content found in in a post. Can be fixed automatically by pressing the fix button. Pressing the edit button allows you to update the link in the post manually.", "really-simple-ssl-pro" )];
+				$data[] = [
+					'id'               => $results_id,
+					'ignored'          => $this->ignore($blocked_url),
+					'type'             => 'posts',
+					'description'      => __( "Mixed content in post: ", "really-simple-ssl-pro" ) . get_the_title( $post_id ),
+					'blocked_url'      => $blocked_url,
+					'location'         => get_permalink($post_id),
+					'details'    => [
+						'title'       => __("Details", "really-simple-ssl"),
+						'description' => $explanation,
+						'view'        => '',
+						'edit'        => get_admin_url( null, 'post.php?post=' . $post_id . '&action=edit' ),
+						'help'        => "https://really-simple-ssl.com/fix-posts-with-blocked-resources-domains-without-ssl-certificate/",
+						'action'      => 'ignore_url'
+					],
+					'fix'    => [
+						'title'       => __( "Import and insert file", "really-simple-ssl-pro" ),
+						'subtitle'    => __( "Copyright warning!", "really-simple-ssl-pro" ),
+						'description' => $copyright_fix_warning,
+						'action'      => 'fix_post',
+						'post_id'     => $post_id,
+					]
+				];
 			}
 		}
 
-		$description_blocked_url = __( "Post field with mixed content", "really-simple-ssl-pro" );
-		$help_link = "https://really-simple-ssl.com/knowledge-base/fix-blocked-resources-content-postmeta";
-
 		foreach ( $this->postmeta_with_blocked_resources as $post_id ) {
-			$blocked_urls = $this->filter_ignored_urls( $this->postmeta_with_external_resources[ $post_id ] );
-			foreach ( $blocked_urls as $meta_key => $url ) {
-				if ( ! in_array( $url, $this->blocked_resources ) ) {
+			$blocked_urls = $this->postmeta_with_external_resources[ $post_id ];
+			foreach ( $blocked_urls as $meta_key => $blocked_url ) {
+				if ( ! in_array( $blocked_url, $this->blocked_resources ) ) {
 					continue;
 				}
-				//check if item is coming from an iframe
-				$is_from_iframe = $this->source_is_iframe( $post_id, $url, $meta_key );
-				$title     = __( "Mixed content in the postmeta table", "really-simple-ssl-pro" );
-				if ( $is_from_iframe ) {
-					$title = __( "iFrame in the wp_postmeta database table", "really-simple-ssl-pro" );
-				}
-				$description = '<p class="rsssl-blocked-url">' . sprintf( __( "Blocked URL: %s", "really-simple-ssl-pro" ), $url ) . '</p>'
-				        . __( "Mixed content from a postmeta table in your database. Usually won't cause any mixed content on the front-end. Check the post if it causes mixed content. If so, the link can be replace directly in the database.", "really-simple-ssl-pro" );
-				$edit_link  = get_admin_url( null, 'post.php?post=' . $post_id . '&action=edit' );
 				$results_id++;
-				$fix_button = "<a class='button button-secondary fix-button' data-results_id = '$results_id' data-url='$url' data-path='$meta_key' data-id='$post_id' data-toggle='modal' data-target='fix-postmeta-modal'>".__("Fix", "really-simple-ssl-pro")."</a>";
-				$details_button = "<a class='button button-secondary details-button' data-results_id = '$results_id' data-url='$url' data-help-link='$help_link' data-id='$post_id' data-title='$title' data-description='$description' data-edit-link='$edit_link' data-path='$meta_key' data-toggle='modal' data-target='details-modal'>".__("Details", "really-simple-ssl-pro")."</a>";
-				$location = '<a href="'.get_permalink($post_id).'" target="_blank">'.get_the_title($post_id).'</a>. '.
-								sprintf(__( "In field: %s", "really-simple-ssl-pro" ) , $meta_key);
-				$output .= str_replace(
-					array(
-						"[ITEM_TITLE]",
-						"[BLOCKED_URL]",
-						"[FILE]",
-						"[PATH]",
-						"[POST_ID]",
-						"[DESCRIPTION_BLOCKED_URL]",
-						"[DESCRIPTION_FILE]",
-						"[RSSSL_FIX]",
-						"[DETAILS]",
-					),
-					array(
-						"",
-						$url,
-						$location,
-						$meta_key,
-						$post_id,
-						$description_blocked_url,
-						'',
-						$fix_button,
-						$details_button
-					),
-					$element
-				);
+				//check if item is coming from an iframe
+				$description = $this->source_is_iframe( $post_id, $blocked_url, $meta_key ) ? __( "iFrame in the wp_postmeta database table", "really-simple-ssl-pro" ) : __( "Mixed content in the postmeta table", "really-simple-ssl-pro" );
+				$modal_explanation = [sprintf( __( "Blocked URL: %s", "really-simple-ssl-pro" ), $blocked_url ),
+				                __( "Mixed content from a postmeta table in your database. Usually won't cause any mixed content on the front-end. Check the post if it causes mixed content. If so, the link can be replace directly in the database.", "really-simple-ssl-pro" )];
+				$data[] = [
+					'id'               => $results_id,
+					'ignored'          => $this->ignore($blocked_url),
+					'type'             => 'postmeta',
+					'description'      => $description,
+					'blocked_url'      => $blocked_url,
+					'location'         => get_permalink($post_id),
+					'meta_key'         => $meta_key,
+					'details'    => [
+						'title'       => __("Details", "really-simple-ssl"),
+						'description' => $modal_explanation,
+						'view'        => get_permalink($post_id),
+						'edit'        => get_admin_url( null, 'post.php?post=' . $post_id . '&action=edit' ),
+						'help'        => "https://really-simple-ssl.com/knowledge-base/fix-blocked-resources-content-postmeta",
+						'action'      => 'ignore_url'
+					],
+					'fix'    => [
+						'title'       => __( "Import and insert file", "really-simple-ssl-pro" ),
+						'subtitle'    => __( "Copyright warning!", "really-simple-ssl-pro" ),
+						'description' => $copyright_fix_warning,
+						'action'      => 'fix_postmeta',
+						'post_id'     => $post_id,
+					]
+				];
 			}
 		}
 
@@ -2015,189 +1844,142 @@ class rsssl_scan {
 		 *
 		 */
 
-		$description_blocked_url = __( "Widget with mixed content", "really-simple-ssl-pro" );
-		$help_link = "https://really-simple-ssl.com/knowledge-base/locating-mixed-content-in-widgets/";
-		$edit_link = get_admin_url( null, '/widgets.php' );
-		$title = __( "Mixed content in a widget", "really-simple-ssl-pro" );
 		foreach ( $this->widgets_with_blocked_resources as $widget_name ) {
-			$blocked_urls = $this->filter_ignored_urls( $this->widgets_with_external_resources[ $widget_name ] );
-			foreach ( $blocked_urls as $url ) {
-				if ( ! in_array( $url, $this->blocked_resources ) ) {
+			$blocked_urls = $this->widgets_with_external_resources[ $widget_name ];
+			foreach ( $blocked_urls as $blocked_url ) {
+				if ( ! in_array( $blocked_url, $this->blocked_resources ) ) {
 					continue;
 				}
 				$widget_data = $this->get_widget_data( $widget_name );
 				$widget_area = $this->get_widget_area( $widget_name );
-				$widget_title = $this->get_widget_title( $widget_area );
-				$location = sprintf( __("Widget area \"%s\"", "really-simple-ssl-pro" ), $widget_title);
+				$item_title = $this->get_widget_title( $widget_area );
+				$file = sprintf( __("Widget area \"%s\"", "really-simple-ssl-pro" ), $item_title);
 				if (isset( $widget_data["title"]) && strlen( $widget_data["title"])>0) {
-					$location .= ': '. $widget_data["title"];
+					$file .= ': '. $widget_data["title"];
 				}
 				$results_id++;
-				$fix_button = "<a class='button button-secondary fix-button' data-results_id = '$results_id' data-url='$url' data-path='$path' data-id='".$widget_name."' data-toggle='modal' data-target='fix-widget-modal'>".__("Fix", "really-simple-ssl-pro")."</a>";
-
-				$description = '<p class="rsssl-blocked-url">' . sprintf( __( "Blocked URL: %s", "really-simple-ssl-pro" ), $url ) . '</p>' . __( "Mixed content found in a widget. Press the edit link to edit the widget manually.", "really-simple-ssl-pro" );
-				$details_button = "<a class='button button-secondary details-button' data-results_id = '$results_id' data-title='$title' data-id='".$widget_name."' data-description='$description' data-edit-link='$edit_link' data-path='' data-help-link='$help_link' data-toggle='modal' data-target='details-modal'>".__("Details", "really-simple-ssl-pro")."</a>";
-
-				$output .= str_replace(
-					array(
-						"[ITEM_TITLE]",
-						"[BLOCKED_URL]",
-						"[FILE]",
-						"[PATH]",
-						"[POST_ID]",
-						"[DESCRIPTION_BLOCKED_URL]",
-						"[DESCRIPTION_FILE]",
-						"[RSSSL_FIX]",
-						"[DETAILS]",
-					),
-					array(
-						"",
-						$url,
-						$location,
-						"",
-						$widget_name,
-						$description_blocked_url,
-						'',
-						$fix_button,
-						$details_button,
-					),
-					$element
-				);
+				$modal_explanation = [sprintf( __( "Blocked URL: %s", "really-simple-ssl-pro" ), $blocked_url ), __( "Mixed content found in a widget. Press the edit link to edit the widget manually.", "really-simple-ssl-pro" )];
+				$data[] = [
+					'id'               => $results_id,
+					'ignored'          => $this->ignore($blocked_url),
+					'type'             => 'widgets',
+					'description'      => __( "Widget with mixed content", "really-simple-ssl-pro" ).': '.$item_title,
+					'blocked_url'      => $blocked_url,
+					'location'         => $file,
+					'details'   => [
+						'title'       => __("Details", "really-simple-ssl"),
+						'description' => $modal_explanation,
+						'view'        => '',
+						'edit'        => get_admin_url( null, '/widgets.php' ),
+						'help'        => "https://really-simple-ssl.com/knowledge-base/locating-mixed-content-in-widgets/",
+						'action'      => 'ignore_url'
+					],
+					'fix'    => [
+						'title'    => __( "Import and insert file", "really-simple-ssl-pro" ),
+						'subtitle' => __( "Copyright warning!", "really-simple-ssl-pro" ),
+						'description' => $copyright_fix_warning,
+						'action' => 'fix_widget',
+						'widget_id' => $widget_name,
+					]
+				];
 			}
 		}
 
-		$this->last_scan_time = time();
-		if ( ! $mixed_content_detected ) {
-			$this->scan_completed_no_errors = "COMPLETED";
-		} else {
-			$this->scan_completed_no_errors = "ERRORS";
+		$progress = get_option( 'rsssl_progress' );
+		if ( $progress > 0 ){
+			$this->scan_completed_no_errors = !$mixed_content_detected ? "COMPLETED" : "ERRORS";
+			$this->save_results();
 		}
-
-		$this->save_results();
-		// Replace the content in container and return it
-		return str_replace( '{content}', $output, $container );
+		$this->last_scan_time = get_option( 'rsssl_last_scan_time');
+		$this->scan_completed_no_errors = get_option( 'rsssl_scan_completed_no_errors', 'NEVER' );
+		$action = get_option( 'rsssl_current_action' );
+		$state = get_option( "rsssl_scan_active" );
+		return [
+				'completed_status'=>strtolower($this->scan_completed_no_errors()),
+		        'data' => $data,
+		        'progress' => $progress,
+		        'state' => $state,
+		        'action'=>$action,
+		        'nonce' => wp_create_nonce( 'fix_mixed_content' ) ];
 	}
 
 	/**
+	 * Load the scan data
+	 *
 	 * @param bool $reset
 	 */
-	public function load_results( $reset = false ) {
 
-		$this->scan_completed_no_errors
-			         = get_option( 'rsssl_scan_completed_no_errors',
-			'NEVER' );
-		$this->last_scan_time = get_option( 'rsssl_last_scan_time',
-			__( "Never", "really-simple-ssl-pro" ) );
-		$options       = get_transient( 'rlrsssl_scan' );
+	public function load_results( $reset = false ) {
+		$this->scan_completed_no_errors = get_option( 'rsssl_scan_completed_no_errors', 'NEVER' );
+		$this->last_scan_time = get_option( 'rsssl_last_scan_time', __( "Never", "really-simple-ssl-pro" ) );
+		$options       = get_transient( 'rsssl_scan' );
 		if ( isset( $options ) ) {
 			if ( ! $reset ) {
-				$this->css_js_files = isset( $options['css_js_files'] )
-					? $options['css_js_files'] : array();
-				$this->queue
-				          = isset( $options['queue'] )
-					? $options['queue'] : array();
-				$this->css_js_with_mixed_content
-				          = isset( $options['css_js_with_mixed_content'] )
-					? $options['css_js_with_mixed_content'] : array();
-				$this->webpages
-				          = isset( $options['webpages'] )
-					? $options['webpages'] : array();
-				$this->external_resources
-				          = isset( $options['external_resources'] )
-					? $options['external_resources'] : array();
-				$this->file_array
-				          = isset( $options['file_array'] )
-					? $options['file_array'] : array();
-				$this->files_with_blocked_resources
-				          = isset( $options['files_with_blocked_resources'] )
-					? $options['files_with_blocked_resources'] : array();
-				$this->posts_with_blocked_resources
-				          = isset( $options['posts_with_blocked_resources'] )
-					? $options['posts_with_blocked_resources'] : array();
-				$this->postmeta_with_blocked_resources
-				          = isset( $options['postmeta_with_blocked_resources'] )
-					? $options['postmeta_with_blocked_resources'] : array();
-				$this->blocked_resources
-				          = isset( $options['blocked_resources'] )
-					? $options['blocked_resources'] : array();
-				$this->traced_urls
-				          = isset( $options['traced_urls'] )
-					? $options['traced_urls'] : array();
-				$this->source_of_resource
-				          = isset( $options['source_of_resource'] )
-					? $options['source_of_resource'] : array();
-				$this->external_css_js_with_mixed_content
-				          = isset( $options['external_css_js_with_mixed_content'] )
-					? $options['external_css_js_with_mixed_content'] : array();
-				$this->files_with_css_js
-				          = isset( $options['files_with_css_js'] )
-					? $options['files_with_css_js'] : array();
-				$this->files_with_external_css_js
-				          = isset( $options['files_with_external_css_js'] )
-					? $options['files_with_external_css_js'] : array();
-				$this->posts_with_external_resources
-				          = isset( $options['posts_with_external_resources'] )
-					? $options['posts_with_external_resources'] : array();
-				$this->postmeta_with_external_resources
-				          = isset( $options['postmeta_with_external_resources'] )
-					? $options['postmeta_with_external_resources'] : array();
-				$this->widgets_with_external_resources
-				          = isset( $options['widgets_with_external_resources'] )
-					? $options['widgets_with_external_resources'] : array();
-				$this->widgets_with_blocked_resources
-				          = isset( $options ['widgets_with_blocked_resources'] )
-					? $options['widgets_with_blocked_resources'] : array();
-
+				$this->css_js_files = $options['css_js_files'] ?? array();
+				$this->queue = $options['queue'] ?? array();
+				$this->css_js_with_mixed_content = $options['css_js_with_mixed_content'] ?? array();
+				$this->webpages = $options['webpages'] ?? array();
+				$this->external_resources = $options['external_resources'] ?? array();
+				$this->file_array = $options['file_array'] ?? array();
+				$this->files_with_blocked_resources = $options['files_with_blocked_resources'] ?? array();
+				$this->posts_with_blocked_resources = $options['posts_with_blocked_resources'] ?? array();
+				$this->postmeta_with_blocked_resources = $options['postmeta_with_blocked_resources'] ?? array();
+				$this->blocked_resources = $options['blocked_resources'] ?? array();
+				$this->traced_urls = $options['traced_urls'] ?? array();
+				$this->source_of_resource = $options['source_of_resource'] ?? array();
+				$this->external_css_js_with_mixed_content = $options['external_css_js_with_mixed_content'] ?? array();
+				$this->files_with_css_js = $options['files_with_css_js'] ?? array();
+				$this->files_with_external_css_js = $options['files_with_external_css_js'] ?? array();
+				$this->posts_with_external_resources = $options['posts_with_external_resources'] ?? array();
+				$this->postmeta_with_external_resources = $options['postmeta_with_external_resources'] ?? array();
+				$this->widgets_with_external_resources = $options['widgets_with_external_resources'] ?? array();
+				$this->widgets_with_blocked_resources = $options['widgets_with_blocked_resources'] ?? array();
 			}
 
-			$this->ignored_urls = isset( $options['ignored_urls'] )
-				? $options['ignored_urls'] : array();
+			$this->ignored_urls = $options['ignored_urls'] ?? array();
 			if ( ! in_array( $this->safe_domains[0], $this->ignored_urls ) ) {
-				$this->ignored_urls = array_merge( $this->safe_domains,
-					$this->ignored_urls );
+				$this->ignored_urls = array_merge( $this->safe_domains, $this->ignored_urls );
 			}
 		}
-
 	}
 
 	/**
 	 * Save the results
 	 */
+
 	public function save_results() {
 		//do not save when we're not scanning
 		if ( isset( $_POST['rsssl_no_scan'] ) ) {
 			return;
 		}
 
-		//$this->ignored_urls = array_diff($this->ignored_urls, $this->safe_domains);
 		$options = array(
-			'css_js_files'            => $this->css_js_files,
-			'queue'               => $this->queue,
-			'css_js_with_mixed_content'     => $this->css_js_with_mixed_content,
-			'webpages'              => $this->webpages,
-			'external_resources'         => $this->external_resources,
-			'blocked_resources'         => $this->blocked_resources,
-			'file_array'             => $this->file_array,
-			'files_with_blocked_resources'    => $this->files_with_blocked_resources,
-			'posts_with_blocked_resources'    => $this->posts_with_blocked_resources,
-			'postmeta_with_blocked_resources'  => $this->postmeta_with_blocked_resources,
-			'traced_urls'            => $this->traced_urls,
-			'source_of_resource'         => $this->source_of_resource,
-			'scan_completed_no_errors'      => $this->scan_completed_no_errors,
-			//'last_scan_time'       => $this->last_scan_time,
+			'css_js_files'                       => $this->css_js_files,
+			'queue'                              => $this->queue,
+			'css_js_with_mixed_content'          => $this->css_js_with_mixed_content,
+			'webpages'                           => $this->webpages,
+			'external_resources'                 => $this->external_resources,
+			'blocked_resources'                  => $this->blocked_resources,
+			'file_array'                         => $this->file_array,
+			'files_with_blocked_resources'       => $this->files_with_blocked_resources,
+			'posts_with_blocked_resources'       => $this->posts_with_blocked_resources,
+			'postmeta_with_blocked_resources'    => $this->postmeta_with_blocked_resources,
+			'traced_urls'                        => $this->traced_urls,
+			'source_of_resource'                 => $this->source_of_resource,
+			'scan_completed_no_errors'           => $this->scan_completed_no_errors,
 			'external_css_js_with_mixed_content' => $this->external_css_js_with_mixed_content,
-			'files_with_css_js'         => $this->files_with_css_js,
-			'files_with_external_css_js'     => $this->files_with_external_css_js,
-			'posts_with_external_resources'   => $this->posts_with_external_resources,
-			'postmeta_with_external_resources'  => $this->postmeta_with_external_resources,
-			'ignored_urls'            => $this->ignored_urls,
-			'widgets_with_external_resources'  => $this->widgets_with_external_resources,
-			'widgets_with_blocked_resources'   => $this->widgets_with_blocked_resources,
+			'files_with_css_js'                  => $this->files_with_css_js,
+			'files_with_external_css_js'         => $this->files_with_external_css_js,
+			'posts_with_external_resources'      => $this->posts_with_external_resources,
+			'postmeta_with_external_resources'   => $this->postmeta_with_external_resources,
+			'ignored_urls'                       => $this->ignored_urls,
+			'widgets_with_external_resources'    => $this->widgets_with_external_resources,
+			'widgets_with_blocked_resources'     => $this->widgets_with_blocked_resources,
 		);
 
-		update_option( 'rsssl_scan_completed_no_errors', $this->scan_completed_no_errors );
-		update_option( 'rsssl_last_scan_time', $this->last_scan_time );
-		set_transient( 'rlrsssl_scan', $options, WEEK_IN_SECONDS );
+		update_option( 'rsssl_scan_completed_no_errors', $this->scan_completed_no_errors, false );
+		update_option( 'rsssl_last_scan_time', time(), false );
+		set_transient( 'rsssl_scan', $options, WEEK_IN_SECONDS );
 	}
 
 	/**
@@ -2228,7 +2010,6 @@ class rsssl_scan {
 
 	private function still_in_queue( $array_count ) {
 		$in_queue = true;
-
 		//if array is empty, or the queue is same as array minus one, we are not in queue anymore
 		if ( $this->queue >= $array_count || $array_count == 0 ) {
 			$in_queue  = false;
@@ -2243,9 +2024,7 @@ class rsssl_scan {
 	 * @return mixed|string|void
 	 */
 	public function scan_completed_no_errors() {
-
-		$this->scan_completed_no_errors
-			= get_option( 'rsssl_scan_completed_no_errors', 'NEVER' );
+		$this->scan_completed_no_errors = get_option( 'rsssl_scan_completed_no_errors', 'NEVER' );
 
 		return $this->scan_completed_no_errors;
 	}
@@ -2394,176 +2173,13 @@ class rsssl_scan {
 		return false;
 	}
 
-    public function details_modal() {
-
-        $args = array(
-            'title' => __( "Details", "really-simple-ssl-pro" ),
-            'id' => 'details-modal',
-            'href' => 'https://really-simple-ssl.com',
-            // Content in details modal handled by JS
-            'buttons' => array(
-                1 => array(
-                    'text' => __('Edit', 'really-simple-ssl-pro'),
-                    'id' => 'edit-button',
-                    'type' => 'link',
-                    'class' => 'button-secondary',
-                ),
-                2 => array(
-                    'text' => __('Help', 'really-simple-ssl-pro'),
-                    'id' => 'help-button',
-                    'type' => 'link',
-                    'class' => 'button-rsssl-tertiary',
-                ),
-                3 => array(
-                    'text' => __('Ignore', 'really-simple-ssl-pro'),
-                    'id' => 'start-ignore-url',
-                    'type' => 'data',
-                    'class' => 'button-primary',
-                    'nonce' => wp_create_nonce( 'rsssl_revoke_from_csp' ),
-                ),
-            ),
-        );
-
-        return new rsssl_modal( $args );
-
-    }
-
-	public function fix_post_modal() {
-
-        $args = array(
-          'title' => __( "Import and insert file", "really-simple-ssl-pro" ),
-          'subtitle' => __( "Copyright warning!", "really-simple-ssl-pro" ),
-          'id' => 'fix-post-modal',
-            'content' => array(
-            __( "Downloading files from other websites can cause serious copyright issues! It is always illegal to use images, files, or any copyright protected material on your own site without the consent of the copyrightholder. Please ask the copyrightholder for permission. Use this function at your own risk.",
-            "really-simple-ssl-pro" ),
-            __( "This downloads the file from the domain without SSL, inserts it into WP media, and changes the URL to the new URL.",
-            "really-simple-ssl-pro" ),
-          ),
-            'buttons' => array(
-                1 => array(
-                    'text' => __('I have read the warning, continue', 'really-simple-ssl-pro'),
-                    'id' => 'start-fix-post',
-                    'class' => 'button-primary',
-                    'type' => 'data',
-                    'nonce' => wp_create_nonce( 'start_fix_post' ),
-                ),
-            ),
-        );
-
-        return new rsssl_modal( $args );
-
-    }
-
-    public function fix_postmeta_modal() {
-	    $args = array(
-		    'title'    => __( "Import and insert file", "really-simple-ssl-pro" ),
-		    'subtitle' => __( "Copyright warning!", "really-simple-ssl-pro" ),
-		    'id'       => 'fix-postmeta-modal',
-		    'content'  => array(
-			    __( "Downloading files from other websites can cause serious copyright issues! It is always illegal to use images, files, or any copyright protected material on your own site without the consent of the copyrightholder. Please ask the copyrightholder for permission. Use this function at your own risk.",
-				    "really-simple-ssl-pro" ),
-			    __( "This downloads the file from the domain without SSL, inserts it into WP media, and changes the URL to the new URL.",
-				    "really-simple-ssl-pro" ),
-		    ),
-		    'buttons'  => array(
-			    1 => array(
-				    'text'  => __( 'I have read the warning, continue', 'really-simple-ssl-pro' ),
-				    'id'    => 'start-fix-postmeta',
-				    'class' => 'button-primary',
-				    'type'  => 'data',
-				    'nonce' => wp_create_nonce( 'start_fix_post' ),
-			    ),
-		    ),
-	    );
-		return new rsssl_modal( $args );
-
-    }
-
-    public function fix_file_modal() {
-        $args = array(
-	        'title'    => __( "Import and insert file", "really-simple-ssl-pro" ),
-	        'subtitle' => __( "Copyright warning!", "really-simple-ssl-pro" ),
-	        'id'       => 'fix-file-modal',
-	        'content'  => array(
-		        __( "Downloading files from other websites can cause serious copyright issues! It is always illegal to use images, files, or any copyright protected material on your own site without the consent of the copyrightholder. Please ask the copyrightholder for permission. Use this function at your own risk.",
-			        "really-simple-ssl-pro" ),
-		        __( "This downloads the file from the domain without SSL, inserts it into WP media, and changes the URL to the new URL.",
-			        "really-simple-ssl-pro" ),
-	        ),
-	        'buttons'  => array(
-		        1 => array(
-			        'text'  => __( 'I have read the warning, continue', 'really-simple-ssl-pro' ),
-			        'id'    => 'start-fix-file',
-			        'class' => 'button-primary',
-			        'type'  => 'data',
-			        'nonce' => wp_create_nonce( 'start_fix_post' ),
-		        ),
-	        ),
-        );
-
-        return new rsssl_modal( $args );
-
-    }
-
-    public function fix_cssjs_modal() {
-	    $args = array(
-		    'title'    => __( "Import and insert file", "really-simple-ssl-pro" ),
-		    'subtitle' => __( "Copyright warning!", "really-simple-ssl-pro" ),
-		    'id'       => 'fix-cssjs-modal',
-		    'content'  => array(
-			    __( "Downloading files from other websites can cause serious copyright issues! It is always illegal to use images, files, or any copyright protected material on your own site without the consent of the copyrightholder. Please ask the copyrightholder for permission. Use this function at your own risk.",
-				    "really-simple-ssl-pro" ),
-			    __( "This downloads the file from the domain without SSL, inserts it into WP media, and changes the URL to the new URL.",
-				    "really-simple-ssl-pro" ),
-		    ),
-		    'buttons'  => array(
-			    1 => array(
-				    'text'  => __( 'I have read the warning, continue', 'really-simple-ssl-pro' ),
-				    'id'    => 'start-fix-cssjs',
-				    'class' => 'button-primary',
-				    'type'  => 'data',
-				    'nonce' => wp_create_nonce( 'start_fix_post' ),
-			    ),
-		    ),
-	    );
-
-        return new rsssl_modal( $args );
-
-    }
-
-    public function fix_widget_modal() {
-	    $args = array(
-		    'title'    => __( "Import and insert file", "really-simple-ssl-pro" ),
-		    'subtitle' => __( "Copyright warning!", "really-simple-ssl-pro" ),
-		    'id'       => 'fix-widget-modal',
-		    'content'  => array(
-			    __( "Downloading files from other websites can cause serious copyright issues! It is always illegal to use images, files, or any copyright protected material on your own site without the consent of the copyrightholder. Please ask the copyrightholder for permission. Use this function at your own risk.",
-				    "really-simple-ssl-pro" ),
-			    __( "This downloads the file from the domain without SSL, inserts it into WP media, and changes the URL to the new URL.",
-				    "really-simple-ssl-pro" ),
-		    ),
-		    'buttons'  => array(
-			    1 => array(
-				    'text'  => __( 'I have read the warning, continue', 'really-simple-ssl-pro' ),
-				    'id'    => 'start-fix-widget',
-				    'class' => 'button-primary',
-				    'type'  => 'data',
-				    'nonce' => wp_create_nonce( 'start_fix_post' ),
-			    ),
-		    ),
-	    );
-
-        return new rsssl_modal( $args );
-    }
-
 	public function roll_back_modal() {
 		$args = array(
 			'title'    => __( "Roll back changes made to your files", "really-simple-ssl-pro" ),
 			'subtitle' => __( "Copyright warning!", "really-simple-ssl-pro" ),
 			'id'       => 'roll-back-modal',
 			'content'  => array(
-				__( "This will put the files back that were changed by the fix option in Really Simple SSL pro.",
+				__( "This will put the files back that were changed by the fix option in Really Simple SSL Pro.",
 					"really-simple-ssl-pro" ),
 				__( "Please note that any changes you have made since to your current files, will be lost.",
 					"really-simple-ssl-pro" ),
@@ -2574,12 +2190,12 @@ class rsssl_scan {
 					'id'    => 'start-roll-back',
 					'class' => 'button-primary',
 					'type'  => 'data',
-					'nonce' => wp_create_nonce( 'start_fix_post' ),
+					'nonce' => wp_create_nonce( 'fix_mixed_content' ),
 				),
 			),
 		);
 
-        return new rsssl_modal( $args );
+       // return new rsssl_modal( $args );
 
 	}
 

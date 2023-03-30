@@ -511,7 +511,7 @@ class RSSSL_SL_Plugin_Updater {
 				'edd_action' => 'get_version',
 				'item_name'  => isset( $data['item_name'] ) ? $data['item_name'] : false,
 				'item_id'    => isset( $data['item_id'] ) ? $data['item_id'] : false,
-				'slug'       => $_REQUEST['slug'],
+				'slug'       => sanitize_title($_REQUEST['slug']),
 				'author'     => $data['author'],
 				'url'        => home_url(),
 				'beta'       => ! empty( $data['beta'] )

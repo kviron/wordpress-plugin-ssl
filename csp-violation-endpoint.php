@@ -1,11 +1,8 @@
-<?php defined('ABSPATH') or die("you do not have access to this page!");
+<?php defined('ABSPATH') or die();
 
 	class rsssl_csp_backend
 	{
 		private static $_this;
-
-		private $directives = array();
-
 		function __construct()
 		{
 
@@ -13,44 +10,12 @@
 				wp_die(sprintf(__('%s is a singleton class and you cannot create a second instance.', 'really-simple-ssl-pro'), get_class($this)));
 
 			self::$_this = $this;
-
-			add_action('admin_init', array($this, 'update_db_check'), 9);
-
-			//Only add CSP tab if reporting has been enabled
-			$csp_setting = RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_content_security_policy');
-			if ( $csp_setting === 'report-only' || $csp_setting === 'enforce' || $csp_setting === 'disabled' || $csp_setting === 'report-paused' ) {
-			    add_action('admin_init', array( $this, 'add_rules_to_htaccess') );
-			}
-
+            //doesn't execute on prio 10
+			add_action('plugins_loaded', array( $this, 'update_db_check'), 11 );
 			//Remove report only rules on option update
-            add_action( "update_option_rsssl_content_security_policy", array( $this, "remove_csp_from_htaccess" ), 30,3);
-            add_action( "update_option_rsssl_content_security_policy", array( $this, "maybe_reset_csp_count" ), 30,4);
-            add_action( "update_option_rsssl_content_security_policy", array( $this, "maybe_reset_csp_api_token" ), 30,4);
-            add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ));
-			add_action( 'wp_ajax_rsssl_update_in_policy_value', array( $this, 'update_in_policy_value' ) );
-            add_action( 'wp_ajax_rsssl_delete_from_csp', array( $this, 'delete_from_csp' ) );
-            add_action( 'wp_ajax_rsssl_update_csp_toggle_option', array( $this, 'update_csp_toggle_value' ) );
-            add_action( 'wp_ajax_rsssl_load_csp_table', array( $this, 'get_csp_table' ) );
-            add_action('rsssl_modals', array( $this , 'revoke_csp_modal' ), 99 );
-
-            $this->directives = array(
-				'child-src'         => "child-src 'self' {uri}; ",
-				'connect-src'       => "connect-src 'self' {uri}; ",
-				'font-src'          => "font-src 'self' {uri}; ",
-				'frame-src'         => "frame-src 'self' {uri}; ",
-				'img-src'           => "img-src 'self' data: {uri}; ",
-				'manifest-src'      => "manifest-src 'self' {uri}; ",
-				'media-src'         => "media-src 'self' {uri}; ",
-				'prefetch-src'      => "prefetch-src 'self' {uri}; ",
-				'object-src'        => "object-src 'self' {uri}; ",
-				'script-src'        => "script-src 'self' 'unsafe-inline' {uri}; ",
-				'script-src-elem'   => "script-src-elem 'self' 'unsafe-inline' {uri}; ",
-				'script-src-attr'   => "script-src-attr 'self' {uri}; ",
-				'style-src'         => "style-src 'self' 'unsafe-inline' {uri}; ",
-				'style-src-elem'    => "style-src-elem 'self' 'unsafe-inline' {uri}; ",
-				'style-src-attr'    => "style-src-attr 'self' {uri}; ",
-				'worker-src'        => "worker-src 'self' {uri}; ",
-			);
+            add_action( "rsssl_after_saved_field", array( $this, "maybe_reset_csp_count" ), 30,4);
+            add_action( 'admin_init', array( $this , 'add_csp_defaults' ) );
+			add_filter( 'rsssl_notices', array($this,'csp_notices'), 20, 1 );
 		}
 
 		static function this()
@@ -58,291 +23,156 @@
 			return self::$_this;
 		}
 
-		/**
-		 *
-		 * Update the 'inpolicy' database value to true after 'Add to policy' button is clicked in Content Security Policy tab
-		 *
-		 * @since 2.5
-		 */
-
-		public function update_in_policy_value()
-		{
-			if (!current_user_can('manage_options')) return;
-
-			global $wpdb;
-			$table_name = $wpdb->base_prefix . "rsssl_csp_log";
-			$value = '';
-
-			if (isset($_POST['id'])) {
-				//Sanitize, id should always be an int
-				$id = intval($_POST['id']);
-
-				if (isset($_POST['add_revoke']) && $_POST['add_revoke'] === 'add') {
-                    $value = 'true';
-				}
-                if (isset($_POST['add_revoke']) && $_POST['add_revoke'] === 'revoke') {
-				    $value = 'false';
-                }
-
-				$wpdb->update(
-					$table_name,
-					//Value to update
-					array(
-						'inpolicy' => $value,
-					),
-					//Update value where ID is
-					array(
-						'ID' => $id,
-					)
-				);
-			}
-            wp_die();
-		}
-
         /**
-         * Update CSP toggle value
-         * @since 4.1.5
-         *
-         */
-		public function update_csp_toggle_value() {
-
-            if ( !current_user_can('manage_options') ) return;
-            $allowed_values = array(
-                'everything',
-                'allowed',
-                'blocked',
-            );
-
-            if ( isset($_POST['rsssl_csp_toggle_value'] )
-                && $_POST['action'] === 'rsssl_update_csp_toggle_option'
-                && in_array($_POST['rsssl_csp_toggle_value'], $allowed_values) ) {
-                RSSSL_PRO()->rsssl_premium_options->update_networkwide_option('rsssl_content_security_policy_toggle', $_POST['rsssl_csp_toggle_value']);
-            }
-
-            wp_die();
-		}
-
-		/**
-		 *
-		 * Add CSP rules to the htaccess file
-		 *
-		 * @since 2.5
-		 *
-		 */
-
-		public function add_rules_to_htaccess()
-		{
-			if ( !current_user_can('manage_options') ) return;
-			if ( !RSSSL_PRO()->rsssl_premium_options->is_settings_page() || wp_doing_ajax() ) return;
-
-			//Update CSP-Report-Only rules
-			if ( RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_content_security_policy') === 'report-only' ) {
-				$rules =  $this->get_csp_rules();
-				RSSSL_PRO()->rsssl_premium_options->write_to_htaccess($rules, 'Really_Simple_SSL_CSP_Report_Only');
-				$php_rules = $this->get_csp_rules('php' );
-				RSSSL_PRO()->rsssl_premium_options->update_networkwide_option('rsssl_pro_csp_report_only_rules_for_php', $php_rules);
-			} else {
-				RSSSL_PRO()->rsssl_premium_options->delete_networkwide_option('rsssl_pro_csp_report_only_rules_for_php' );
-				RSSSL_PRO()->rsssl_premium_options->remove_htaccess_rules( 'Really_Simple_SSL_CSP_Report_Only');
-			}
-
-			//Update CSP rules when policy is enforced.
-            if ( RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_content_security_policy') === 'enforce' ) {
-	            $rules =  $this->get_csp_rules();
-	            RSSSL_PRO()->rsssl_premium_options->write_to_htaccess($rules, 'Really_Simple_SSL_Content_Security_Policy');
-	            $php_rules = $this->get_csp_rules('php');
-	            RSSSL_PRO()->rsssl_premium_options->update_networkwide_option('rsssl_pro_csp_enforce_rules_for_php', $php_rules);
-            } else {
-	            RSSSL_PRO()->rsssl_premium_options->delete_networkwide_option('rsssl_pro_csp_enforce_rules_for_php' );
-	            RSSSL_PRO()->rsssl_premium_options->remove_htaccess_rules( 'Really_Simple_SSL_Content_Security_Policy');
-			}
-
-			if ( RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_content_security_policy') !== 'enforce' &&
-			     RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_content_security_policy') !== 'report-only') {
-				RSSSL_PRO()->rsssl_premium_options->remove_htaccess_rules( 'Really_Simple_SSL_Content_Security_Policy');
-				RSSSL_PRO()->rsssl_premium_options->remove_htaccess_rules( 'Really_Simple_SSL_CSP_Report_Only');
-			}
-		}
-
-		/**
-         * Get CSP rules for any type or output type
-		 * @param string $type
-		 * @param false  $html_output
-		 *
-		 * @return string
-		 */
-		public function get_csp_rules($type = 'apache', $html_output = false ){
-		    //script-src-elem 'self' 'unsafe-inline' https://goingtoamerica.nl http://pvcsd.org; style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
-			$rules = array();
-			global $wpdb;
-			//The base content security policy rules, used in later functions to generate the Content Security Policy
-			$rules['default-src'] = "default-src 'self' ;";
-			$rules['script-src'] = "script-src 'self' 'unsafe-inline' ;";
-			$rules['script-src-elem'] = "script-src-elem 'self' 'unsafe-inline' ;";
-			$rules['style-src'] = "style-src 'self' 'unsafe-inline' ;";
-			$rules['style-src-elem'] = "style-src-elem 'self' 'unsafe-inline' ;";
-
-			$table_name = $wpdb->base_prefix . "rsssl_csp_log";
-			$rows = $wpdb->get_results("SELECT * FROM $table_name ORDER BY time DESC");
-			if ( !empty($rows) ) {
-				foreach ($rows as $row) {
-					if ( $row->inpolicy === 'true' ) {
-						$violatedirective = $row->violateddirective;
-						$blockeduri = $row->blockeduri;
-						//Get uri value
-						$uri = rsssl_sanitize_uri_value($blockeduri);
-						//Generate CSP rule based on input
-						$rules = $this->generate_csp_rule($violatedirective, $uri, $rules);
-					}
-				}
-			}
-			$rules = implode(" ", $rules);
-
-			if ( RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_content_security_policy') === 'report-only' ) {
-				$csp_violation_endpoint = get_rest_url(null, 'rsssl/v1/csp');
-				if (RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_csp_report_token')) {
-					$token = RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_csp_report_token');
-				} else {
-					$token = time();
-					RSSSL_PRO()->rsssl_premium_options->update_networkwide_option('rsssl_csp_report_token', $token);
-				}
-				//report-uri is deprecated, but still the most used in browsers. We simply add both
-				$header = 'Report-To';
-				$csp_endpoint_rules = "{'url': '".$csp_violation_endpoint."', 'group': 'csp-endpoint', 'max-age': 10886400}";
-				$report_to_header = RSSSL_PRO()->rsssl_premium_options->wrap_header($header, $csp_endpoint_rules, $type, $html_output);
-
-				$header = 'Content-Security-Policy-Report-Only';
-				$rules =  "$rules report-uri $csp_violation_endpoint?rsssl_apitoken=$token; report-to csp-endpoint";
-				if ( RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_upgrade_insecure_requests') ) {
-					$rules = "upgrade-insecure-requests; $rules";
-				}
-                $report_uri_header = RSSSL_PRO()->rsssl_premium_options->wrap_header($header, $rules, $type, $html_output);
-
-				return $report_to_header.$report_uri_header;
-
-            } else if ( RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_content_security_policy') === 'enforce' ) {
-				// If the upgrade-insecure-requests header has been enabled, add it to this CSP.
-                $header = 'Content-Security-Policy';
-				if ( RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_upgrade_insecure_requests') ) {
-					$rules = "upgrade-insecure-requests; $rules";
-				}
-				return RSSSL_PRO()->rsssl_premium_options->wrap_header($header, $rules, $type, $html_output);
-			}
-
-		    return '';
-		}
-
-		/**
-		 * Remove Content Security Policy rules from .htaccess when Add Content Security Policy to .htaccess option is not enabled.
-		 * @param $old_value
-		 * @param $new_value
-		 * @param $fieldname
-		 *
-		 * @since 2.5
-		 */
-
-		public function remove_csp_from_htaccess($old_value, $new_value, $fieldname)
-		{
-            if (!current_user_can('manage_options')) return;
-            if ($old_value === $new_value) return;
-
-			if ($new_value === 'report-only' || $new_value === 'disabled' ) {
-				RSSSL_PRO()->rsssl_premium_options->remove_htaccess_rules( 'Really_Simple_SSL_Content_Security_Policy');
-			}
-
-			if ($new_value === 'enforce' || $new_value === 'report-paused' || $new_value === 'disabled' ) {
-				RSSSL_PRO()->rsssl_premium_options->remove_htaccess_rules( 'Really_Simple_SSL_CSP_Report_Only');
-			}
-		}
-
-        /**
-         *
          * Delete the CSP track count when switching from report-paused to report-only
+         * @param string $field_name
+         * @param mixed $new_value
+         * @param mixed $old_value
+         * @param string $field_type
          * @since 4.1.1
          *
          */
 
-        public function maybe_reset_csp_count($old_value, $new_value, $fieldname) {
-            if ($old_value === 'report-paused' && $new_value === 'report-only') {
-                RSSSL_PRO()->rsssl_premium_options->delete_networkwide_option('rsssl_csp_request_count');
-            }
-        }
+        public function maybe_reset_csp_count($field_name, $new_value, $old_value, $field_type) {
+	        if ( !rsssl_user_can_manage()) {
+		        return;
+	        }
 
-        /**
-         * @param $old_value
-         * @param $new_value
-         * @param $fieldname
-         * @param $force
-         *
-         * Delete the CSP endpoint API token
-         *
-         * @since 4.1.3
-         */
-        public function maybe_reset_csp_api_token($old_value, $new_value, $fieldname, $force=false) {
+	        if ( $field_name !== 'csp_status') {
+		        return;
+	        }
 
-            if ($new_value === 'report-paused' || $new_value === 'enforce' || $new_value === 'disabled' || $force===true) {
-                RSSSL_PRO()->rsssl_premium_options->delete_networkwide_option('rsssl_csp_report_token');
+            if ( $old_value === 'completed' && $new_value === 'learning_mode') {
+                delete_site_option('rsssl_csp_request_count');
             }
         }
 
 		/**
-		 * Generate CSP rules
+		 * Add default WordPress rules to CSP table.
 		 *
-		 * @param string $violateddirective
-		 * @param string $uri
-		 * @param array  $rules //previously detected rules
-		 *
-		 * @return array
 		 */
 
-		public function generate_csp_rule( $violateddirective, $uri, $rules )
-		{
-			// Check the violateddirective is valid
-			if (isset($this->directives[$violateddirective])){
-				// If the violated directive has an existing rule, update it
-				if (isset($rules[$violateddirective])) {
-					$rule_template = $this->directives[$violateddirective]; //'script-src-elem'   => "script-src-elem 'self' {uri}; ",
-
-					//get existing rule
-					$existing_rule = $rules[$violateddirective]; //'script-src-elem'   => "script-src-elem 'self' 'unsafe-inline';";
-					//get part of directive before {uri}
-					$rule_part = substr($rule_template, 0, strpos($rule_template, '{uri}')); //"script-src-elem 'self' "
-					// URI can be both URL or a directive (for example script-src)
-					// Check if the current rule already contains the URI
-					if (strpos($existing_rule, $uri) !== false) {
-						// If it contains the uri, do not add it again. Keep existing rule
-						$new_rule = $existing_rule;
-					} else {
-					    //does not contain the uri, add it.
-						$new_rule = str_replace($rule_part, $rule_part . $uri . " ", $existing_rule);
-					}
-					//insert in array
-					$rules[$violateddirective] = $new_rule;
-				} else {
-					$rules[$violateddirective] = str_replace('{uri}', $uri, $this->directives[$violateddirective]);
-				}
+		public function add_csp_defaults() {
+			if ( !rsssl_user_can_manage() ) {
+				return;
 			}
 
-			return $rules;
+			if ( !get_option('rsssl_enable_csp_defaults') ) {
+				return;
+			}
+
+			global $wpdb;
+			$table_name = $wpdb->base_prefix . "rsssl_csp_log";
+			$rules = array(
+				'script-src-data' => array(
+					'violateddirective' => 'script-src',
+					'blockeduri' => 'data:',
+				),
+				'script-src-eval' => array(
+					'violateddirective' => 'script-src',
+					'blockeduri' => 'unsafe-eval',
+				),
+				'img-src-gravatar' => array(
+					'violateddirective' => 'img-src',
+					'blockeduri' => 'https://secure.gravatar.com',
+				),
+				'img-src-data' => array(
+					'violateddirective' => 'img-src',
+					'blockeduri' => 'data:',
+				),
+				'img-src-self' => array(
+					'violateddirective' => 'img-src',
+					'blockeduri' => 'self',
+				),
+			);
+
+			foreach ( $rules as $rule ) {
+				// add $rule to CSP table
+				$wpdb->insert($table_name, array(
+					'time' => current_time('mysql'),
+					// Default rules, leave documenturi empty
+					'documenturi' => 'WordPress',
+					'violateddirective' => $rule['violateddirective'],
+					'blockeduri' => $rule['blockeduri'],
+					'status' => 1,
+				));
+			}
+			delete_option('rsssl_enable_csp_defaults');
 		}
 
 		/**
+         * Some custom notices for CSP
+         *
+		 * @param $notices
 		 *
-		 * @since 2.5
-		 *
-		 * Enqueue DataTables scripts and CSS
-		 *
+		 * @return mixed
 		 */
+		public function csp_notices($notices){
 
-		public function enqueue_scripts($hook)
-		{
-			if ( $hook !== 'settings_page_really-simple-ssl' && $hook !== 'settings_page_rlrsssl_really_simple_ssl' ) return;
+            $missing_tables = get_option('rsssl_table_missing');
+            if ( !empty($missing_tables) ) {
+                $tables = implode(', ', $missing_tables);
+	            $notices['database_table_missing'] = array(
+		            'condition' => array('rsssl_ssl_enabled'),
+		            'callback' => '_true_',
+		            'score' => 10,
+		            'output' => array(
+			            '_true_' => array(
+				            'msg' => __("A required database table is missing. Please check if you have permissions to add this database table.", "really-simple-ssl-pro"). " ".$tables,
+				            'icon' => 'warning',
+				            'plusone' => true,
+				            'dismissible' => true
+			            ),
+		            ),
+	            );
+            }
+            if ( rsssl_get_option( 'csp_status' ) === 'learning_mode' ) {
+	            $activation_time = get_site_option( 'rsssl_csp_report_only_activation_time' );
+	            $nr_of_days_learning_mode = apply_filters( 'rsssl_pause_after_days', 7 );
 
-			wp_register_style('rsssl-pro-csp-datatables', rsssl_pro_url . 'css/datatables.min.css', "", rsssl_pro_version);
-			wp_enqueue_style('rsssl-pro-csp-datatables');
-			wp_register_style('rsssl-pro-csp-table-css', rsssl_pro_url . 'css/jquery-table.css', "", rsssl_pro_version);
-			wp_enqueue_style('rsssl-pro-csp-table-css');
-			wp_enqueue_script('rsssl-pro-csp-datatables', rsssl_pro_url . "js/datatables.min.js", array('jquery'), rsssl_pro_version, false);
+                $deactivation_time = $activation_time + DAY_IN_SECONDS * $nr_of_days_learning_mode;
+	            $time_left = $deactivation_time - time();
+                $days = round($time_left / DAY_IN_SECONDS, 0);
+                //if we're in learning mode, it should not show 0 days
+                if ( $days == 0 ) $days = 1;
+	            $notices['learning_mode_active'] = array(
+                    'callback' => '_true_',
+		            'score' => 10,
+		            'output' => array(
+			            'true' => array(
+				            'msg' => sprintf(__("Learning Mode is active for your Content Security and will complete in %s days.", "really-simple-ssl-pro"), $days),
+				            'icon' => 'open',
+				            'plusone' => true,
+				            'dismissible' => true
+			            ),
+		            ),
+	            );
+            }
+
+			if ( rsssl_get_option( 'csp_status' ) === 'completed' ) {
+				ob_start();
+				?>
+				<p><?php _e("Follow these steps to complete the setup:", "really-simple-ssl-pro"); ?></p>
+				<ul class="message-ul">
+					<li class="rsssl-activation-notice-li"><div class="rsssl-bullet"></div><?php _e("Review the detected configuration in 'Content Security Policy'.", "really-simple-ssl-pro"); ?></li>
+					<li class="rsssl-activation-notice-li"><div class="rsssl-bullet"></div><?php _e("Click 'Enforce' to enforce the configuration on your site.", "really-simple-ssl-pro"); ?></li>
+				</ul>
+				<?php
+				$content = ob_get_clean();
+				$notices['csp_lm_completed'] = [
+					'callback' => '_true_',
+					'score'    => 10,
+					'output'   => [
+						'true' => [
+							'url' => 'https://really-simple-ssl.com/knowledge-base/how-to-use-the-content-security-policy-generator',
+							'msg'                => $content,
+							'icon'               => 'open',
+							'dismissible'        => true,
+						],
+					],
+				];
+			}
+			return $notices;
 		}
 
 		/**
@@ -350,184 +180,101 @@
 		 */
 		public function update_db_check()
 		{
-			if (!current_user_can('manage_options')) return;
-
-			if (RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_csp_db_version') !== rsssl_pro_version) {
+			if ( get_option('rsssl_csp_db_version') !== rsssl_pro_version ) {
 				require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-
 				global $wpdb;
 				$table_name = $wpdb->base_prefix . "rsssl_csp_log";
-				$charset_collate = $wpdb->get_charset_collate();
+				if ( !get_option('rsssl_csp_db_upgraded') ){
+					if ( $wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) === $table_name ) {
+						$columns = $wpdb->get_results("SHOW COLUMNS FROM $table_name LIKE 'inpolicy'");
+						if (count($columns)>0) {
+							$wpdb->query("ALTER TABLE $table_name CHANGE COLUMN inpolicy status text;");
+						}
 
+                        //convert string 'true' to 1.
+						$wpdb->query("UPDATE $table_name set status = 1 where status = 'true'");
+                    }
+					update_option('rsssl_csp_db_upgraded', true);
+				}
+
+				$charset_collate = $wpdb->get_charset_collate();
 				$sql = "CREATE TABLE $table_name (
                   id mediumint(9) NOT NULL AUTO_INCREMENT,
                   time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
                   documenturi text  NOT NULL,
                   violateddirective text  NOT NULL,
                   blockeduri text  NOT NULL,
-                  inpolicy text NOT NULL,
-                  hide text NOT NULL,
+                  status text NOT NULL,
                   PRIMARY KEY  (id)
                 ) $charset_collate";
 
 				dbDelta($sql);
-				RSSSL_PRO()->rsssl_premium_options->update_networkwide_option('rsssl_csp_db_version', rsssl_pro_version);
+				update_option('rsssl_csp_db_version', rsssl_pro_version);
 			}
 		}
 
-        /**
-         * Generate the CSP table
-         * @since 4.1.5
-         */
-
-		public function get_csp_table() {
-			if (!current_user_can('manage_options')) return;
-
-			$container = RSSSL()->really_simple_ssl->get_template( 'csp-container.php',rsssl_pro_path . 'grid/' );
-            $element = RSSSL()->really_simple_ssl->get_template( 'csp-element.php',rsssl_pro_path . 'grid/' );
-            $output = '';
-
-            global $wpdb;
-            $table_name = $wpdb->base_prefix . "rsssl_csp_log";
-
-            // Allow override of display limit
-			$limit = defined('RSSSL_CSP_DISPLAY_LIMIT_OVERRIDE') ? intval(RSSSL_CSP_DISPLAY_LIMIT_OVERRIDE) : 1000;
-
-            if ( RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_content_security_policy_toggle') === 'blocked' ) {
-                $rows = $wpdb->get_results("SELECT * FROM $table_name WHERE `inpolicy` != 'true'  ORDER BY time DESC LIMIT $limit");
-            } elseif ( RSSSL_PRO()->rsssl_premium_options->get_networkwide_option('rsssl_content_security_policy_toggle') === 'allowed' ) {
-                $rows = $wpdb->get_results("SELECT * FROM $table_name WHERE `inpolicy` = 'true'  ORDER BY time DESC LIMIT $limit");
-            } else {
-                $rows = $wpdb->get_results("SELECT * FROM $table_name ORDER BY time DESC LIMIT $limit");
-            }
-
-            foreach ( $rows as $row ) {
-                $uri = substr(str_replace(site_url(), "", $row->documenturi), 0, 40);
-
-                //should not contain protocol anymore, so replace anything that's left
-                //document-uri values that do not start with http are auto prepended with http:// by the esc_url_raw sanitization. This is the fix.
-	            $uri = str_replace(array('http://', 'https://'), '', $uri);
-
-                if ($uri === '/' || $uri === '') $uri = 'Home';
-
-                if ( empty($row->inpolicy) || $row->inpolicy === 'false' ) {
-                    $id = 'button-secondary start-add-to-csp';
-                    $button_text = __("Allow", "really-simple-ssl-pro");
-                    $modal = '';
-                } else {
-                    $id = 'button-rsssl-tertiary revoke-from-csp';
-                    $button_text = __("Revoke", "really-simple-ssl-pro");
-                    $modal = "data-toggle='modal' data-target='revoke-csp-modal'";
+		/**
+		 * Get current CSP data
+		 * @return array
+		 */
+		public function get() {
+			global $wpdb;
+			$table_name = $wpdb->base_prefix . "rsssl_csp_log";
+			$data = [];
+			if ( $wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) === $table_name ) {
+				// Allow override of display limit
+				$limit = defined('RSSSL_CSP_DISPLAY_LIMIT_OVERRIDE') ? (int) RSSSL_CSP_DISPLAY_LIMIT_OVERRIDE : 2000;
+				$data = $wpdb->get_results("SELECT * FROM $table_name ORDER BY time DESC LIMIT $limit");
+				$tables = get_option('rsssl_table_missing', []);
+				if ( in_array($table_name, $tables)) {
+					unset($tables[$table_name]);
+					update_option('rsssl_table_missing', $tables, false);
+				}
+			} else {
+                $tables = get_option('rsssl_table_missing', []);
+                if ( !in_array($table_name, $tables)) {
+	                $tables[] = $table_name;
                 }
-
-                // Check if date is today
-                if (date('Ymd') == date('Ymd', strtotime($row->time))) {
-                    $date = __("Today", "really-simple-ssl-pro");
-                } else {
-                    $date = human_time_diff(strtotime($row->time), current_time('timestamp')) . " " . __("ago", "really-simple-ssl-pro");
-                }
-
-                $output .= str_replace(array(
-                    '{date}',
-                    '{documenturi}',
-                    '{uri}',
-                    '{violateddirective}',
-                    '{blockeduri}',
-                    '{data_id}',
-                    '{id}',
-                    '{button_text}',
-                    '{modal}'
-
-                ), array(
-                    $date,
-                    $row->documenturi,
-                    $uri,
-                    $row->violateddirective,
-                    $row->blockeduri,
-                    $row->id,
-                    $id,
-                    $button_text,
-                    $modal,
-                ), $element);
+				update_site_option('rsssl_csp_db_version', false);
+                update_option('rsssl_table_missing', $tables, false);
             }
 
-            $html = str_replace(
-                array(
-                    '{content}'
-                ),
-                array(
-                    $output)
-                , $container);
+			return $data;
+		}
 
-            if ( wp_doing_ajax() ) {
-                wp_die($html);
+		/**
+		 *
+		 * Update the 'status' database value to true after 'Add to policy' button is clicked in Content Security Policy tab
+		 *
+		 * @since 2.5
+		 */
+
+		public function update($data, $update_item_id, $action='update')
+		{
+			if (!rsssl_user_can_manage()) {
+				return;
+			}
+			global $wpdb;
+			$table_name = $wpdb->base_prefix . "rsssl_csp_log";
+			if ( !is_array($data) ) {
+				return;
+			}
+
+			$ids = array_column($data, 'id');
+			$index = array_search($update_item_id, $ids);
+			if ( $index===false && $action==='update' ) {
+				return;
+			}
+
+			$update_data = $data[$index];
+			unset($update_data['title']);
+            if ( $action === 'update' ) {
+    			$wpdb->update($table_name, $update_data, ['id' => $update_item_id] );
             } else {
-                return $html;
-            }
-        }
-
-        /**
-         * Delete entry from CSP table
-         * @since 4.1.6
-         *
-         */
-        public function delete_from_csp() {
-            if (!current_user_can('manage_options')) return;
-
-            if ( isset($_POST['id'] )
-                && $_POST['action'] == 'delete_from_csp'
-                && isset($_POST["token"])
-                && wp_verify_nonce($_POST["token"], "rsssl_revoke_from_csp" ) ) {
-
-                global $wpdb;
-                $table_name = $wpdb->base_prefix . "rsssl_csp_log";
-
-                $id = intval($_POST['id']);
-
-                $wpdb->delete(
-                    $table_name, // table to delete from
-                    array('id' => $id // value in column to target for deletion
-                    )
+                $wpdb->delete( $table_name, [
+                    'id' => $update_item_id
+                    ]
                 );
-
-                wp_die();
             }
-        }
-
-        /**
-         * Show revoke CSP modal
-         * @since 4.1.5
-         */
-
-        public function revoke_csp_modal() {
-            $args = array(
-                'title' => __( "Revoke rule", "really-simple-ssl-pro" ),
-                'id' => 'revoke-csp-modal',
-                'fix_target_id' => 'start-revoke-from-csp',
-				'subtitle' => __( "Revoking a Rule from the Content Security Policy!", "really-simple-ssl-pro" ),
-                'content' => array(
-                    __( "If you revoke a rule from the content security policy,  the rule will be deleted from the resource list that is considered safe to load.  This might affect your website,  or specific functions.  You can always allow the resource if needed.",
-                        "really-simple-ssl-pro" ),
-                ),
-                'footer' => '',
-                'buttons' => array(
-                    1 => array(
-                        'text' => __('Revoke rule', 'really-simple-ssl-pro'),
-                        'id' => 'start-revoke-from-csp',
-                        'type' => 'data',
-                        'class' => 'button-secondary',
-                        'action' => 'rsssl_revoke_from_csp',
-                    ),
-                    2 => array(
-                        'text' => __('Revoke and delete rule', 'really-simple-ssl-pro'),
-                        'id' => 'start-revoke-delete-from-csp',
-                        'type' => 'data',
-                        'class' => 'button-rsssl-tertiary',
-                        'action' => 'rsssl_revoke_from_csp',
-                    ),
-                )
-            );
-
-            return new rsssl_modal( $args );
-    }
+		}
 }

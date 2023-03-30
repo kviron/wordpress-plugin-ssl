@@ -13,13 +13,7 @@ if (!class_exists('rsssl_importer')) {
 
             self::$_this = $this;
 
-            add_action('wp_ajax_fix_post', array($this, 'fix_post'));
-            add_action('wp_ajax_fix_postmeta', array($this, 'fix_postmeta'));
-            add_action('wp_ajax_fix_widget', array($this, 'fix_widget'));
-            add_action('wp_ajax_ignore_url', array($this, 'ignore_url'));
-            add_action('wp_ajax_fix_file', array($this, 'fix_file'));
-            add_action('wp_ajax_fix_cssjs', array($this, 'fix_cssjs'));
-            add_action('wp_ajax_roll_back', array($this, 'rollback_filechanges'));
+	        add_filter("rsssl_run_test", array($this, 'process_fixes'), 10, 3 );
             add_action('rsssl_pro_rollback_button', array($this, 'rollback_button'));
         }
 
@@ -28,6 +22,33 @@ if (!class_exists('rsssl_importer')) {
             return self::$_this;
         }
 
+	    /**
+         * Process the executed fixes
+         *
+	     * @param $response
+	     * @param $test
+	     * @param $data
+	     *
+	     * @return array|bool[]|mixed
+	     */
+	    public function process_fixes($response, $test, $data ){
+		    switch($test) {
+			    case 'fix_cssjs':
+				    return $this->fix_cssjs($data);
+			    case 'fix_post':
+				    return $this->fix_post($data);
+			    case 'fix_file':
+				    return $this->fix_file($data);
+			    case 'fix_postmeta':
+				    return $this->fix_postmeta($data);
+			    case 'fix_widget':
+				    return $this->fix_widget($data);
+			    case 'ignore_url':
+				    return $this->ignore_url($data);
+		    }
+
+		    return $response;
+	    }
 	    /**
 	     * Show rollback button
 	     */
@@ -43,31 +64,13 @@ if (!class_exists('rsssl_importer')) {
         }
 
 	    /**
-         * Show message
-	     * @param string $msg
-	     * @param string $type
-	     *
-	     * @return string
-	     */
-        public function alert($msg, $type = "danger")
-        {
-            $html = '<div id="rsssl-alert" class="alert alert-' . $type . ' alert-dismissible fade in" role="alert">';
-            $html .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
-            $html .= '<span aria-hidden="true">&times;</span>';
-            $html .= '</button>';
-            $html .= $msg;
-            $html .= '</div>';
-            return $html;
-        }
-
-	    /**
          * Create backup
          *
 	     * @param $filepath
 	     */
         public function make_backup($filepath)
         {
-            if (!current_user_can('manage_options')) return;
+            if (!rsssl_user_can_manage()) return;
             $filename = basename($filepath);
             //if the backup is already there, do nothing
             if (file_exists(dirname($filepath) . "/" . "rsssl-bkp-" . $filename)) return;
@@ -76,19 +79,19 @@ if (!class_exists('rsssl_importer')) {
             $changed_files = get_option("rsssl_changed_files");
             if (!$changed_files) $changed_files = array();
             $changed_files[$filepath] = 1;
-            update_option("rsssl_changed_files", $changed_files);
+            update_option("rsssl_changed_files", $changed_files, false );
         }
 
 	    /**
          * change all files back to state before rssssl was used to fix mixed content.
          *
-	     * @param $filepath
 	     */
 
-        public function rollback_filechanges($filepath)
+        public function rollback_filechanges()
         {
-            $error = $this->alert(__("Something went wrong. If this doesn't work, you can put the original files back by changing files named 'rsssl-bkp-filename' to filename.", "really-simple-ssl-pro"));
-            if (current_user_can('manage_options') && isset($_POST["token"]) && wp_verify_nonce($_POST["token"], "rsssl_fix_post")) {
+	        $success = false;
+            $msg = __("Something went wrong. If this doesn't work, you can put the original files back by changing files named 'rsssl-bkp-filename' to filename.", "really-simple-ssl-pro");
+            if (rsssl_user_can_manage() && isset($data->nonce) && wp_verify_nonce($data->nonce, "fix_mixed_content")) {
                 $changed_files = get_option("rsssl_changed_files");
                 if ($changed_files) {
                     foreach ($changed_files as $filepath => $val) {
@@ -97,48 +100,44 @@ if (!class_exists('rsssl_importer')) {
                         unlink(dirname($filepath) . "/" . "rsssl-bkp-" . $filename);
                     }
 
-                    update_option("rsssl_changed_files", array());
-                    $error = $this->alert(__("Your files were restored.", "really-simple-ssl-pro"), "success");
+                    update_option("rsssl_changed_files", array(), false );
+	                $success = true;
+                    $msg = __("Your files were restored.", "really-simple-ssl-pro");
                 } else {
-                    $error = $this->alert(__("Your files already were restored.", "really-simple-ssl-pro"));
+	                $msg = __("Your files already were restored.", "really-simple-ssl-pro");
                 }
             }
-            header("Content-Type: application/json");
-            $response = json_encode(array('success' => false, 'error' => $error));
-            echo $response;
-            exit;
-
+            return array( 'success' => $success, 'msg' => $msg);
         }
 
 	    /**
-	     *  Fix http references in css and js
+	     * Fix http references in css and js
+         * @param object $data
 	     */
 
-        public function fix_cssjs()
-        {
-            $error = $this->alert(__("Something went wrong. Please refresh the page and try again, or fix manually.", "really-simple-ssl-pro"));
-            $response = json_encode(array('success' => false, 'error' => $error));
-            if (current_user_can('manage_options') && isset($_POST["url"]) && isset($_POST["path"]) && isset($_POST["token"]) && wp_verify_nonce($_POST["token"], "rsssl_fix_post")) {
-                $path = $_POST["path"];
+        public function fix_cssjs($data): array {
+	        $data = $data['data'] ?? false;
+	        $data = json_decode($data);
+            $msg = __("Something went wrong. Please refresh the page and try again, or fix manually.", "really-simple-ssl-pro");
+            $response = array('success' => false, 'msg' => $msg);
+            if ( rsssl_user_can_manage() && isset($data->url) && isset($data->path) && isset($data->nonce) && wp_verify_nonce($data->nonce, "fix_mixed_content")) {
+                $path = sanitize_text_field($data->path);
                 $path = trailingslashit(ABSPATH).$this->convert_to_dir($path);
-                if (file_exists($path)) {
-                    $file_url = $_POST["url"];
+                if ( file_exists($path) ) {
+                    $file_url = esc_url_raw($data->url);
                     $content = file_get_contents($path);
                     $this->make_backup($path);
                     $new_url = str_replace("http://", "//", $file_url);
                     $content = str_replace($file_url, $new_url, $content);
                     file_put_contents($path, $content);
                     $this->remove_from_scan_array($file_url);
-                    $response = json_encode(array('success' => true));
-
+                    $response = array('success' => true);
                 } else {
-                    $error = $this->alert(__("There was a problem editing the file. Please try manually.", "really-simple-ssl-pro"));
-                    $response = json_encode(array('success' => false, 'error' => $error));
+                    $msg = __("There was a problem editing the file. Please try manually.", "really-simple-ssl-pro");
+                    $response = array('success' => false, 'msg' => $msg);
                 }
             }
-            header("Content-Type: application/json");
-            echo $response;
-            exit;
+            return $response;
         }
 
 	    /**
@@ -154,165 +153,152 @@ if (!class_exists('rsssl_importer')) {
 
 	    /**
 	     * Download file, and fix reference to this file
+         * @param object $data
 	     */
-        public function fix_file()
+        public function fix_file($data)
         {
-            $error = $this->alert(__("Something went wrong. Please refresh the page and try again, or fix manually.", "really-simple-ssl-pro"));
-            $response = json_encode(array('success' => false, 'error' => $error));
-            if (current_user_can('manage_options') && isset($_POST["url"]) && isset($_POST["path"]) && isset($_POST["token"]) && wp_verify_nonce($_POST["token"], "rsssl_fix_post")) {
-                $path = $_POST["path"];
+	        $data = $data['data'] ?? false;
+	        $data = json_decode($data);
+            $msg = __("Something went wrong. Please refresh the page and try again, or fix manually.", "really-simple-ssl-pro");
+            $response = array('success' => false, 'msg' => $msg);
+            if (rsssl_user_can_manage() && isset($data->url) && isset($data->path) && isset($data->nonce) && wp_verify_nonce($data->nonce, "fix_mixed_content")) {
+                $path = sanitize_text_field( $data->path);
                 $path = trailingslashit(ABSPATH).$this->convert_to_dir($path);
-                if (file_exists($path)) {
-
-                    $file_url = $_POST["url"];
+                if ( file_exists($path) ) {
+                    $file_url = esc_url_raw($data->url);
                     $content = file_get_contents($path);
                     $new_url = $this->download_image($file_url, false);
-
-                    if ($new_url != $file_url) {
+                    if ( $new_url != $file_url ) {
                         $this->make_backup($path);
                         $content = str_replace($file_url, $new_url, $content);
                         file_put_contents($path, $content);
                         $this->remove_from_scan_array($file_url);
-                        $response = json_encode(array('success' => true));
+                        $response = array('success' => true);
                     }
                 } else {
-                    $error = $this->alert(__("The file could not be downloaded. It might not exist, or downloading is blocked. Fix manually.", "really-simple-ssl-pro"));
-                    $response = json_encode(array('success' => false, 'error' => $error));
+                    $msg = __("The file could not be downloaded. It might not exist, or downloading is blocked. Fix manually.", "really-simple-ssl-pro");
+                    $response = array('success' => false, 'msg' => $msg);
                 }
-
             }
-            header("Content-Type: application/json");
-            echo $response;
-            exit;
+            return $response;
         }
 
 
         /**
          * fix mixed content in post
-         *
+         * @param object $data
          * @since  1.0
          *
          * @access public
          *
          */
 
-        public function fix_post()
+        public function fix_post($data)
         {
-            $error = $this->alert(__("Something went wrong. Please refresh the page and try again, or fix manually.", "really-simple-ssl-pro"));
-            $response = json_encode(array('success' => false, 'error' => $error));
-
-            if (current_user_can('manage_options') && isset($_POST["url"]) && isset($_POST["post_id"]) && isset($_POST["token"]) && wp_verify_nonce($_POST["token"], "rsssl_fix_post")) {
-                $post_id = intval($_POST["post_id"]);
+	        $data = $data['data'] ?? false;
+	        $data = json_decode($data);
+            $msg = __("Something went wrong. Please refresh the page and try again, or fix manually.", "really-simple-ssl-pro");
+            $response = array('success' => false, 'msg' => $msg);
+            if (rsssl_user_can_manage() && isset($data->url) && isset($data->post_id) && isset($data->nonce) && wp_verify_nonce($data->nonce, "fix_mixed_content")) {
+                $post_id = intval($data->post_id);
                 $post = get_post($post_id);
-
-                if ($post) {
-                    $file_url = esc_url_raw($_POST["url"]);
+                if ( $post ) {
+                    $file_url = esc_url_raw($data->url);
                     $content = $post->post_content;
                     //download and insert image into media
                     $new_url = $this->download_image($file_url);
-
                     if ($new_url != $file_url && $this->is_file($file_url)) {
                         //replace old url with new url
                         $content = str_replace($file_url, $new_url, $content);
-
                         $updated_post = array(
                             'ID' => $post_id,
                             'post_content' => $content,
                         );
                         wp_update_post($updated_post);
                         $this->remove_from_scan_array($file_url, $post_id);
-                        $response = json_encode(array('success' => true));
+                        $response = array('success' => true);
                     } else {
-                        $error = $this->alert(__("The file could not be downloaded. The file might not exist, or downloading is be blocked by the server. Fix manually.", "really-simple-ssl-pro"));
-                        $response = json_encode(array('success' => false, 'error' => $error));
+	                    $msg = __("The file could not be downloaded. The file might not exist, or downloading is be blocked by the server. Fix manually.", "really-simple-ssl-pro");
+                        $response = array('success' => false, 'msg' => $msg);
                     }
                 }
             }
-
-            // response output
-            header("Content-Type: application/json");
-            echo $response;
-            exit;
+            return $response;
         }
 
         /**
          * fix mixed content in postmeta
-         *
+         * @param object $data
          * @since  2.1.0
          *
          * @access public
          *
          */
 
-        public function fix_postmeta()
+        public function fix_postmeta($data)
         {
-            $error = $this->alert(__("Something went wrong. Please refresh the page and try again, or fix manually.", "really-simple-ssl-pro"));
-            $response = json_encode(array('success' => false, 'error' => $error));
-            if (current_user_can('manage_options') && isset($_POST["url"]) && isset($_POST["post_id"]) && isset($_POST["token"]) && wp_verify_nonce($_POST["token"], "rsssl_fix_post")) {
-                $post_id = intval($_POST["post_id"]);
+	        $data = $data['data'] ?? false;
+	        $data = json_decode($data);
+	        $msg = __("Something went wrong. Please refresh the page and try again, or fix manually.", "really-simple-ssl-pro");
+            $response = array('success' => false, 'msg' => $msg);
+            if (rsssl_user_can_manage() && isset($data->url) && isset($data->post_id) && isset($data->nonce) && wp_verify_nonce($data->nonce, "fix_mixed_content")) {
+                $post_id = intval($data->post_id);
                 $post = get_post($post_id);
-                $meta_key = sanitize_title($_POST["path"]);
-
+                $meta_key = sanitize_title($data->path);
                 if ($post) {
-                    $file_url = esc_url_raw($_POST["url"]);
+                    $file_url = esc_url_raw($data->url);
                     $content = get_post_meta($post_id, $meta_key, true);
                     $new_url = $this->download_image($file_url);
                     if ($new_url != $file_url && $this->is_file($file_url)) {
                         $content = str_replace($file_url, $new_url, $content);
                         update_post_meta($post_id, $meta_key, $content);
                         $this->remove_from_scan_array($file_url, $post_id);
-                        $response = json_encode(array('success' => true));
+                        $response = array('success' => true);
                     } else {
-                        $error = $this->alert(__("The file could not be downloaded. The file might not exist, or downloading is be blocked by the server. Fix manually.", "really-simple-ssl-pro"));
-                        $response = json_encode(array('success' => false, 'error' => $error));
+	                    $msg = __("The file could not be downloaded. The file might not exist, or downloading is be blocked by the server. Fix manually.", "really-simple-ssl-pro");
+                        $response = array('success' => false, 'msg' => $msg);
                     }
                 }
             }
-            header("Content-Type: application/json");
-            echo $response;
-            exit;
+            return $response;
         }
 
         /**
          * A function to fix widgets
-         *
+         * @param object $data
          * @since 1.0
          * @access public
          *
          * */
 
-        public function fix_widget()
+        public function fix_widget($data)
         {
-            //create default response
-            $error = $this->alert(__("Something went wrong. Please refresh the page and try again, or fix manually.", "really-simple-ssl-pro"));
-            $response = json_encode(array('success' => false, 'error' => $error));
-            if (current_user_can('manage_options') && isset($_POST["url"]) && isset($_POST["widget_id"]) && isset($_POST["token"]) && wp_verify_nonce($_POST["token"], "rsssl_fix_post")) {
-
-	            $widget_title = sanitize_title($_POST["widget_id"]);
-                $file_url = sanitize_text_field($_POST["url"]);
-                $widget_data = rsssl_scan::this()->get_widget_data($widget_title);
-
+	        $data = $data['data'] ?? false;
+	        $data = json_decode($data);
+	        $msg = __("Something went wrong. Please refresh the page and try again, or fix manually.", "really-simple-ssl-pro");
+            $response = array('success' => false, 'msg' => $msg);
+            if (rsssl_user_can_manage() && isset($data->url) && isset($data->widget_id) && isset($data->nonce) && wp_verify_nonce($data->nonce, "fix_mixed_content")) {
+	            $widget_title = sanitize_title($data->widget_id);
+                $file_url = sanitize_text_field($data->url);
+                $widget_data = RSSSL_PRO()->scan->get_widget_data($widget_title);
                 //download and insert image into media
                 $new_url = $this->download_image($file_url);
                 if ($new_url != $file_url && $this->is_file($file_url)) {
                     //replace old url with new url
                     $html = str_replace($file_url, $new_url, $widget_data["html"]);
-                    rsssl_scan::this()->update_widget_data($widget_title, $html);
+                    RSSSL_PRO()->scan->update_widget_data($widget_title, $html);
 
                     //now update the scan array as well
                     $this->remove_from_scan_array($file_url, $widget_title);
 
                     // generate the response
-                    $response = json_encode(array('success' => true));
+                    $response = array('success' => true);
                 } else {
-                    $error = $this->alert(__("The file could not be downloaded. The file might not exist, or downloading is be blocked by the server. Fix manually.", "really-simple-ssl-pro"));
-                    $response = json_encode(array('success' => false, 'error' => $error));
+	                $msg = __("The file could not be downloaded. The file might not exist, or downloading is be blocked by the server. Fix manually.", "really-simple-ssl-pro");
+                    $response = array('success' => false, 'msg' => $msg);
                 }
             }
-            // response output
-            header("Content-Type: application/json");
-            echo $response;
-            exit;
+            return $response;
         }
 
 	    /**
@@ -324,9 +310,9 @@ if (!class_exists('rsssl_importer')) {
 
         public function remove_from_scan_array($url, $post_id = false)
         {
-            rsssl_scan::this()->load_results();
+            RSSSL_PRO()->scan->load_results();
 
-            $css_js_with_mixed_content = rsssl_scan::this()->css_js_with_mixed_content;
+            $css_js_with_mixed_content = RSSSL_PRO()->scan->css_js_with_mixed_content;
             if (!empty($css_js_with_mixed_content)) {
                 foreach ($css_js_with_mixed_content as $file => $urls) {
                     $urls = $this->unset_by_value($urls, $url);
@@ -336,13 +322,13 @@ if (!class_exists('rsssl_importer')) {
                         unset($css_js_with_mixed_content[$file]);
                     }
                 }
-                rsssl_scan::this()->css_js_with_mixed_content = $css_js_with_mixed_content;
+                RSSSL_PRO()->scan->css_js_with_mixed_content = $css_js_with_mixed_content;
             }
 
-            $blocked_resources = rsssl_scan::this()->blocked_resources;
-            rsssl_scan::this()->blocked_resources = $this->unset_by_value($blocked_resources, $url);
+            $blocked_resources = RSSSL_PRO()->scan->blocked_resources;
+            RSSSL_PRO()->scan->blocked_resources = $this->unset_by_value($blocked_resources, $url);
 
-            $files_with_blocked_resources = rsssl_scan::this()->files_with_blocked_resources;
+            $files_with_blocked_resources = RSSSL_PRO()->scan->files_with_blocked_resources;
             if (!empty($files_with_blocked_resources)) {
                 foreach ($files_with_blocked_resources as $file => $urls) {
                     $urls = $this->unset_by_value($urls, $url);
@@ -351,7 +337,7 @@ if (!class_exists('rsssl_importer')) {
                     if (count($files_with_blocked_resources[$file]) == 0) {
                         unset($files_with_blocked_resources[$file]);
                     }
-                    rsssl_scan::this()->files_with_blocked_resources = $files_with_blocked_resources;
+                    RSSSL_PRO()->scan->files_with_blocked_resources = $files_with_blocked_resources;
                 }
             }
 
@@ -359,7 +345,7 @@ if (!class_exists('rsssl_importer')) {
              * posts
              *
              * */
-            $posts_with_external_resources = rsssl_scan::this()->posts_with_external_resources;
+            $posts_with_external_resources = RSSSL_PRO()->scan->posts_with_external_resources;
 
             //find post id by url:
             if (!$post_id) $post_id = $this->find_post_id_by_url($posts_with_external_resources, $url);
@@ -370,9 +356,9 @@ if (!class_exists('rsssl_importer')) {
                     if (count($posts_with_external_resources[$post_id]) == 0) {
                         unset($posts_with_external_resources[$post_id]);
                         //only remove this post_id when no other blocked urls are found in this post
-                        rsssl_scan::this()->posts_with_blocked_resources = $this->unset_by_value(rsssl_scan::this()->posts_with_blocked_resources, $post_id);
+                        RSSSL_PRO()->scan->posts_with_blocked_resources = $this->unset_by_value(RSSSL_PRO()->scan->posts_with_blocked_resources, $post_id);
                     }
-                    rsssl_scan::this()->posts_with_external_resources = $posts_with_external_resources;
+                    RSSSL_PRO()->scan->posts_with_external_resources = $posts_with_external_resources;
                 }
             }
 
@@ -381,7 +367,7 @@ if (!class_exists('rsssl_importer')) {
              *
              * */
 
-            $postmeta_with_external_resources = rsssl_scan::this()->postmeta_with_external_resources;
+            $postmeta_with_external_resources = RSSSL_PRO()->scan->postmeta_with_external_resources;
             if (!$post_id) $post_id = $this->find_post_id_by_url($postmeta_with_external_resources, $url);
             if ($post_id) {
 
@@ -389,17 +375,17 @@ if (!class_exists('rsssl_importer')) {
                     if (isset($postmeta_with_external_resources[$post_id]) && count($postmeta_with_external_resources[$post_id]) == 0) {
                         unset($postmeta_with_external_resources[$post_id]);
                         //only remove this post_id when no other blocked urls are found in this post
-                        rsssl_scan::this()->postmeta_with_blocked_resources = $this->unset_by_value(rsssl_scan::this()->postmeta_with_blocked_resources, $post_id);
+                        RSSSL_PRO()->scan->postmeta_with_blocked_resources = $this->unset_by_value(RSSSL_PRO()->scan->postmeta_with_blocked_resources, $post_id);
                     }
-                    rsssl_scan::this()->postmeta_with_external_resources = $postmeta_with_external_resources;
+                    RSSSL_PRO()->scan->postmeta_with_external_resources = $postmeta_with_external_resources;
                 }
             }
 
-            rsssl_scan::this()->traced_urls = $this->unset_by_value(rsssl_scan::this()->traced_urls, $url);
-            rsssl_scan::this()->source_of_resource = $this->unset_by_value(rsssl_scan::this()->source_of_resource, $url);
+            RSSSL_PRO()->scan->traced_urls = $this->unset_by_value(RSSSL_PRO()->scan->traced_urls, $url);
+            RSSSL_PRO()->scan->source_of_resource = $this->unset_by_value(RSSSL_PRO()->scan->source_of_resource, $url);
 
             //save the data
-            rsssl_scan::this()->save_results();
+            RSSSL_PRO()->scan->save_results();
         }
 
 
@@ -445,7 +431,7 @@ if (!class_exists('rsssl_importer')) {
 	     * and return the new url.
 	     * on error, return original url
          *
-	     * @param      $filepath
+	     * @param string $filepath
 	     * @param bool $insert_into_media
 	     *
 	     * @return string
@@ -489,6 +475,9 @@ if (!class_exists('rsssl_importer')) {
 
                 $attachment_id = wp_insert_attachment($args, $filename_dir);
                 // Generate the metadata for the attachment, and update the database record.
+	            if ( ! function_exists( 'wp_generate_attachment_metadata' ) ) {
+		            include( ABSPATH . 'wp-admin/includes/image.php' );
+	            }
                 $attach_data = wp_generate_attachment_metadata($attachment_id, $filename_dir);
 
                 wp_update_attachment_metadata($attachment_id, $attach_data);
@@ -500,7 +489,7 @@ if (!class_exists('rsssl_importer')) {
 
 	    /**
          * Check if image is valid file
-	     * @param $file
+	     * @param string $file
 	     *
 	     * @return bool
 	     */
@@ -516,7 +505,7 @@ if (!class_exists('rsssl_importer')) {
         }
 
 	    /**
-         * Check if url exists
+         * Check if a url exists
 	     * @param string $url
 	     *
 	     * @return bool
@@ -539,27 +528,26 @@ if (!class_exists('rsssl_importer')) {
 
 	    /**
 	     * Ignore a URL
+	     * @param object $data
 	     */
-        public function ignore_url()
+        public function ignore_url($data)
         {
-            $error = $this->alert(__("Something went wrong.", "really-simple-ssl-pro"));
-            $response = json_encode(array('success' => false, 'error' => $error));
-
-            if (current_user_can('manage_options') && isset($_POST["url"]) && isset($_POST["token"]) && wp_verify_nonce($_POST["token"], "rsssl_ignore_url")) {
-                $file_url = esc_url_raw($_POST["url"]);
-                rsssl_scan::this()->load_results();
-                $ignored_urls = rsssl_scan::this()->ignored_urls;
-                if (!in_array($file_url, $ignored_urls)) $ignored_urls[] = $file_url;
-                rsssl_scan::this()->ignored_urls = $ignored_urls;
-
-	            rsssl_scan::this()->save_results();
-                // generate the response
-                $response = json_encode(array('success' => true));
+	        $data = $data['data'] ?? false;
+	        $data = json_decode($data);
+	        $msg = __("Something went wrong.", "really-simple-ssl-pro");
+            $response = array('success' => false, 'msg' => $msg);
+            if ( rsssl_user_can_manage() && isset($data->url) && isset($data->nonce) && wp_verify_nonce($data->nonce, "fix_mixed_content")) {
+                $file_url = esc_url_raw($data->url);
+                RSSSL_PRO()->scan->load_results();
+                $ignored_urls = RSSSL_PRO()->scan->ignored_urls;
+                if (!in_array($file_url, $ignored_urls)) {
+                    $ignored_urls[] = $file_url;
+                }
+	            RSSSL_PRO()->scan->ignored_urls = $ignored_urls;
+	            RSSSL_PRO()->scan->save_results();
+                $response = array('success' => true);
             }
-            header("Content-Type: application/json");
-            echo $response;
-            exit;
+            return $response;
         }
-
-    }//class closure
+    }
 }

@@ -1,0 +1,625 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Really Simple SSL pro multisite\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: Finnish - Esko Junnila\n"
+"Language-Team: Suomi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-03-08 08:53+0100\n"
+"PO-Revision-Date: 2023-02-17 21:28+0000\n"
+"Language: fi\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: really-simple-ssl-pro-multisite.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Loco-Version: 2.6.3; wp-6.1.1\n"
+
+#: class-admin.php:12
+#: class-scan.php:44
+#: csp-violation-endpoint.php:10
+#, php-format
+msgid "%s is a singleton class and you cannot create a second instance."
+msgstr "%s on yksittäinen luokka, etkä voi luoda toista esiintymää."
+
+#: class-licensing.php:521
+#: class-licensing.php:617
+#, php-format
+msgid "%s/%s activations available."
+msgstr "%s/%s aktivointia saatavilla."
+
+#: class-licensing.php:690
+#, php-format
+msgid "%sActivate%s your license."
+msgstr "%sAktivoi%s lisenssisi."
+
+#: class-admin.php:558
+#, php-format
+msgid "%sRead more%s."
+msgstr "%sLue lisää%s."
+
+#: class-scan.php:224
+#, php-format
+msgctxt "'date' at 'time'"
+msgid "%s at %s"
+msgstr "%s klo %s"
+
+#: class-admin.php:558
+msgid "A redirect to http was detected. This might result in redirect loops."
+msgstr "Havaittiin uudelleenohjaus osoitteeseen http. Tämä saattaa aiheuttaa uudelleenohjaussilmukoita."
+
+#: csp-violation-endpoint.php:121
+msgid "A required database table is missing. Please check if you have permissions to add this database table."
+msgstr "Tarvittava tietokantataulukko puuttuu. Tarkista, onko sinulla oikeudet lisätä tämä tietokantataulukko."
+
+#: class-licensing.php:59
+msgid "Activate your license for automatic updates."
+msgstr "Aktivoi lisenssi automaattista päivitystä varten."
+
+#: class-scan.php:1665
+#: class-scan.php:1699
+#: class-scan.php:1775
+#: class-scan.php:1812
+#: class-scan.php:1861
+#, php-format
+msgid "Blocked URL: %s"
+msgstr "Estetyt URL-osoiteet: %s"
+
+#: class-scan.php:1624
+msgid "cached file, deactivate cache to see the actual source"
+msgstr "välimuistissa oleva tiedosto, poista välimuisti käytöstä nähdäksesi todellisen lähteen"
+
+#: class-scan.php:1700
+msgid "Can be fixed automatically by pressing the Fix button. If fixing fails, the source file can be edited manually by pressing the Edit button."
+msgstr "Voidaan korjata automaattisesti painamalla Fix-painiketta. Jos korjaaminen epäonnistuu, lähdetiedostoa voidaan muokata manuaalisesti painamalla Muokkaa-painiketta."
+
+#: class-scan.php:1700
+msgid "Can be fixed manually by editing the respective mu-plugin file in the /wp-content/mu-plugins/ directory "
+msgstr "Voidaan korjata manuaalisesti muokkaamalla vastaavaa mu-plugin-tiedostoa /wp-content/mu-plugins/-hakemistossa"
+
+#: class-scan.php:1738
+msgid "Cannot be fixed automatically, as the mixed content is coming from an external domain. Contact the owner of the domain to update the CSS/JS file"
+msgstr "Ei voida korjata automaattisesti, koska sekoitettu sisältö tulee ulkoisesta toimialueesta. Ota yhteyttä verkkotunnuksen omistajaan CSS/JS-tiedoston päivittämiseksi"
+
+#: class-scan.php:365
+#, php-format
+msgid "Checking if external js or css files contain http links, %s of %s"
+msgstr "Tarkistetaan, sisältävätkö ulkoiset js- tai css-tiedostot http-linkkejä, %s / %s"
+
+#: class-scan.php:313
+#, php-format
+msgid "Checking posts for external URLs, %s of %s"
+msgstr "Tarkistetaan artikkeleista ulkoisia URL-osoitteita, %s / %s"
+
+#: class-scan.php:337
+msgid "Checking which postmeta contain external resources"
+msgstr "Tarkistetaan, mitkä postmetat sisältävät ulkoisia resursseja"
+
+#: class-scan.php:350
+#, php-format
+msgid "Checking which resources can't load over ssl, %s of %s"
+msgstr "Tarkistetaan, mitkä resurssit eivät voi ladata ssl:n kautta, %s/%s"
+
+#: class-scan.php:326
+msgid "Checking widgets for external URLs"
+msgstr "Tarkistetaan widgetejä ulkoisten URL-osoitteiden varalta"
+
+#: csp-violation-endpoint.php:158
+msgid "Click 'Enforce' to enforce the configuration on your site."
+msgstr "Napsauta 'Pakota' (Ota käyttöön) ottaaksesi asetukset käyttöön sivustollasi."
+
+#: class-scan.php:1719
+#: class-scan.php:1794
+#: class-scan.php:1832
+#: class-scan.php:1879
+#: class-scan.php:2179
+msgid "Copyright warning!"
+msgstr "Tekijänoikeusvaroitus!"
+
+#: class-scan.php:1643
+msgid "Downloading files from other websites can cause serious copyright issues! It is always illegal to use images, files, or any copyright protected material on your own site without the consent of the copyrightholder. Please ask the copyrightholder for permission. Use this function at your own risk."
+msgstr "Tiedostojen lataaminen muilta sivustoilta voi aiheuttaa vakavia tekijänoikeusongelmia! Kuvien, tiedostojen tai minkä tahansa tekijänoikeudella suojatun materiaalin käyttäminen omalla sivustollasi on aina laitonta ilman tekijänoikeuden haltijan lupaa. Pyydä lupa tekijänoikeuksien haltijalta. Käytä tätä toimintoa omalla vastuullasi."
+
+#: class-admin.php:539
+msgid "Elementor mixed content successfully converted."
+msgstr "Elementor-sekoitettu sisältö muunnettu onnistuneesti."
+
+#: class-scan.php:1626
+msgid "file"
+msgstr "tiedosto"
+
+#: class-scan.php:430
+msgid "Finished scan"
+msgstr "Skannaus valmis"
+
+#: csp-violation-endpoint.php:155
+msgid "Follow these steps to complete the setup:"
+msgstr "Suorita asennus loppuun noudattamalla näitä ohjeita:"
+
+#: class-scan.php:299
+msgid "Generating file list"
+msgstr "Luodaan tiedostoluetteloa"
+
+#: class-scan.php:257
+msgid "Generating web page list"
+msgstr "Verkkosivuluettelon luominen"
+
+#: class-scan.php:133
+#: class-scan.php:147
+msgid "Great! Your scan last completed without errors."
+msgstr "Loistavaa! Skannaus suoritettiin viimeksi ilman virheitä."
+
+#. Description of the plugin
+msgid "Heavyweight Security Features"
+msgstr "Raskaat turvallisuusominaisuudet"
+
+#: class-headers.php:209
+msgid "HSTS not enabled"
+msgstr "HSTS ei ole käytössä"
+
+#: class-headers.php:196
+#: class-headers.php:202
+msgid "HSTS Preload"
+msgstr "HSTS Esilataus"
+
+#. Plugin URI of the plugin
+msgid "https://really-simple-ssl.com/pro"
+msgstr "https://really-simple-ssl.com/pro"
+
+#. Author URI of the plugin
+msgid "https://www.really-simple-plugins.com"
+msgstr "https://www.really-simple-plugins.com"
+
+#: class-scan.php:1811
+msgid "iFrame in the wp_postmeta database table"
+msgstr "iFrame wp_postmeta-tietokantataulukossa"
+
+#: class-scan.php:1718
+#: class-scan.php:1793
+#: class-scan.php:1831
+#: class-scan.php:1878
+msgid "Import and insert file"
+msgstr "Tuo ja lisää tiedosto"
+
+#: really-simple-ssl-pro-multisite.php:288
+#: really-simple-ssl-pro.php:285
+msgid "Install and activate Really Simple SSL"
+msgstr "Asenna ja aktivoi Really Simple SSL"
+
+#: csp-violation-endpoint.php:143
+msgid "Learning Mode is active for your Content Security and will complete in %s days."
+msgstr "Sisällön suojauksen oppimistila on aktiivinen, ja se päättyy %s päivän kuluttua."
+
+#: class-licensing.php:179
+#: class-licensing.php:201
+#: class-licensing.php:698
+#: class-licensing.php:705
+#: class-licensing.php:712
+#: class-licensing.php:719
+#: class-licensing.php:726
+#: class-licensing.php:741
+msgid "License"
+msgstr "Lisenssi"
+
+#: class-scan.php:380
+#, php-format
+msgid "Looking up blocked resources in files, %s of %s"
+msgstr "Haetaan estettyjä resursseja tiedostoista, %s/%s"
+
+#: class-scan.php:407
+msgid "Looking up blocked resources in postmeta"
+msgstr "Haetaan estettyjä resursseja postmetasta"
+
+#: class-scan.php:394
+msgid "Looking up blocked resources in posts"
+msgstr "Haetaan estettyjä resursseja artikkeleista"
+
+#: class-scan.php:422
+msgid "Looking up blocked resources in widgets"
+msgstr "Estettyjen resurssien etsiminen widgeteistä"
+
+#: class-scan.php:1861
+msgid "Mixed content found in a widget. Press the edit link to edit the widget manually."
+msgstr "Widgetistä löytyy sekalaista sisältöä. Muokkaa widgetiä manuaalisesti painamalla muokkauslinkkiä."
+
+#: class-scan.php:1776
+msgid "Mixed content found in in a post. Can be fixed automatically by pressing the fix button. Pressing the edit button allows you to update the link in the post manually."
+msgstr "Viestistä löytyi sekalaista sisältöä. Voidaan korjata automaattisesti painamalla fix-painiketta. Muokkaa-painiketta painamalla voit päivittää viestissä olevan linkin manuaalisesti."
+
+#: class-scan.php:1813
+msgid "Mixed content from a postmeta table in your database. Usually won't cause any mixed content on the front-end. Check the post if it causes mixed content. If so, the link can be replace directly in the database."
+msgstr "Sekoitettu sisältö tietokantaasi postmeta-taulukosta. Yleensä se ei aiheuta sekalaista sisältöä käyttöliittymässä. Tarkista viesti, jos se aiheuttaa sekalaista sisältöä. Jos näin on, linkki voidaan korvata suoraan tietokantaan."
+
+#: class-scan.php:1705
+#, php-format
+msgid "Mixed content in %s"
+msgstr "Sekoitettu sisältö %s"
+
+#: class-scan.php:1744
+msgid "Mixed content in CSS/JS file from other domain"
+msgstr "Sekoitettu sisältö CSS/JS-tiedostossa toisesta verkkotunnuksesta"
+
+#: class-scan.php:1670
+msgid "Mixed content in PHP file in %s"
+msgstr "Sekoitettu sisältö PHP-tiedostossa %s"
+
+#: class-scan.php:1781
+msgid "Mixed content in post: "
+msgstr "Viestin sisältö on sekoitettu: "
+
+#: class-scan.php:1811
+msgid "Mixed content in the postmeta table"
+msgstr "Postmeta-taulukossa sekasisältö"
+
+#: class-scan.php:1739
+#, php-format
+msgid "Mixed content resources: %s"
+msgstr "Sekasisältöiset resurssit: %s"
+
+#: class-scan.php:1618
+msgid "mu plugin file"
+msgstr "mu-laajennustiedosto"
+
+#: class-licensing.php:562
+#, php-format
+msgid "Multisite detected. Please upgrade to %smultisite%s."
+msgstr "Useita sivustoja havaittu. Päivitä %smonisivustoon%s."
+
+#: class-scan.php:218
+#: class-scan.php:1914
+msgid "Never"
+msgstr "Ei koskaan"
+
+#: class-admin.php:553
+msgid "No redirect to http detected."
+msgstr "Uudelleenohjausta http:lle ei havaittu."
+
+#: class-licensing.php:630
+msgid "Open"
+msgstr "Avoin"
+
+#: really-simple-ssl-pro-multisite.php:278
+#: really-simple-ssl-pro-multisite.php:303
+#: really-simple-ssl-pro.php:276
+msgid "Please %supgrade%s to the latest version to be able use the full functionality of the plugin."
+msgstr "%sPäivitä%s uusimpaan versioon, jotta voit käyttää laajennuksen kaikkia toimintoja."
+
+#: class-licensing.php:584
+msgid "Please activate your license key."
+msgstr "Aktivoi lisenssiavaimesi."
+
+#: class-licensing.php:576
+#, php-format
+msgid "Please enter your license key. Available in your %saccount%s."
+msgstr "Anna lisenssiavaimesi. Saatavilla %stililläsi%s."
+
+#: really-simple-ssl-pro-multisite.php:276
+#: really-simple-ssl-pro.php:274
+msgid "Please install and activate Really Simple SSL to enable the add-on."
+msgstr "Asenna ja aktivoi Really Simple SSL ottaaksesi lisäosan käyttöön."
+
+#: class-scan.php:2184
+msgid "Please note that any changes you have made since to your current files, will be lost."
+msgstr "Huomaa, että kaikki muutokset, jotka olet sen jälkeen tehnyt nykyisiin tiedostoihisi, menetetään."
+
+#: really-simple-ssl-pro-multisite.php:270
+#: really-simple-ssl-pro-multisite.php:299
+msgid "Plugin dependency error"
+msgstr "Laajennus-riippuvuusvirhe"
+
+#: class-scan.php:1620
+msgid "plugin file"
+msgstr "laajennustiedosto"
+
+#: class-admin.php:552
+#: class-admin.php:557
+msgid "Potential redirect loop."
+msgstr "Mahdollinen uudelleenohjaussilmukka."
+
+#: class-licensing.php:632
+msgid "Premium"
+msgstr "Premium"
+
+#. Author of the plugin
+msgid "Really Simple Plugins"
+msgstr "Really Simple Plugins"
+
+#: really-simple-ssl-pro-multisite.php:302
+msgid "Really Simple SSL needs to be updated to the latest version to be compatible."
+msgstr "Really Simple SSL on päivitettävä uusimpaan versioon, jotta se olisi yhteensopiva."
+
+#: really-simple-ssl-pro-multisite.php:28
+#: really-simple-ssl-pro.php:27
+msgid "Really Simple SSL Pro cannot be activated. The plugin requires PHP 7.2 or higher"
+msgstr "Really Simple SSL Pro -palvelua ei voi aktivoida. Lisäosa vaatii PHP 7.2:n tai uudemman version."
+
+#: really-simple-ssl-pro-multisite.php:34
+#: really-simple-ssl-pro.php:33
+msgid "Really Simple SSL Pro cannot be activated. The plugin requires WordPress 5.7 or higher"
+msgstr "Really Simple SSL Pro -palvelua ei voi aktivoida. Lisäosa vaatii WordPress 5.7 tai uudemman version"
+
+#: really-simple-ssl-pro-multisite.php:275
+#: really-simple-ssl-pro.php:273
+msgid "Really Simple SSL Pro is an add-on for Really Simple SSL, and cannot do it on its own :-("
+msgstr "Really Simple SSL Pro on lisäosa Really Simple SSL:lle, eikä se voi tehdä sitä yksinään :-("
+
+#: class-scan.php:2189
+msgid "Restore files"
+msgstr "Palauta tiedostot"
+
+#: csp-violation-endpoint.php:157
+msgid "Review the detected configuration in 'Content Security Policy'."
+msgstr "Tarkista havaittu määritys kohdassa 'Content Security Policy'."
+
+#: class-scan.php:2178
+msgid "Roll back changes made to your files"
+msgstr "Palauta tiedostoihisi tehdyt muutokset"
+
+#: class-importer.php:61
+msgid "Roll back file changes"
+msgstr "Palauta tiedostojen muutokset"
+
+#: class-scan.php:270
+#, php-format
+msgid "Searching for js and css files and links to external resources in website, %s of %s"
+msgstr "Etsitään js- ja css-tiedostoja ja linkkejä ulkoisiin resursseihin verkkosivustolta, %s / %s"
+
+#: class-scan.php:285
+#, php-format
+msgid "Searching for mixed content in css and js files, %s of %s"
+msgstr "Etsitään sekoitettua sisältöä css- ja js-tiedostoista, %s / %s"
+
+#: class-admin.php:633
+msgid "Settings"
+msgstr "Asetukset"
+
+#: class-importer.php:537
+msgid "Something went wrong."
+msgstr "Jotain meni pieleen."
+
+#: class-importer.php:93
+msgid "Something went wrong. If this doesn't work, you can put the original files back by changing files named 'rsssl-bkp-filename' to filename."
+msgstr "Jotain meni pieleen. Jos tämä ei auta, voit palauttaa alkuperäiset tiedostot muuttamalla tiedostot nimeltä \"rsssl-bkp-filename\" tiedostonimeksi."
+
+#: class-importer.php:121
+#: class-importer.php:162
+#: class-importer.php:200
+#: class-importer.php:242
+#: class-importer.php:278
+msgid "Something went wrong. Please refresh the page and try again, or fix manually."
+msgstr "Jotain meni pieleen. Päivitä sivu ja yritä uudelleen tai korjaa manuaalisesti."
+
+#: class-licensing.php:631
+msgid "Success"
+msgstr "Onnistui"
+
+#: class-headers.php:176
+#: class-headers.php:382
+msgid "The %s security header is not set by Really Simple SSL, but has a non-recommended value: \"%s\"."
+msgstr "Really Simple SSL ei aseta suojausotsikkoa %s, vaan sillä on ei-suositeltu arvo: \"%s\"."
+
+#: class-importer.php:179
+msgid "The file could not be downloaded. It might not exist, or downloading is blocked. Fix manually."
+msgstr "Tiedostoa ei voitu ladata. Sitä ei ehkä ole olemassa tai lataus on estetty. Korjaa manuaalisesti."
+
+#: class-importer.php:221
+#: class-importer.php:258
+#: class-importer.php:297
+msgid "The file could not be downloaded. The file might not exist, or downloading is be blocked by the server. Fix manually."
+msgstr "Tiedostoa ei voitu ladata. Tiedostoa ei ehkä ole olemassa tai palvelin on estänyt lataamisen. Korjaa manuaalisesti."
+
+#: class-headers.php:413
+msgid "The following recommended security headers have not been set: %s"
+msgstr "Seuraavia suositeltuja suojausotsakkeita ei ole asetettu: %s"
+
+#: class-scan.php:151
+msgid "The last scan was completed with errors. Are you sure these issues don't impact your site?"
+msgstr "Viimeinen tarkistus suoritettiin virhein. Oletko varma, etteivät nämä ongelmat vaikuta sivustoosi?"
+
+#: class-scan.php:137
+msgid "The last scan was completed with errors. Only migrate if you are sure the found errors are not a problem for your site."
+msgstr "Viimeinen tarkistus suoritettiin virhein. Siirrä vain, jos olet varma, että löydetyt virheet eivät ole ongelma sivustollesi."
+
+#: class-licensing.php:570
+msgid "The license information could not be retrieved at this moment. Please try again at a later time."
+msgstr "Lisenssitietoja ei voitu hakea tällä hetkellä. Yritä myöhemmin uudelleen."
+
+#: class-scan.php:1616
+msgid "theme file"
+msgstr "teematiedosto"
+
+#: class-importer.php:136
+msgid "There was a problem editing the file. Please try manually."
+msgstr "Tiedoston muokkaamisessa oli ongelma. Yritä manuaalisesti."
+
+#: class-licensing.php:713
+msgid "This domain is not activated for this Really Simple SSL Pro license. Please activate the license for this domain."
+msgstr "Tätä verkkotunnusta ei ole aktivoitu tälle Really Simple SSL Pro -lisenssille. Aktivoi tämän verkkotunnuksen lisenssi."
+
+#: class-scan.php:1644
+msgid "This downloads the file from the domain without SSL, inserts it into WP media, and changes the URL to the new URL."
+msgstr "Tämä lataa tiedoston verkkotunnuksesta ilman SSL-salausta, lisää sen WP-mediaan ja muuttaa URL-osoitteen uudeksi URL-osoitteeksi."
+
+#: class-licensing.php:610
+#, php-format
+msgid "This license is not valid for this product. Find out why on your %saccount%s."
+msgstr "Tämä lisenssi ei ole voimassa tälle tuotteelle. Selvitä syy %stililtäsi%s."
+
+#: class-licensing.php:603
+#, php-format
+msgid "This license is not valid. Find out why on your %saccount%s."
+msgstr "Tämä lisenssi ei ole voimassa. Selvitä syy %stililtäsi%s."
+
+#: class-scan.php:2182
+msgid "This will put the files back that were changed by the fix option in Really Simple SSL Pro."
+msgstr "Tämä palauttaa tiedostot, jotka muutettiin Really Simple SSL Pro -ohjelman korjausvaihtoehdolla."
+
+#: class-admin.php:572
+#: class-admin.php:578
+msgid "TLS version"
+msgstr "TLS-versio"
+
+#: class-admin.php:573
+msgid "TLS version is up-to-date"
+msgstr "TLS-versio on ajan tasalla"
+
+#: class-licensing.php:494
+msgid "unlimited"
+msgstr "rajoittamaton"
+
+#: class-licensing.php:518
+msgid "Unlimited activations available."
+msgstr "Rajoittamaton määrä aktivointeja jäljellä."
+
+#: class-admin.php:607
+msgid "Update Really Simple SSL Free to the latest version for optimal compatibility."
+msgstr "Update Really Simple SSL Free to the latest version for optimal compatibility."
+
+#: class-licensing.php:507
+#, php-format
+msgid "Upgrade to a %s5 sites or Agency%s license."
+msgstr "Päivitä %s5-sivuston tai Agency%s-lisenssiin."
+
+#: class-licensing.php:510
+#, php-format
+msgid "Upgrade to an %sAgency%s license."
+msgstr "Päivitä %sAgency%s-lisenssiin."
+
+#: class-scan.php:1622
+msgid "uploads file, possibly generated by plugin or theme"
+msgstr "uploads tiedosto, mahdollisesti laajennuksen tai teeman luoma"
+
+#: class-licensing.php:537
+#, php-format
+msgid "Valid license for %s."
+msgstr "Voimassa oleva lisenssi kohteelle %s."
+
+#: class-licensing.php:501
+#, php-format
+msgid "Valid until %s."
+msgstr "Voimassa %s asti."
+
+#: class-licensing.php:629
+msgid "Warning"
+msgstr "Varoitus"
+
+#: class-scan.php:1856
+#, php-format
+msgid "Widget area \"%s\""
+msgstr "Widget-alue \"%s\""
+
+#: class-scan.php:1866
+msgid "Widget with mixed content"
+msgstr "Widget sekoitetulla sisällöllä"
+
+#: class-licensing.php:742
+msgid "You are using Really Simple SSL Pro single site on a multisite environment. Please install Really Simple SSL multisite networkwide for multisite support."
+msgstr "Käytät Really Simple SSL Pro -sovellusta yhden sivuston monisivustoympäristössä. Asenna Really Simple SSL multisite networkwide monisivustotukea varten."
+
+#: class-scan.php:1665
+msgid "You can edit the source file manually by pressing the edit button."
+msgstr "Voit muokata lähdetiedostoa manuaalisesti painamalla muokkauspainiketta."
+
+#: class-licensing.php:513
+#, php-format
+msgid "You can renew your license on your %saccount%s."
+msgstr "Voit uusia lisenssisi osoitteessa %stili%s."
+
+#: class-licensing.php:692
+#, php-format
+msgid "You can upgrade on your %saccount%s."
+msgstr "Voit päivittää %stililläsi%s."
+
+#: class-licensing.php:720
+msgid "You do not have any activations left on your Really Simple SSL Pro license. Please upgrade your plan for additional activations."
+msgstr "Sinulla ei ole yhtään aktivointia jäljellä Really Simple SSL Pro -lisenssissäsi. Päivitä suunnitelmasi lisäaktivointeja varten."
+
+#: class-licensing.php:501
+msgid "You have a lifetime license."
+msgstr "Sinulla on elinikäinen lisenssi."
+
+#: class-scan.php:142
+msgid "You haven't scanned the site yet, you should scan your site to check for possible issues."
+msgstr "Et ole vielä tarkistanut sivustoa. Tarkista sivustosi mahdollisten ongelmien varalta."
+
+#: class-importer.php:107
+msgid "Your files already were restored."
+msgstr "Tiedostosi on jo palautettu."
+
+#: class-importer.php:105
+msgid "Your files were restored."
+msgstr "Tiedostosi palautettiin."
+
+#: class-licensing.php:596
+#, php-format
+msgid "Your license could not be found in our system. Please contact %ssupport%s."
+msgstr "Lisenssiäsi ei löydy järjestelmästämme. Ota yhteyttä %stukeemme%s."
+
+#: class-licensing.php:590
+#, php-format
+msgid "Your license has been revoked. Please contact %ssupport%s."
+msgstr "Lisenssisi on peruutettu. Ota yhteyttä %stukeemme%s."
+
+#: class-licensing.php:623
+#, php-format
+msgid "Your license key has expired. Please renew your license key on your %saccount%s."
+msgstr "Lisenssiavaimesi on vanhentunut. Uusi lisenssiavaimesi %stililläsi%s."
+
+#: class-licensing.php:675
+msgid "Your Really Simple SSL Pro license hasn't been activated."
+msgstr "Really Simple SSL Pro -lisenssiäsi ei ole aktivoitu."
+
+#: class-licensing.php:676
+msgid "Your Really Simple SSL Pro license is not valid."
+msgstr "Really Simple SSL pro -lisenssisi ei ole voimassa."
+
+#: class-licensing.php:699
+msgid "Your Really Simple SSL Pro license key has expired. Please renew your license to continue receiving updates and premium support."
+msgstr "Really Simple SSL Pro -lisenssiavaimesi on vanhentunut. Uusi lisenssisi saadaksesi jatkossakin päivityksiä ja premium-tukea."
+
+#: class-licensing.php:727
+msgid "Your Really Simple SSL Pro license key hasn't been activated yet. You can activate your license key on the license tab."
+msgstr "Really Simple SSL Pro -lisenssiavaintasi ei ole vielä aktivoitu. Voit aktivoida lisenssiavaimesi Lisenssi-välilehdellä."
+
+#: class-licensing.php:706
+msgid "Your Really Simple SSL Pro license key is not activated. Please activate your license to continue receiving updates and premium support."
+msgstr "Really Simple SSL Pro -lisenssiavainta ei ole aktivoitu. Aktivoi lisenssisi, jotta saat jatkossakin päivityksiä ja premium-tukea."
+
+#: class-headers.php:197
+#, php-format
+msgid "Your site has been configured for the HSTS preload list. If you have submitted your site, it will be preloaded. Click %shere%s to submit."
+msgstr "Sivustosi on määritetty HSTS-esilatausluetteloa varten. Jos olet lähettänyt sivustosi, se esiladataan. Lähetä napsauttamalla %stästä%s."
+
+#: class-headers.php:210
+msgid "Your site is not configured for HSTS yet."
+msgstr "Sivustoasi ei ole vielä määritetty HSTS:ää varten."
+
+#: class-headers.php:203
+msgid "Your site is not yet configured for the HSTS preload list."
+msgstr "Sivustoasi ei ole vielä määritetty HSTS-esilatausluetteloa varten."
+
+#: class-admin.php:593
+msgid "Your site redirects 404 pages to the http:// version of your homepage. This can cause mixed content issues with images."
+msgstr "Sivustosi uudelleenohjaa 404 sivua kotisivusi http://-versioon. Tämä voi aiheuttaa kuvien sekasisältöongelmia."
+
+#: class-admin.php:579
+msgid "Your site uses an outdated version of TLS. Upgrade to TLS 1.2 or TLS 1.3 to keep your site secure."
+msgstr "Sivustosi käyttää vanhentunutta TLS-versiota. Päivitä TLS 1.2:een tai TLS 1.3:een pitääksesi sivustosi suojattuna."
+
+#. Plugin Name of the plugin
+msgid "Really Simple SSL Pro"
+msgstr ""
+
+#: really-simple-ssl-pro.php:296
+msgid "Really Simple SSL Free needs to be updated to the latest version to be compatible."
+msgstr ""
+
+#: really-simple-ssl-pro.php:297
+msgid "Visit the plugins overview to update Really Simple SSL."
+msgstr ""

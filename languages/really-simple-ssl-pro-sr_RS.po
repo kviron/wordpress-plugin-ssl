@@ -1,0 +1,625 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Really Simple SSL pro multisite\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: Serbian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-03-08 08:53+0100\n"
+"PO-Revision-Date: 2023-02-08 15:13+0000\n"
+"Language: sr_RS\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: really-simple-ssl-pro-multisite.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Loco-Version: 2.6.3; wp-6.1.1\n"
+
+#: class-admin.php:12
+#: class-scan.php:44
+#: csp-violation-endpoint.php:10
+#, php-format
+msgid "%s is a singleton class and you cannot create a second instance."
+msgstr "%s је синглетон класа и не можете креирати другу инстанцу."
+
+#: class-licensing.php:521
+#: class-licensing.php:617
+#, php-format
+msgid "%s/%s activations available."
+msgstr "%s/%s доступне активације."
+
+#: class-licensing.php:690
+#, php-format
+msgid "%sActivate%s your license."
+msgstr "%sАктивирајте%s вашу лиценцу."
+
+#: class-admin.php:558
+#, php-format
+msgid "%sRead more%s."
+msgstr "%sПрочитајте више%s."
+
+#: class-scan.php:224
+#, php-format
+msgctxt "'date' at 'time'"
+msgid "%s at %s"
+msgstr "%s код %s"
+
+#: class-admin.php:558
+msgid "A redirect to http was detected. This might result in redirect loops."
+msgstr "Откривено је преусмеравање на http. Ово можда резултује преусмеравањем петљи."
+
+#: csp-violation-endpoint.php:121
+msgid "A required database table is missing. Please check if you have permissions to add this database table."
+msgstr ""
+
+#: class-licensing.php:59
+msgid "Activate your license for automatic updates."
+msgstr "Активирајте лиценцу за аутоматска ажурирања."
+
+#: class-scan.php:1665
+#: class-scan.php:1699
+#: class-scan.php:1775
+#: class-scan.php:1812
+#: class-scan.php:1861
+#, php-format
+msgid "Blocked URL: %s"
+msgstr "Блокирана URL адреса: %s"
+
+#: class-scan.php:1624
+msgid "cached file, deactivate cache to see the actual source"
+msgstr "кеширана датотека, деактивирајте кеш да видите стварни извор"
+
+#: class-scan.php:1700
+msgid "Can be fixed automatically by pressing the Fix button. If fixing fails, the source file can be edited manually by pressing the Edit button."
+msgstr "Може бити аутоматски поправљено притиском на дугме \"Поправи\". Ако поправка не успе, изворна датотека може бити ручно уређена притиском на дугме \"Уреди\"."
+
+#: class-scan.php:1700
+msgid "Can be fixed manually by editing the respective mu-plugin file in the /wp-content/mu-plugins/ directory "
+msgstr "Може бити ручно поправљено уређивањем mu-plugin датотеке у /wp-content/mu-plugins/ директоријуму"
+
+#: class-scan.php:1738
+msgid "Cannot be fixed automatically, as the mixed content is coming from an external domain. Contact the owner of the domain to update the CSS/JS file"
+msgstr "Не може бити аутоматски поправљено, јер мешовити садржај долази из вањског домена. Обратите се власнику домена за ажурирање CSS/JS датотеке"
+
+#: class-scan.php:365
+#, php-format
+msgid "Checking if external js or css files contain http links, %s of %s"
+msgstr "Проверање да ли вањске js or css датотеке садрже http везе, %s од %s"
+
+#: class-scan.php:313
+#, php-format
+msgid "Checking posts for external URLs, %s of %s"
+msgstr "Провјера постова за вањске URL адресе, %s од %s"
+
+#: class-scan.php:337
+msgid "Checking which postmeta contain external resources"
+msgstr "Проверавање која постмета садржи вањске ресурсе"
+
+#: class-scan.php:350
+#, php-format
+msgid "Checking which resources can't load over ssl, %s of %s"
+msgstr "Проверавање који ресурси не могу бити учитани преко ssl-а, %s од %s"
+
+#: class-scan.php:326
+msgid "Checking widgets for external URLs"
+msgstr "Проверавање виџета за вањске URL адресе"
+
+#: csp-violation-endpoint.php:158
+msgid "Click 'Enforce' to enforce the configuration on your site."
+msgstr "Кликните на „Примени“ да бисте применили конфигурацију на свом сајту."
+
+#: class-scan.php:1719
+#: class-scan.php:1794
+#: class-scan.php:1832
+#: class-scan.php:1879
+#: class-scan.php:2179
+msgid "Copyright warning!"
+msgstr "Упозорење о ауторским правима!"
+
+#: class-scan.php:1643
+msgid "Downloading files from other websites can cause serious copyright issues! It is always illegal to use images, files, or any copyright protected material on your own site without the consent of the copyrightholder. Please ask the copyrightholder for permission. Use this function at your own risk."
+msgstr "Преузимање датотека са других веб страница може изазвати озбиљне проблеме са ауторским правиима! Противзаконито је користити слике, датотеке или било који други материјал који је заштићен ауторским правима на сопственој страници, без пристанка власника ауторских права. Користите ову функцију на свој ризик."
+
+#: class-admin.php:539
+msgid "Elementor mixed content successfully converted."
+msgstr "Елементор мешовити садржај је успешно конвертован."
+
+#: class-scan.php:1626
+msgid "file"
+msgstr "датотека"
+
+#: class-scan.php:430
+msgid "Finished scan"
+msgstr "Завршено скенирање"
+
+#: csp-violation-endpoint.php:155
+msgid "Follow these steps to complete the setup:"
+msgstr "Пратите ове кораке да бисте завршили поставку:"
+
+#: class-scan.php:299
+msgid "Generating file list"
+msgstr "Генерисање листе датотека"
+
+#: class-scan.php:257
+msgid "Generating web page list"
+msgstr "Генерисање листе веб страница"
+
+#: class-scan.php:133
+#: class-scan.php:147
+msgid "Great! Your scan last completed without errors."
+msgstr "Одлично! Ваше скенирање је завршено без грешака!"
+
+#. Description of the plugin
+msgid "Heavyweight Security Features"
+msgstr ""
+
+#: class-headers.php:209
+msgid "HSTS not enabled"
+msgstr "HSTS није омогућен"
+
+#: class-headers.php:196
+#: class-headers.php:202
+msgid "HSTS Preload"
+msgstr "HSTS преоптерећен"
+
+#. Plugin URI of the plugin
+msgid "https://really-simple-ssl.com/pro"
+msgstr "https://really-simple-ssl.com/pro"
+
+#. Author URI of the plugin
+msgid "https://www.really-simple-plugins.com"
+msgstr "https://www.really-simple-plugins.com"
+
+#: class-scan.php:1811
+msgid "iFrame in the wp_postmeta database table"
+msgstr "iFrame у wp_postmeta табели базе података"
+
+#: class-scan.php:1718
+#: class-scan.php:1793
+#: class-scan.php:1831
+#: class-scan.php:1878
+msgid "Import and insert file"
+msgstr "Увоз и уметање датотеке"
+
+#: really-simple-ssl-pro-multisite.php:288
+#: really-simple-ssl-pro.php:285
+msgid "Install and activate Really Simple SSL"
+msgstr "Инсталирајте и активирајте Really Simple SSL"
+
+#: csp-violation-endpoint.php:143
+msgid "Learning Mode is active for your Content Security and will complete in %s days."
+msgstr "Режим учења је активан за вашу безбедност садржаја и биће завршен за %s дана."
+
+#: class-licensing.php:179
+#: class-licensing.php:201
+#: class-licensing.php:698
+#: class-licensing.php:705
+#: class-licensing.php:712
+#: class-licensing.php:719
+#: class-licensing.php:726
+#: class-licensing.php:741
+msgid "License"
+msgstr "Лиценца"
+
+#: class-scan.php:380
+#, php-format
+msgid "Looking up blocked resources in files, %s of %s"
+msgstr "Тражење блокираних ресурса у датотекама, %s од %s"
+
+#: class-scan.php:407
+msgid "Looking up blocked resources in postmeta"
+msgstr "Тражење блокираних ресурса у постметама"
+
+#: class-scan.php:394
+msgid "Looking up blocked resources in posts"
+msgstr "Тражење блокираних ресурса у објавама"
+
+#: class-scan.php:422
+msgid "Looking up blocked resources in widgets"
+msgstr "Тражење блокираних ресурса у виџетима"
+
+#: class-scan.php:1861
+msgid "Mixed content found in a widget. Press the edit link to edit the widget manually."
+msgstr "Пронађен мешовити садржај у виџету. Притисните да уредите линк да бисте могли ручно уредити виџет."
+
+#: class-scan.php:1776
+msgid "Mixed content found in in a post. Can be fixed automatically by pressing the fix button. Pressing the edit button allows you to update the link in the post manually."
+msgstr "Мешовити садржај пронађен у објави. Ово може бити поправљено аутоматски притиском на дугме за поправке. Притиском на дугме за уређивање добијате могућност да ручно уредите линк у објави."
+
+#: class-scan.php:1813
+msgid "Mixed content from a postmeta table in your database. Usually won't cause any mixed content on the front-end. Check the post if it causes mixed content. If so, the link can be replace directly in the database."
+msgstr "Мешовити садржај из постмета табеле у вашој бази података. Обично не узрокује никакав мешовити садржај на предњем крају. Проверите пост ако узрокује мешовити садржај. Ако је тако, веза може бити директно замењена у бази података."
+
+#: class-scan.php:1705
+#, php-format
+msgid "Mixed content in %s"
+msgstr "Мешовити садржај у %s"
+
+#: class-scan.php:1744
+msgid "Mixed content in CSS/JS file from other domain"
+msgstr "Мешовити садржај у CSS/JS датотеци из другог домена"
+
+#: class-scan.php:1670
+msgid "Mixed content in PHP file in %s"
+msgstr "Мешовити садржај у PHP датотеци у %s"
+
+#: class-scan.php:1781
+msgid "Mixed content in post: "
+msgstr "Мешовити садржај у објави:"
+
+#: class-scan.php:1811
+msgid "Mixed content in the postmeta table"
+msgstr "Мешовити садржај у табели постмета"
+
+#: class-scan.php:1739
+#, php-format
+msgid "Mixed content resources: %s"
+msgstr "Ресурси мешовитог садржаја: %s"
+
+#: class-scan.php:1618
+msgid "mu plugin file"
+msgstr "mu plugin датотека"
+
+#: class-licensing.php:562
+#, php-format
+msgid "Multisite detected. Please upgrade to %smultisite%s."
+msgstr "Откривен Multisite. Размислите о надограђивању на %smultisite%s."
+
+#: class-scan.php:218
+#: class-scan.php:1914
+msgid "Never"
+msgstr "Никада"
+
+#: class-admin.php:553
+msgid "No redirect to http detected."
+msgstr "Није откривено преусмеравање на http."
+
+#: class-licensing.php:630
+msgid "Open"
+msgstr "Отворити"
+
+#: really-simple-ssl-pro-multisite.php:278
+#: really-simple-ssl-pro-multisite.php:303
+#: really-simple-ssl-pro.php:276
+msgid "Please %supgrade%s to the latest version to be able use the full functionality of the plugin."
+msgstr "Молимо %sнадоградите%s на најновију верзију да бисте могли да користите пуну функционалност plugin-a."
+
+#: class-licensing.php:584
+msgid "Please activate your license key."
+msgstr "Молимо да активирате ваш лиценцни кључ."
+
+#: class-licensing.php:576
+#, php-format
+msgid "Please enter your license key. Available in your %saccount%s."
+msgstr "Молимо да унесете свој лиценцни кључ. Доступно на вашем %sналогу%s."
+
+#: really-simple-ssl-pro-multisite.php:276
+#: really-simple-ssl-pro.php:274
+msgid "Please install and activate Really Simple SSL to enable the add-on."
+msgstr "Молимо да инсталирате и активирате Really Simple SSL да омогућите add-on."
+
+#: class-scan.php:2184
+msgid "Please note that any changes you have made since to your current files, will be lost."
+msgstr "Имајте на уму да ће све промене које сте направили у тренутним датотекама бити изгубљене."
+
+#: really-simple-ssl-pro-multisite.php:270
+#: really-simple-ssl-pro-multisite.php:299
+msgid "Plugin dependency error"
+msgstr "Грешка у зависности од plugin-a"
+
+#: class-scan.php:1620
+msgid "plugin file"
+msgstr "plugin датотека"
+
+#: class-admin.php:552
+#: class-admin.php:557
+msgid "Potential redirect loop."
+msgstr "Потенцијална петља за преусмеравање."
+
+#: class-licensing.php:632
+msgid "Premium"
+msgstr "Премиум"
+
+#. Author of the plugin
+msgid "Really Simple Plugins"
+msgstr "Really Simple Plugins"
+
+#: really-simple-ssl-pro-multisite.php:302
+msgid "Really Simple SSL needs to be updated to the latest version to be compatible."
+msgstr "Really Simple SSL треба ажурирати на најновију верзију да би био компатибилан."
+
+#: really-simple-ssl-pro-multisite.php:28
+#: really-simple-ssl-pro.php:27
+msgid "Really Simple SSL Pro cannot be activated. The plugin requires PHP 7.2 or higher"
+msgstr "Really Simple SSL Pro не може бити активиран. Додатак захтева верзију PHP 7.2 или новију"
+
+#: really-simple-ssl-pro-multisite.php:34
+#: really-simple-ssl-pro.php:33
+msgid "Really Simple SSL Pro cannot be activated. The plugin requires WordPress 5.7 or higher"
+msgstr "Really Simple SSL Pro не може бити активиран. Додатак захтева верзију WordPress 5.7 или новију"
+
+#: really-simple-ssl-pro-multisite.php:275
+#: really-simple-ssl-pro.php:273
+msgid "Really Simple SSL Pro is an add-on for Really Simple SSL, and cannot do it on its own :-("
+msgstr "Really Simple SSL Pro је додатак за Really Simple SSL, и не може радити сам :-("
+
+#: class-scan.php:2189
+msgid "Restore files"
+msgstr "Врати датотеке у претходно стање"
+
+#: csp-violation-endpoint.php:157
+msgid "Review the detected configuration in 'Content Security Policy'."
+msgstr "Прегледајте откривену конфигурацију у „Смерницама безбедности садржаја“."
+
+#: class-scan.php:2178
+msgid "Roll back changes made to your files"
+msgstr "Враћање промена извршених у датотекама"
+
+#: class-importer.php:61
+msgid "Roll back file changes"
+msgstr "Враћање промена датотека"
+
+#: class-scan.php:270
+#, php-format
+msgid "Searching for js and css files and links to external resources in website, %s of %s"
+msgstr "Тражење js и css датотека и веза за вањске ресурсе на веб страници,%s од %s"
+
+#: class-scan.php:285
+#, php-format
+msgid "Searching for mixed content in css and js files, %s of %s"
+msgstr "Тражење мешовитог садржаја у css и js датотекама, %s од %s"
+
+#: class-admin.php:633
+msgid "Settings"
+msgstr "Поставке"
+
+#: class-importer.php:537
+msgid "Something went wrong."
+msgstr "Нешто је пошло наопако."
+
+#: class-importer.php:93
+msgid "Something went wrong. If this doesn't work, you can put the original files back by changing files named 'rsssl-bkp-filename' to filename."
+msgstr "Нешто је пошло наопако. Ако ово не успе, оригиналне датотеке можете вратити тако што ћете променити датотеке под именом 'rsssl-bkp-filenam' у 'filenamе'."
+
+#: class-importer.php:121
+#: class-importer.php:162
+#: class-importer.php:200
+#: class-importer.php:242
+#: class-importer.php:278
+msgid "Something went wrong. Please refresh the page and try again, or fix manually."
+msgstr "Нешто је пошло наопако. Освежите страницу и покушајте поново, или ручно поправите."
+
+#: class-licensing.php:631
+msgid "Success"
+msgstr "Успех"
+
+#: class-headers.php:176
+#: class-headers.php:382
+msgid "The %s security header is not set by Really Simple SSL, but has a non-recommended value: \"%s\"."
+msgstr ""
+
+#: class-importer.php:179
+msgid "The file could not be downloaded. It might not exist, or downloading is blocked. Fix manually."
+msgstr "Ова датотека није могла бити преузета. Можда не постоји или је преузимање блокирано. Поправите ручно."
+
+#: class-importer.php:221
+#: class-importer.php:258
+#: class-importer.php:297
+msgid "The file could not be downloaded. The file might not exist, or downloading is be blocked by the server. Fix manually."
+msgstr "Ова датотека није могла бити преузета. Можда не постоји или је преузимање блокирао сервер. Поправите ручно."
+
+#: class-headers.php:413
+msgid "The following recommended security headers have not been set: %s"
+msgstr ""
+
+#: class-scan.php:151
+msgid "The last scan was completed with errors. Are you sure these issues don't impact your site?"
+msgstr "Последње скенирање је завршено са грешкама. Јесте ли сигурни да ови проблеми не утичу на вашу страницу?"
+
+#: class-scan.php:137
+msgid "The last scan was completed with errors. Only migrate if you are sure the found errors are not a problem for your site."
+msgstr "Последње скенирање је завршено са грешкама. Мигрирајте само ако сте сигруни да пронађене грешке нису проблем за вашу страницу."
+
+#: class-licensing.php:570
+msgid "The license information could not be retrieved at this moment. Please try again at a later time."
+msgstr "Информације о лиценци тренутно нису могле бити преузете. Покушајте поново касније."
+
+#: class-scan.php:1616
+msgid "theme file"
+msgstr "датотека теме"
+
+#: class-importer.php:136
+msgid "There was a problem editing the file. Please try manually."
+msgstr "Постоји проблем са уређивањем датотеке. Покушајте ручно."
+
+#: class-licensing.php:713
+msgid "This domain is not activated for this Really Simple SSL Pro license. Please activate the license for this domain."
+msgstr "Овај домен није активиран за ову Really Simple SSL Pro лиценцу. Активирајте лиценцу за овај домен."
+
+#: class-scan.php:1644
+msgid "This downloads the file from the domain without SSL, inserts it into WP media, and changes the URL to the new URL."
+msgstr "Ово преузима датотеку са домена без SSL-а, убацује је у WP медиј, и мења URL адресу у нову URL адресу."
+
+#: class-licensing.php:610
+#, php-format
+msgid "This license is not valid for this product. Find out why on your %saccount%s."
+msgstr "Лиценца није важећа за овај производ. Сазнајте зашто на вашем %sналогу%s."
+
+#: class-licensing.php:603
+#, php-format
+msgid "This license is not valid. Find out why on your %saccount%s."
+msgstr "Ова дозвола није важећа. Сазнајте зашто на свом %sналогу%s."
+
+#: class-scan.php:2182
+msgid "This will put the files back that were changed by the fix option in Really Simple SSL Pro."
+msgstr "Ово ће вратити датотеке које је променила опција за поправке у Really Simple SSL Pro."
+
+#: class-admin.php:572
+#: class-admin.php:578
+msgid "TLS version"
+msgstr "TLS верзија"
+
+#: class-admin.php:573
+msgid "TLS version is up-to-date"
+msgstr "ТЛС верзија је ажурирана"
+
+#: class-licensing.php:494
+msgid "unlimited"
+msgstr "неограничено"
+
+#: class-licensing.php:518
+msgid "Unlimited activations available."
+msgstr "Доступне неограничене активације."
+
+#: class-admin.php:607
+msgid "Update Really Simple SSL Free to the latest version for optimal compatibility."
+msgstr "Ажурирајте Really Simple SSL Free на најновију верзију за оптималну компатибилност."
+
+#: class-licensing.php:507
+#, php-format
+msgid "Upgrade to a %s5 sites or Agency%s license."
+msgstr "Надоградите на %s5 странице или Agency%s лиценцу."
+
+#: class-licensing.php:510
+#, php-format
+msgid "Upgrade to an %sAgency%s license."
+msgstr "Надоградите на %sAgency%s лиценцу."
+
+#: class-scan.php:1622
+msgid "uploads file, possibly generated by plugin or theme"
+msgstr "отпрема датотеку, могуће генерисану додатком или темом"
+
+#: class-licensing.php:537
+#, php-format
+msgid "Valid license for %s."
+msgstr "Лиценца важи до %s."
+
+#: class-licensing.php:501
+#, php-format
+msgid "Valid until %s."
+msgstr "Важи до %s."
+
+#: class-licensing.php:629
+msgid "Warning"
+msgstr "Упозорење"
+
+#: class-scan.php:1856
+#, php-format
+msgid "Widget area \"%s\""
+msgstr "Област виџета \"%s\""
+
+#: class-scan.php:1866
+msgid "Widget with mixed content"
+msgstr "Виџет са мешовитим садржајем"
+
+#: class-licensing.php:742
+msgid "You are using Really Simple SSL Pro single site on a multisite environment. Please install Really Simple SSL multisite networkwide for multisite support."
+msgstr "Користите Really Simple SSL Pro једну локацију у окружењу са више локација. Молимо инсталирајте Really Simple SSL pro на више локација широм мреже за подршку за више локација."
+
+#: class-scan.php:1665
+msgid "You can edit the source file manually by pressing the edit button."
+msgstr "Можете уредити извор ручно притиском на дугме \"Уреди\"."
+
+#: class-licensing.php:513
+#, php-format
+msgid "You can renew your license on your %saccount%s."
+msgstr "Можете обновити вашу лиценцу на вашем %sналогу%s."
+
+#: class-licensing.php:692
+#, php-format
+msgid "You can upgrade on your %saccount%s."
+msgstr "Можете надоградити на вашем %sналогу%s."
+
+#: class-licensing.php:720
+msgid "You do not have any activations left on your Really Simple SSL Pro license. Please upgrade your plan for additional activations."
+msgstr "На вашој Really Simple SSL Pro лиценци нису преостале никакве активације. Надоградите ваш план за додатне активације."
+
+#: class-licensing.php:501
+msgid "You have a lifetime license."
+msgstr "Имате доживотну лиценцу."
+
+#: class-scan.php:142
+msgid "You haven't scanned the site yet, you should scan your site to check for possible issues."
+msgstr "Још увек нисте скенирали страницу, требало би да скенирате страницу да бисте проверили да ли има проблема."
+
+#: class-importer.php:107
+msgid "Your files already were restored."
+msgstr "Датотеке су већ биле враћене у претходно стање."
+
+#: class-importer.php:105
+msgid "Your files were restored."
+msgstr "Датотеке су враћене у претходно стање."
+
+#: class-licensing.php:596
+#, php-format
+msgid "Your license could not be found in our system. Please contact %ssupport%s."
+msgstr "Ваша лиценца није пронађена у нашем систему. Молимо, контактирајте %sподршку%s."
+
+#: class-licensing.php:590
+#, php-format
+msgid "Your license has been revoked. Please contact %ssupport%s."
+msgstr "Ваша лиценца је опозвана. Молимо, контактирајте %sподршку%s."
+
+#: class-licensing.php:623
+#, php-format
+msgid "Your license key has expired. Please renew your license key on your %saccount%s."
+msgstr "Ваш лиценцни кључ је истекао. Обновите ваш лиценцни кључ на вашем %sналогу%s."
+
+#: class-licensing.php:675
+msgid "Your Really Simple SSL Pro license hasn't been activated."
+msgstr "Ваша Really Simple SSL Pro лиценца није активирана. "
+
+#: class-licensing.php:676
+msgid "Your Really Simple SSL Pro license is not valid."
+msgstr "Ваша Really Simple SSL Pro лиценца није важећа."
+
+#: class-licensing.php:699
+msgid "Your Really Simple SSL Pro license key has expired. Please renew your license to continue receiving updates and premium support."
+msgstr "Ваш Really Simple SSL Pro лиценцни кључ је истекао. Обновите ваш лиценцни кључ да наставите примати ажурирања и премиум подршку."
+
+#: class-licensing.php:727
+msgid "Your Really Simple SSL Pro license key hasn't been activated yet. You can activate your license key on the license tab."
+msgstr "Ваш Really Simple SSL Pro лиценцни кључ још увек није активиран. Можете активирати ваш лиценцни кључ у картици за лиценце."
+
+#: class-licensing.php:706
+msgid "Your Really Simple SSL Pro license key is not activated. Please activate your license to continue receiving updates and premium support."
+msgstr "Ваш Really Simple SSL Pro лиценцни кључ није активиран. Активирајте вашу лиценцу да наставите примати ажурирања и премиум подршку."
+
+#: class-headers.php:197
+#, php-format
+msgid "Your site has been configured for the HSTS preload list. If you have submitted your site, it will be preloaded. Click %shere%s to submit."
+msgstr "Ваша страница је конфигурисана за HSTS листу. Ако сте потврдили вашу страницу, биће унапред учитана. Кликните %sовде%s да потврдите."
+
+#: class-headers.php:210
+msgid "Your site is not configured for HSTS yet."
+msgstr "Ваша страница још увек није конфигурисана за HSTS."
+
+#: class-headers.php:203
+msgid "Your site is not yet configured for the HSTS preload list."
+msgstr "Ваша страница још увек није конфигурисана за HSTS листу учитавања унапред."
+
+#: class-admin.php:593
+msgid "Your site redirects 404 pages to the http:// version of your homepage. This can cause mixed content issues with images."
+msgstr "Ваша страница преусмерава све 404 странице на http://верзију ваше почетне стране. Ово може изазвати проблеме са мешовитм садржајем."
+
+#: class-admin.php:579
+msgid "Your site uses an outdated version of TLS. Upgrade to TLS 1.2 or TLS 1.3 to keep your site secure."
+msgstr "Ваша страница користи застарелу верзију TLS-а. Надоградите на TLS 1.2 или TLS 1.3 да би ваша страница била безбедна."
+
+#. Plugin Name of the plugin
+msgid "Really Simple SSL Pro"
+msgstr ""
+
+#: really-simple-ssl-pro.php:296
+msgid "Really Simple SSL Free needs to be updated to the latest version to be compatible."
+msgstr ""
+
+#: really-simple-ssl-pro.php:297
+msgid "Visit the plugins overview to update Really Simple SSL."
+msgstr ""

@@ -2,1756 +2,626 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Really Simple SSL pro\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-07 08:36+0100\n"
-"PO-Revision-Date: 2021-10-11 15:35+0000\n"
-"Last-Translator: Hungarian - ideasbcn11@gmail.com\n"
-"Language-Team: Magyar\n"
-"Language: hu_HU\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Last-Translator: \n"
+"Language-Team: Hungarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-12-07 08:36+0100\n"
+"PO-Revision-Date: 2023-02-07 07:53+0000\n"
+"Language: hu_HU\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.5.3; wp-5.8.1"
+"X-Loco-Version: 2.5.8; wp-5.9.2\n"
 
-#: class-cert-expiration.php:183
-msgid " the SSL certificate is expiring soon. The ValidTo date is:"
-msgstr "Az SSL tanúsítvány hamarosan lejár. Az érvényességi idő vége:"
-
-#: class-importer.php:12 class-licensing.php:18 class-multisite.php:28
-#: class-premium-options.php:13 class-scan.php:48 class-support.php:14
-#: csp-violation-endpoint.php:13
+#: class-admin.php:12
+#: class-scan.php:44
+#: csp-violation-endpoint.php:10
 #, php-format
 msgid "%s is a singleton class and you cannot create a second instance."
 msgstr "% s egy singleton osztály és nem hozható létre másodpéldány."
 
-#: class-multisite.php:203
-#, php-format
-msgid "%s to %s of %s results"
-msgstr "%s-%s %s találatból"
-
-#: class-licensing.php:492 class-licensing.php:600
+#: class-licensing.php:521
+#: class-licensing.php:617
 #, php-format
 msgid "%s/%s activations available."
 msgstr "%s/%s aktivációs lehetőség érhető el."
 
-# Can I replace Activate with Aktiváld or would this break the link?
-#: class-premium-options.php:1247
+#: class-licensing.php:690
 #, php-format
 msgid "%sActivate%s your license."
 msgstr "%sAktiváld%s a licencet."
 
-# Can I replace the text within %s or would it break the link?
-#: class-licensing.php:692
-#, php-format
-msgid "%sGo to the settings page%s or %spurchase a license%s."
-msgstr "%sLépj a beállítások oldalra%s vagy %svásárolj licenszt%s."
-
-#: class-premium-options.php:1045
+#: class-admin.php:558
 #, php-format
 msgid "%sRead more%s."
 msgstr "%sTovábbi részletek%s."
 
-#: class-premium-options.php:2180
-#, php-format
-msgid "%sScan again%s"
-msgstr "%sÚjravizsgálás%s"
-
-#: class-premium-options.php:2184
-#, php-format
-msgid "%sScan for issues%s"
-msgstr "%sProblémák keresése%s"
-
-# An example would be helpful here, but generally speaking, in many cases , there is no need to write anything between a date and timestamp unless you want to emphatise one of them
-#: class-scan.php:213
+#: class-scan.php:224
 #, php-format
 msgctxt "'date' at 'time'"
 msgid "%s at %s"
 msgstr "%s -n %s"
 
-#: class-multisite.php:205
-#, php-format
-msgid "(filtered from %s results)"
-msgstr "(%s találatból szűrve)"
-
-#: grid/templates/feature-policy.php:10
-msgid "* is the default value. This means the feature is allowed."
-msgstr "* az alapértelmezett érték. Eszerint a funkció engedélyezett."
-
-#: class-premium-options.php:1095
-msgid ""
-".htaccess file not writable. Set the .htaccess file permissions to writeable "
-"or add the following lines manually:"
-msgstr ""
-"A .htaccess fájl nem írható. Állítsd át a .htaccess fájl engedélyeit hogy "
-"írható legyen, vagy írd bele az alábbi sorokat kézzel:"
-
-#: grid/templates/premium-settings-footer.php:24
-msgid ".htaccess unavailable on nginx"
-msgstr "A .htaccess nem működik nginx-en"
-
-#: class-premium-options.php:1045
+#: class-admin.php:558
 msgid "A redirect to http was detected. This might result in redirect loops."
+msgstr "Http-re való átirányítás észlelve. Ez végtelen átirányítási ciklushoz vezethet."
+
+#: csp-violation-endpoint.php:121
+msgid "A required database table is missing. Please check if you have permissions to add this database table."
 msgstr ""
-"Http-re való átirányítás észlelve. Ez végtelen átirányítási ciklushoz "
-"vezethet."
 
-#: class-cert-expiration.php:182
-msgid "According to the check that was performed just now on "
-msgstr "A most végzett ellenőrzés szerint "
-
-#: grid/templates/scan-results-container.php:9 grid_ms/templates/sites.php:70
-msgid "Action"
-msgstr "Művelet"
-
-#: class-multisite.php:334
-msgid "activate"
-msgstr "Aktivál"
-
-#: grid/templates/license-footer.php:14
-msgid "Activate license"
-msgstr "Licenc aktiválása"
-
-#: class-licensing.php:60
+#: class-licensing.php:59
 msgid "Activate your license for automatic updates."
 msgstr ""
 
-#: class-premium-options.php:1647
-#, php-format
-msgid ""
-"After enabling this option, you have to %ssubmit%s your site. Please read "
-"the instructions on this page carefully before doing so."
-msgstr ""
-"Miután aktiválod ezt a beállítást, be kell %sküldened%s a webhelyed. Olvasd "
-"el figyelmesen a útmutatót ezen az oldalon mielőtt megteszed."
-
-#: csp-violation-endpoint.php:419
-msgid "ago"
-msgstr "ezelőtt"
-
-#: csp-violation-endpoint.php:407
-msgid "Allow"
-msgstr "Engedélyez"
-
-#: grid/templates/csp-container.php:12
-msgid "Allow/revoke"
-msgstr "Engedélyezés/tiltás"
-
-#: grid/templates/csp-header.php:9
-msgid "Allowed"
-msgstr "Engedélyezve"
-
-#: grid/templates/permissions-policy.php:19
-msgid "allowed"
-msgstr "engedélyezve"
-
-#: class-scan.php:2613 class-scan.php:2648 class-scan.php:2693
-#: class-scan.php:2765
-msgid "Always backup first!"
-msgstr "Mindig készíts biztonsági mentést először!"
-
-#: class-multisite.php:354
-msgid "Auto replace mixed content"
-msgstr "Vegyes tartalom automatikus cseréje"
-
-#: class-scan.php:2695
-msgid ""
-"Be very carefull with this function! Please backup your site before "
-"proceeding."
-msgstr ""
-"Légy nagyon óvatos ezzel a funkcióval! Legyen egy biztonsági mentés a "
-"webhelyről mielőtt folytatod."
-
-#: class-scan.php:2615
-msgid ""
-"Be very carefull with this function! Please backup your site before "
-"proceeding. This function will also create a backup of each changed file, "
-"name rsssl-bkp-filename. You can use the 'roll back files' function to "
-"restore the original files."
-msgstr ""
-"Légy nagyon óvatos ezzel a funkcióval! Legyen egy biztonsági mentés a "
-"webhelyről mielőtt folytatod. Ez a funkció egy biztonsági másolatot készít "
-"minden módosított fájlról, rsssl-bkp-filename néven. Használhatod a 'fájlok "
-"visszaállítása' funkciót az eredeti fájlok visszaállításához."
-
-#: grid/templates/csp-header.php:8
-msgid "Blocked"
-msgstr "Tiltva"
-
-#: class-scan.php:1806 class-scan.php:1890 class-scan.php:1992
-#: class-scan.php:2041 class-scan.php:2103
+#: class-scan.php:1665
+#: class-scan.php:1699
+#: class-scan.php:1775
+#: class-scan.php:1812
+#: class-scan.php:1861
 #, php-format
 msgid "Blocked URL: %s"
 msgstr "Blokkolt URL: %s"
 
-#: class-scan.php:1862
+#: class-scan.php:1624
 msgid "cached file, deactivate cache to see the actual source"
-msgstr ""
-"gyorsítótárazott fájl, kapcsold ki a gyorsítótárat, hogy lásd a tényleges "
-"forrást"
+msgstr "gyorsítótárazott fájl, kapcsold ki a gyorsítótárat, hogy lásd a tényleges forrást"
 
-#: class-scan.php:1892
-msgid ""
-"Can be fixed automatically by pressing the Fix button. If fixing fails, the "
-"source file can be edited manually by pressing the Edit button."
-msgstr ""
-"Automatikusan megoldható a Fix gomb használatával. Ha nem sikerül megoldani, "
-"a forrás fájl manuálisan szerkeszthető a Szerkesztés gomb használatával."
+#: class-scan.php:1700
+msgid "Can be fixed automatically by pressing the Fix button. If fixing fails, the source file can be edited manually by pressing the Edit button."
+msgstr "Automatikusan megoldható a Fix gomb használatával. Ha nem sikerül megoldani, a forrás fájl manuálisan szerkeszthető a Szerkesztés gomb használatával."
 
-#: class-scan.php:1941
-msgid ""
-"Cannot be fixed automatically, as the mixed content is coming from an "
-"external domain. Contact the owner of the domain to update the CSS/JS file"
+#: class-scan.php:1700
+msgid "Can be fixed manually by editing the respective mu-plugin file in the /wp-content/mu-plugins/ directory "
 msgstr ""
-"Nem lehet automatikusan megoldani, mivel a vegyes tartalom egy külső "
-"domainről származik. Lépj kapcsolatba a domain tulajdonosával, hogy "
-"frissítésre kerüljön a CSS/JS fájl"
 
-#: class-scan.php:407
+#: class-scan.php:1738
+msgid "Cannot be fixed automatically, as the mixed content is coming from an external domain. Contact the owner of the domain to update the CSS/JS file"
+msgstr "Nem lehet automatikusan megoldani, mivel a vegyes tartalom egy külső domainről származik. Lépj kapcsolatba a domain tulajdonosával, hogy frissítésre kerüljön a CSS/JS fájl"
+
+#: class-scan.php:365
 #, php-format
 msgid "Checking if external js or css files contain http links, %s of %s"
 msgstr "Külső js és css fájlok ellenőrzése http linkek után, %s %s-ból"
 
-#: class-scan.php:334
+#: class-scan.php:313
 #, php-format
 msgid "Checking posts for external URLs, %s of %s"
 msgstr "Posztok ellenőrzése külső URL-ek után, %s %s-ból"
 
-#: class-scan.php:364
+#: class-scan.php:337
 msgid "Checking which postmeta contain external resources"
 msgstr "Annak ellenőrzése, hogy mely postmeta tartalmaz külső erőforrásokat"
 
-#: class-scan.php:383
+#: class-scan.php:350
 #, php-format
 msgid "Checking which resources can't load over ssl, %s of %s"
-msgstr ""
-"Annak ellenőrzése, hogy mely erőforrás nem tölt be ssl-en keresztül, %s %s-"
-"ból"
+msgstr "Annak ellenőrzése, hogy mely erőforrás nem tölt be ssl-en keresztül, %s %s-ból"
 
-#: class-scan.php:350
+#: class-scan.php:326
 msgid "Checking widgets for external URLs"
 msgstr "Annak ellenőrzése, hogy mely widget tartalmaz külső URL-t"
 
-#: csp-violation-endpoint.php:517
-msgid "Close"
-msgstr "Bezárás"
-
-#: class-premium-options.php:954
-msgid "Configure your site for the HSTS preload list"
-msgstr "Konfigurálja webhelyét a HSTS előtöltés listához"
-
-#: class-premium-options.php:958
-msgid "Content Security Policy"
-msgstr "Tartalom-biztonság szabályok"
-
-#: class-premium-options.php:457
-msgid "Content Security Policy configuration"
-msgstr "Tartalom-biztonsági szabályzat beállítása"
-
-#: class-premium-options.php:2280
-msgid "Content Security Policy reporting enabled"
-msgstr "Tartalom-biztonsági szabályzat jelentései bekapcsolva"
-
-#: class-premium-options.php:1193
-msgid ""
-"Content Security Policy reporting is paused to limit server resources. "
-"Please start configuring your Content Security Policy and enable reporting "
-"again."
+#: csp-violation-endpoint.php:158
+msgid "Click 'Enforce' to enforce the configuration on your site."
 msgstr ""
-"Tartalom-biztonság szabályok jelentése fel lett függesztve hogy spóroljunk a "
-"szerver erőforássaival. Kérlek állítsd be a Tartalom-biztonság szabályaidat "
-"és ezután engedélyezd a jelentéseket újra."
 
-#: class-scan.php:2477 class-scan.php:2566 class-scan.php:2606
-#: class-scan.php:2686
+#: class-scan.php:1719
+#: class-scan.php:1794
+#: class-scan.php:1832
+#: class-scan.php:1879
+#: class-scan.php:2179
 msgid "Copyright warning!"
 msgstr "Copyright figyelmeztetés!"
 
-#: class-multisite.php:334
-msgid "deactivate"
-msgstr "deaktivál"
+#: class-scan.php:1643
+msgid "Downloading files from other websites can cause serious copyright issues! It is always illegal to use images, files, or any copyright protected material on your own site without the consent of the copyrightholder. Please ask the copyrightholder for permission. Use this function at your own risk."
+msgstr "Fájlok letöltése más weboldalakról komoly copyright gondokat okozhat! Minden esetben illegális olyan copyright által védett kép, fájl vagy egyéb tartalom felhasználása a webhelyen amit nem engedélyezett a tulajdonosa. Kérj engedélyt a tulajdonostól. Saját felelősségre használd ezt a funkciót."
 
-#: grid/templates/license-footer.php:12
-msgid "Deactivate license"
-msgstr "Licenc deaktiválása"
-
-#: grid/templates/scan-results-container.php:7
-msgid "Description"
-msgstr "Leírás"
-
-#: class-scan.php:1808 class-scan.php:1901 class-scan.php:1943
-#: class-scan.php:1996 class-scan.php:2046 class-scan.php:2104
-msgid "Details"
-msgstr "Részletek"
-
-#: grid/templates/csp-container.php:9
-msgid "Directive"
-msgstr "Direktíva"
-
-#: grid/templates/license-footer.php:17
-msgid ""
-"Disable access to the license page for all other accounts except your own."
-msgstr ""
-"Letiltja a licencoldalhoz való hozzáférést minden más fiók számára, kivéve a "
-"sajátot."
-
-#: grid/templates/license-footer.php:19
-msgid "Disable for all users, except yourself"
-msgstr "Letiltás minden más felhasználónak, kivéve magadnak"
-
-#: class-premium-options.php:1402
-msgid "Disabled"
-msgstr "Letiltva"
-
-#: grid/templates/premium-settings-footer.php:7
-#, php-format
-msgid "Does not work with %s"
-msgstr "Nem működik ezzel: %s"
-
-#: grid/templates/csp-container.php:11
-msgid "Domain/protocol"
-msgstr "Domain/protokoll"
-
-#: class-scan.php:2480 class-scan.php:2569 class-scan.php:2608
-#: class-scan.php:2688
-msgid ""
-"Downloading files from other websites can cause serious copyright issues! It "
-"is always illegal to use images, files, or any copyright protected material "
-"on your own site without the consent of the copyrightholder. Please ask the "
-"copyrightholder for permission. Use this function at your own risk."
-msgstr ""
-"Fájlok letöltése más weboldalakról komoly copyright gondokat okozhat! Minden "
-"esetben illegális olyan copyright által védett kép, fájl vagy egyéb tartalom "
-"felhasználása a webhelyen amit nem engedélyezett a tulajdonosa. Kérj "
-"engedélyt a tulajdonostól. Saját felelősségre használd ezt a funkciót."
-
-#: class-scan.php:2533 class-scan.php:2760
-msgid "Edit"
-msgstr "Szerkesztés"
-
-#: class-scan.php:2767
-msgid "Editing files can break your site if you do not do it right!"
-msgstr "A fájlok szerkesztése tönkre teheti az webhelyed ha nem jól csinálod!"
-
-#: class-premium-options.php:1027
+#: class-admin.php:539
 msgid "Elementor mixed content successfully converted."
 msgstr "Elementor vegyes tartalom sikeresen konvertálva"
 
-#: class-multisite.php:361
-msgid "Enable this if you want the mixed content fixer for admin."
-msgstr "Engedélyezd ha kéred az admin számára a vegyes tartalom javítót."
-
-#: class-multisite.php:353
-msgid "Enable this if you want to automatically replace mixed content."
-msgstr "Engedélyezd ha automatikusan cserélni akarod a vegyes tartalmat."
-
-#: class-multisite.php:370
-msgid "Enable this if you want to block the htaccess file from being edited."
-msgstr "Engedélyezd ha megakarod akadályozni a htaccess fájl szerkesztését."
-
-#: class-multisite.php:359
-msgid "Enable this if you want to enable certificate expiration notices."
-msgstr "Engedélyezd ha értesítést akarsz a lejáró bizonylatokról."
-
-#: class-multisite.php:355
-msgid "Enable this if you want to hide the SSL menu on subsites."
-msgstr "Engedélyezd ha el akarod rejteni az SSL menüt az aloldalakon."
-
-#: class-multisite.php:365
-msgid "Enable this if you want to redirect ALL websites to SSL using .htaccess"
-msgstr ""
-"Engedélyezd ha MINDEN weboldalt át akarsz irányítani SSL-re .htaccess "
-"használatával."
-
-#: class-multisite.php:367
-msgid "Enable this if you want to redirect SSL websites using .htaccess. "
-msgstr ""
-"Engedélyezd ha weboldalakat akarsz átirányítani SSL-re .htaccess "
-"használatával."
-
-#: class-multisite.php:357
-msgid ""
-"Enable this if you want to use the internal WordPress 301 redirect for all "
-"SSL websites. Needed on NGINX servers, or if the .htaccess redirect cannot "
-"be used."
-msgstr ""
-"Engedélyezd ha a belső WordPress 301 átirányítást akarod használni minden "
-"SSL weboldalhoz. Szükséges NGINX szervereken vagy ha a .htaccess átirányítás "
-"nem használható."
-
-#: class-premium-options.php:1405
-msgid "Enforce"
-msgstr "Megkövetelés"
-
-#: grid/templates/license.php:15
-msgid "Enter your license key"
-msgstr "Licenc kulcs megadása"
-
-#: EDD_SL_Plugin_Updater.php:502
-msgid "Error"
-msgstr "Hiba"
-
-#: grid/templates/csp-header.php:7
-msgid "Everything"
-msgstr "Minden"
-
-#: grid/templates/feature-policy.php:18
-#: grid/templates/permissions-policy.php:18
-msgid "Feature"
-msgstr "Funkció"
-
-#: class-scan.php:1792 class-scan.php:1866
+#: class-scan.php:1626
 msgid "file"
 msgstr "fájl"
 
-#: class-scan.php:2771
-msgid "File editing blocked in WordPress!"
-msgstr "Fájlszerkesztés blokkolva WordPressben!"
-
-#: class-scan.php:2773
-msgid ""
-"File editing is blocked in WordPress. To edit these files, please use your "
-"FTP client."
-msgstr ""
-"A fájlszerkesztés blokkolva van a WordPressben. Ezen fájlok szerkesztéséhez "
-"használd a saját FTP kliensed."
-
-#: class-scan.php:483
+#: class-scan.php:430
 msgid "Finished scan"
 msgstr "Ellenőrzés befejezve"
 
-#: class-multisite.php:210 class-premium-options.php:194
-msgid "First"
-msgstr "Első"
-
-#: class-scan.php:1895 class-scan.php:1995 class-scan.php:2045
-#: class-scan.php:2101
-msgid "Fix"
-msgstr "Fix"
-
-#: class-scan.php:2644
-msgid "Fix http in CSS and JS files"
-msgstr "Http javítása CSS és JS fájlokban"
-
-#: class-scan.php:2662
-msgid "Fix URLs"
-msgstr "URL-ek javítása"
-
-#: class-premium-options.php:2269
+#: csp-violation-endpoint.php:155
 msgid "Follow these steps to complete the setup:"
 msgstr "Kövesd ezeket a lépéseket, hogy teljesítsd a telepítést:"
 
-#: class-premium-options.php:2275
-#, php-format
-msgid ""
-"For more information about this security header, please follow this %slink%s."
-msgstr ""
-"Ha további információt szeretnél erről a security header-ről akkor kérlek "
-"nézd meg ezt a linket: %slink%s."
-
-#: grid/templates/csp-container.php:5
-msgid "Found"
-msgstr "Találat"
-
-#: grid/templates/scan-footer.php:11
-msgid "Full Scan"
-msgstr "Teljes ellenőrzés"
-
-#: class-scan.php:315
+#: class-scan.php:299
 msgid "Generating file list"
 msgstr "Fájllista generálása"
 
-#: class-scan.php:256
+#: class-scan.php:257
 msgid "Generating web page list"
 msgstr "Weboldal lista generálása"
 
-#: class-scan.php:2780
-msgid "Go to editor"
-msgstr "Menj a szerkesztőhöz"
-
-#: class-premium-options.php:1205 class-premium-options.php:1218
+#: class-scan.php:133
+#: class-scan.php:147
 msgid "Great! Your scan last completed without errors."
 msgstr "Remek! Az ellenőrzés nem talált hibákat."
 
-#: class-scan.php:2536
-msgid "Help"
-msgstr "Segítség"
-
-#: class-multisite.php:356
-msgid "Hide menu for subsites"
-msgstr "Menü elrejtése az aloldalakon"
-
-#: class-premium-options.php:962
-msgid "How to set the security headers"
-msgstr "Hogyan állítsd be a security header-eket"
-
-#: class-premium-options.php:948
-msgid ""
-"HSTS, HTTP Strict Transport Security improves your security by forcing all "
-"your visitors to go to the SSL version of your website for at least a year."
+#. Description of the plugin
+msgid "Heavyweight Security Features"
 msgstr ""
-"HSTS, HTTP Strict Transport Security javítja a biztonságot azzal, hogy a "
-"weboldalát SSL változatára kényszeríti a látogatóid legalább egy évre."
 
-#: class-multisite.php:369
-msgid "htaccess redirection to SSL on the network"
-msgstr "htaccess átirányítás SSL-re a hálózaton"
+#: class-headers.php:209
+msgid "HSTS not enabled"
+msgstr ""
 
-#: class-premium-options.php:1081
-msgid "HTTP Strict Transport Security is not enabled. "
-msgstr "HTTP Strict Transport Security nincs bekapcsolva"
+#: class-headers.php:196
+#: class-headers.php:202
+msgid "HSTS Preload"
+msgstr ""
 
-#: class-premium-options.php:1076
-msgid "HTTP Strict Transport Security was set."
-msgstr "HTTP Strict Transport Security beállítva."
-
-#. Plugin URI of the plugin/theme
+#. Plugin URI of the plugin
 msgid "https://really-simple-ssl.com/pro"
 msgstr "https://really-simple-ssl.com/pro"
 
-#. Author URI of the plugin/theme
+#. Author URI of the plugin
 msgid "https://www.really-simple-plugins.com"
 msgstr "https://www.really-simple-plugins.com"
 
-#: class-scan.php:2491 class-scan.php:2580
-msgid "I have read the warning, continue"
-msgstr "Elolvastam a figyelmeztetést, folytatom"
-
-#: class-scan.php:2624 class-scan.php:2704
-msgid "I have read the warnings, continue"
-msgstr "Elolvastam a figyelmeztetéseket, folytatom"
-
-#: class-scan.php:2653
-msgid ""
-"If these files are generated by a theme or plugin, it is best to change the "
-"settings in that plugin instead. Otherwise your changes maybe overwritten by "
-"the plugin."
-msgstr ""
-"Ha ezeket a fájlokat egy téma vagy plugin generálja, az a legjobb ha magában "
-"a pluginban változtatod meg a beállítást. Máskülönben a változásaid "
-"felülírhatja a plugin."
-
-# More context needed. Safe in terms of what? Safe as of trusted or rather "definitely-SSL-compatible and wont mess things up"?
-#: csp-violation-endpoint.php:510
-#| msgid ""
-#| "If you revoke a rule from the content security policy,  the rule will be "
-#| "deleted from the resource list that is considered safe to load.  This "
-#| "might affect your website,  or specific functions.  You can always allow "
-#| "the resource if needed."
-msgid ""
-"If you revoke a rule from the content security policy, the rule will be "
-"deleted from the resource list that is considered safe to load. This might "
-"affect your website, or specific functions. You can always allow the "
-"resource if needed."
-msgstr ""
-"Ha törölsz egy szabályt a tartalombiztonsági házirendből, akkor a szabály "
-"törölve lesz a biztonságosan betölthetőnek tartott tartalmak listájáról. Ez "
-"hatással lehet a weboldaladra, vagy bizonyos funkciók működésére. Persze "
-"bármikor engedélyezheted az adott elemet ha szükséges."
-
-#: class-premium-options.php:906
-msgid ""
-"If your certificate expires, your site goes offline. Uptime robots don't "
-"alert you when this happens."
-msgstr ""
-"Ha a bizonyítványod lejár, a webhelyed offline állapotba kerül. Az uptime "
-"robotok nem fognak értesíteni ha ez megtörténik."
-
-#: class-scan.php:2039
+#: class-scan.php:1811
 msgid "iFrame in the wp_postmeta database table"
 msgstr "iFrame a wp_postmeta adatbázis táblában"
 
-#: class-scan.php:2542
-msgid "Ignore"
-msgstr "Mellőz"
-
-#: class-scan.php:2473 class-scan.php:2562 class-scan.php:2602
-#: class-scan.php:2682
+#: class-scan.php:1718
+#: class-scan.php:1793
+#: class-scan.php:1831
+#: class-scan.php:1878
 msgid "Import and insert file"
 msgstr "Fájl importálása és behelyezése"
 
-#: class-scan.php:2048
-#, php-format
-msgid "In field: %s"
-msgstr "Mezőben: %s"
-
-#: class-scan.php:2011
-msgid "In post: "
-msgstr "Posztban:"
-
-#: class-scan.php:1788
-msgid "in uploads directory, possibly generated by plugin or theme"
-msgstr "a feltöltési mappában, valószínűleg egy plugin vagy téma generálta"
-
-#: class-premium-options.php:943
-msgid ""
-"It is recommended to enable this feature as soon as your site is running "
-"smoothly on SSL, as it greatly improves security."
+#: really-simple-ssl-pro-multisite.php:288
+#: really-simple-ssl-pro.php:285
+msgid "Install and activate Really Simple SSL"
 msgstr ""
-"Ajánlott bekapcsolni ezt a funkciót amint az webhelyed gond nélkül fut SSL-"
-"en, mivel nagyban növeli a biztonságot."
 
-#: class-premium-options.php:948
-msgid ""
-"It is recommended to enable this feature as soon as your site is running "
-"smoothly on SSL, as it improves your security."
+#: csp-violation-endpoint.php:143
+msgid "Learning Mode is active for your Content Security and will complete in %s days."
 msgstr ""
-"Ajánlott bekapcsolni ezt a funkciót amint az webhelyed gond nélkül fut SSL-"
-"en, mivel növeli a biztonságot."
 
-#: class-scan.php:1875
-msgid "JS or CSS file with mixed content"
-msgstr "JS vagy CSS vegyes tartalommal"
-
-#: class-multisite.php:213 class-premium-options.php:195
-msgid "Last"
-msgstr "Utolsó"
-
-#: class-licensing.php:250 class-licensing.php:511 class-licensing.php:517
-#: class-licensing.php:536 class-licensing.php:599
-#: class-premium-options.php:1254 class-premium-options.php:1261
-#: class-premium-options.php:1268 class-premium-options.php:1275
-#: class-premium-options.php:1282
+#: class-licensing.php:179
+#: class-licensing.php:201
+#: class-licensing.php:698
+#: class-licensing.php:705
+#: class-licensing.php:712
+#: class-licensing.php:719
+#: class-licensing.php:726
+#: class-licensing.php:741
 msgid "License"
 msgstr "Licenc"
 
-#: class-licensing.php:701
-msgid "License not activated"
-msgstr "Inaktív licenc"
-
-#: grid/templates/scan-results-container.php:8
-msgid "Location"
-msgstr "Hely"
-
-#: class-scan.php:427
+#: class-scan.php:380
 #, php-format
 msgid "Looking up blocked resources in files, %s of %s"
 msgstr "Blokkolt erőforrások keresése fájlokban, %s %s-ból"
 
-#: class-scan.php:458
+#: class-scan.php:407
 msgid "Looking up blocked resources in postmeta"
 msgstr "Blokkolt erőforrások keresése postmetában"
 
-#: class-scan.php:443
+#: class-scan.php:394
 msgid "Looking up blocked resources in posts"
 msgstr "Blokkolt erőforrások keresése postban"
 
-#: class-scan.php:474
+#: class-scan.php:422
 msgid "Looking up blocked resources in widgets"
 msgstr "Blokkolt erőforrások keresése widgetben"
 
-#: class-multisite.php:362 class-premium-options.php:916
-msgid "Mixed content fixer on the WordPress back-end"
-msgstr "Vegyes tartalom javító WordPress back-endben"
+#: class-scan.php:1861
+msgid "Mixed content found in a widget. Press the edit link to edit the widget manually."
+msgstr "Vegyes tartalom widgetben. Kattints a szerkesztés gombra, hogy manuális szerkeszd a widgetet."
 
-#: class-scan.php:2103
-msgid ""
-"Mixed content found in a widget. Press the edit link to edit the widget "
-"manually."
-msgstr ""
-"Vegyes tartalom widgetben. Kattints a szerkesztés gombra, hogy manuális "
-"szerkeszd a widgetet."
+#: class-scan.php:1776
+msgid "Mixed content found in in a post. Can be fixed automatically by pressing the fix button. Pressing the edit button allows you to update the link in the post manually."
+msgstr "Vegyes tartalom egy posztban. Automatikusan javítható a fix gombbal. A szerkesztés gombot használva manuálisan tudod frissíteni a linket a posztban."
 
-#: class-scan.php:1993
-msgid ""
-"Mixed content found in in a post. Can be fixed automatically by pressing the "
-"fix button. Pressing the edit button allows you to update the link in the "
-"post manually."
-msgstr ""
-"Vegyes tartalom egy posztban. Automatikusan javítható a fix gombbal. A "
-"szerkesztés gombot használva manuálisan tudod frissíteni a linket a posztban."
+#: class-scan.php:1813
+msgid "Mixed content from a postmeta table in your database. Usually won't cause any mixed content on the front-end. Check the post if it causes mixed content. If so, the link can be replace directly in the database."
+msgstr "Vegyes-tartalom egy postmeta táblából az adatbázisodból. Általában nem okoz vegyes-tartalmat a weboldalon, de nézd meg a bejegyzést, hátha mégis. Ha mégis, akkor a linket közvetlenül az adatbázisban lehet cserélni."
 
-#: class-scan.php:2042
-msgid ""
-"Mixed content from a postmeta table in your database. Usually won't cause "
-"any mixed content on the front-end. Check the post if it causes mixed "
-"content. If so, the link can be replace directly in the database."
-msgstr ""
-"Vegyes-tartalom egy postmeta táblából az adatbázisodból. Általában nem okoz "
-"vegyes-tartalmat a weboldalon, de nézd meg a bejegyzést, hátha mégis. Ha "
-"mégis, akkor a linket közvetlenül az adatbázisban lehet cserélni."
-
-#: class-scan.php:1801 class-scan.php:1874
+#: class-scan.php:1705
 #, php-format
 msgid "Mixed content in %s"
 msgstr "Vegyes tartalom a %s"
 
-#: class-scan.php:2086
-msgid "Mixed content in a widget"
-msgstr "Vegyes tartalom a widgetben"
-
-#: class-scan.php:1937
+#: class-scan.php:1744
 msgid "Mixed content in CSS/JS file from other domain"
 msgstr "Vegyes tartalom a CSS/JS fájlban egy másik domainből"
 
-#: class-scan.php:1959
-msgid "Mixed content in remote file"
-msgstr "Vegyes tartalom egy távoli fájlban"
+#: class-scan.php:1670
+msgid "Mixed content in PHP file in %s"
+msgstr ""
 
-#: class-scan.php:2037
+#: class-scan.php:1781
+msgid "Mixed content in post: "
+msgstr ""
+
+#: class-scan.php:1811
 msgid "Mixed content in the postmeta table"
 msgstr "Vegyes tartalom a postmeta táblában"
 
-#: class-scan.php:1942
+#: class-scan.php:1739
 #, php-format
 msgid "Mixed content resources: %s"
 msgstr "Vegyes tartalmú erőforrás: %s"
 
-#: class-premium-options.php:433
-msgid "Mixed content scan"
-msgstr "Vegyes tartalom keresés"
-
-#: class-scan.php:1781 class-scan.php:1850
+#: class-scan.php:1618
 msgid "mu plugin file"
 msgstr "mu plugin fájl"
 
-#: class-licensing.php:524
-msgid "Multisite"
-msgstr "Multisite"
+#: class-licensing.php:562
+#, fuzzy,php-format
+msgid "Multisite detected. Please upgrade to %smultisite%s."
+msgstr "Több oldal észlelve. Vedd fontolóra a %smultisite%s-ra való fejlesztést."
 
-#: class-licensing.php:525
-#, php-format
-msgid "Multisite detected. Please consider upgrading to %smultisite%s."
-msgstr ""
-"Több oldal észlelve. Vedd fontolóra a %smultisite%s-ra való fejlesztést."
-
-#: class-scan.php:207 class-scan.php:2155
+#: class-scan.php:218
+#: class-scan.php:1914
 msgid "Never"
 msgstr "Soha"
 
-#: class-multisite.php:212 class-premium-options.php:193
-msgid "Next"
-msgstr "Következő"
-
-#: grid/templates/premium-settings-footer.php:27
-#, php-format
-msgid "nginx.conf unavailable on %s"
-msgstr "nginx.conf nem elérhető a %s -n"
-
-#: grid/templates/premium-settings-footer.php:14
-msgid "No caching"
-msgstr "Nincs gyorsítótárazás"
-
-#: class-premium-options.php:1189
-#| msgid "No Content Security Policy violations found"
-msgid "No Content Security Policy violations found."
-msgstr "Nincs szabálysértés a tartalombiztonsági-szabályzat alapján."
-
-#: class-premium-options.php:191
-msgid "No items reported yet. Come back at a later time."
-msgstr "Nincs még jelentett tárgy. Nézz vissza később."
-
-#: class-premium-options.php:167
-msgid "No mixed content has been found!"
-msgstr "Nem található vegyes tartalom!"
-
-#: class-premium-options.php:1040
+#: class-admin.php:553
 msgid "No redirect to http detected."
 msgstr "Nem észlelhető http átirányítás"
 
-#: class-licensing.php:546
-msgid "No response"
-msgstr "Nincs válasz"
-
-#: grid/templates/permissions-policy.php:10
-msgid "No restrictions for this feature."
-msgstr "Nincsenek korlátozások ehhez a funkcióhoz."
-
-#: class-multisite.php:202
-msgid "No results found"
-msgstr "Nincs találat"
-
-#: class-multisite.php:207
-msgid "No results found in the table"
-msgstr "Nincs találat a táblában"
-
-#: class-multisite.php:204
-msgid "No results to show"
-msgstr "Nincs megjeleníthető találat"
-
-#: class-premium-options.php:2166
-#, php-format
-msgid ""
-"No scan completed yet. Before migrating to SSL, you should do a %sscan%s"
-msgstr ""
-"Nincs befejezett vizsgálat. Mielőtt áttérsz SSL-re, el kéne végezni egy "
-"%sscsan%s"
-
-#: class-premium-options.php:169
-msgid "No scan done yet. Start a quick or full scan to identify any issues."
-msgstr ""
-"Még soha nem indult keresés. Indíts egy gyors vagy teljes keresést a "
-"problémák feltárásához."
-
-#: grid/templates/feature-policy.php:12
-msgid ""
-"none means that this feature is not allowed. Enable this to disable the "
-"feature entirely on your site."
-msgstr ""
-"egy sem azt jelenti, hogy ez a funkció nem engedélyezett. Engedélyezd ezt, "
-"hogy teljesen kikapcsold ezt a funkciót a webhelyeden."
-
-#: grid/templates/permissions-policy.php:21
-msgid "not allowed"
-msgstr "nem engedélyezett"
-
-#: class-licensing.php:471
-msgid "Not available"
-msgstr "Nem elérhető"
-
-#: class-cert-expiration.php:11
-msgid "Not detected"
-msgstr "Nem észlelt"
-
-#: grid/templates/csp-container.php:7
-msgid "On page"
-msgstr "Az oldalon"
-
-#: class-cert-expiration.php:86
-msgid "Once 1 minutes"
-msgstr "Egyszer 1 perc"
-
-#: class-cert-expiration.php:81
-msgid "Once 10 minutes"
-msgstr "Egyszer 10 perc"
-
-#: class-cert-expiration.php:76
-msgid "Once Daily"
-msgstr "Egyszer naponta"
-
-#: class-licensing.php:553 class-licensing.php:562
+#: class-licensing.php:630
 msgid "Open"
 msgstr "Nyitva"
 
-#. Description of the plugin/theme
-msgid ""
-"Optimize your SSL security with the mixed content scan, secure cookies and "
-"advanced security headers."
-msgstr ""
-"Optimizáld az SSL-biztonságot a vegyes-tartalom-keresővel, biztonságos "
-"sütikkel (secure cookie-k) és további fejlett security header-ekkel."
+#: really-simple-ssl-pro-multisite.php:278
+#: really-simple-ssl-pro-multisite.php:303
+#: really-simple-ssl-pro.php:276
+#, fuzzy
+msgid "Please %supgrade%s to the latest version to be able use the full functionality of the plugin."
+msgstr "Frissíts a legújabb verzióra, hogy használhasd a plugin minden funkcióját."
 
-#: class-scan.php:1798
-msgid "PHP file with mixed content"
-msgstr "PHP fájl vegyes tartalommal"
-
-#: really-simple-ssl-pro-multisite.php:219
-msgid "Please activate Really Simple SSL network wide."
-msgstr "Aktiváld a Really Simple SSL-t az egész hálózaton."
-
-#: class-licensing.php:563
+#: class-licensing.php:584
 msgid "Please activate your license key."
 msgstr "Kérjük aktiváld a licenc kulcsod."
 
-#: class-premium-options.php:953
-msgid ""
-"Please ensure that your site is running over SSL smoothly, and note that all "
-"subdomains, including www and non-www domain need to be HTTPS!"
-msgstr ""
-"Bizonyosodj meg arról, hogy a webhelyed gond nélkül fut e SSL-en keresztül, "
-"és vedd figyelembe, hogy minden aldomain, beleértve a www és nem-www "
-"domainek is, HTTPS kell legyenek!"
-
-#: class-licensing.php:554
+#: class-licensing.php:576
 #, php-format
 msgid "Please enter your license key. Available in your %saccount%s."
 msgstr "Kérjük írd be a licenc kulcsod. Elérhető a %saccount%sban."
 
-#: really-simple-ssl-pro-multisite.php:221
-#| msgid ""
-#| "Please install and activate Really Simple SSL before activating this add-"
-#| "on."
+#: really-simple-ssl-pro-multisite.php:276
+#: really-simple-ssl-pro.php:274
 msgid "Please install and activate Really Simple SSL to enable the add-on."
-msgstr ""
-"Kérlek először telepítsd és és aktiváld a Really Simple SSL-t mielőtt "
-"aktiválod ezt a bővítményt."
+msgstr "Kérlek először telepítsd és és aktiváld a Really Simple SSL-t mielőtt aktiválod ezt a bővítményt."
 
-#: class-scan.php:2731
-msgid ""
-"Please note that any changes you have made since to your current files, will "
-"be lost. "
-msgstr ""
-"Vedd figyelembe, hogy minden eddigi eszközölt változás a jelenlegi fájlon el "
-"fog veszni."
+#: class-scan.php:2184
+#, fuzzy
+msgid "Please note that any changes you have made since to your current files, will be lost."
+msgstr "Vedd figyelembe, hogy minden eddigi eszközölt változás a jelenlegi fájlon el fog veszni."
 
-#: class-cert-expiration.php:185
-msgid "Please renew your certificate before the expiry date."
-msgstr "Újítsd meg a bizonyítványt mielőtt lejár."
-
-#: really-simple-ssl-pro-multisite.php:230
-msgid ""
-"Please upgrade to the latest version to be able use the full functionality "
-"of the plugin."
-msgstr ""
-"Frissíts a legújabb verzióra, hogy használhasd a plugin minden funkcióját."
-
-#: really-simple-ssl-pro-multisite.php:215
-#: really-simple-ssl-pro-multisite.php:228
+#: really-simple-ssl-pro-multisite.php:270
+#: really-simple-ssl-pro-multisite.php:299
 msgid "Plugin dependency error"
 msgstr "Plugin kapcsolódási hiba "
 
-#: class-scan.php:1784 class-scan.php:1853
+#: class-scan.php:1620
 msgid "plugin file"
 msgstr "plugin fájl"
 
-#: class-scan.php:2026
-msgid "Post field with mixed content"
-msgstr "Poszt mező vegyes tartalommal"
-
-#: class-scan.php:1975
-msgid "Post with mixed content"
-msgstr "Poszt vegyes tartalommal"
-
-#: class-premium-options.php:1044
+#: class-admin.php:552
+#: class-admin.php:557
 msgid "Potential redirect loop."
 msgstr "Lehetséges átirányítási loop."
 
-#: class-premium-options.php:400
-msgid "Premium settings"
-msgstr "Prémium beállítás"
+#: class-licensing.php:632
+msgid "Premium"
+msgstr ""
 
-#: class-premium-options.php:391
-msgid "Premium support"
-msgstr "Prémium támogatás"
-
-#: class-multisite.php:211 class-premium-options.php:192
-msgid "Previous"
-msgstr "Előző"
-
-#: class-premium-options.php:2172
-msgid "Previous scan completed with issues"
-msgstr "Az előző vizsgálat problémákkal zárult."
-
-#: grid/templates/scan-footer.php:10
-msgid "Quick Scan"
-msgstr "Gyors ellenőrzés"
-
-#: class-premium-options.php:1046
-msgid "Re-check the redirect"
-msgstr "Ellenőrizd újra az átirányítást"
-
-#. Author of the plugin/theme
+#. Author of the plugin
 msgid "Really Simple Plugins"
 msgstr "Really Simple Pluginok"
 
-#: really-simple-ssl-pro-multisite.php:229
-msgid ""
-"Really Simple SSL needs to be updated to the latest version to be compatible."
+#: really-simple-ssl-pro-multisite.php:302
+msgid "Really Simple SSL needs to be updated to the latest version to be compatible."
 msgstr "Really Simple SSL frissítésre szorul, hogy kompatibilis legyen."
 
-#: really-simple-ssl-pro-multisite.php:39
-msgid ""
-"Really Simple SSL pro cannot be activated. The plugin requires PHP 5.6 or "
-"higher"
-msgstr ""
-"Really Simple SSL pro nem aktiválható. A pluginnak PHP 5.6-ra vagy "
-"magasabbra van szüksége"
+#: really-simple-ssl-pro-multisite.php:28
+#: really-simple-ssl-pro.php:27
+#, fuzzy
+msgid "Really Simple SSL Pro cannot be activated. The plugin requires PHP 7.2 or higher"
+msgstr "Really Simple SSL pro nem aktiválható. A pluginnak PHP 5.6-ra vagy magasabbra van szüksége"
 
-#: really-simple-ssl-pro-multisite.php:45
-msgid ""
-"Really Simple SSL pro cannot be activated. The plugin requires WordPress 4.9 "
-"or higher"
-msgstr ""
-"Really Simple SSL pro nem aktiválható. A pluginnak WordPress 4.9-re vagy "
-"magasabbra van szüksége"
+#: really-simple-ssl-pro-multisite.php:34
+#: really-simple-ssl-pro.php:33
+#, fuzzy
+msgid "Really Simple SSL Pro cannot be activated. The plugin requires WordPress 5.7 or higher"
+msgstr "Really Simple SSL pro nem aktiválható. A pluginnak WordPress 4.9-re vagy magasabbra van szüksége"
 
-#: really-simple-ssl-pro-multisite.php:216
-#| msgid ""
-#| "Really Simple SSL pro is an add-on for Really Simple SSL, and cannot do "
-#| "it on its own :("
-msgid ""
-"Really Simple SSL pro is an add-on for Really Simple SSL, and cannot do it "
-"on its own :-("
-msgstr ""
-"Really Simple SSL pro egy kiegészítő a Really Simple SSL alapváltozatához, "
-"és önmagában nem működik. :("
+#: really-simple-ssl-pro-multisite.php:275
+#: really-simple-ssl-pro.php:273
+#, fuzzy
+msgid "Really Simple SSL Pro is an add-on for Really Simple SSL, and cannot do it on its own :-("
+msgstr "Really Simple SSL pro egy kiegészítő a Really Simple SSL alapváltozatához, és önmagában nem működik. :("
 
-#: class-licensing.php:114
-msgid "Really Simple SSL Pro license key"
-msgstr "Really Simple SSL Pro licenc kulcs"
-
-#. Plugin Name of the plugin/theme
-msgid "Really Simple SSL pro multisite"
-msgstr "Really Simple SSL pro multisite"
-
-#: class-licensing.php:717
-msgid "Really Simple SSL Pro Multisite license key"
-msgstr "Really Simple SSL Pro Multisite licenc kulcs"
-
-#: class-multisite.php:360 class-premium-options.php:908
-msgid "Receive an email when your certificate is about to expire"
-msgstr "Kapjon egy e-mailt, amikor a tanúsítványa lejár"
-
-#: class-premium-options.php:1064
-msgid "Recommended security headers enabled."
-msgstr "Ajánlott biztonsági header bekapcsolva"
-
-#: class-premium-options.php:1059
-#, php-format
-msgid "Recommended security headers not enabled (%sRead more%s)."
-msgstr "Ajánlott biztonsági header nincs bekapcsolva (%sRead more%s)."
-
-#: class-premium-options.php:1403
-msgid "Reporting active"
-msgstr "A jelentési szolgáltatás aktív"
-
-#: class-premium-options.php:2271
-msgid ""
-"Reporting is active and will gather Content Security Policy directives "
-"available under ‘Content Security Policy configuration’."
-msgstr ""
-"A jelentési szolgáltatás aktív és össze fogja gyűjteni a tartalom-biztonsági "
-"szabályzat irányelveit, amik a 'Tartalom-biztonsági szabályzat beállítása' "
-"résznél találhatóak."
-
-#: class-premium-options.php:1404
-msgid "Reporting paused"
-msgstr "A jelentés szünetel"
-
-#: class-premium-options.php:2272
-msgid ""
-"Reporting will be paused after 20 requests to limit server load. You can "
-"always manually set reporting to paused, if needed."
-msgstr ""
-"A jelentés meg lesz állítva 20 kérés után, hogy korlátozzuk a szerverre eső "
-"terhelést. Bármikor megállíthatod kézzel is a jelentések küldését ha "
-"szükséges."
-
-#: class-scan.php:2740
+#: class-scan.php:2189
 msgid "Restore files"
 msgstr "Fájlok visszaállítása"
 
-#: grid/templates/scan-footer.php:15
-msgid "Resume"
-msgstr "Folytatás"
+#: csp-violation-endpoint.php:157
+msgid "Review the detected configuration in 'Content Security Policy'."
+msgstr ""
 
-#: csp-violation-endpoint.php:411
-msgid "Revoke"
-msgstr "Visszavonás"
-
-#: csp-violation-endpoint.php:531
-msgid "Revoke and delete rule"
-msgstr "Szabály visszavonása és törlése"
-
-# Like undo rule?
-#: csp-violation-endpoint.php:524
-msgid "Revoke rule"
-msgstr "Szabály visszavonása"
-
-#: csp-violation-endpoint.php:505
-msgid "Revoking a Rule from the Content Security Policy"
-msgstr "Visszavon egy szabályt a tartalom-biztonsági szabályzatból"
-
-#: class-scan.php:2724
+#: class-scan.php:2178
 msgid "Roll back changes made to your files"
 msgstr "Változások visszaállítása a fájljaidon"
 
-#: class-importer.php:40
+#: class-importer.php:61
 msgid "Roll back file changes"
 msgstr "Visszalépés a fájlok megváltoztatásához"
 
-#: grid/templates/license-footer.php:9
-#: grid/templates/premium-settings-footer.php:55
-msgid "Save"
-msgstr "Mentés"
-
-#: grid/templates/scan-footer.php:8
-msgid "SCAN"
-msgstr "ELLENŐRZÉS"
-
-#: class-multisite.php:200 class-premium-options.php:189
-msgid "Search"
-msgstr "Keresés"
-
-#: class-scan.php:276
+#: class-scan.php:270
 #, php-format
-msgid ""
-"Searching for js and css files and links to external resources in website, "
-"%s of %s"
+msgid "Searching for js and css files and links to external resources in website, %s of %s"
 msgstr "Keresés js, css és külső erőforrásokhoz vezető linkek után, %s %s-ból"
 
-#: class-scan.php:298
+#: class-scan.php:285
 #, php-format
 msgid "Searching for mixed content in css and js files, %s of %s"
 msgstr "Vegyes tartalom keresése css és js fájlokban, %s %s-ból"
 
-#: class-premium-options.php:1110
-msgid ""
-"Security headers have been set via PHP but your site uses caching. Caching "
-"prevents the headers from working correctly. We recommend to add the "
-"following security headers to your NGINX configuration file:"
-msgstr ""
-"A security header-ek PHP-val be lettek állítva de az oldalad "
-"gyorsítótárazást használ. A gyorsítótárazás megakadályozza hogy ezek a "
-"headerek megfelelően működjenek. Javasoljuk hogy vedd fel a security header-"
-"eket az NGINX konfigurációs fájlodba:"
-
-# Context really needed here
-#: grid/templates/permissions-policy.php:20
-msgid "self"
-msgstr "önmaga"
-
-#: grid/templates/feature-policy.php:11
-#: grid/templates/permissions-policy.php:11
-msgid ""
-"self means this is feature is only allowed for content on your own domain. "
-"External scripts won't be able to use it."
-msgstr ""
-"saját azt jelenti, hogy ez a funkció csak a saját domaineden lévő tartalomra "
-"engedélyezett. Külső szkriptek nem lesznek képesek használni."
-
-#: grid/templates/support-footer.php:2
-msgid "Send"
-msgstr "Küldés"
-
-# Context needed. Recognized as known, or found?
-#: grid/templates/premium-settings-footer.php:36
-msgid "Server not recognized"
-msgstr "A szervert nem ismertük fel"
-
-#: class-premium-options.php:961
-msgid ""
-"Set the security headers with PHP. Should be enabled when using NGINX as the "
-"webserver, or when the htaccess security headers are not supported by your "
-"hosting company."
-msgstr ""
-"Állítsd be a security header-eket PHP-val. Célszerű engedélyezni ha NGINX-t "
-"használsz webszerverként, vagy amikor a htaccess security headereket nem "
-"támogatja a szolgáltatód"
-
-#: class-premium-options.php:1434
-msgid "Set with PHP"
-msgstr "Beállítás PHP-val"
-
-#: class-premium-options.php:1918
+#: class-admin.php:633
 msgid "Settings"
 msgstr "Beállítások"
 
-#: class-multisite.php:201
-#, php-format
-msgid "Show %s results"
-msgstr "%s találat mutatása"
-
-#: grid/templates/scan-footer.php:22
-msgid "Show ignored URLs"
-msgstr "Mellőzött URL mutatása"
-
-#: grid_ms/templates/sites.php:69
-msgid "Site"
-msgstr "Webhely"
-
-#: class-multisite.php:108
-msgid "Sites"
-msgstr "Webhelyek"
-
-#: class-importer.php:545
+#: class-importer.php:537
 msgid "Something went wrong."
 msgstr "Hiba történt. "
 
-#: class-importer.php:119 class-importer.php:160 class-importer.php:201
-#: class-importer.php:249 class-importer.php:287
-msgid ""
-"Something went wrong. Please refresh the page and try again, or fix manually."
+#: class-importer.php:93
+#, fuzzy
+msgid "Something went wrong. If this doesn't work, you can put the original files back by changing files named 'rsssl-bkp-filename' to filename."
+msgstr "Hiba történt. Ha ez nem működik, akkor visszaállíthatja az eredeti fájlokat azáltal, hogy átnevezi az 'rsssl-bkp-fájlneve' nevű fájlokat a fájlnévnek megfelelően."
+
+#: class-importer.php:121
+#: class-importer.php:162
+#: class-importer.php:200
+#: class-importer.php:242
+#: class-importer.php:278
+msgid "Something went wrong. Please refresh the page and try again, or fix manually."
+msgstr "Hiba történt. Kérjük frissítse az oldalt, és próbálja újra, vagy javítsa manuálisan. "
+
+#: class-licensing.php:631
+msgid "Success"
 msgstr ""
-"Hiba történt. Kérjük frissítse az oldalt, és próbálja újra, vagy javítsa "
-"manuálisan. "
 
-#: class-importer.php:90
-msgid ""
-"Someting went wrong. If this doesn't work, you can put the original files "
-"back by changing files named 'rsssl-bkp-filename' to filename."
+#: class-headers.php:176
+#: class-headers.php:382
+msgid "The %s security header is not set by Really Simple SSL, but has a non-recommended value: \"%s\"."
 msgstr ""
-"Hiba történt. Ha ez nem működik, akkor visszaállíthatja az eredeti fájlokat "
-"azáltal, hogy átnevezi az 'rsssl-bkp-fájlneve' nevű fájlokat a fájlnévnek "
-"megfelelően."
-
-#: class-cert-expiration.php:181
-msgid "SSL certificate expiration warning"
-msgstr "SSL bizonyítvány lejárat értesítés"
-
-#: class-premium-options.php:115
-msgid "SSL configuration finished!"
-msgstr "SSL konfiguráció kész!"
-
-#: class-premium-options.php:1199
-msgid "Start scan"
-msgstr "Ellenőrzés indítása"
-
-#: grid/templates/scan-results-container.php:6 grid_ms/templates/sites.php:68
-msgid "Status"
-msgstr "Állapot"
-
-#: class-multisite.php:371
-msgid "Stop editing the .htaccess file"
-msgstr "Fejezze be a .htaccess fájl szerkesztését"
-
-#: grid/templates/scan-footer.php:13
-msgid "Stop scan"
-msgstr "Ellenőrzés megszakítása"
-
-#: class-premium-options.php:957
-msgid ""
-"The Content Security Policy allows you to specify which resources to allow "
-"on your site."
-msgstr ""
-"A tartalom-biztonsági szabályzat lehetővé teszi hogy beállítsd, milyen "
-"tartalmakat engedélyezel az oldaladon"
 
 #: class-importer.php:179
-msgid ""
-"The file could not be downloaded. It might not exist, or downloading is "
-"blocked. Fix manually."
+msgid "The file could not be downloaded. It might not exist, or downloading is blocked. Fix manually."
+msgstr "A fájl nem tölthető le. Lehet, hogy a fájl nem létezik, vagy a letöltés blokkolva van. Javítsa manuálisan."
+
+#: class-importer.php:221
+#: class-importer.php:258
+#: class-importer.php:297
+msgid "The file could not be downloaded. The file might not exist, or downloading is be blocked by the server. Fix manually."
+msgstr "A fájl nem tölthető le. Lehet, hogy a fájl nem létezik, vagy a letöltést blokkolja a szerver. Javítsa manuálisan."
+
+#: class-headers.php:413
+msgid "The following recommended security headers have not been set: %s"
 msgstr ""
-"A fájl nem tölthető le. Lehet, hogy a fájl nem létezik, vagy a letöltés "
-"blokkolva van. Javítsa manuálisan."
 
-#: class-importer.php:226 class-importer.php:266 class-importer.php:308
-msgid ""
-"The file could not be downloaded. The file might not exist, or downloading "
-"is be blocked by the server. Fix manually."
-msgstr ""
-"A fájl nem tölthető le. Lehet, hogy a fájl nem létezik, vagy a letöltést "
-"blokkolja a szerver. Javítsa manuálisan."
+#: class-scan.php:151
+msgid "The last scan was completed with errors. Are you sure these issues don't impact your site?"
+msgstr "A legutóbbi ellenőrzés hibákkal zárult. Biztos vagy abban, hogy ezek a gondok nem érintik az webhelyed?"
 
-#: grid/templates/scan-results-container.php:7
-msgid "The file that's causing a potential mixed content issue."
-msgstr "Ez a fájl ami vegyes tartalom gondot okozhat."
+#: class-scan.php:137
+msgid "The last scan was completed with errors. Only migrate if you are sure the found errors are not a problem for your site."
+msgstr "A legutóbbi ellenőrzés hibákkal zárult. Csak akkor vált ha biztos vagy abban, hogy a megtalált problémák nem jelentenek gondot az webhelyednek."
 
-#: class-premium-options.php:1222
-msgid ""
-"The last scan was completed with errors. Are you sure these issues don't "
-"impact your site?"
-msgstr ""
-"A legutóbbi ellenőrzés hibákkal zárult. Biztos vagy abban, hogy ezek a "
-"gondok nem érintik az webhelyed?"
+#: class-licensing.php:570
+msgid "The license information could not be retrieved at this moment. Please try again at a later time."
+msgstr "A licencre vonatkozó információkat jelenleg nem sikerült lekérni. Kérjük, próbálkozz később."
 
-#: class-premium-options.php:1209
-msgid ""
-"The last scan was completed with errors. Only migrate if you are sure the "
-"found errors are not a problem for your site."
-msgstr ""
-"A legutóbbi ellenőrzés hibákkal zárult. Csak akkor vált ha biztos vagy abban,"
-" hogy a megtalált problémák nem jelentenek gondot az webhelyednek."
-
-#: class-licensing.php:547
-msgid ""
-"The license information could not be retrieved at this moment. Please try "
-"again at a later time."
-msgstr ""
-"A licencre vonatkozó információkat jelenleg nem sikerült lekérni. Kérjük, "
-"próbálkozz később."
-
-#: grid/templates/license-footer.php:31
-#, php-format
-#| msgid ""
-#| "The license key is only visible to %s. Add &rsssl_unlock_license={your "
-#| "license key} behind the URL to unlock the license block."
-msgid ""
-"The license key is only visible to %s. Add &rsssl_license_unlock={your "
-"license key} behind the URL to unlock the license block."
-msgstr ""
-"A licenc kulcs csak %s számára látható. Add hozzá az URL végéhez, hogy "
-"&rsssl_unlock_license={a licenc kulcsod}, hogy felold a licenc blokkolást."
-
-#: class-premium-options.php:952
-msgid ""
-"The preload list offers even more security, as browsers will be instructed "
-"to load the site over HTTPS, even before the first visit."
-msgstr ""
-"Az előtöltés lista még nagyobb biztonságot nyújt, mivel a böngésző arra lesz "
-"utasítva, hogy az webhelyed HTTPS-en keresztül töltse már az első látogatás "
-"előtt"
-
-#: class-scan.php:1778 class-scan.php:1847
+#: class-scan.php:1616
 msgid "theme file"
 msgstr "téma fájl"
 
-#: EDD_SL_Plugin_Updater.php:258
-#, php-format
-msgid ""
-"There is a new version of %1$s available. %2$sView version %3$s details%4$s "
-"or %5$supdate now%6$s."
-msgstr ""
-"Egy új verzió érhető el a következőből: %1$s. %2$sVerzió megtekintése %3$s "
-"részletek%4$s vagy%5$sfrissítés most%6$s."
-
-#: EDD_SL_Plugin_Updater.php:250
-#, php-format
-msgid ""
-"There is a new version of %1$s available. %2$sView version %3$s details%4$s."
-msgstr ""
-"Egy új verzió érhető el a következőből: %1$s. %2$sVerzió megtekintése %3$s "
-"részletek%4$s."
-
-#: class-importer.php:135
+#: class-importer.php:136
 msgid "There was a problem editing the file. Please try manually."
 msgstr "Hiba történt a fájl szerkesztése közben. Próbálja meg manuálisan."
 
-#: class-premium-options.php:976
+#: class-licensing.php:713
+msgid "This domain is not activated for this Really Simple SSL Pro license. Please activate the license for this domain."
+msgstr "Ez a domain nincs aktiválva ehhez a Really Simple SSL Pro licenszhez. Kérlek aktiváld hozzá."
+
+#: class-scan.php:1644
+msgid "This downloads the file from the domain without SSL, inserts it into WP media, and changes the URL to the new URL."
+msgstr "Ez letölti a fájlt a domainről SSL nélkül, berakja a WP mediába és megváltoztatja az URLt az új URL-re."
+
+#: class-licensing.php:610
 #, php-format
-msgid ""
-"These settings are only available on the network settings, available with "
-"the %sAgency license%s."
-msgstr ""
-"Ezek a beállítások most már elérhetőek a hálózat beállításokban, ami az "
-"%sAgency license%s által érhető el."
+msgid "This license is not valid for this product. Find out why on your %saccount%s."
+msgstr "Ez a licenc nem érvényes ehhez a termékhez. Tudd meg miért a %saccount%s ban."
 
-#: class-premium-options.php:972
-#, php-format
-msgid "These settings are only available under the %snetwork settings%s."
-msgstr ""
-"Ezek a beállítások kizárólag a %shálózati beállítások%s alatt érhetőek el."
-
-#: class-premium-options.php:1269
-msgid ""
-"This domain is not activated for this Really Simple SSL Pro license. Please "
-"activate the license for this domain."
-msgstr ""
-"Ez a domain nincs aktiválva ehhez a Really Simple SSL Pro licenszhez. Kérlek "
-"aktiváld hozzá."
-
-#: class-scan.php:2483 class-scan.php:2572
-msgid ""
-"This downloads the file from the domain without SSL, inserts it into WP "
-"media, and changes the URL to the new URL."
-msgstr ""
-"Ez letölti a fájlt a domainről SSL nélkül, berakja a WP mediába és "
-"megváltoztatja az URLt az új URL-re."
-
-#: grid/templates/permissions-policy.php:12
-msgid ""
-"This feature is not allowed. Enable this to disable the feature entirely on "
-"your site."
-msgstr ""
-"Nincs engedélyezve ez a funkció. Engedélyezd vagy kapcsold ki ezt a funkciót "
-"teljesen az oldaladon."
-
-#: class-scan.php:2611 class-scan.php:2691
-msgid ""
-"This function downloads the file from the domain without SSL, inserts it "
-"into WP media, and changes the URL to the new URL."
-msgstr ""
-"Ez a funkció letölti a fájlt a domainről SSL nélkül, berakja a WP mediába és "
-"megváltoztatja az URLt az új URL-re."
-
-#: class-scan.php:2650
-msgid ""
-"This function will change the urls to the protocol independent // instead of "
-"http://"
-msgstr ""
-"Ez a funkció protokoll független // változattá alakítja az url-eket http:// "
-"helyett"
-
-#: class-premium-options.php:942
-msgid ""
-"This header allows you to restrict browser features on your own and embedded "
-"pages."
-msgstr ""
-"Ez a header lehetővé teszi, hogy korlátozd a böngésző funkcióit a saját és "
-"beágyazott oldalaidon."
-
-#: class-premium-options.php:935
-msgid ""
-"This header enforces certificate transparency. This is done by expecting "
-"valid Signed Certificate Timestamps (SCTs)."
-msgstr ""
-"Ez a header erőlteti a bizonyítvány átlátszóságot. Azáltal történik, hogy "
-"elvárja a Signed Certificate Timestamps-t (SCTs)"
-
-#: class-premium-options.php:932
-msgid ""
-"This header only sets a referrer when navigating to the same protocol (HTTPS-"
-">HTTPS) and not when downgrading (HTTPS->HTTP)."
-msgstr ""
-"Ez a header csak akkor állít be refferer-t ha ugyan arra a protokollra (HTTP-"
-">HTTPS) navigálsz és nem amikor visszalépsz (HTTPS->HTTP)."
-
-#: class-premium-options.php:929
-msgid ""
-"This header prevents MIME-sniffing, which can be used to upload malicious "
-"files disguised as another content type."
-msgstr ""
-"Ez a header megakadályozza a MIME-sniffing-et ami káros és álcázott fájlok "
-"feltöltésére használható."
-
-#: class-premium-options.php:938
-msgid ""
-"This header prevents your site from being loaded in an iFrame on other "
-"domains. This is used to prevent clickjacking attacks."
-msgstr ""
-"Ez a header megakadályozza, hogy az webhelyed betöltődjön egy másik "
-"domainben iFrame által. Ez a clickjacking támadásokat akadályozza meg."
-
-#: class-premium-options.php:926
-msgid ""
-"This header protects your site from cross-site scripting attacks. If a cross-"
-"site scripting attack is detected, the browser will automatically sanitize "
-"(remove) unsafe parts (scripts) when this header is enabled."
-msgstr ""
-"Ez a header megvédi az webhelyed az oldalakon átívelő szkript támadásoktól. "
-"Ha egy webhelyeken átívelő szkript támadást észlel, a böngésző automatikusan "
-"fertőtleníti (eltávolítja) a nem biztonságos részt (szkript) amikor ez a "
-"header engedélyezett."
-
-#: class-premium-options.php:923
-msgid ""
-"This is an additional header to force all incoming http:// requests to https:"
-"//."
-msgstr ""
-"Ez egy kiegészítő header ami https//-re erőlteti az összes http// kérést."
-
-#: class-premium-options.php:1414
-#, php-format
-msgid ""
-"This is an advanced feature. Only enable this if you know what you're doing. "
-"See %sour usage guide%s"
-msgstr ""
-"Ez egy haladó szintű funkció. Csak akkor kapcsold be ha tudod mit csinálsz. "
-"Lásd itt %sour usage guide%s"
-
-#: class-licensing.php:592
-#, php-format
-msgid ""
-"This license is not valid for this product. Find out why on your %saccount%s."
-msgstr ""
-"Ez a licenc nem érvényes ehhez a termékhez. Tudd meg miért a %saccount%s ban."
-
-#: class-licensing.php:585
+#: class-licensing.php:603
 #, php-format
 msgid "This license is not valid. Find out why on your %saccount%s."
 msgstr "A licenc nem érvényes. Tudd meg miért a %sfiókbeállítások%sban."
 
-#: class-premium-options.php:913
-msgid "This option is enabled on the network menu"
-msgstr "Ez az opció a hálózatok menüben érhető el"
+#: class-scan.php:2182
+#, fuzzy
+msgid "This will put the files back that were changed by the fix option in Really Simple SSL Pro."
+msgstr "Ez visszaállítja azokat a fájlokat amiket a Really Simple SSL pro fix opciója megváltoztatott."
 
-#: class-premium-options.php:1582
-msgid "This option is enabled on the network menu."
-msgstr "Ez az opció engedélyezett a hálózat menüben."
-
-#: class-premium-options.php:907
-#, php-format
-msgid ""
-"This option sends an email to the administrator email address (%s) when your "
-"certificate is about to expire within 2 weeks."
+#: class-admin.php:572
+#: class-admin.php:578
+msgid "TLS version"
 msgstr ""
-"Ez az opció egy emailt küld az adminisztrátor email címére (%s) amikor a "
-"bizonyítvány lejárati ideje kevesebb mint 2 hét."
 
-#: class-scan.php:2728
-msgid ""
-"This will put the files back that were changed by the fix option in Really "
-"Simple SSL pro."
-msgstr ""
-"Ez visszaállítja azokat a fájlokat amiket a Really Simple SSL pro fix "
-"opciója megváltoztatott."
-
-#: class-premium-options.php:1151
+#: class-admin.php:573
 msgid "TLS version is up-to-date"
 msgstr "TLS verzió friss"
 
-#: class-premium-options.php:2273
-msgid ""
-"To restart reporting, set Content Security Policy to ‘reporting active’."
-msgstr ""
-"A jelentési szolgáltatás újraindításához állítsd be a tartalom-biztonsági "
-"szabályzatban a 'jelentés bekapcsolva'-t."
-
-#: csp-violation-endpoint.php:417
-msgid "Today"
-msgstr "Ma"
-
-#: class-licensing.php:466
+#: class-licensing.php:494
 msgid "unlimited"
 msgstr "korlátlan"
 
-#: class-licensing.php:490
+#: class-licensing.php:518
 msgid "Unlimited activations available."
 msgstr "Korlátlan aktiválási lehetőség elérhető."
 
-#: class-premium-options.php:1297
-msgid ""
-"Update Really Simple SSL Free to the latest version for optimal Content "
-"Security Policy compatibility."
+#: class-admin.php:607
+msgid "Update Really Simple SSL Free to the latest version for optimal compatibility."
 msgstr ""
-"Frissítsd a Really Simple SSL Free változatát a legújabb verzióra hogy "
-"megfelelő kompatibilitással tudjon működni a tartalom-biztonsági szabályzat "
-"szolgáltatás."
 
-#: class-premium-options.php:924
-msgid "Upgrade insecure request"
-msgstr "Nem biztonságos kérés frissítése"
-
-#: class-licensing.php:479
+#: class-licensing.php:507
 #, php-format
 msgid "Upgrade to a %s5 sites or Agency%s license."
 msgstr "Válts %s5 oldalas vagy céges%s licencre."
 
-#: class-licensing.php:482
+#: class-licensing.php:510
 #, php-format
 msgid "Upgrade to an %sAgency%s license."
 msgstr "Frissíts egy %scéges%s licencre."
 
-#: class-scan.php:1857
+#: class-scan.php:1622
 msgid "uploads file, possibly generated by plugin or theme"
 msgstr "feltölt egy fájlt, valószínűleg ezt egy bővítmény vagy téma okozta"
 
-#: class-premium-options.php:911
-#| msgid ""
-#| "Use this option if you do not have the green lock in the WordPress admin."
-msgid ""
-"Use this option if you do not have the secure lock in the WordPress admin."
-msgstr ""
-"Használd ezt az opciót, ha nincs lakat ikonod a címsorban a WordPress admin "
-"oldalánál."
-
-#: grid/templates/license-footer.php:29
-msgid "User not found"
-msgstr "Felhasználó nem található"
-
-#: class-licensing.php:505
-msgid "Valid"
-msgstr "Érvényes"
-
-#: class-licensing.php:512
+#: class-licensing.php:537
 #, php-format
 msgid "Valid license for %s."
 msgstr "Érvényes licenc ehhez: %s."
 
-#: class-licensing.php:473
+#: class-licensing.php:501
 #, php-format
 msgid "Valid until %s."
 msgstr "Érvényes eddig: %s."
 
-#: class-licensing.php:569 class-licensing.php:576 class-licensing.php:584
-#: class-licensing.php:591 class-licensing.php:606 class-licensing.php:640
-#: grid/templates/scan-results-element.php:5
+#: class-licensing.php:629
 msgid "Warning"
 msgstr "Figyelem"
 
-#: class-premium-options.php:2274
-msgid ""
-"When there a no new directives reported, you can continue with the "
-"configuration and set the Content Security Policy to ‘Enforce’."
-msgstr ""
-"Ha nincsenek új szabályok jelentve, akkor folytathatod a beállítást és a "
-"tartalom-biztonsági szabályzatot 'Megkövetelő' módra állíthatod."
-
-#: grid/templates/scan-footer.php:20
-msgid ""
-"When you enable this option, the URL's that were previously ignored are "
-"shown again."
-msgstr ""
-"Amikor bekapcsolod ezt az opciót, a korábban mellőzött URL-ek ismét "
-"láthatóvá válnak."
-
-#: grid/templates/support.php:6
-msgid ""
-"When you send this form we will attach the following information: license "
-"key, scan results, your domain, .htaccess file, debug log and a list of "
-"active plugins"
-msgstr ""
-"Amikor elküldöd ezt az űrlapot a következő információkat csatoljuk hozzá: "
-"licenc kulcs, ellenőrzés eredménye, a domained, .htaccess fájl, debug napló "
-"és az aktív pluginok listája"
-
-#: class-scan.php:2096
+#: class-scan.php:1856
 #, php-format
 msgid "Widget area \"%s\""
 msgstr "Widget terület \"%s\""
 
-#: class-scan.php:2083
+#: class-scan.php:1866
 msgid "Widget with mixed content"
 msgstr "Vegyes tartalmú widget"
 
-#: class-multisite.php:358
-msgid "WordPress 301 redirection to SSL for all SSL sites"
-msgstr "WordPress 301 átirányítás SSL-re minden SSL webhelynek"
-
-#: grid/templates/premium-settings-footer.php:10
-#, php-format
-msgid "Works with %s"
-msgstr "Működik %s -el"
-
-#: class-licensing.php:635
-#, php-format
-msgid "You can activate your license on the %slicense tab%s."
-msgstr "Aktiválhatod a licencedet a %slicense tab%s -on."
-
-#: class-scan.php:1806
-msgid "You can edit the source file manually by pressing the edit button."
+#: class-licensing.php:742
+msgid "You are using Really Simple SSL Pro single site on a multisite environment. Please install Really Simple SSL multisite networkwide for multisite support."
 msgstr ""
-"Manuálisan is szerkesztheted a forrás fájlt a szerkesztés gomb használatával."
 
-#: class-licensing.php:485
+#: class-scan.php:1665
+msgid "You can edit the source file manually by pressing the edit button."
+msgstr "Manuálisan is szerkesztheted a forrás fájlt a szerkesztés gomb használatával."
+
+#: class-licensing.php:513
 #, php-format
 msgid "You can renew your license on your %saccount%s."
 msgstr "A %saccount%sban újíthatod meg a licenced."
 
-#: class-premium-options.php:1241
+#: class-licensing.php:692
 #, php-format
 msgid "You can upgrade on your %saccount%s."
 msgstr "Frissíthetsz a saját %saccont%s."
 
-#: class-licensing.php:637
-#, php-format
-msgid "You can upgrade or renew your license on the %slicense tab%s."
-msgstr "Megújíthatod vagy bővítheted a licencedet a  %slicense tab%s -on."
+#: class-licensing.php:720
+msgid "You do not have any activations left on your Really Simple SSL Pro license. Please upgrade your plan for additional activations."
+msgstr "Nem maradt szabad aktivációs lehetőséged a Really Simple SSL Pro licenceden. Kérlek válts magasabb csomagra további aktivációs lehetőségekért."
 
-#: class-premium-options.php:1276
-msgid ""
-"You do not have any activations left on your Really Simple SSL Pro license. "
-"Please upgrade your plan for additional activations."
-msgstr ""
-"Nem maradt szabad aktivációs lehetőséged a Really Simple SSL Pro licenceden. "
-"Kérlek válts magasabb csomagra további aktivációs lehetőségekért."
-
-#: EDD_SL_Plugin_Updater.php:502
-msgid "You do not have permission to install plugin updates"
-msgstr "Nincs engedélyed plugin frissítéseket telepíteni"
-
-#: class-premium-options.php:2160
-msgid "You finished a scan without errors."
-msgstr "A vizsgálat hiba nélkül befejeződött. "
-
-#: class-licensing.php:473
+#: class-licensing.php:501
 msgid "You have a lifetime license."
 msgstr "Életre szóló licenced van."
 
-#: class-premium-options.php:1234
-msgid ""
-"You have a multisite environment. To leverage all configuration options in "
-"Really Simple SSL, we recommend to enabled the plugin networkwide, then use "
-"the 'activate per site' option to enable SSL per site."
-msgstr ""
-"Több webhelyes környezeted van. A Really Simple SSL összes konfigurációs "
-"lehetőségének kiaknázásához javasoljuk, hogy engedélyezd a plugin egész "
-"hálózatban, majd használd az \"aktiválás webhelyenként\" opciót az SSL "
-"engedélyezéséhez webhelyenként."
+#: class-scan.php:142
+msgid "You haven't scanned the site yet, you should scan your site to check for possible issues."
+msgstr "Még nem ellenőrizted az webhelyed, ellenőrizned kéne az webhelyed lehetséges hibák."
 
-#: class-premium-options.php:1118
-msgid ""
-"You have enabled the nginx.conf security header option. Check if the "
-"following security headers have been added to the NGINX configuration file:"
-msgstr ""
-"Engedélyezted az nginx.conf security header opcióját. Ellenőrizd hogy a "
-"következő security header-ek hozzá lettek-e adva az NGINX konfigurációs "
-"fájlodhoz:"
-
-#: class-premium-options.php:1183
-#| msgid "You have new rules that can be added to your Content Security Policy"
-msgid "You have new rules that can be added to your Content Security Policy."
-msgstr ""
-"Új szabályaid vannak amik hozzáadhatóak a tartalom-biztonsági szabályzathoz."
-
-#: class-premium-options.php:165
-msgid ""
-"You have scanned your site before, but the scan results are cleared from the "
-"cache. Run a new scan to see the results."
-msgstr ""
-"Már ellenőrizted a webhelyed korábban, de az ellenőrzés eredményei törlődtek "
-"a gyorsítótárból. Futtass egy új ellenőrzés az eredmények megtekintéséhez."
-
-#: class-licensing.php:690
-msgid ""
-"You haven't activated your Really Simple SSL Pro Multisite license yet. To "
-"get all future updates, enter your license on the network settings page."
-msgstr ""
-"Még nem aktiváltad a Really Simple SSL Pro Multisite licencét. Minden "
-"jövőbeni frissítéshez, írd be a licenced a hálózati beállítások oldalon."
-
-#: class-premium-options.php:1214
-msgid ""
-"You haven't scanned the site yet, you should scan your site to check for "
-"possible issues."
-msgstr ""
-"Még nem ellenőrizted az webhelyed, ellenőrizned kéne az webhelyed lehetséges "
-"hibák."
-
-#: class-importer.php:103
+#: class-importer.php:107
 msgid "Your files already were restored."
 msgstr "A fájlok már helyre lettek állítva."
 
-#: class-importer.php:101
+#: class-importer.php:105
 msgid "Your files were restored."
 msgstr "A fájlok helyre lettek állítva."
 
-#: class-licensing.php:577
+#: class-licensing.php:596
 #, php-format
-msgid ""
-"Your license could not be found in our system. Please contact %ssupport%s."
-msgstr ""
-"A licenced nem található a rendszerünkben. Lépj kapcsolatba a %ssupport%sal."
+msgid "Your license could not be found in our system. Please contact %ssupport%s."
+msgstr "A licenced nem található a rendszerünkben. Lépj kapcsolatba a %ssupport%sal."
 
-#: class-licensing.php:570
+#: class-licensing.php:590
 #, php-format
 msgid "Your license has been revoked. Please contact %ssupport%s."
 msgstr "A licenced visszavonásra került. Lépj kapcsolatba a %ssupport%s-al,"
 
-#: class-licensing.php:607
+#: class-licensing.php:623
 #, php-format
-msgid ""
-"Your license key has expired. Please renew your license key on your "
-"%saccount%s."
+msgid "Your license key has expired. Please renew your license key on your %saccount%s."
 msgstr "A licenc kulcsod lejárt. Újítsd meg a licenc kulcs a %saccount%sban."
 
-#: class-licensing.php:635
-msgid "Your Really Simple SSL pro license hasn't been activated."
+#: class-licensing.php:675
+#, fuzzy
+msgid "Your Really Simple SSL Pro license hasn't been activated."
 msgstr "A Really Simple SSL Pro licenced nem lett aktiválva."
 
-#: class-licensing.php:637
-msgid "Your Really Simple SSL pro license is not valid."
+#: class-licensing.php:676
+#, fuzzy
+msgid "Your Really Simple SSL Pro license is not valid."
 msgstr "A Really Simple SSL Pro licenced nem érvényes."
 
-#: class-premium-options.php:1255
-msgid ""
-"Your Really Simple SSL Pro license key has expired. Please renew your "
-"license to continue receiving updates and premium support."
-msgstr ""
-"A Really Simple SSL Pro licencukulcsod lejárt. Kérlek újítsd meg a "
-"licencedet hogy továbbra is kapj frissítéseket és kiemelt támogatást."
+#: class-licensing.php:699
+msgid "Your Really Simple SSL Pro license key has expired. Please renew your license to continue receiving updates and premium support."
+msgstr "A Really Simple SSL Pro licencukulcsod lejárt. Kérlek újítsd meg a licencedet hogy továbbra is kapj frissítéseket és kiemelt támogatást."
 
-#: class-premium-options.php:1283
-msgid ""
-"Your Really Simple SSL Pro license key hasn't been activated yet. You can "
-"activate your license key on the license tab."
-msgstr ""
-"A Really Simple SSL Pro licenckulcsod nem lett aktiválva még. Aktiválhatod a "
-"licenckulcsodat a licenc fülön."
+#: class-licensing.php:727
+msgid "Your Really Simple SSL Pro license key hasn't been activated yet. You can activate your license key on the license tab."
+msgstr "A Really Simple SSL Pro licenckulcsod nem lett aktiválva még. Aktiválhatod a licenckulcsodat a licenc fülön."
 
-#: class-premium-options.php:1262
-msgid ""
-"Your Really Simple SSL Pro license key is not activated. Please activate "
-"your license to continue receiving updates and premium support."
-msgstr ""
-"A Really Simple SSL Pro licenckulcsot nincs aktiválva. Kérlek aktiváld a "
-"licencedet hogy továbbra is kapj frissítéseket és kiemelt támogatást."
+#: class-licensing.php:706
+msgid "Your Really Simple SSL Pro license key is not activated. Please activate your license to continue receiving updates and premium support."
+msgstr "A Really Simple SSL Pro licenckulcsot nincs aktiválva. Kérlek aktiváld a licencedet hogy továbbra is kapj frissítéseket és kiemelt támogatást."
 
-#: class-premium-options.php:1133
+#: class-headers.php:197
 #, php-format
-msgid ""
-"Your site has been configured for the HSTS preload list. If you have "
-"submitted your site, it will be preloaded. Click %shere%s to submit."
-msgstr ""
-"Az webhelyed a HSTS preload listájára állították be. Ha békülted az "
-"webhelyed, előzetesen betöltődik. Kattints %shere%s a beállításhoz."
+msgid "Your site has been configured for the HSTS preload list. If you have submitted your site, it will be preloaded. Click %shere%s to submit."
+msgstr "Az webhelyed a HSTS preload listájára állították be. Ha békülted az webhelyed, előzetesen betöltődik. Kattints %shere%s a beállításhoz."
 
-#: class-premium-options.php:1138
+#: class-headers.php:210
+msgid "Your site is not configured for HSTS yet."
+msgstr ""
+
+#: class-headers.php:203
 msgid "Your site is not yet configured for the HSTS preload list."
 msgstr "Az webhelyed még nem lett konfigurálva a HSTS előtöltési listához."
 
-#: class-premium-options.php:1169
-msgid ""
-"Your site redirects 404 pages to the http:// version of your homepage. This "
-"can cause mixed content issues with images."
-msgstr ""
-"Az webhelyed főoldala http:// változatához irányítja a 404-es oldalakat. Ez "
-"vegyes tartalmat generálhat a képekkel."
+#: class-admin.php:593
+msgid "Your site redirects 404 pages to the http:// version of your homepage. This can cause mixed content issues with images."
+msgstr "Az webhelyed főoldala http:// változatához irányítja a 404-es oldalakat. Ez vegyes tartalmat generálhat a képekkel."
 
-#: class-premium-options.php:1156
-msgid ""
-"Your site uses an outdated version of TLS. Upgrade to TLS 1.2 or TLS 1.3 to "
-"keep your site secure."
+#: class-admin.php:579
+msgid "Your site uses an outdated version of TLS. Upgrade to TLS 1.2 or TLS 1.3 to keep your site secure."
+msgstr "Az webhelyed egy elavult TLS verziót használ. Frissítsd TLS 1.2 vagy TLS 1.3-ra, hogy biztonságos legyen a webhelyed."
+
+#. Plugin Name of the plugin
+msgid "Really Simple SSL Pro"
 msgstr ""
-"Az webhelyed egy elavult TLS verziót használ. Frissítsd TLS 1.2 vagy TLS 1.3-"
-"ra, hogy biztonságos legyen a webhelyed."
+
+#: really-simple-ssl-pro.php:296
+msgid "Really Simple SSL Free needs to be updated to the latest version to be compatible."
+msgstr ""
+
+#: really-simple-ssl-pro.php:297
+msgid "Visit the plugins overview to update Really Simple SSL."
+msgstr ""

@@ -1,11 +1,11 @@
 === Really Simple SSL pro ===
 Contributors: RogierLankhorst
 Tags: mixed content, insecure content, secure website, website security, ssl, https, tls, security, secure socket layers, hsts
-Requires at least: 4.9
-License: GPL2
-Tested up to: 5.10
-Requires PHP: 5.6
-Stable tag: 5.3.1
+Requires at least: 5.7
+License: license.txt
+Tested up to: 6.2
+Requires PHP: 7.2
+Stable tag: 6.2.3
 
 Premium support and extra features for Really Simple SSL
 
@@ -27,6 +27,84 @@ For more information: go to the [website](https://www.really-simple-ssl.com/), o
 == Frequently Asked Questions ==
 
 == Change log ==
+= 6.2.3 =
+* Fix: rename db prefix using not available function
+
+= 6.2.2 =
+* Fix: follow redirects in third party header detection.
+
+= 6.2.1 =
+* Fix: prefix replacement in wp-config too broad, causing issues if wp_ is used other then in the prefix.
+* Fix: Update prefix site_id in user roles when changing the database prefix, to preserve capabilities for users in subsites
+
+= 6.2.0 =
+* Improvement: add support for BLOB and Filesystem
+* Improvement: disable CSP reporting mode paused status when switching to disabled or enforced
+
+= 6.1.1 =
+* Improvement: Use ABSPATH constant instead of path when writing path to debug.log
+* Improvement: Pause CSP reporting after 20 requests, to lower server load
+* Fix: script-src-elem in Content Security Policy not including source URL
+
+= 6.1.0 =
+* Improvement: CSP policy for back and front-end separate
+* Improvement: also allow non-recommended X-XSS options
+* Improvement: frame ancestors allow other values than 'none'
+
+= 6.0.5 =
+* Fix: Debug.log setting not saving on first save action
+
+= 6.0.4 =
+* New: automatically detect wrong Security Header values from other sources, and duplicate headers
+* Improvement: auto enable Insecure Requests header only when SSL enabled
+* Improvement: remove unnecessary notices load in licenses block
+
+= 6.0.3 =
+* Fix: isset check on $_SERVER['HTTPS'] to support environments where this key is missing
+* Improvement: add headers_sent() check for situations where the headers already have been sent, possibly due to an error earlier in the system.
+* Improvement: Update CSP reporting URI on permalink structure change
+
+= 6.0.2 =
+* Fix: HSTS not running on hosting environments with load balanced configuration because SSL is not detected
+* Fix: when wp-config.php is not writable, renaming database prefix could cause tables to get removed
+
+= 6.0.1 =
+* Fix: upgrade to 6 logic running more than once
+
+= 6.0.0 =
+* Tested up to WordPress 6.1.0
+* Improvement: User Interface
+* New: Server Health Check - powered by SSLLabs
+* New: WordPress Hardening Features
+
+= 5.4.0 =
+* Improvement: New default Referrer Policy => strict-origin-when-cross-origin
+* Improvement: New default for X-XSS header
+* Improvement: Dropped Expect-CT header as it's now deprecated, integrated by default in certificates
+* Improvement: Updated Permissions Policy with improved defaults, updated to new values as currently supported in browsers
+* Improvement: dropped access-control-allow-origin header, as it can only be used dynamically, which is not feasible in most WP environments
+
+= 5.3.6 =
+* Improvement: new languages
+* Improvement: several small bug fixes and typo's
+
+= 5.3.5.1 =
+* Fix: new license check causing continuous license checking, resulting in slow response
+
+= 5.3.5 =
+* Improvement: language files
+* Improvement: some small bug fixes
+
+= 5.3.4 =
+* Improvement: language files
+* Changed: license check using own transient function
+
+= 5.3.3 =
+* Removed credentialless from CORP setting as it caused some issues with embedded videos
+
+= 5.3.2 =
+* Fix: PHP <7 compatibility
+
 = 5.3.1 =
 * Improvement: fix site health still showing header notice if activated in pro
 * Improvement: set ssl verify to false on failed license check

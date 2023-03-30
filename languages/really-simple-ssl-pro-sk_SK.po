@@ -1,0 +1,625 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Really Simple SSL pro multisite\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: Slovak - Simon\n"
+"Language-Team: Slovak\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-08-30 14:56+0200\n"
+"PO-Revision-Date: 2023-02-07 07:52+0000\n"
+"Language: sk_SK\n"
+"Plural-Forms: nplurals=3; plural=( n == 1 ) ? 0 : ( n >= 2 && n <= 4 ) ? 1 : 2;\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: really-simple-ssl-pro-multisite.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Loco-Version: 2.6.3; wp-6.1\n"
+
+#: class-admin.php:12
+#: class-scan.php:44
+#: csp-violation-endpoint.php:10
+#, php-format
+msgid "%s is a singleton class and you cannot create a second instance."
+msgstr "%s je trieda jednotlivcov a nemôžete vytvoriť druhú inštanciu."
+
+#: class-licensing.php:521
+#: class-licensing.php:617
+#, php-format
+msgid "%s/%s activations available."
+msgstr "K dispozícii sú %s/%s aktivácie."
+
+#: class-licensing.php:690
+#, php-format
+msgid "%sActivate%s your license."
+msgstr "%sAktivujte%s svoju licenciu."
+
+#: class-admin.php:558
+#, php-format
+msgid "%sRead more%s."
+msgstr "%sPrečítajte si viac%s."
+
+#: class-scan.php:224
+#, php-format
+msgctxt "'date' at 'time'"
+msgid "%s at %s"
+msgstr "%s na %s"
+
+#: class-admin.php:558
+msgid "A redirect to http was detected. This might result in redirect loops."
+msgstr "Bolo zistené presmerovanie na http. Výsledkom môžu byť presmerovacie slučky."
+
+#: csp-violation-endpoint.php:121
+msgid "A required database table is missing. Please check if you have permissions to add this database table."
+msgstr "Chýba požadovaná tabuľka databázy. Skontrolujte, či máte povolenia na pridanie tejto databázovej tabuľky."
+
+#: class-licensing.php:59
+msgid "Activate your license for automatic updates."
+msgstr "Aktivujte svoju licenciu pre automatické aktualizácie."
+
+#: class-scan.php:1665
+#: class-scan.php:1699
+#: class-scan.php:1775
+#: class-scan.php:1812
+#: class-scan.php:1861
+#, php-format
+msgid "Blocked URL: %s"
+msgstr "Blokovaná adresa URL: %s"
+
+#: class-scan.php:1624
+msgid "cached file, deactivate cache to see the actual source"
+msgstr "súbor vo vyrovnávacej pamäti, deaktivujte vyrovnávaciu pamäť, aby sa zobrazil skutočný zdroj"
+
+#: class-scan.php:1700
+msgid "Can be fixed automatically by pressing the Fix button. If fixing fails, the source file can be edited manually by pressing the Edit button."
+msgstr "Opraviť sa dá automaticky stlačením tlačidla Opraviť. Ak oprava zlyhá, zdrojový súbor je možné upraviť manuálne stlačením tlačidla Upraviť."
+
+#: class-scan.php:1700
+msgid "Can be fixed manually by editing the respective mu-plugin file in the /wp-content/mu-plugins/ directory "
+msgstr "Dá sa opraviť manuálne úpravou príslušného súboru mu-plugin v adresári /wp-content/mu-plugins/"
+
+#: class-scan.php:1738
+msgid "Cannot be fixed automatically, as the mixed content is coming from an external domain. Contact the owner of the domain to update the CSS/JS file"
+msgstr "Nie je možné opraviť automaticky, pretože zmiešaný obsah pochádza z externej domény. Ak chcete aktualizovať súbor CSS/JS, kontaktujte vlastníka domény"
+
+#: class-scan.php:365
+#, php-format
+msgid "Checking if external js or css files contain http links, %s of %s"
+msgstr "Kontrola, či externé súbory js alebo css obsahujú odkazy http, %s z %s"
+
+#: class-scan.php:313
+#, php-format
+msgid "Checking posts for external URLs, %s of %s"
+msgstr "Kontrola externých adries URL, %s z %s"
+
+#: class-scan.php:337
+msgid "Checking which postmeta contain external resources"
+msgstr "Kontrola, ktoré postmeta obsahuje externé zdroje"
+
+#: class-scan.php:350
+#, php-format
+msgid "Checking which resources can't load over ssl, %s of %s"
+msgstr "Kontrola, ktoré zdroje sa nedajú načítať cez ssl, %s z %s"
+
+#: class-scan.php:326
+msgid "Checking widgets for external URLs"
+msgstr "Kontrola miniaplikácií na externé adresy URL"
+
+#: csp-violation-endpoint.php:158
+msgid "Click 'Enforce' to enforce the configuration on your site."
+msgstr "Kliknutím na „Vynútiť“ vynútite konfiguráciu na svojej stránke."
+
+#: class-scan.php:1719
+#: class-scan.php:1794
+#: class-scan.php:1832
+#: class-scan.php:1879
+#: class-scan.php:2179
+msgid "Copyright warning!"
+msgstr "Autorské upozornenie!"
+
+#: class-scan.php:1643
+msgid "Downloading files from other websites can cause serious copyright issues! It is always illegal to use images, files, or any copyright protected material on your own site without the consent of the copyrightholder. Please ask the copyrightholder for permission. Use this function at your own risk."
+msgstr "Sťahovanie súborov z iných webových stránok môže spôsobiť vážne problémy s autorskými právami! Bez súhlasu držiteľa autorských práv je vždy nezákonné používať obrázky, súbory alebo akýkoľvek materiál chránený autorskými právami na vašom vlastnom webe. Požiadajte držiteľa autorských práv o povolenie. Túto funkciu používajte na vlastné riziko."
+
+#: class-admin.php:539
+msgid "Elementor mixed content successfully converted."
+msgstr "Zmiešaný obsah Elementor bol úspešne prevedený."
+
+#: class-scan.php:1626
+msgid "file"
+msgstr "súbor"
+
+#: class-scan.php:430
+msgid "Finished scan"
+msgstr "Hotové skenovanie"
+
+#: csp-violation-endpoint.php:155
+msgid "Follow these steps to complete the setup:"
+msgstr "Na dokončenie nastavenia postupujte podľa týchto krokov:"
+
+#: class-scan.php:299
+msgid "Generating file list"
+msgstr "Generuje sa zoznam súborov"
+
+#: class-scan.php:257
+msgid "Generating web page list"
+msgstr "Generovanie zoznamu webových stránok"
+
+#: class-scan.php:133
+#: class-scan.php:147
+msgid "Great! Your scan last completed without errors."
+msgstr "Skvelé! Vaše skenovanie bolo naposledy dokončené bez chýb."
+
+#. Description of the plugin
+msgid "Heavyweight Security Features"
+msgstr "Bezpečnostné prvky s vysokou vážnosťou."
+
+#: class-headers.php:209
+msgid "HSTS not enabled"
+msgstr "HSTS nie je povolené"
+
+#: class-headers.php:196
+#: class-headers.php:202
+msgid "HSTS Preload"
+msgstr "HSTS Prednačítanie"
+
+#. Plugin URI of the plugin
+msgid "https://really-simple-ssl.com/pro"
+msgstr "https://really-simple-ssl.com/pro"
+
+#. Author URI of the plugin
+msgid "https://www.really-simple-plugins.com"
+msgstr "https://www.really-simple-plugins.com"
+
+#: class-scan.php:1811
+msgid "iFrame in the wp_postmeta database table"
+msgstr "iFrame v databázovej tabuľke wp_postmeta"
+
+#: class-scan.php:1718
+#: class-scan.php:1793
+#: class-scan.php:1831
+#: class-scan.php:1878
+msgid "Import and insert file"
+msgstr "Importujte a vložte súbor"
+
+#: really-simple-ssl-pro-multisite.php:288
+#: really-simple-ssl-pro.php:285
+msgid "Install and activate Really Simple SSL"
+msgstr "Nainštalujte a aktivujte Really Simple SSL"
+
+#: csp-violation-endpoint.php:143
+msgid "Learning Mode is active for your Content Security and will complete in %s days."
+msgstr "Režim učenia je aktívny pre vašu bezpečnosť obsahu a dokončí sa o %s dní."
+
+#: class-licensing.php:179
+#: class-licensing.php:201
+#: class-licensing.php:698
+#: class-licensing.php:705
+#: class-licensing.php:712
+#: class-licensing.php:719
+#: class-licensing.php:726
+#: class-licensing.php:741
+msgid "License"
+msgstr "Licencia"
+
+#: class-scan.php:380
+#, php-format
+msgid "Looking up blocked resources in files, %s of %s"
+msgstr "Vyhľadávanie zablokovaných zdrojov v súboroch, %s z %s"
+
+#: class-scan.php:407
+msgid "Looking up blocked resources in postmeta"
+msgstr "Vyhľadávanie zablokovaných zdrojov v postmete"
+
+#: class-scan.php:394
+msgid "Looking up blocked resources in posts"
+msgstr "Vyhľadávanie zablokovaných zdrojov v príspevkoch"
+
+#: class-scan.php:422
+msgid "Looking up blocked resources in widgets"
+msgstr "Vyhľadávanie zablokovaných zdrojov v miniaplikáciách"
+
+#: class-scan.php:1861
+msgid "Mixed content found in a widget. Press the edit link to edit the widget manually."
+msgstr "V miniaplikácii sa nachádza zmiešaný obsah. Ak chcete miniaplikáciu upraviť ručne, kliknite na odkaz Upraviť."
+
+#: class-scan.php:1776
+msgid "Mixed content found in in a post. Can be fixed automatically by pressing the fix button. Pressing the edit button allows you to update the link in the post manually."
+msgstr "Zmiešaný obsah nájdený v príspevku. Opraviť sa dá automaticky stlačením tlačidla opravy. Stlačenie tlačidla Upraviť vám umožní ručne aktualizovať odkaz v príspevku."
+
+#: class-scan.php:1813
+msgid "Mixed content from a postmeta table in your database. Usually won't cause any mixed content on the front-end. Check the post if it causes mixed content. If so, the link can be replace directly in the database."
+msgstr "Zmiešaný obsah z tabuľky postmeta vo vašej databáze. Obvykle to nespôsobí žiadny zmiešaný obsah v klientskom rozhraní. Skontrolujte príspevok, ak spôsobuje zmiešaný obsah. Ak je to tak, odkaz je možné nahradiť priamo v databáze."
+
+#: class-scan.php:1705
+#, php-format
+msgid "Mixed content in %s"
+msgstr "Zmiešaný obsah v %s"
+
+#: class-scan.php:1744
+msgid "Mixed content in CSS/JS file from other domain"
+msgstr "Zmiešaný obsah v súbore CSS/JS z inej domény"
+
+#: class-scan.php:1670
+msgid "Mixed content in PHP file in %s"
+msgstr "Zmiešaný obsah v súbore PHP v %s"
+
+#: class-scan.php:1781
+msgid "Mixed content in post: "
+msgstr "Zmiešaný obsah v príspevku:"
+
+#: class-scan.php:1811
+msgid "Mixed content in the postmeta table"
+msgstr "Zmiešaný obsah v tabuľke postmeta"
+
+#: class-scan.php:1739
+#, php-format
+msgid "Mixed content resources: %s"
+msgstr "Zdroje zmiešaného obsahu: %s"
+
+#: class-scan.php:1618
+msgid "mu plugin file"
+msgstr "mu súbor doplnku"
+
+#: class-licensing.php:562
+#, php-format
+msgid "Multisite detected. Please upgrade to %smultisite%s."
+msgstr "Zistilo sa viacero lokalít. Inovujte na %smultisite%s."
+
+#: class-scan.php:218
+#: class-scan.php:1914
+msgid "Never"
+msgstr "Nikdy"
+
+#: class-admin.php:553
+msgid "No redirect to http detected."
+msgstr "Nebolo zistené žiadne presmerovanie na http."
+
+#: class-licensing.php:630
+msgid "Open"
+msgstr "Otvoriť"
+
+#: really-simple-ssl-pro-multisite.php:278
+#: really-simple-ssl-pro-multisite.php:303
+#: really-simple-ssl-pro.php:276
+msgid "Please %supgrade%s to the latest version to be able use the full functionality of the plugin."
+msgstr "Prosím, %supgradujte%s na najnovšiu verziu, aby ste mohli využívať plnú funkčnosť pluginu."
+
+#: class-licensing.php:584
+msgid "Please activate your license key."
+msgstr "Aktivujte si licenčný kľúč."
+
+#: class-licensing.php:576
+#, php-format
+msgid "Please enter your license key. Available in your %saccount%s."
+msgstr "Zadajte licenčný kľúč. K dispozícii vo vašom %súčte%s."
+
+#: really-simple-ssl-pro-multisite.php:276
+#: really-simple-ssl-pro.php:274
+msgid "Please install and activate Really Simple SSL to enable the add-on."
+msgstr "Ak chcete doplnok povoliť, nainštalujte a aktivujte Really Simple SSL."
+
+#: class-scan.php:2184
+msgid "Please note that any changes you have made since to your current files, will be lost."
+msgstr "Upozorňujeme, že všetky zmeny, ktoré ste odvtedy vykonali v aktuálnych súboroch, sa stratia."
+
+#: really-simple-ssl-pro-multisite.php:270
+#: really-simple-ssl-pro-multisite.php:299
+msgid "Plugin dependency error"
+msgstr "Chyba závislosti na doplnku"
+
+#: class-scan.php:1620
+msgid "plugin file"
+msgstr "súbor doplnku"
+
+#: class-admin.php:552
+#: class-admin.php:557
+msgid "Potential redirect loop."
+msgstr "Potenciálna slučka presmerovania."
+
+#: class-licensing.php:632
+msgid "Premium"
+msgstr "Premium"
+
+#. Author of the plugin
+msgid "Really Simple Plugins"
+msgstr "Really Simple Plugins"
+
+#: really-simple-ssl-pro-multisite.php:302
+msgid "Really Simple SSL needs to be updated to the latest version to be compatible."
+msgstr "Really Simple SSL je potrebné aktualizovať na najnovšiu verziu, aby bol kompatibilný."
+
+#: really-simple-ssl-pro-multisite.php:28
+#: really-simple-ssl-pro.php:27
+msgid "Really Simple SSL Pro cannot be activated. The plugin requires PHP 7.2 or higher"
+msgstr "Really Simple SSL Pro nie je možné aktivovať. Plugin vyžaduje PHP 7.2 alebo vyššie"
+
+#: really-simple-ssl-pro-multisite.php:34
+#: really-simple-ssl-pro.php:33
+msgid "Really Simple SSL Pro cannot be activated. The plugin requires WordPress 5.7 or higher"
+msgstr "Really Simple SSL Pro nie je možné aktivovať. Doplnok vyžaduje WordPress 5.7 alebo vyšší"
+
+#: really-simple-ssl-pro-multisite.php:275
+#: really-simple-ssl-pro.php:273
+msgid "Really Simple SSL Pro is an add-on for Really Simple SSL, and cannot do it on its own :-("
+msgstr "Really Simple SSL Pro je doplnok pre Really Simple SSL a nedokáže to urobiť sám :-("
+
+#: class-scan.php:2189
+msgid "Restore files"
+msgstr "Obnovte súbory"
+
+#: csp-violation-endpoint.php:157
+msgid "Review the detected configuration in 'Content Security Policy'."
+msgstr "Skontrolujte zistenú konfiguráciu v časti „Zásady zabezpečenia obsahu“."
+
+#: class-scan.php:2178
+msgid "Roll back changes made to your files"
+msgstr "Vrátiť zmeny vykonané vo vašich súboroch"
+
+#: class-importer.php:61
+msgid "Roll back file changes"
+msgstr "Vrátiť zmeny súboru"
+
+#: class-scan.php:270
+#, php-format
+msgid "Searching for js and css files and links to external resources in website, %s of %s"
+msgstr "Hľadanie súborov js a css a odkazov na externé zdroje na webových stránkach, %s z %s"
+
+#: class-scan.php:285
+#, php-format
+msgid "Searching for mixed content in css and js files, %s of %s"
+msgstr "Hľadanie zmiešaného obsahu v súboroch css a js, %s z %s"
+
+#: class-admin.php:633
+msgid "Settings"
+msgstr "Nastavenie"
+
+#: class-importer.php:537
+msgid "Something went wrong."
+msgstr "Niečo sa pokazilo."
+
+#: class-importer.php:93
+msgid "Something went wrong. If this doesn't work, you can put the original files back by changing files named 'rsssl-bkp-filename' to filename."
+msgstr "Niečo sa pokazilo. Ak to nefunguje, môžete vrátiť pôvodné súbory späť zmenou súborov s názvom 'rsssl-bkp-filename' na názov súboru."
+
+#: class-importer.php:121
+#: class-importer.php:162
+#: class-importer.php:200
+#: class-importer.php:242
+#: class-importer.php:278
+msgid "Something went wrong. Please refresh the page and try again, or fix manually."
+msgstr "Niečo sa pokazilo. Obnovte stránku a skúste to znova alebo to opravte ručne."
+
+#: class-licensing.php:631
+msgid "Success"
+msgstr "Úspech"
+
+#: class-headers.php:176
+#: class-headers.php:382
+msgid "The %s security header is not set by Really Simple SSL, but has a non-recommended value: \"%s\"."
+msgstr ""
+
+#: class-importer.php:179
+msgid "The file could not be downloaded. It might not exist, or downloading is blocked. Fix manually."
+msgstr "Súbor sa nepodarilo stiahnuť. Možno neexistuje, alebo je sťahovanie zablokované. Opraviť ručne."
+
+#: class-importer.php:221
+#: class-importer.php:258
+#: class-importer.php:297
+msgid "The file could not be downloaded. The file might not exist, or downloading is be blocked by the server. Fix manually."
+msgstr "Súbor sa nepodarilo stiahnuť. Súbor pravdepodobne neexistuje alebo je sťahovanie zablokované serverom. Opraviť ručne."
+
+#: class-headers.php:413
+msgid "The following recommended security headers have not been set: %s"
+msgstr ""
+
+#: class-scan.php:151
+msgid "The last scan was completed with errors. Are you sure these issues don't impact your site?"
+msgstr "Posledná kontrola bola dokončená s chybami. Ste si istí, že tieto problémy neovplyvňujú váš web?"
+
+#: class-scan.php:137
+msgid "The last scan was completed with errors. Only migrate if you are sure the found errors are not a problem for your site."
+msgstr "Posledná kontrola bola dokončená s chybami. Migrujte iba vtedy, ak ste si istí, že nájdené chyby nie sú pre váš web problémom."
+
+#: class-licensing.php:570
+msgid "The license information could not be retrieved at this moment. Please try again at a later time."
+msgstr "Informácie o licencii sa v tejto chvíli nepodarilo získať. Skúste to znova neskôr."
+
+#: class-scan.php:1616
+msgid "theme file"
+msgstr "súbor s témou"
+
+#: class-importer.php:136
+msgid "There was a problem editing the file. Please try manually."
+msgstr "Pri úprave súboru sa vyskytol problém. Skúste to ručne."
+
+#: class-licensing.php:713
+msgid "This domain is not activated for this Really Simple SSL Pro license. Please activate the license for this domain."
+msgstr "Táto doména nie je aktivovaná pre túto licenciu Really Simple SSL Pro. Aktivujte si licenciu pre túto doménu."
+
+#: class-scan.php:1644
+msgid "This downloads the file from the domain without SSL, inserts it into WP media, and changes the URL to the new URL."
+msgstr "Tým sa súbor stiahne z domény bez SSL, vloží sa do média WP a adresa URL sa zmení na novú adresu URL."
+
+#: class-licensing.php:610
+#, php-format
+msgid "This license is not valid for this product. Find out why on your %saccount%s."
+msgstr "Táto licencia nie je platná pre tento produkt. Zistite, prečo na vašom %súčte%s."
+
+#: class-licensing.php:603
+#, php-format
+msgid "This license is not valid. Find out why on your %saccount%s."
+msgstr "Táto licencia nie je platná. Zistite, prečo na vašom %súčte%s."
+
+#: class-scan.php:2182
+msgid "This will put the files back that were changed by the fix option in Really Simple SSL Pro."
+msgstr "Týmto sa vrátia súbory, ktoré boli zmenené možnosťou opravy v Really Simple SSL Pro."
+
+#: class-admin.php:572
+#: class-admin.php:578
+msgid "TLS version"
+msgstr "TLS verzia"
+
+#: class-admin.php:573
+msgid "TLS version is up-to-date"
+msgstr "Verzia TLS je aktuálna"
+
+#: class-licensing.php:494
+msgid "unlimited"
+msgstr "neobmedzene"
+
+#: class-licensing.php:518
+msgid "Unlimited activations available."
+msgstr "K dispozícii je neobmedzené množstvo aktivácií."
+
+#: class-admin.php:607
+msgid "Update Really Simple SSL Free to the latest version for optimal compatibility."
+msgstr "Aktualizujte Really Simple SSL Free na najnovšiu verziu pre optimálnu kompatibilitu."
+
+#: class-licensing.php:507
+#, php-format
+msgid "Upgrade to a %s5 sites or Agency%s license."
+msgstr "Upgradujte na %s5 stránok alebo Agency%s licenciu."
+
+#: class-licensing.php:510
+#, php-format
+msgid "Upgrade to an %sAgency%s license."
+msgstr "Upgradovať na %sAgency%s licenciu."
+
+#: class-scan.php:1622
+msgid "uploads file, possibly generated by plugin or theme"
+msgstr "súbor na odoslanie, ktorý možno vygeneruje doplnok alebo téma"
+
+#: class-licensing.php:537
+#, php-format
+msgid "Valid license for %s."
+msgstr "Platná licencia pre %s."
+
+#: class-licensing.php:501
+#, php-format
+msgid "Valid until %s."
+msgstr "Platí do %s."
+
+#: class-licensing.php:629
+msgid "Warning"
+msgstr "Pozor"
+
+#: class-scan.php:1856
+#, php-format
+msgid "Widget area \"%s\""
+msgstr "Oblasť miniaplikácií \"%s\""
+
+#: class-scan.php:1866
+msgid "Widget with mixed content"
+msgstr "Widget so zmiešaným obsahom"
+
+#: class-licensing.php:742
+msgid "You are using Really Simple SSL Pro single site on a multisite environment. Please install Really Simple SSL multisite networkwide for multisite support."
+msgstr "Používate jednu lokalitu Really Simple SSL Pro v prostredí viacerých lokalít. Nainštalujte si Really Simple SSL v celej sieti pre viacero lokalít, aby ste získali podporu viacerých lokalít."
+
+#: class-scan.php:1665
+msgid "You can edit the source file manually by pressing the edit button."
+msgstr "Zdrojový súbor môžete upraviť ručne stlačením tlačidla Upraviť."
+
+#: class-licensing.php:513
+#, php-format
+msgid "You can renew your license on your %saccount%s."
+msgstr "Licenciu si môžete predĺžiť na svojom %súčte%s."
+
+#: class-licensing.php:692
+#, php-format
+msgid "You can upgrade on your %saccount%s."
+msgstr "Môžete upgradovať na svojom %súčte%s."
+
+#: class-licensing.php:720
+msgid "You do not have any activations left on your Really Simple SSL Pro license. Please upgrade your plan for additional activations."
+msgstr "Vo vašej licencii Really Simple SSL Pro nezostali žiadne aktivácie. Inovujte svoj plán pre ďalšie aktivácie."
+
+#: class-licensing.php:501
+msgid "You have a lifetime license."
+msgstr "Máte doživotnú licenciu."
+
+#: class-scan.php:142
+msgid "You haven't scanned the site yet, you should scan your site to check for possible issues."
+msgstr "Web ste ešte nenaskenovali, mali by ste ho skontrolovať a skontrolovať možné problémy."
+
+#: class-importer.php:107
+msgid "Your files already were restored."
+msgstr "Vaše súbory už boli obnovené."
+
+#: class-importer.php:105
+msgid "Your files were restored."
+msgstr "Vaše súbory boli obnovené."
+
+#: class-licensing.php:596
+#, php-format
+msgid "Your license could not be found in our system. Please contact %ssupport%s."
+msgstr "Vaša licencia sa v našom systéme nenašla. Kontaktujte %spodporu%s."
+
+#: class-licensing.php:590
+#, php-format
+msgid "Your license has been revoked. Please contact %ssupport%s."
+msgstr "Vaša licencia bola zrušená. Kontaktujte %spodporu%s."
+
+#: class-licensing.php:623
+#, php-format
+msgid "Your license key has expired. Please renew your license key on your %saccount%s."
+msgstr "Platnosť vášho licenčného kľúča vypršala. Obnovte si licenčný kľúč na svojom %súčte%s."
+
+#: class-licensing.php:675
+msgid "Your Really Simple SSL Pro license hasn't been activated."
+msgstr "Vaša licencia Really Simple SSL Pro nebola aktivovaná."
+
+#: class-licensing.php:676
+msgid "Your Really Simple SSL Pro license is not valid."
+msgstr "Vaša licencia Really Simple SSL Pro nie je platná."
+
+#: class-licensing.php:699
+msgid "Your Really Simple SSL Pro license key has expired. Please renew your license to continue receiving updates and premium support."
+msgstr "Platnosť vášho licenčného kľúča Really Simple SSL Pro vypršala. Ak chcete naďalej dostávať aktualizácie a prémiovú podporu, obnovte si licenciu."
+
+#: class-licensing.php:727
+msgid "Your Really Simple SSL Pro license key hasn't been activated yet. You can activate your license key on the license tab."
+msgstr "Váš licenčný kľúč Really Simple SSL Pro ešte nebol aktivovaný. Licenčný kľúč si môžete aktivovať na karte licencie."
+
+#: class-licensing.php:706
+msgid "Your Really Simple SSL Pro license key is not activated. Please activate your license to continue receiving updates and premium support."
+msgstr "Váš licenčný kľúč Really Simple SSL Pro nie je aktivovaný. Ak chcete naďalej dostávať aktualizácie a prémiovú podporu, aktivujte si svoju licenciu."
+
+#: class-headers.php:197
+#, php-format
+msgid "Your site has been configured for the HSTS preload list. If you have submitted your site, it will be preloaded. Click %shere%s to submit."
+msgstr "Váš web bol nakonfigurovaný pre zoznam predbežného načítania HSTS. Ak ste odoslali svoj web, bude vopred načítaný. Odošlite kliknutím na %stu%s."
+
+#: class-headers.php:210
+msgid "Your site is not configured for HSTS yet."
+msgstr "Vaša stránka ešte nie je nakonfigurovaná pre HSTS."
+
+#: class-headers.php:203
+msgid "Your site is not yet configured for the HSTS preload list."
+msgstr "Váš web ešte nie je nakonfigurovaný pre zoznam predbežného načítania HSTS."
+
+#: class-admin.php:593
+msgid "Your site redirects 404 pages to the http:// version of your homepage. This can cause mixed content issues with images."
+msgstr "Váš web presmeruje 404 stránok na http: // verziu vašej domovskej stránky. To môže spôsobiť problémy so zmiešaným obsahom obrázkov."
+
+#: class-admin.php:579
+msgid "Your site uses an outdated version of TLS. Upgrade to TLS 1.2 or TLS 1.3 to keep your site secure."
+msgstr "Váš web používa zastaranú verziu TLS. Inovujte na TLS 1.2 alebo TLS 1.3, aby bola vaša stránka v bezpečí."
+
+#. Plugin Name of the plugin
+msgid "Really Simple SSL Pro"
+msgstr ""
+
+#: really-simple-ssl-pro.php:296
+msgid "Really Simple SSL Free needs to be updated to the latest version to be compatible."
+msgstr ""
+
+#: really-simple-ssl-pro.php:297
+msgid "Visit the plugins overview to update Really Simple SSL."
+msgstr ""

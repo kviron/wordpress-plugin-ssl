@@ -2,1757 +2,617 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Really Simple SSL pro\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-07 08:36+0100\n"
-"PO-Revision-Date: 2021-11-11 12:58+0000\n"
 "Last-Translator: \n"
-"Language-Team: Dutch\n"
-"Language: nl_NL\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Language-Team: Nederlands\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-12-07 08:36+0100\n"
+"PO-Revision-Date: 2023-02-07 08:24+0000\n"
+"Language: nl_NL\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.5.5; wp-5.8.2"
+"X-Loco-Version: 2.6.3; wp-6.1.1\n"
 
-#: class-cert-expiration.php:183
-msgid " the SSL certificate is expiring soon. The ValidTo date is:"
-msgstr "het SSL certificaat verloopt snel. Het certificaat is geldig tot:"
-
-#: class-importer.php:12 class-licensing.php:18 class-multisite.php:28
-#: class-premium-options.php:13 class-scan.php:48 class-support.php:14
-#: csp-violation-endpoint.php:13
+#: class-admin.php:12
+#: class-scan.php:44
+#: csp-violation-endpoint.php:10
 #, php-format
 msgid "%s is a singleton class and you cannot create a second instance."
-msgstr ""
-"%s is een singleton class en daar kan je geen tweede instantie van creëren."
+msgstr "%s is een singleton class en daar kan je geen tweede instantie van creëren."
 
-#: class-multisite.php:203
-#, php-format
-msgid "%s to %s of %s results"
-msgstr "%s naar %s van %s resultaten"
-
-#: class-licensing.php:492 class-licensing.php:600
+#: class-licensing.php:521
+#: class-licensing.php:617
 #, php-format
 msgid "%s/%s activations available."
 msgstr "%s/%s activaties beschikbaar."
 
-#: class-premium-options.php:1247
+#: class-licensing.php:690
 #, php-format
 msgid "%sActivate%s your license."
 msgstr "%sActiveer%s je licentie."
 
-#: class-licensing.php:692
-#, php-format
-msgid "%sGo to the settings page%s or %spurchase a license%s."
-msgstr "%sGa naar de instellingenpagina%s of %skoop een licentie%s."
-
-#: class-premium-options.php:1045
+#: class-admin.php:558
 #, php-format
 msgid "%sRead more%s."
 msgstr "%sLees meer%s."
 
-#: class-premium-options.php:2180
-#, php-format
-msgid "%sScan again%s"
-msgstr "%sScan nogmaals%s"
-
-#: class-premium-options.php:2184
-#, php-format
-msgid "%sScan for issues%s"
-msgstr "%sScan op problemen%s"
-
-#: class-scan.php:213
+#: class-scan.php:224
 #, php-format
 msgctxt "'date' at 'time'"
 msgid "%s at %s"
 msgstr "%s op %s"
 
-#: class-multisite.php:205
-#, php-format
-msgid "(filtered from %s results)"
-msgstr "(Gefilterd uit %s resultaten)"
-
-#: grid/templates/feature-policy.php:10
-msgid "* is the default value. This means the feature is allowed."
-msgstr "* is de standaard waarde. Dit betekent dat de functie is toegestaan."
-
-#: class-premium-options.php:1095
-msgid ""
-".htaccess file not writable. Set the .htaccess file permissions to writeable "
-"or add the following lines manually:"
-msgstr ""
-".htaccess bestand niet schrijfbaar. Pas de .htaccess schrijfrechten aan naar "
-"schrijfbaar of voeg de volgende regels handmatig toe:"
-
-#: grid/templates/premium-settings-footer.php:24
-msgid ".htaccess unavailable on nginx"
-msgstr ".htaccess niet beschikbaar op nginx"
-
-#: class-premium-options.php:1045
+#: class-admin.php:558
 msgid "A redirect to http was detected. This might result in redirect loops."
-msgstr ""
-"Een redirect naar HTTP gedetecteerd. Dit kan zorgen voor redirect loops."
+msgstr "Een redirect naar HTTP gedetecteerd. Dit kan zorgen voor redirect loops."
 
-#: class-cert-expiration.php:182
-msgid "According to the check that was performed just now on "
-msgstr "Volgens de zojuist uitgevoerde check op"
+#: csp-violation-endpoint.php:121
+msgid "A required database table is missing. Please check if you have permissions to add this database table."
+msgstr "Een vereiste databasetabel ontbreekt. Controleer of je rechten hebt om deze databasetabel toe te voegen."
 
-#: grid/templates/scan-results-container.php:9 grid_ms/templates/sites.php:70
-msgid "Action"
-msgstr "Actie"
-
-#: class-multisite.php:334
-msgid "activate"
-msgstr "activeer"
-
-#: grid/templates/license-footer.php:14
-msgid "Activate license"
-msgstr "Activeer licentie"
-
-#: class-licensing.php:60
+#: class-licensing.php:59
 msgid "Activate your license for automatic updates."
 msgstr "Activeer je licentie voor automatische updates."
 
-#: class-premium-options.php:1647
-#, php-format
-msgid ""
-"After enabling this option, you have to %ssubmit%s your site. Please read "
-"the instructions on this page carefully before doing so."
-msgstr ""
-"Nadat je deze optie hebt ingeschakeld, moet je je site %sindienen%s. Lees de "
-"instructies op deze pagina aandachtig door voordat je dit doet."
-
-#: csp-violation-endpoint.php:419
-msgid "ago"
-msgstr "geleden"
-
-#: csp-violation-endpoint.php:407
-msgid "Allow"
-msgstr "Toestaan"
-
-#: grid/templates/csp-container.php:12
-msgid "Allow/revoke"
-msgstr "Toestaan/Intrekken"
-
-#: grid/templates/csp-header.php:9
-msgid "Allowed"
-msgstr "Toegestaan"
-
-#: grid/templates/permissions-policy.php:19
-msgid "allowed"
-msgstr "toegestaan"
-
-#: class-scan.php:2613 class-scan.php:2648 class-scan.php:2693
-#: class-scan.php:2765
-msgid "Always backup first!"
-msgstr "Maak altijd eerst een back-up!"
-
-#: class-multisite.php:354
-msgid "Auto replace mixed content"
-msgstr "Vervang mixed content automatisch"
-
-#: class-scan.php:2695
-msgid ""
-"Be very carefull with this function! Please backup your site before "
-"proceeding."
-msgstr ""
-"Wees erg voorzichtig met deze functie! Maak een back-up van je site voor je "
-"doorgaat."
-
-#: class-scan.php:2615
-msgid ""
-"Be very carefull with this function! Please backup your site before "
-"proceeding. This function will also create a backup of each changed file, "
-"name rsssl-bkp-filename. You can use the 'roll back files' function to "
-"restore the original files."
-msgstr ""
-"Wees erg voorzichtig met deze functie! Maak een back-up van je site voor je "
-"doorgaat. Deze functie maakt ook een back-up van ieder veranderd bestand, "
-"naam rsssl-bkp-filename. Je kunt de 'roll back files' functie gebruiken om "
-"de originele bestanden te herstellen."
-
-#: grid/templates/csp-header.php:8
-msgid "Blocked"
-msgstr "Geblokkeerd"
-
-#: class-scan.php:1806 class-scan.php:1890 class-scan.php:1992
-#: class-scan.php:2041 class-scan.php:2103
+#: class-scan.php:1665
+#: class-scan.php:1699
+#: class-scan.php:1775
+#: class-scan.php:1812
+#: class-scan.php:1861
 #, php-format
 msgid "Blocked URL: %s"
 msgstr "Geblokkeerde URL: %s"
 
-#: class-scan.php:1862
+#: class-scan.php:1624
 msgid "cached file, deactivate cache to see the actual source"
 msgstr "bestand in cache, deactiveer caching om de daadwerkelijke bron te zien"
 
-#: class-scan.php:1892
-msgid ""
-"Can be fixed automatically by pressing the Fix button. If fixing fails, the "
-"source file can be edited manually by pressing the Edit button."
-msgstr ""
-"Kan automatisch worden gerepareerd door op de Repareer knop te klikken. "
-"Indien het repareren niet lukt kan het bronbestand handmatig worden bewerkt "
-"met behulp van de Edit knop."
+#: class-scan.php:1700
+msgid "Can be fixed automatically by pressing the Fix button. If fixing fails, the source file can be edited manually by pressing the Edit button."
+msgstr "Kan automatisch worden gerepareerd door op de Repareer knop te klikken. Indien het repareren niet lukt kan het bronbestand handmatig worden bewerkt met behulp van de Edit knop."
 
-#: class-scan.php:1941
-msgid ""
-"Cannot be fixed automatically, as the mixed content is coming from an "
-"external domain. Contact the owner of the domain to update the CSS/JS file"
-msgstr ""
-"Kan niet automatisch gerepareerd worden, omdat de mixed content van een "
-"extern domein afkomstig is. Neem contact op met de eigenaar om het CSS/JS "
-"bestand te updaten."
+#: class-scan.php:1700
+msgid "Can be fixed manually by editing the respective mu-plugin file in the /wp-content/mu-plugins/ directory "
+msgstr "Kan handmatig worden opgelost door de respectievelijke mu-plugin aan te passen in de /wp-content/mu-plugins/ map"
 
-#: class-scan.php:407
+#: class-scan.php:1738
+msgid "Cannot be fixed automatically, as the mixed content is coming from an external domain. Contact the owner of the domain to update the CSS/JS file"
+msgstr "Kan niet automatisch gerepareerd worden, omdat de mixed content van een extern domein afkomstig is. Neem contact op met de eigenaar om het CSS/JS bestand te updaten."
+
+#: class-scan.php:365
 #, php-format
 msgid "Checking if external js or css files contain http links, %s of %s"
 msgstr "Checken of externe JS of CSS bestanden http links bevatten, %s van %s"
 
-#: class-scan.php:334
+#: class-scan.php:313
 #, php-format
 msgid "Checking posts for external URLs, %s of %s"
 msgstr "Checken van posts op externe URL's, %s van %s"
 
-#: class-scan.php:364
+#: class-scan.php:337
 msgid "Checking which postmeta contain external resources"
 msgstr "Checken welke postmeta externe bronnen bevatten"
 
-#: class-scan.php:383
+#: class-scan.php:350
 #, php-format
 msgid "Checking which resources can't load over ssl, %s of %s"
 msgstr "Checken welke bronnen niet over SSL geladen kunnen worden, %s van %s"
 
-#: class-scan.php:350
+#: class-scan.php:326
 msgid "Checking widgets for external URLs"
 msgstr "Checked van widgets op externe URL's"
 
-#: csp-violation-endpoint.php:517
-msgid "Close"
-msgstr "Sluiten"
+#: csp-violation-endpoint.php:158
+msgid "Click 'Enforce' to enforce the configuration on your site."
+msgstr "Klik 'Handhaven' om de configuratie voor je site op te slaan."
 
-#: class-premium-options.php:954
-msgid "Configure your site for the HSTS preload list"
-msgstr "Configureer je site voor de HSTS preload lijst"
-
-#: class-premium-options.php:958
-msgid "Content Security Policy"
-msgstr "Content Security Policy"
-
-#: class-premium-options.php:457
-msgid "Content Security Policy configuration"
-msgstr "Content Security Policy configuratie"
-
-#: class-premium-options.php:2280
-msgid "Content Security Policy reporting enabled"
-msgstr "Content Security Policy rapporteren ingeschakeld"
-
-#: class-premium-options.php:1193
-msgid ""
-"Content Security Policy reporting is paused to limit server resources. "
-"Please start configuring your Content Security Policy and enable reporting "
-"again."
-msgstr ""
-"Content Security Policy rapporteren is gepauzeerd om servercapaciteit te "
-"sparen. Configureer je Content Security Policy en schakel rapportagemodus "
-"weer in."
-
-#: class-scan.php:2477 class-scan.php:2566 class-scan.php:2606
-#: class-scan.php:2686
+#: class-scan.php:1719
+#: class-scan.php:1794
+#: class-scan.php:1832
+#: class-scan.php:1879
+#: class-scan.php:2179
 msgid "Copyright warning!"
 msgstr "Auteursrecht waarschuwing!"
 
-#: class-multisite.php:334
-msgid "deactivate"
-msgstr "deactiveer"
+#: class-scan.php:1643
+msgid "Downloading files from other websites can cause serious copyright issues! It is always illegal to use images, files, or any copyright protected material on your own site without the consent of the copyrightholder. Please ask the copyrightholder for permission. Use this function at your own risk."
+msgstr "Het downloaden van bestanden van andere websites kan ernstige auteursrechtkwesties veroorzaken! Het is altijd illegaal om afbeeldingen, bestanden of enig auteursrechtelijk beschermd materiaal op je eigen site te gebruiken zonder toestemming van de houder van het auteursrecht. Vraag de houder om toestemming. Gebruik deze functie op eigen risico."
 
-#: grid/templates/license-footer.php:12
-msgid "Deactivate license"
-msgstr "Deactiveer licentie"
-
-#: grid/templates/scan-results-container.php:7
-msgid "Description"
-msgstr "Beschrijving"
-
-#: class-scan.php:1808 class-scan.php:1901 class-scan.php:1943
-#: class-scan.php:1996 class-scan.php:2046 class-scan.php:2104
-msgid "Details"
-msgstr "Details"
-
-#: grid/templates/csp-container.php:9
-msgid "Directive"
-msgstr "Richtlijn"
-
-#: grid/templates/license-footer.php:17
-msgid ""
-"Disable access to the license page for all other accounts except your own."
-msgstr ""
-"Schakel de toegang tot de licentiepagina uit voor alle andere accounts, "
-"behalve jezelf."
-
-#: grid/templates/license-footer.php:19
-msgid "Disable for all users, except yourself"
-msgstr "Schakel uit voor alle gebruikers, behalve jezelf"
-
-#: class-premium-options.php:1402
-msgid "Disabled"
-msgstr "Uitgeschakeld"
-
-#: grid/templates/premium-settings-footer.php:7
-#, php-format
-msgid "Does not work with %s"
-msgstr "Werkt niet met %s"
-
-#: grid/templates/csp-container.php:11
-msgid "Domain/protocol"
-msgstr "Domein/protocol"
-
-#: class-scan.php:2480 class-scan.php:2569 class-scan.php:2608
-#: class-scan.php:2688
-msgid ""
-"Downloading files from other websites can cause serious copyright issues! It "
-"is always illegal to use images, files, or any copyright protected material "
-"on your own site without the consent of the copyrightholder. Please ask the "
-"copyrightholder for permission. Use this function at your own risk."
-msgstr ""
-"Het downloaden van bestanden van andere websites kan ernstige "
-"auteursrechtkwesties veroorzaken! Het is altijd illegaal om afbeeldingen, "
-"bestanden of enig auteursrechtelijk beschermd materiaal op je eigen site te "
-"gebruiken zonder toestemming van de houder van het auteursrecht. Vraag de "
-"houder om toestemming. Gebruik deze functie op eigen risico."
-
-#: class-scan.php:2533 class-scan.php:2760
-msgid "Edit"
-msgstr "Aanpassen"
-
-#: class-scan.php:2767
-msgid "Editing files can break your site if you do not do it right!"
-msgstr ""
-"Het bewerken van bestanden kan je site kapot maken als je het niet goed doet!"
-
-#: class-premium-options.php:1027
+#: class-admin.php:539
 msgid "Elementor mixed content successfully converted."
 msgstr "Elementor mixed content succesvol geconverteerd."
 
-#: class-multisite.php:361
-msgid "Enable this if you want the mixed content fixer for admin."
-msgstr ""
-"Schakel in als je de mixed content fixer wilt activeren voor het wp-admin "
-"deel van de site."
-
-#: class-multisite.php:353
-msgid "Enable this if you want to automatically replace mixed content."
-msgstr "Schakel in als je automatisch mixed content wilt laten vervangen."
-
-#: class-multisite.php:370
-msgid "Enable this if you want to block the htaccess file from being edited."
-msgstr ""
-"Schakel in als je niet wilt dat je .htaccess bestand verder aangepast wordt."
-
-#: class-multisite.php:359
-msgid "Enable this if you want to enable certificate expiration notices."
-msgstr ""
-"Schakel in als je berichten wilt ontvangen als je certificaat verloopt."
-
-#: class-multisite.php:355
-msgid "Enable this if you want to hide the SSL menu on subsites."
-msgstr "Schakel in indien je het SSL menu wilt verbergen op subsites"
-
-#: class-multisite.php:365
-msgid "Enable this if you want to redirect ALL websites to SSL using .htaccess"
-msgstr ""
-"Schakel in als je .htaccess redirects naar https wilt inschakelen voor ALLE "
-"websites."
-
-#: class-multisite.php:367
-msgid "Enable this if you want to redirect SSL websites using .htaccess. "
-msgstr ""
-"Schakel in als je .htaccess redirects naar https wilt inschakelen voor "
-"websites met SSL ingeschakeld."
-
-#: class-multisite.php:357
-msgid ""
-"Enable this if you want to use the internal WordPress 301 redirect for all "
-"SSL websites. Needed on NGINX servers, or if the .htaccess redirect cannot "
-"be used."
-msgstr ""
-"Schakel in indien je via PHP een 301 redirect wilt instellen voor alle sites "
-"waar SSL is ingeschakeld. Benodigd op NGINX servers, of wanneer de .htaccess "
-"redirect niet kan worden gebruikt."
-
-#: class-premium-options.php:1405
-msgid "Enforce"
-msgstr "Handhaven"
-
-#: grid/templates/license.php:15
-msgid "Enter your license key"
-msgstr "Voer je licentiecode in"
-
-#: EDD_SL_Plugin_Updater.php:502
-msgid "Error"
-msgstr "Fout"
-
-#: grid/templates/csp-header.php:7
-msgid "Everything"
-msgstr "Alles"
-
-#: grid/templates/feature-policy.php:18
-#: grid/templates/permissions-policy.php:18
-msgid "Feature"
-msgstr "Functie"
-
-#: class-scan.php:1792 class-scan.php:1866
+#: class-scan.php:1626
 msgid "file"
 msgstr "bestand"
 
-#: class-scan.php:2771
-msgid "File editing blocked in WordPress!"
-msgstr "Bewerken van bestanden geblokkeerd in WordPress!"
-
-#: class-scan.php:2773
-msgid ""
-"File editing is blocked in WordPress. To edit these files, please use your "
-"FTP client."
-msgstr ""
-"Bewerken van bestanden is geblokkeerd in WordPress. Gebruik FTP om deze "
-"bestanden aan te passen."
-
-#: class-scan.php:483
+#: class-scan.php:430
 msgid "Finished scan"
 msgstr "Voltooide scan"
 
-#: class-multisite.php:210 class-premium-options.php:194
-msgid "First"
-msgstr "Eerste"
-
-#: class-scan.php:1895 class-scan.php:1995 class-scan.php:2045
-#: class-scan.php:2101
-msgid "Fix"
-msgstr "Repareer"
-
-#: class-scan.php:2644
-msgid "Fix http in CSS and JS files"
-msgstr "Repareer http in CSS en JS bestanden"
-
-#: class-scan.php:2662
-msgid "Fix URLs"
-msgstr "Repareer URL's"
-
-#: class-premium-options.php:2269
+#: csp-violation-endpoint.php:155
 msgid "Follow these steps to complete the setup:"
 msgstr "Volg deze stappen om de installatie te voltooien:"
 
-#: class-premium-options.php:2275
-#, php-format
-msgid ""
-"For more information about this security header, please follow this %slink%s."
-msgstr "Voor meer informatie over deze security header, volg deze %slink%s."
-
-#: grid/templates/csp-container.php:5
-msgid "Found"
-msgstr "Gevonden"
-
-#: grid/templates/scan-footer.php:11
-msgid "Full Scan"
-msgstr "Volledige scan"
-
-#: class-scan.php:315
+#: class-scan.php:299
 msgid "Generating file list"
 msgstr "Genereert bestanden lijst"
 
-#: class-scan.php:256
+#: class-scan.php:257
 msgid "Generating web page list"
 msgstr "Genereert webpagina lijst"
 
-#: class-scan.php:2780
-msgid "Go to editor"
-msgstr "Ga naar editor"
-
-#: class-premium-options.php:1205 class-premium-options.php:1218
+#: class-scan.php:133
+#: class-scan.php:147
 msgid "Great! Your scan last completed without errors."
 msgstr "Super! De scan is voltooid zonder foutmeldingen."
 
-#: class-scan.php:2536
-msgid "Help"
-msgstr "Help"
+#. Description of the plugin
+msgid "Heavyweight Security Features"
+msgstr "IJzersterke Security Functies"
 
-#: class-multisite.php:356
-msgid "Hide menu for subsites"
-msgstr "Verberg menu voor subsites"
+#: class-headers.php:209
+msgid "HSTS not enabled"
+msgstr "HSTS niet ingeschakeld"
 
-#: class-premium-options.php:962
-msgid "How to set the security headers"
-msgstr "Hoe de security headers in te stellen"
+#: class-headers.php:196
+#: class-headers.php:202
+msgid "HSTS Preload"
+msgstr "HSTS Preload"
 
-#: class-premium-options.php:948
-msgid ""
-"HSTS, HTTP Strict Transport Security improves your security by forcing all "
-"your visitors to go to the SSL version of your website for at least a year."
-msgstr ""
-"HSTS, HTTP Strict Transport Security verbetert beveiliging door alle "
-"bezoekers naar de SSL-versie van je site door te sturen voor minstens een "
-"jaar."
-
-#: class-multisite.php:369
-msgid "htaccess redirection to SSL on the network"
-msgstr "htacces redirect naar SSL op het netwerk"
-
-#: class-premium-options.php:1081
-msgid "HTTP Strict Transport Security is not enabled. "
-msgstr "HTTP Strict Transport Security is niet ingeschakeld."
-
-#: class-premium-options.php:1076
-msgid "HTTP Strict Transport Security was set."
-msgstr "HTTP Strict Transport Security is ingesteld."
-
-#. Plugin URI of the plugin/theme
+#. Plugin URI of the plugin
 msgid "https://really-simple-ssl.com/pro"
 msgstr "https://really-simple-ssl.com/pro"
 
-#. Author URI of the plugin/theme
+#. Author URI of the plugin
 msgid "https://www.really-simple-plugins.com"
 msgstr "https://www.really-simple-plugins.com"
 
-#: class-scan.php:2491 class-scan.php:2580
-msgid "I have read the warning, continue"
-msgstr "Ik heb de waarschuwing gelezen, doorgaan"
-
-#: class-scan.php:2624 class-scan.php:2704
-msgid "I have read the warnings, continue"
-msgstr "Ik heb de waarschuwingen gelezen, doorgaan"
-
-#: class-scan.php:2653
-msgid ""
-"If these files are generated by a theme or plugin, it is best to change the "
-"settings in that plugin instead. Otherwise your changes maybe overwritten by "
-"the plugin."
-msgstr ""
-"Indien deze bestanden worden gegenereerd door een thema of plugin, is het "
-"het beste om de instellingen in die plugin te wijzigen. Anders worden je "
-"wijzigingen misschien overschreven door de plugin."
-
-#: csp-violation-endpoint.php:510
-#| msgid ""
-#| "If you revoke a rule from the content security policy,  the rule will be "
-#| "deleted from the resource list that is considered safe to load.  This "
-#| "might affect your website,  or specific functions.  You can always allow "
-#| "the resource if needed."
-msgid ""
-"If you revoke a rule from the content security policy, the rule will be "
-"deleted from the resource list that is considered safe to load. This might "
-"affect your website, or specific functions. You can always allow the "
-"resource if needed."
-msgstr ""
-"Als je een regel intrekt uit de Content Security Policy, zal de regel "
-"verwijderd worden uit de lijst met resources die als veilig wordt beschouwd. "
-"Dit kan invloed hebben op je website, of op specifieke functies. Je kunt de "
-"bron altijd toestaan indien nodig."
-
-#: class-premium-options.php:906
-msgid ""
-"If your certificate expires, your site goes offline. Uptime robots don't "
-"alert you when this happens."
-msgstr ""
-"Als je certificaat verloopt gaat je site offline. Uptime robots geven hier "
-"geen waarschuwing van."
-
-#: class-scan.php:2039
+#: class-scan.php:1811
 msgid "iFrame in the wp_postmeta database table"
 msgstr "iFrame in de wp_postmeta database tabel"
 
-#: class-scan.php:2542
-msgid "Ignore"
-msgstr "Negeer"
-
-#: class-scan.php:2473 class-scan.php:2562 class-scan.php:2602
-#: class-scan.php:2682
+#: class-scan.php:1718
+#: class-scan.php:1793
+#: class-scan.php:1831
+#: class-scan.php:1878
 msgid "Import and insert file"
 msgstr "Importeer bestand en voeg in"
 
-#: class-scan.php:2048
-#, php-format
-msgid "In field: %s"
-msgstr "In veld: %s"
+#: really-simple-ssl-pro-multisite.php:288
+#: really-simple-ssl-pro.php:285
+msgid "Install and activate Really Simple SSL"
+msgstr "Installeer en activeer Really Simple SSL"
 
-#: class-scan.php:2011
-msgid "In post: "
-msgstr "In bericht:"
+#: csp-violation-endpoint.php:143
+msgid "Learning Mode is active for your Content Security and will complete in %s days."
+msgstr "Leermodus is ingeschakeld voor je Content Security Policy en zal voltooid zijn in %s dagen. "
 
-#: class-scan.php:1788
-msgid "in uploads directory, possibly generated by plugin or theme"
-msgstr "in de uploads map, mogelijk gegenereerd door een plugin of thema"
-
-#: class-premium-options.php:943
-msgid ""
-"It is recommended to enable this feature as soon as your site is running "
-"smoothly on SSL, as it greatly improves security."
-msgstr ""
-"Het is aan te raden om deze functie in te schakelen zodra je website goed "
-"over SSL draait, omdat het de beveiliging sterk verbeterd."
-
-#: class-premium-options.php:948
-msgid ""
-"It is recommended to enable this feature as soon as your site is running "
-"smoothly on SSL, as it improves your security."
-msgstr ""
-"Het is aan te raden om deze functie in te schakelen zodra je website goed "
-"over SSL draait, omdat het de beveiliging sterk verbeterd."
-
-#: class-scan.php:1875
-msgid "JS or CSS file with mixed content"
-msgstr "JS of CSS bestand met mixed content"
-
-#: class-multisite.php:213 class-premium-options.php:195
-msgid "Last"
-msgstr "Laatste"
-
-#: class-licensing.php:250 class-licensing.php:511 class-licensing.php:517
-#: class-licensing.php:536 class-licensing.php:599
-#: class-premium-options.php:1254 class-premium-options.php:1261
-#: class-premium-options.php:1268 class-premium-options.php:1275
-#: class-premium-options.php:1282
+#: class-licensing.php:179
+#: class-licensing.php:201
+#: class-licensing.php:698
+#: class-licensing.php:705
+#: class-licensing.php:712
+#: class-licensing.php:719
+#: class-licensing.php:726
+#: class-licensing.php:741
 msgid "License"
 msgstr "Licentie"
 
-#: class-licensing.php:701
-msgid "License not activated"
-msgstr "Licentie niet geactiveerd"
-
-#: grid/templates/scan-results-container.php:8
-msgid "Location"
-msgstr "Locatie"
-
-#: class-scan.php:427
+#: class-scan.php:380
 #, php-format
 msgid "Looking up blocked resources in files, %s of %s"
 msgstr "Zoeken naar geblokkeerde bronnen in bestanden, %s van %s"
 
-#: class-scan.php:458
+#: class-scan.php:407
 msgid "Looking up blocked resources in postmeta"
 msgstr "Zoeken naar geblokkeerde bronnen in postmeta"
 
-#: class-scan.php:443
+#: class-scan.php:394
 msgid "Looking up blocked resources in posts"
 msgstr "Zoeken naar geblokkeerde bronnen in berichten"
 
-#: class-scan.php:474
+#: class-scan.php:422
 msgid "Looking up blocked resources in widgets"
 msgstr "Zoeken naar geblokkeerde bronnen in widgets"
 
-#: class-multisite.php:362 class-premium-options.php:916
-msgid "Mixed content fixer on the WordPress back-end"
-msgstr "Mixed content fixer op de WordPress back-end"
+#: class-scan.php:1861
+msgid "Mixed content found in a widget. Press the edit link to edit the widget manually."
+msgstr "Mixed content gevonden in een widget. Klik op 'aanpassen' om de widget handmatig aan te passen."
 
-#: class-scan.php:2103
-msgid ""
-"Mixed content found in a widget. Press the edit link to edit the widget "
-"manually."
-msgstr ""
-"Mixed content gevonden in een widget. Klik op 'aanpassen' om de widget "
-"handmatig aan te passen."
+#: class-scan.php:1776
+msgid "Mixed content found in in a post. Can be fixed automatically by pressing the fix button. Pressing the edit button allows you to update the link in the post manually."
+msgstr "Mixed content gevonden in een bericht. Kan handmatig worden gerepareerd door op de 'repareer' knop te klikken. Via de 'aanpassen' knop kun je de link in het bericht handmatig aanpassen."
 
-#: class-scan.php:1993
-msgid ""
-"Mixed content found in in a post. Can be fixed automatically by pressing the "
-"fix button. Pressing the edit button allows you to update the link in the "
-"post manually."
-msgstr ""
-"Mixed content gevonden in een bericht. Kan handmatig worden gerepareerd door "
-"op de 'repareer' knop te klikken. Via de 'aanpassen' knop kun je de link in "
-"het bericht handmatig aanpassen."
+#: class-scan.php:1813
+msgid "Mixed content from a postmeta table in your database. Usually won't cause any mixed content on the front-end. Check the post if it causes mixed content. If so, the link can be replace directly in the database."
+msgstr "Mixed content door een postmeta tabel in je database. Meestal zal dit geen mixed content melding veroorzaken aan de front-end van de site. Check of er een melding is, indien dit wel het geval is kan de link direct in de database worden vervangen."
 
-#: class-scan.php:2042
-msgid ""
-"Mixed content from a postmeta table in your database. Usually won't cause "
-"any mixed content on the front-end. Check the post if it causes mixed "
-"content. If so, the link can be replace directly in the database."
-msgstr ""
-"Mixed content door een postmeta tabel in je database. Meestal zal dit geen "
-"mixed content melding veroorzaken aan de front-end van de site. Check of er "
-"een melding is, indien dit wel het geval is kan de link direct in de "
-"database worden vervangen."
-
-#: class-scan.php:1801 class-scan.php:1874
+#: class-scan.php:1705
 #, php-format
 msgid "Mixed content in %s"
 msgstr "Mixed content in %s"
 
-#: class-scan.php:2086
-msgid "Mixed content in a widget"
-msgstr "Mixed content in een widget"
-
-#: class-scan.php:1937
+#: class-scan.php:1744
 msgid "Mixed content in CSS/JS file from other domain"
 msgstr "Mixed content in CSS/JS bestand van een ander domein"
 
-#: class-scan.php:1959
-msgid "Mixed content in remote file"
-msgstr "Mixed content in een extern bestand"
+#: class-scan.php:1670
+msgid "Mixed content in PHP file in %s"
+msgstr "Mixed content in PHP bestand in %s"
 
-#: class-scan.php:2037
+#: class-scan.php:1781
+msgid "Mixed content in post: "
+msgstr "Mixed content in bericht: "
+
+#: class-scan.php:1811
 msgid "Mixed content in the postmeta table"
 msgstr "Mixed content in de postmeta tabel"
 
-#: class-scan.php:1942
+#: class-scan.php:1739
 #, php-format
 msgid "Mixed content resources: %s"
 msgstr "Mixed content bronnen: %s"
 
-#: class-premium-options.php:433
-msgid "Mixed content scan"
-msgstr "Mixed content scan"
-
-#: class-scan.php:1781 class-scan.php:1850
+#: class-scan.php:1618
 msgid "mu plugin file"
 msgstr "mu-plugin bestand"
 
-#: class-licensing.php:524
-msgid "Multisite"
-msgstr "Multisite"
-
-#: class-licensing.php:525
+#: class-licensing.php:562
 #, php-format
-msgid "Multisite detected. Please consider upgrading to %smultisite%s."
-msgstr ""
-"Multisite gedetecteerd. Overweeg om te upgraden naar de %smultisite%s plugin."
+msgid "Multisite detected. Please upgrade to %smultisite%s."
+msgstr "Multisite gedetecteerd. Upgrade naar de %smultisite%s plugin."
 
-#: class-scan.php:207 class-scan.php:2155
+#: class-scan.php:218
+#: class-scan.php:1914
 msgid "Never"
 msgstr "Nooit"
 
-#: class-multisite.php:212 class-premium-options.php:193
-msgid "Next"
-msgstr "Volgende"
-
-#: grid/templates/premium-settings-footer.php:27
-#, php-format
-msgid "nginx.conf unavailable on %s"
-msgstr "nginx.conf niet beschikbaar op %s"
-
-#: grid/templates/premium-settings-footer.php:14
-msgid "No caching"
-msgstr "Geen caching"
-
-#: class-premium-options.php:1189
-#| msgid "No Content Security Policy violations found"
-msgid "No Content Security Policy violations found."
-msgstr "Geen Content Security Policy overtredingen gevonden."
-
-#: class-premium-options.php:191
-msgid "No items reported yet. Come back at a later time."
-msgstr "Nog geen onderdelen gerapporteerd. Kom later terug."
-
-#: class-premium-options.php:167
-msgid "No mixed content has been found!"
-msgstr "Geen mixed content gevonden!"
-
-#: class-premium-options.php:1040
+#: class-admin.php:553
 msgid "No redirect to http detected."
 msgstr "Geen redirect naar http gedetecteerd."
 
-#: class-licensing.php:546
-msgid "No response"
-msgstr "Geen respons"
-
-#: grid/templates/permissions-policy.php:10
-msgid "No restrictions for this feature."
-msgstr "Geen restricties voor deze functie."
-
-#: class-multisite.php:202
-msgid "No results found"
-msgstr "Geen resultaten gevonden"
-
-#: class-multisite.php:207
-msgid "No results found in the table"
-msgstr "Geen resultaten gevonden in de tabel"
-
-#: class-multisite.php:204
-msgid "No results to show"
-msgstr "Geen resultaten om te tonen"
-
-#: class-premium-options.php:2166
-#, php-format
-msgid ""
-"No scan completed yet. Before migrating to SSL, you should do a %sscan%s"
-msgstr ""
-"Nog geen scan voltooid. Alvorens te migreren naar SSL raden we je aan een "
-"%sscan%s te maken"
-
-#: class-premium-options.php:169
-msgid "No scan done yet. Start a quick or full scan to identify any issues."
-msgstr ""
-"Nog geen scan gedaan. Doe een snelle of volledige scan om eventuele "
-"problemen te identificeren."
-
-#: grid/templates/feature-policy.php:12
-msgid ""
-"none means that this feature is not allowed. Enable this to disable the "
-"feature entirely on your site."
-msgstr ""
-"'none' betekent dat deze functie niet is toegestaan. Schakel in om de "
-"functie geheel niet toe te staan op je site."
-
-#: grid/templates/permissions-policy.php:21
-msgid "not allowed"
-msgstr "niet toegestaan"
-
-#: class-licensing.php:471
-msgid "Not available"
-msgstr "Niet beschikbaar"
-
-#: class-cert-expiration.php:11
-msgid "Not detected"
-msgstr "Niet gevonden"
-
-#: grid/templates/csp-container.php:7
-msgid "On page"
-msgstr "Op de pagina"
-
-#: class-cert-expiration.php:86
-msgid "Once 1 minutes"
-msgstr "Iedere minuut"
-
-#: class-cert-expiration.php:81
-msgid "Once 10 minutes"
-msgstr "Iedere 10 minuten"
-
-#: class-cert-expiration.php:76
-msgid "Once Daily"
-msgstr "Eens per dag"
-
-#: class-licensing.php:553 class-licensing.php:562
+#: class-licensing.php:630
 msgid "Open"
 msgstr "Open"
 
-#. Description of the plugin/theme
-msgid ""
-"Optimize your SSL security with the mixed content scan, secure cookies and "
-"advanced security headers."
-msgstr ""
-"Optimaliseer je SSL-veiligheid met de mixed content scan, secure cookies en "
-"geavanceerde security headers."
+#: really-simple-ssl-pro-multisite.php:278
+#: really-simple-ssl-pro-multisite.php:303
+#: really-simple-ssl-pro.php:276
+msgid "Please %supgrade%s to the latest version to be able use the full functionality of the plugin."
+msgstr "%sUpdate%s naar de nieuwste versie om alle functionaliteiten te gebruiken."
 
-#: class-scan.php:1798
-msgid "PHP file with mixed content"
-msgstr "PHP bestand met mixed content"
-
-#: really-simple-ssl-pro-multisite.php:219
-msgid "Please activate Really Simple SSL network wide."
-msgstr "Activeer Really Simple SSL aub over het hele netwerk."
-
-#: class-licensing.php:563
+#: class-licensing.php:584
 msgid "Please activate your license key."
 msgstr "Activeer alsjeblieft je licentie code."
 
-#: class-premium-options.php:953
-msgid ""
-"Please ensure that your site is running over SSL smoothly, and note that all "
-"subdomains, including www and non-www domain need to be HTTPS!"
-msgstr ""
-"Zorg ervoor dat je site goed over SSL draait en bedenk dat alle subdomeinen, "
-"inclusief de www en niet-www domeinen over https moeten laden!"
-
-#: class-licensing.php:554
+#: class-licensing.php:576
 #, php-format
 msgid "Please enter your license key. Available in your %saccount%s."
 msgstr "Voer je licentie code in, te vinden in je %saccount%s."
 
-#: really-simple-ssl-pro-multisite.php:221
-#| msgid ""
-#| "Please install and activate Really Simple SSL before activating this add-"
-#| "on."
+#: really-simple-ssl-pro-multisite.php:276
+#: really-simple-ssl-pro.php:274
 msgid "Please install and activate Really Simple SSL to enable the add-on."
-msgstr ""
-"Installeer en activeer alsjeblieft Really Simple SSL voordat je de add-on "
-"activeert."
+msgstr "Installeer en activeer alsjeblieft Really Simple SSL voordat je de add-on activeert."
 
-#: class-scan.php:2731
-msgid ""
-"Please note that any changes you have made since to your current files, will "
-"be lost. "
-msgstr ""
-"Houd er rekening mee dat alle wijzigingen die je sindsdien in de huidige "
-"bestanden hebt aangebracht verloren zullen gaan. "
+#: class-scan.php:2184
+msgid "Please note that any changes you have made since to your current files, will be lost."
+msgstr "Houd er rekening mee dat alle wijzigingen die je sindsdien in de huidige bestanden hebt aangebracht verloren zullen gaan. "
 
-#: class-cert-expiration.php:185
-msgid "Please renew your certificate before the expiry date."
-msgstr "Vernieuw je SSL certificaat voor de vervaldatum."
-
-#: really-simple-ssl-pro-multisite.php:230
-msgid ""
-"Please upgrade to the latest version to be able use the full functionality "
-"of the plugin."
-msgstr ""
-"Update naar de nieuwste versie om alle functionaliteit te blijven gebruiken."
-
-#: really-simple-ssl-pro-multisite.php:215
-#: really-simple-ssl-pro-multisite.php:228
+#: really-simple-ssl-pro-multisite.php:270
+#: really-simple-ssl-pro-multisite.php:299
 msgid "Plugin dependency error"
 msgstr "Plugin afhankelijkheid fout"
 
-#: class-scan.php:1784 class-scan.php:1853
+#: class-scan.php:1620
 msgid "plugin file"
 msgstr "plugin bestand"
 
-#: class-scan.php:2026
-msgid "Post field with mixed content"
-msgstr "Bericht veld met mixed content"
-
-#: class-scan.php:1975
-msgid "Post with mixed content"
-msgstr "Bericht met mixed content"
-
-#: class-premium-options.php:1044
+#: class-admin.php:552
+#: class-admin.php:557
 msgid "Potential redirect loop."
 msgstr "Potentiële redirect loop."
 
-#: class-premium-options.php:400
-msgid "Premium settings"
-msgstr "Premium instellingen"
+#: class-licensing.php:632
+msgid "Premium"
+msgstr "Premium"
 
-#: class-premium-options.php:391
-msgid "Premium support"
-msgstr "Premium ondersteuning"
-
-#: class-multisite.php:211 class-premium-options.php:192
-msgid "Previous"
-msgstr "Vorige"
-
-#: class-premium-options.php:2172
-msgid "Previous scan completed with issues"
-msgstr "Vorige scan voltooid met problemen"
-
-#: grid/templates/scan-footer.php:10
-msgid "Quick Scan"
-msgstr "Snelle scan"
-
-#: class-premium-options.php:1046
-msgid "Re-check the redirect"
-msgstr "Bekijk de redirect opnieuw"
-
-#. Author of the plugin/theme
+#. Author of the plugin
 msgid "Really Simple Plugins"
 msgstr "Really Simple Plugins"
 
-#: really-simple-ssl-pro-multisite.php:229
-msgid ""
-"Really Simple SSL needs to be updated to the latest version to be compatible."
-msgstr ""
-"Really Simple SSL moet worden bijgewerkt naar de nieuwste versie om "
-"compatibel te zijn."
+#: really-simple-ssl-pro-multisite.php:302
+msgid "Really Simple SSL needs to be updated to the latest version to be compatible."
+msgstr "Really Simple SSL moet worden bijgewerkt naar de nieuwste versie om compatibel te zijn."
 
-#: really-simple-ssl-pro-multisite.php:39
-msgid ""
-"Really Simple SSL pro cannot be activated. The plugin requires PHP 5.6 or "
-"higher"
-msgstr ""
-"Really Simple SSL Pro kan niet worden geactiveerd. De plugin vereist PHP 5.6 "
-"of hoger"
+#: really-simple-ssl-pro-multisite.php:28
+#: really-simple-ssl-pro.php:27
+msgid "Really Simple SSL Pro cannot be activated. The plugin requires PHP 7.2 or higher"
+msgstr "Really Simple SSL Pro kan niet worden geactiveerd. De plugin vereist PHP 7.2 of hoger"
 
-#: really-simple-ssl-pro-multisite.php:45
-msgid ""
-"Really Simple SSL pro cannot be activated. The plugin requires WordPress 4.9 "
-"or higher"
-msgstr ""
-"Really Simple SSL Pro kan niet worden geactiveerd. De plugin vereist "
-"WordPress 4.9 of hoger"
+#: really-simple-ssl-pro-multisite.php:34
+#: really-simple-ssl-pro.php:33
+msgid "Really Simple SSL Pro cannot be activated. The plugin requires WordPress 5.7 or higher"
+msgstr "Really Simple SSL Pro kan niet worden geactiveerd. De plugin vereist WordPress 5.7 of hoger"
 
-#: really-simple-ssl-pro-multisite.php:216
-#| msgid ""
-#| "Really Simple SSL pro is an add-on for Really Simple SSL, and cannot do "
-#| "it on its own :("
-msgid ""
-"Really Simple SSL pro is an add-on for Really Simple SSL, and cannot do it "
-"on its own :-("
-msgstr ""
-"Really Simple SSL pro is een add-on voor Really Simple SSL en kan dit helaas "
-"niet alleen :-("
+#: really-simple-ssl-pro-multisite.php:275
+#: really-simple-ssl-pro.php:273
+msgid "Really Simple SSL Pro is an add-on for Really Simple SSL, and cannot do it on its own :-("
+msgstr "Really Simple SSL pro is een add-on voor Really Simple SSL en kan dit helaas niet alleen :-("
 
-#: class-licensing.php:114
-msgid "Really Simple SSL Pro license key"
-msgstr "Really Simple SSL Pro licentie code"
-
-#. Plugin Name of the plugin/theme
-msgid "Really Simple SSL pro multisite"
-msgstr "Really Simple SSL pro multisite"
-
-#: class-licensing.php:717
-msgid "Really Simple SSL Pro Multisite license key"
-msgstr "Really Simple SSL Pro Multisite licentie code"
-
-#: class-multisite.php:360 class-premium-options.php:908
-msgid "Receive an email when your certificate is about to expire"
-msgstr "Ontvang een e-mail wanneer je certificaat bijna verloopt"
-
-#: class-premium-options.php:1064
-msgid "Recommended security headers enabled."
-msgstr "Aanbevolen security headers ingeschakeld."
-
-#: class-premium-options.php:1059
-#, php-format
-msgid "Recommended security headers not enabled (%sRead more%s)."
-msgstr "Aanbevolen security header zijn niet ingesschakeld (%sLees meer%s)."
-
-#: class-premium-options.php:1403
-msgid "Reporting active"
-msgstr "Rapporteren actief"
-
-#: class-premium-options.php:2271
-msgid ""
-"Reporting is active and will gather Content Security Policy directives "
-"available under ‘Content Security Policy configuration’."
-msgstr ""
-"Rapporteren is actief en zal gesuggereerde regels voor je Content Security "
-"Policy verzamelen die beschikbaar zijn onder 'Content Security Policy "
-"configuratie'."
-
-#: class-premium-options.php:1404
-msgid "Reporting paused"
-msgstr "Rapporteren gepauzeeerd"
-
-#: class-premium-options.php:2272
-msgid ""
-"Reporting will be paused after 20 requests to limit server load. You can "
-"always manually set reporting to paused, if needed."
-msgstr ""
-"Rapporteren zal worden gepauzeerd na 20 requests om serverbelasting te "
-"limiteren. Je kunt het rapporteren altijd handmatig pauzeren, indien nodig."
-
-#: class-scan.php:2740
+#: class-scan.php:2189
 msgid "Restore files"
 msgstr "Herstel bestanden"
 
-#: grid/templates/scan-footer.php:15
-msgid "Resume"
-msgstr "Hervat"
+#: csp-violation-endpoint.php:157
+msgid "Review the detected configuration in 'Content Security Policy'."
+msgstr "Check de voorgestelde configuratie voor 'Content Security Policy'."
 
-#: csp-violation-endpoint.php:411
-msgid "Revoke"
-msgstr "Intrekken"
-
-#: csp-violation-endpoint.php:531
-msgid "Revoke and delete rule"
-msgstr "Regel intrekken en verwijderen"
-
-#: csp-violation-endpoint.php:524
-msgid "Revoke rule"
-msgstr "Regel intrekken"
-
-#: csp-violation-endpoint.php:505
-msgid "Revoking a Rule from the Content Security Policy"
-msgstr "Een regel van de Content Security Policy intrekken"
-
-#: class-scan.php:2724
+#: class-scan.php:2178
 msgid "Roll back changes made to your files"
 msgstr "Gemaakte veranderingen in bestanden terugdraaien"
 
-#: class-importer.php:40
+#: class-importer.php:61
 msgid "Roll back file changes"
 msgstr "Herstel bestanden"
 
-#: grid/templates/license-footer.php:9
-#: grid/templates/premium-settings-footer.php:55
-msgid "Save"
-msgstr "Opslaan"
-
-#: grid/templates/scan-footer.php:8
-msgid "SCAN"
-msgstr "Scan"
-
-#: class-multisite.php:200 class-premium-options.php:189
-msgid "Search"
-msgstr "Zoeken"
-
-#: class-scan.php:276
+#: class-scan.php:270
 #, php-format
-msgid ""
-"Searching for js and css files and links to external resources in website, "
-"%s of %s"
-msgstr ""
-"Zoeken naar JS en CSS bestanden en links naar externe bestanden in de "
-"website, %s van %s"
+msgid "Searching for js and css files and links to external resources in website, %s of %s"
+msgstr "Zoeken naar JS en CSS bestanden en links naar externe bestanden in de website, %s van %s"
 
-#: class-scan.php:298
+#: class-scan.php:285
 #, php-format
 msgid "Searching for mixed content in css and js files, %s of %s"
 msgstr "Zoeken naar mixed content in CSS en JS bestanden, %s van %s"
 
-#: class-premium-options.php:1110
-msgid ""
-"Security headers have been set via PHP but your site uses caching. Caching "
-"prevents the headers from working correctly. We recommend to add the "
-"following security headers to your NGINX configuration file:"
-msgstr ""
-"Security headers worden geplaatst middels PHP, maar je site gebruikt caching."
-" Caching voorkomt dat de headers goed kunnen werken, we raden aan om de "
-"volgende headers in je NGINX configuratie bestand toe te voegen:"
-
-#: grid/templates/permissions-policy.php:20
-msgid "self"
-msgstr "self"
-
-#: grid/templates/feature-policy.php:11
-#: grid/templates/permissions-policy.php:11
-msgid ""
-"self means this is feature is only allowed for content on your own domain. "
-"External scripts won't be able to use it."
-msgstr ""
-"'Self' betekent dat deze functie alleen is toegestaan op het eigen domein. "
-"Externe scripts kunnen deze functie niet gebruiken."
-
-#: grid/templates/support-footer.php:2
-msgid "Send"
-msgstr "Verstuur"
-
-#: grid/templates/premium-settings-footer.php:36
-msgid "Server not recognized"
-msgstr "Server niet herkend"
-
-#: class-premium-options.php:961
-msgid ""
-"Set the security headers with PHP. Should be enabled when using NGINX as the "
-"webserver, or when the htaccess security headers are not supported by your "
-"hosting company."
-msgstr ""
-"Configureer de security headers via PHP. Dient te worden ingeschakeld "
-"wanneer NGINX wordt gebruikt als webserver, of wanneer .htaccess security "
-"headers niet worden ondersteund door je hosting aanbieder."
-
-#: class-premium-options.php:1434
-msgid "Set with PHP"
-msgstr "Configureer via PHP"
-
-#: class-premium-options.php:1918
+#: class-admin.php:633
 msgid "Settings"
 msgstr "Instellingen"
 
-#: class-multisite.php:201
-#, php-format
-msgid "Show %s results"
-msgstr "Toon %s resultaten"
-
-#: grid/templates/scan-footer.php:22
-msgid "Show ignored URLs"
-msgstr "Toon genegeerde URL's"
-
-#: grid_ms/templates/sites.php:69
-msgid "Site"
-msgstr "Site"
-
-#: class-multisite.php:108
-msgid "Sites"
-msgstr "Sites"
-
-#: class-importer.php:545
+#: class-importer.php:537
 msgid "Something went wrong."
 msgstr "Er is iets fout gegaan"
 
-#: class-importer.php:119 class-importer.php:160 class-importer.php:201
-#: class-importer.php:249 class-importer.php:287
-msgid ""
-"Something went wrong. Please refresh the page and try again, or fix manually."
-msgstr ""
-"Er is iets mis gegaan. Vernieuw de pagina en probeer het opnieuw, of fix "
-"handmatig."
+#: class-importer.php:93
+msgid "Something went wrong. If this doesn't work, you can put the original files back by changing files named 'rsssl-bkp-filename' to filename."
+msgstr "Er is iets fout gegaan. Als dit niet werkt kan je de orginele bestanden terugzetten door 'rsssl-bkp-filename' the hernoemen naar filename."
 
-#: class-importer.php:90
-msgid ""
-"Someting went wrong. If this doesn't work, you can put the original files "
-"back by changing files named 'rsssl-bkp-filename' to filename."
-msgstr ""
-"Er is iets fout gegaan. Als dit niet werkt kan je de orginele bestanden "
-"terugzetten door 'rsssl-bkp-bestandsnaam' the hernoemen naar bestandsnaam."
+#: class-importer.php:121
+#: class-importer.php:162
+#: class-importer.php:200
+#: class-importer.php:242
+#: class-importer.php:278
+msgid "Something went wrong. Please refresh the page and try again, or fix manually."
+msgstr "Er is iets mis gegaan. Vernieuw de pagina en probeer het opnieuw, of fix handmatig."
 
-#: class-cert-expiration.php:181
-msgid "SSL certificate expiration warning"
-msgstr "SSL certificaat expiratie waarschuwing"
+#: class-licensing.php:631
+msgid "Success"
+msgstr "Succes"
 
-#: class-premium-options.php:115
-msgid "SSL configuration finished!"
-msgstr "SSL configuratie voltooid!"
-
-#: class-premium-options.php:1199
-msgid "Start scan"
-msgstr "Start scan"
-
-#: grid/templates/scan-results-container.php:6 grid_ms/templates/sites.php:68
-msgid "Status"
-msgstr "Status"
-
-#: class-multisite.php:371
-msgid "Stop editing the .htaccess file"
-msgstr "Stop bewerken van het .htaccess bestand"
-
-#: grid/templates/scan-footer.php:13
-msgid "Stop scan"
-msgstr "Stop scan"
-
-#: class-premium-options.php:957
-msgid ""
-"The Content Security Policy allows you to specify which resources to allow "
-"on your site."
-msgstr ""
-"De Content Security Policy maakt het mogelijk om te specificeren welke "
-"resources zijn toegestaan op je site."
+#: class-headers.php:176
+#: class-headers.php:382
+msgid "The %s security header is not set by Really Simple SSL, but has a non-recommended value: \"%s\"."
+msgstr "De %s security header is niet ingesteld door Really Simple SSL, maar heeft een niet-aanbevolen waarde: \"%s\"."
 
 #: class-importer.php:179
-msgid ""
-"The file could not be downloaded. It might not exist, or downloading is "
-"blocked. Fix manually."
-msgstr ""
-"Het bestand kon niet gedownload worden. Het bestaat misschien niet of "
-"downloaden is geblokkeerd. Repareer handmatig."
+msgid "The file could not be downloaded. It might not exist, or downloading is blocked. Fix manually."
+msgstr "Het bestand kon niet gedownload worden. Het bestaat misschien niet of downloaden is geblokkeerd. Repareer handmatig."
 
-#: class-importer.php:226 class-importer.php:266 class-importer.php:308
-msgid ""
-"The file could not be downloaded. The file might not exist, or downloading "
-"is be blocked by the server. Fix manually."
-msgstr ""
-"Het bestand kon niet gedownload worden. Het bestand bestaat misschien niet "
-"of downloaden wordt geblokkeerd door de server. Fix handmatig."
+#: class-importer.php:221
+#: class-importer.php:258
+#: class-importer.php:297
+msgid "The file could not be downloaded. The file might not exist, or downloading is be blocked by the server. Fix manually."
+msgstr "Het bestand kon niet gedownload worden. Het bestand bestaat misschien niet of downloaden wordt geblokkeerd door de server. Fix handmatig."
 
-#: grid/templates/scan-results-container.php:7
-msgid "The file that's causing a potential mixed content issue."
-msgstr "Het bestand dat potentieel een probleem met mixed content veroorzaakt."
+#: class-headers.php:413
+msgid "The following recommended security headers have not been set: %s"
+msgstr "De volgende aanbevolen security headers zijn niet ingesteld: %s"
 
-#: class-premium-options.php:1222
-msgid ""
-"The last scan was completed with errors. Are you sure these issues don't "
-"impact your site?"
-msgstr ""
-"De laatste scan is voltooid met foutmeldingen. Weet je zeker dat deze "
-"problemen geen effect hebben op je site?"
+#: class-scan.php:151
+msgid "The last scan was completed with errors. Are you sure these issues don't impact your site?"
+msgstr "De laatste scan is voltooid met foutmeldingen. Weet je zeker dat deze problemen geen effect hebben op je site?"
 
-#: class-premium-options.php:1209
-msgid ""
-"The last scan was completed with errors. Only migrate if you are sure the "
-"found errors are not a problem for your site."
-msgstr ""
-"De laatste scan is voltooid met foutmeldingen. Migreer alleen als je zeker "
-"weet dat de gevonden fouten geen problemen geven op je site"
+#: class-scan.php:137
+msgid "The last scan was completed with errors. Only migrate if you are sure the found errors are not a problem for your site."
+msgstr "De laatste scan is voltooid met foutmeldingen. Migreer alleen als je zeker weet dat de gevonden fouten geen problemen geven op je site"
 
-#: class-licensing.php:547
-msgid ""
-"The license information could not be retrieved at this moment. Please try "
-"again at a later time."
-msgstr ""
-"De licentie-informatie kon op dit moment niet worden opgehaald. Probeert het "
-"alsjeblieft later nog een keer."
+#: class-licensing.php:570
+msgid "The license information could not be retrieved at this moment. Please try again at a later time."
+msgstr "De licentie-informatie kon op dit moment niet worden opgehaald. Probeert het alsjeblieft later nog een keer."
 
-#: grid/templates/license-footer.php:31
-#, php-format
-#| msgid ""
-#| "The license key is only visible to %s. Add &rsssl_unlock_license={your "
-#| "license key} behind the URL to unlock the license block."
-msgid ""
-"The license key is only visible to %s. Add &rsssl_license_unlock={your "
-"license key} behind the URL to unlock the license block."
-msgstr ""
-"De licentie code is alleen zichtbaar voor %s. Voeg &rsssl_license_unlock={je "
-"licentie code} achter de URL toe om het licentie blok te ontgrendelen."
-
-#: class-premium-options.php:952
-msgid ""
-"The preload list offers even more security, as browsers will be instructed "
-"to load the site over HTTPS, even before the first visit."
-msgstr ""
-"De preload lijst biedt nog meer beveiliging, omdat browsers worden "
-"geïnstrueerd om de site over HTTPS te laden, nog voor het eerste bezoek."
-
-#: class-scan.php:1778 class-scan.php:1847
+#: class-scan.php:1616
 msgid "theme file"
 msgstr "thema bestand"
 
-#: EDD_SL_Plugin_Updater.php:258
-#, php-format
-msgid ""
-"There is a new version of %1$s available. %2$sView version %3$s details%4$s "
-"or %5$supdate now%6$s."
-msgstr ""
-"Er is een nieuwe versie van %1$s beschikbaar. %2$sBekijk versie %3$s "
-"details%4$s of %5$supdate nu%6$s."
-
-#: EDD_SL_Plugin_Updater.php:250
-#, php-format
-msgid ""
-"There is a new version of %1$s available. %2$sView version %3$s details%4$s."
-msgstr ""
-"Er is een nieuwe versie van %1$s beschikbaar. %2$sBekijk versie %3$s "
-"details%4$s."
-
-#: class-importer.php:135
+#: class-importer.php:136
 msgid "There was a problem editing the file. Please try manually."
-msgstr ""
-"Er is een probleem met het bewerken van het bestand. Probeer het handmatig."
+msgstr "Er is een probleem met het bewerken van het bestand. Probeer het handmatig."
 
-#: class-premium-options.php:976
+#: class-licensing.php:713
+msgid "This domain is not activated for this Really Simple SSL Pro license. Please activate the license for this domain."
+msgstr "Dit domein is niet geactiveerd voor deze Really Simple SSL Pro licentie. Activeer alsjeblieft de licentie voor dit domein"
+
+#: class-scan.php:1644
+msgid "This downloads the file from the domain without SSL, inserts it into WP media, and changes the URL to the new URL."
+msgstr "Dit downloadt het bestand van het domein zonder SSL, slaat het op in WP Media en verandert de URL naar de nieuwe URL."
+
+#: class-licensing.php:610
 #, php-format
-msgid ""
-"These settings are only available on the network settings, available with "
-"the %sAgency license%s."
-msgstr ""
-"Deze instellingen zijn alleen beschikbaar onder netwerk instellingen, "
-"beschikbaar binnen de %sAgency licentie%s."
+msgid "This license is not valid for this product. Find out why on your %saccount%s."
+msgstr "Deze licentie code is niet geldig voor dit product. Bekijk waarom via je %saccount%s."
 
-#: class-premium-options.php:972
-#, php-format
-msgid "These settings are only available under the %snetwork settings%s."
-msgstr ""
-"Deze instellingen zijn alleen beschikbaar onder %snetwerk instellingen%s."
-
-#: class-premium-options.php:1269
-msgid ""
-"This domain is not activated for this Really Simple SSL Pro license. Please "
-"activate the license for this domain."
-msgstr ""
-"Dit domein is niet geactiveerd voor deze Really Simple SSL Pro licentie. "
-"Activeer alsjeblieft de licentie voor dit domein"
-
-#: class-scan.php:2483 class-scan.php:2572
-msgid ""
-"This downloads the file from the domain without SSL, inserts it into WP "
-"media, and changes the URL to the new URL."
-msgstr ""
-"Dit downloadt het bestand van het domein zonder SSL, slaat het op in WP "
-"Media en verandert de URL naar de nieuwe URL."
-
-#: grid/templates/permissions-policy.php:12
-msgid ""
-"This feature is not allowed. Enable this to disable the feature entirely on "
-"your site."
-msgstr ""
-"Deze functie is niet toegestaan. Schakel in om deze functie volledig te "
-"blokkeren op je site."
-
-#: class-scan.php:2611 class-scan.php:2691
-msgid ""
-"This function downloads the file from the domain without SSL, inserts it "
-"into WP media, and changes the URL to the new URL."
-msgstr ""
-"Deze functie downloadt het bestand van het domein zonder SSL, slaat het op "
-"in WP Media en verandert de URL naar de nieuwe URL."
-
-#: class-scan.php:2650
-msgid ""
-"This function will change the urls to the protocol independent // instead of "
-"http://"
-msgstr ""
-"Deze functie verandert de URL's naar het onafhankelijke // protocol, in "
-"plaats van http://"
-
-#: class-premium-options.php:942
-msgid ""
-"This header allows you to restrict browser features on your own and embedded "
-"pages."
-msgstr ""
-"Deze header maakt het mogelijk om browser functionaliteiten te blokkeren op "
-"eigen en ingesloten pagina's."
-
-#: class-premium-options.php:935
-msgid ""
-"This header enforces certificate transparency. This is done by expecting "
-"valid Signed Certificate Timestamps (SCTs)."
-msgstr ""
-"Deze header dwingt certificaat transparantie af. Dit wordt gedaan door "
-"valide Signed Certificate Timestamps (SCT's) te verwachten."
-
-#: class-premium-options.php:932
-msgid ""
-"This header only sets a referrer when navigating to the same protocol (HTTPS-"
-">HTTPS) and not when downgrading (HTTPS->HTTP)."
-msgstr ""
-"Deze header geeft alleen het verwijzende domein door indien genavigeerd "
-"wordt naar hetzelfde protocol (HTTPS->HTTPS) en niet wanneer gedowngraded "
-"(HTTPS->HTTP)."
-
-#: class-premium-options.php:929
-msgid ""
-"This header prevents MIME-sniffing, which can be used to upload malicious "
-"files disguised as another content type."
-msgstr ""
-"Deze header voorkomt MIME-sniffing, wat kan worden misbruikt om corrupte "
-"bestanden te uploaden, vermomd als een ander bestandsformaat."
-
-#: class-premium-options.php:938
-msgid ""
-"This header prevents your site from being loaded in an iFrame on other "
-"domains. This is used to prevent clickjacking attacks."
-msgstr ""
-"Deze header voorkomt dat je site geladen kan worden in iFrames op andere "
-"domeinen. Dit wordt gebruikt om clickjacking aanvallen te voorkomen."
-
-#: class-premium-options.php:926
-msgid ""
-"This header protects your site from cross-site scripting attacks. If a cross-"
-"site scripting attack is detected, the browser will automatically sanitize "
-"(remove) unsafe parts (scripts) when this header is enabled."
-msgstr ""
-"Deze header beveiligd je site tegen cross-site scripting aanvallen. Als een "
-"cross-site scripting aanval wordt gedetecteerd, zal de browser automatisch "
-"onveilige onderdelen (scripts) sanitizen (verwijderen) indien deze header is "
-"ingeschakeld."
-
-#: class-premium-options.php:923
-msgid ""
-"This is an additional header to force all incoming http:// requests to https:"
-"//."
-msgstr ""
-"Dit is een aanvullende header om alle http:// verzoeken naar https:// te "
-"forceren."
-
-#: class-premium-options.php:1414
-#, php-format
-msgid ""
-"This is an advanced feature. Only enable this if you know what you're doing. "
-"See %sour usage guide%s"
-msgstr ""
-"Dit is een geavanceerde functionaliteit. Schakel alleen in indien u hier "
-"bekend mee bent. Zie ook onze %shandleiding%s."
-
-#: class-licensing.php:592
-#, php-format
-msgid ""
-"This license is not valid for this product. Find out why on your %saccount%s."
-msgstr ""
-"Deze licentie code is niet geldig voor dit product. Bekijk waarom via je "
-"%saccount%s."
-
-#: class-licensing.php:585
+#: class-licensing.php:603
 #, php-format
 msgid "This license is not valid. Find out why on your %saccount%s."
 msgstr "Deze licentie is niet geldig. Bekijk waarom via je %saccount%s."
 
-#: class-premium-options.php:913
-msgid "This option is enabled on the network menu"
-msgstr "Deze optie kun je inschakelen via het netwerk menu"
+#: class-scan.php:2182
+msgid "This will put the files back that were changed by the fix option in Really Simple SSL Pro."
+msgstr "Dit zal de wijzigingen in bestanden herstellen die zijn veranderd door de 'repareer' optie in Really Simple SSL Pro."
 
-#: class-premium-options.php:1582
-msgid "This option is enabled on the network menu."
-msgstr "Deze optie is ingeschakeld in het netwerk menu."
+#: class-admin.php:572
+#: class-admin.php:578
+msgid "TLS version"
+msgstr "TLS versie"
 
-#: class-premium-options.php:907
-#, php-format
-msgid ""
-"This option sends an email to the administrator email address (%s) when your "
-"certificate is about to expire within 2 weeks."
-msgstr ""
-"Deze functie verstuurt een e-mail naar de het e-mailadres van de "
-"sitebeheerder (%s) wanneer het certificaat binnen 2 weken verloopt."
-
-#: class-scan.php:2728
-msgid ""
-"This will put the files back that were changed by the fix option in Really "
-"Simple SSL pro."
-msgstr ""
-"Dit zal de wijzigingen in bestanden herstellen die zijn veranderd door de "
-"'repareer' optie in Really Simple SSL Pro."
-
-#: class-premium-options.php:1151
+#: class-admin.php:573
 msgid "TLS version is up-to-date"
 msgstr "TLS versie is up-to-date"
 
-#: class-premium-options.php:2273
-msgid ""
-"To restart reporting, set Content Security Policy to ‘reporting active’."
-msgstr ""
-"Om rapporteren te herstarten, zet de Content Security Policy op 'rapporteren "
-"actief'."
-
-#: csp-violation-endpoint.php:417
-msgid "Today"
-msgstr "Vandaag"
-
-#: class-licensing.php:466
+#: class-licensing.php:494
 msgid "unlimited"
 msgstr "ongelimiteerd"
 
-#: class-licensing.php:490
+#: class-licensing.php:518
 msgid "Unlimited activations available."
 msgstr "Ongelimiteerd aantal activaties beschikbaar"
 
-#: class-premium-options.php:1297
-msgid ""
-"Update Really Simple SSL Free to the latest version for optimal Content "
-"Security Policy compatibility."
-msgstr ""
-"Update Really Simple SSL Free naar de laatste versie voor optimale Content "
-"Security Policy compatibiliteit."
+#: class-admin.php:607
+msgid "Update Really Simple SSL Free to the latest version for optimal compatibility."
+msgstr "Update de Gratis versie van Really Simple SSL naar de laatste versie voor optimale compatibiliteit."
 
-#: class-premium-options.php:924
-msgid "Upgrade insecure request"
-msgstr "Upgrade onveilige verzoeken"
-
-#: class-licensing.php:479
+#: class-licensing.php:507
 #, php-format
 msgid "Upgrade to a %s5 sites or Agency%s license."
 msgstr "Upgrade naar een %s5-sites of Agency%s licentie."
 
-#: class-licensing.php:482
+#: class-licensing.php:510
 #, php-format
 msgid "Upgrade to an %sAgency%s license."
 msgstr "Upgrade naar een %sAgency%s licentie."
 
-#: class-scan.php:1857
+#: class-scan.php:1622
 msgid "uploads file, possibly generated by plugin or theme"
 msgstr "Uploads bestand, mogelijk gegenereerd door een plugin of thema"
 
-#: class-premium-options.php:911
-#| msgid ""
-#| "Use this option if you do not have the green lock in the WordPress admin."
-msgid ""
-"Use this option if you do not have the secure lock in the WordPress admin."
-msgstr ""
-"Gebruik deze optie als je groen slotje ziet in het WordPress dashboard."
-
-#: grid/templates/license-footer.php:29
-msgid "User not found"
-msgstr "Gebruiker niet gevonden"
-
-#: class-licensing.php:505
-msgid "Valid"
-msgstr "Geldig"
-
-#: class-licensing.php:512
+#: class-licensing.php:537
 #, php-format
 msgid "Valid license for %s."
 msgstr "Geldige licentie voor %s."
 
-#: class-licensing.php:473
+#: class-licensing.php:501
 #, php-format
 msgid "Valid until %s."
 msgstr "Geldig tot %s."
 
-#: class-licensing.php:569 class-licensing.php:576 class-licensing.php:584
-#: class-licensing.php:591 class-licensing.php:606 class-licensing.php:640
-#: grid/templates/scan-results-element.php:5
+#: class-licensing.php:629
 msgid "Warning"
 msgstr "Waarschuwing"
 
-#: class-premium-options.php:2274
-msgid ""
-"When there a no new directives reported, you can continue with the "
-"configuration and set the Content Security Policy to ‘Enforce’."
-msgstr ""
-"Wanneer er geen nieuwe regels meer worden gerapporteerd kun je doorgaan met "
-"de configuratie en de Content Security Policy op 'Handhaven' zetten."
-
-#: grid/templates/scan-footer.php:20
-msgid ""
-"When you enable this option, the URL's that were previously ignored are "
-"shown again."
-msgstr ""
-"Indien je deze optie inschakelt worden URL's die voorheen genegeerd werden "
-"weer getoond."
-
-#: grid/templates/support.php:6
-msgid ""
-"When you send this form we will attach the following information: license "
-"key, scan results, your domain, .htaccess file, debug log and a list of "
-"active plugins"
-msgstr ""
-"Wanneer je dit formulier verstuurt dan voegen we de volgende informatie toe: "
-"licentiecode, scan resultaten, je domein, .htaccess bestand, debug log en "
-"een lijst van actieve plugins"
-
-#: class-scan.php:2096
+#: class-scan.php:1856
 #, php-format
 msgid "Widget area \"%s\""
 msgstr "Widget gebied \"%s\""
 
-#: class-scan.php:2083
+#: class-scan.php:1866
 msgid "Widget with mixed content"
 msgstr "Widget met mixed content"
 
-#: class-multisite.php:358
-msgid "WordPress 301 redirection to SSL for all SSL sites"
-msgstr "WordPress 301 redirect naar SSL voor alle SSL sites"
+#: class-licensing.php:742
+msgid "You are using Really Simple SSL Pro single site on a multisite environment. Please install Really Simple SSL multisite networkwide for multisite support."
+msgstr "Je hebt Really Simple SSL Pro Single Site geïnstalleerd op een Multisite-omgeving. Gebruik Really Simple SSL Pro Multisite voor ondersteuning voor Multisite omgevingen."
 
-#: grid/templates/premium-settings-footer.php:10
-#, php-format
-msgid "Works with %s"
-msgstr "Werkt met %s"
-
-#: class-licensing.php:635
-#, php-format
-msgid "You can activate your license on the %slicense tab%s."
-msgstr "Je kunt je licentie activeren via de %slicentie tab%s."
-
-#: class-scan.php:1806
+#: class-scan.php:1665
 msgid "You can edit the source file manually by pressing the edit button."
 msgstr "Je kunt het bronbestand handmatig aanpassen via de 'aanpassen' knop."
 
-#: class-licensing.php:485
+#: class-licensing.php:513
 #, php-format
 msgid "You can renew your license on your %saccount%s."
 msgstr "Je kunt je licentie verlengen via je %saccount%s."
 
-#: class-premium-options.php:1241
+#: class-licensing.php:692
 #, php-format
 msgid "You can upgrade on your %saccount%s."
 msgstr "Je kunt upgraden via je %saccount%s"
 
-#: class-licensing.php:637
-#, php-format
-msgid "You can upgrade or renew your license on the %slicense tab%s."
-msgstr "Je kunt je licentie upgraden of hernieuwen via de %slicentie tab%s."
+#: class-licensing.php:720
+msgid "You do not have any activations left on your Really Simple SSL Pro license. Please upgrade your plan for additional activations."
+msgstr "Je hebt geen activaties meer over op je Really Simple SSL Pro licentie. Upgrade je abonnement voor extra activaties."
 
-#: class-premium-options.php:1276
-msgid ""
-"You do not have any activations left on your Really Simple SSL Pro license. "
-"Please upgrade your plan for additional activations."
-msgstr ""
-"Je hebt geen activaties meer over op je Really Simple SSL Pro licentie. "
-"Upgrade je abonnement voor extra activaties."
-
-#: EDD_SL_Plugin_Updater.php:502
-msgid "You do not have permission to install plugin updates"
-msgstr "Je hebt geen toestemming on plugins te installeren"
-
-#: class-premium-options.php:2160
-msgid "You finished a scan without errors."
-msgstr "Je hebt een scan zonder fouten afgerond"
-
-#: class-licensing.php:473
+#: class-licensing.php:501
 msgid "You have a lifetime license."
 msgstr "Je hebt een lifetime licentie."
 
-#: class-premium-options.php:1234
-msgid ""
-"You have a multisite environment. To leverage all configuration options in "
-"Really Simple SSL, we recommend to enabled the plugin networkwide, then use "
-"the 'activate per site' option to enable SSL per site."
-msgstr ""
-"Je hebt een Multisite omgeving. Om alle configuratiemogelijkheden van Really "
-"Simple SSL te gebruiken raden we aan om de plugin via het netwerk te "
-"activeren en vervolgens de 'activeer per site' optie te gebruiken."
+#: class-scan.php:142
+msgid "You haven't scanned the site yet, you should scan your site to check for possible issues."
+msgstr "Je hebt je site nog niet gescand. Scan je site om mogelijk problemen te ontdekken."
 
-#: class-premium-options.php:1118
-#| msgid ""
-#| "You have disabled the PHP security header option. Check if the following "
-#| "security headers have been added to NGINX configuration file:"
-msgid ""
-"You have enabled the nginx.conf security header option. Check if the "
-"following security headers have been added to the NGINX configuration file:"
-msgstr ""
-"Je hebt de nginx.conf headers optie ingeschakeld. Check of de volgende "
-"security headers zijn toegevoegd aan je NGINX configuratie bestand:"
-
-#: class-premium-options.php:1183
-#| msgid "You have new rules that can be added to your Content Security Policy"
-msgid "You have new rules that can be added to your Content Security Policy."
-msgstr "Er zijn nieuwe regels om toe te voegen aan je Content Security Policy."
-
-#: class-premium-options.php:165
-msgid ""
-"You have scanned your site before, but the scan results are cleared from the "
-"cache. Run a new scan to see the results."
-msgstr ""
-"Je hebt je site eerder gescand, maar de resultaten zijn verwijderd uit de "
-"cache. Voer een nieuwe scan uit om de resultaten te zien."
-
-#: class-licensing.php:690
-msgid ""
-"You haven't activated your Really Simple SSL Pro Multisite license yet. To "
-"get all future updates, enter your license on the network settings page."
-msgstr ""
-"Je hebt je Really Simple SSL Pro Multisite licentie nog niet geactiveerd. "
-"Activeer je licentiecode onder netwerkinstellingen om updates te blijven "
-"ontvangen."
-
-#: class-premium-options.php:1214
-msgid ""
-"You haven't scanned the site yet, you should scan your site to check for "
-"possible issues."
-msgstr ""
-"Je hebt je site nog niet gescand. Scan je site om mogelijk problemen te "
-"ontdekken."
-
-#: class-importer.php:103
+#: class-importer.php:107
 msgid "Your files already were restored."
 msgstr "Je bestanden waren al teruggezet."
 
-#: class-importer.php:101
+#: class-importer.php:105
 msgid "Your files were restored."
 msgstr "Je bestanden zijn teruggezet."
 
-#: class-licensing.php:577
+#: class-licensing.php:596
 #, php-format
-msgid ""
-"Your license could not be found in our system. Please contact %ssupport%s."
-msgstr ""
-"Je licentie werd niet gevonden in ons systeem. Neem alsjeblieft contact op "
-"met %ssupport%s."
+msgid "Your license could not be found in our system. Please contact %ssupport%s."
+msgstr "Je licentie werd niet gevonden in ons systeem. Neem alsjeblieft contact op met %ssupport%s."
 
-#: class-licensing.php:570
+#: class-licensing.php:590
 #, php-format
 msgid "Your license has been revoked. Please contact %ssupport%s."
 msgstr "Je licentie is ingetrokken. Neem contact op met %ssupport%s."
 
-#: class-licensing.php:607
+#: class-licensing.php:623
 #, php-format
-msgid ""
-"Your license key has expired. Please renew your license key on your "
-"%saccount%s."
-msgstr ""
-"Je licentie is verlopen. Verleng alsjeblieft je licentiecode via je "
-"%saccount%s."
+msgid "Your license key has expired. Please renew your license key on your %saccount%s."
+msgstr "Je licentie is verlopen. Verleng alsjeblieft je licentiecode via je %saccount%s."
 
-#: class-licensing.php:635
-msgid "Your Really Simple SSL pro license hasn't been activated."
+#: class-licensing.php:675
+msgid "Your Really Simple SSL Pro license hasn't been activated."
 msgstr "Je Really Simple SSL Pro licentie is nog niet geactiveerd."
 
-#: class-licensing.php:637
-msgid "Your Really Simple SSL pro license is not valid."
+#: class-licensing.php:676
+msgid "Your Really Simple SSL Pro license is not valid."
 msgstr "Je Really Simple SSL Pro licentie is niet geldig."
 
-#: class-premium-options.php:1255
-msgid ""
-"Your Really Simple SSL Pro license key has expired. Please renew your "
-"license to continue receiving updates and premium support."
-msgstr ""
-"Je Really Simple SSL Pro licentie is verlopen. Vernieuw alsjeblieft je "
-"licentie om updates en premium ondersteuning te blijven ontvangen."
+#: class-licensing.php:699
+msgid "Your Really Simple SSL Pro license key has expired. Please renew your license to continue receiving updates and premium support."
+msgstr "Je Really Simple SSL Pro licentie is verlopen. Vernieuw alsjeblieft je licentie om updates en premium ondersteuning te blijven ontvangen."
 
-#: class-premium-options.php:1283
-msgid ""
-"Your Really Simple SSL Pro license key hasn't been activated yet. You can "
-"activate your license key on the license tab."
-msgstr ""
-"Je Really Simple SSL Pro licentiecode is nog niet geactiveerd. Je kunt je "
-"licentiecode activeren via de licentie tab."
+#: class-licensing.php:727
+msgid "Your Really Simple SSL Pro license key hasn't been activated yet. You can activate your license key on the license tab."
+msgstr "Je Really Simple SSL Pro licentiecode is nog niet geactiveerd. Je kunt je licentiecode activeren via de licentie tab."
 
-#: class-premium-options.php:1262
-msgid ""
-"Your Really Simple SSL Pro license key is not activated. Please activate "
-"your license to continue receiving updates and premium support."
-msgstr ""
-"Je Really Simple SSL Pro licentie is niet geactiveerd. Activeer alsjeblieft "
-"je licentie om updates en premium ondersteuning te blijven ontvangen."
+#: class-licensing.php:706
+msgid "Your Really Simple SSL Pro license key is not activated. Please activate your license to continue receiving updates and premium support."
+msgstr "Je Really Simple SSL Pro licentie is niet geactiveerd. Activeer alsjeblieft je licentie om updates en premium ondersteuning te blijven ontvangen."
 
-#: class-premium-options.php:1133
+#: class-headers.php:197
 #, php-format
-msgid ""
-"Your site has been configured for the HSTS preload list. If you have "
-"submitted your site, it will be preloaded. Click %shere%s to submit."
-msgstr ""
-"Je site is geconfigureerd voor de HSTS preload list. Als je je site hebt "
-"ingediend zal hij voorgeladen worden. Klik %shier%s om in te dienen"
+msgid "Your site has been configured for the HSTS preload list. If you have submitted your site, it will be preloaded. Click %shere%s to submit."
+msgstr "Je site is geconfigureerd voor de HSTS preload list. Als je je site hebt ingediend zal hij voorgeladen worden. Klik %shier%s om in te dienen"
 
-#: class-premium-options.php:1138
+#: class-headers.php:210
+msgid "Your site is not configured for HSTS yet."
+msgstr "Je site is nog niet geconfigureerd voor HSTS."
+
+#: class-headers.php:203
 msgid "Your site is not yet configured for the HSTS preload list."
 msgstr "Je site is nog niet geconfigureerd voor de HSTS preload lijst."
 
-#: class-premium-options.php:1169
-msgid ""
-"Your site redirects 404 pages to the http:// version of your homepage. This "
-"can cause mixed content issues with images."
-msgstr ""
-"Je site redirect 404 pagina's naar de http:// versie van je homepagina. Dit "
-"kan mixed content problemen veroorzaken met afbeeldingen."
+#: class-admin.php:593
+msgid "Your site redirects 404 pages to the http:// version of your homepage. This can cause mixed content issues with images."
+msgstr "Je site redirect 404 pagina's naar de http:// versie van je homepagina. Dit kan mixed content problemen veroorzaken met afbeeldingen."
 
-#: class-premium-options.php:1156
-msgid ""
-"Your site uses an outdated version of TLS. Upgrade to TLS 1.2 or TLS 1.3 to "
-"keep your site secure."
+#: class-admin.php:579
+msgid "Your site uses an outdated version of TLS. Upgrade to TLS 1.2 or TLS 1.3 to keep your site secure."
+msgstr "Je site gebruikt een verouderde versie van TLS. Upgrade naar TLS 1.2 of TLS 1.3 om je site veilig te houden."
+
+#. Plugin Name of the plugin
+msgid "Really Simple SSL Pro"
 msgstr ""
-"Je site gebruikt een verouderde versie van TLS. Upgrade naar TLS 1.2 of TLS "
-"1.3 om je site veilig te houden."
+
+#: really-simple-ssl-pro.php:296
+msgid "Really Simple SSL Free needs to be updated to the latest version to be compatible."
+msgstr ""
+
+#: really-simple-ssl-pro.php:297
+msgid "Visit the plugins overview to update Really Simple SSL."
+msgstr ""
